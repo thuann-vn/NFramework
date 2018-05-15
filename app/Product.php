@@ -5,11 +5,17 @@ namespace App;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use TCG\Voyager\Traits\HasRelationships;
+use TCG\Voyager\Traits\Resizable;
+use TCG\Voyager\Traits\Translatable;
 
 class Product extends Model
 {
-    use SearchableTrait, Searchable;
-
+    use SearchableTrait,
+        Searchable,
+        Translatable,
+        Resizable,
+        HasRelationships;
     /**
      * Searchable rules.
      *
