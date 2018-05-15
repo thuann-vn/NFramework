@@ -20,6 +20,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Admin Password
+    |--------------------------------------------------------------------------
+    |
+    | Here you can specify the admin password
+    |
+    */
+
+    'adminPassword' => env('ADMIN_PASSWORD', 'password'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Controllers config
     |--------------------------------------------------------------------------
     |
@@ -113,11 +124,6 @@ return [
         'enabled' => false,
 
         /*
-         * Set whether or not the admin layout default is RTL.
-         */
-        'rtl' => false,
-
-        /*
          * Select default language
          */
         'default' => 'en',
@@ -160,7 +166,9 @@ return [
         ],
 
         'widgets' => [
-
+            'TCG\\Voyager\\Widgets\\UserDimmer',
+            'TCG\\Voyager\\Widgets\\PostDimmer',
+            'TCG\\Voyager\\Widgets\\PageDimmer',
         ],
 
     ],
@@ -174,19 +182,11 @@ return [
     |
     */
 
-    'bread' => [
-        // When a BREAD is added, create the Menu item using the BREAD properties.
-        'add_menu_item' => true,
+    // When a BREAD is added, create the Menu item using the BREAD properties.
+    'add_bread_menu_item' => true,
 
-        // which menu add item to
-        'default_menu' => 'admin',
-
-        // When a BREAD is added, create the related Permission.
-        'add_permission' => true,
-
-        // which role add premissions to
-        'default_role' => 'admin',
-    ],
+    // When a BREAD is added, create the related Permission.
+    'add_bread_permission' => true,
 
     /*
     |--------------------------------------------------------------------------
