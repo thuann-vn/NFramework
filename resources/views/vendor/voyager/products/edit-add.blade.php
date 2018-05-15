@@ -57,8 +57,8 @@
 
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class="voyager-character"></i> {{ __('voyager::product.name') }}
-                                <span class="panel-desc"> {{ __('voyager::product.title_sub') }}</span>
+                                <i class="voyager-character"></i> {{ __('voyager.product.name') }}
+                                <span class="panel-desc"> {{ __('voyager.product.name_sub') }}</span>
                             </h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
@@ -70,10 +70,10 @@
                                     '_field_name'  => 'name',
                                     '_field_trans' => get_field_translations($dataTypeContent, 'name')
                                 ])
-                                <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('voyager::product.name') }}" value="@if(isset($dataTypeContent->name)){{ $dataTypeContent->name }}@endif">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('voyager.product.name') }}" value="@if(isset($dataTypeContent->name)){{ $dataTypeContent->name }}@endif">
                             </div>
                             <div class="form-group">
-                                <label for="details">{{ __('voyager::product.details') }}</label>
+                                <label for="details">{{ __('voyager.product.details') }}</label>
                                 @include('voyager::multilingual.input-hidden', [
                                     '_field_name'  => 'details',
                                     '_field_trans' => get_field_translations($dataTypeContent, 'details')
@@ -87,7 +87,7 @@
                     <!-- ### CONTENT ### -->
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="panel-title">{{ __('voyager::product.content') }}</h3>
+                            <h3 class="panel-title">{{ __('voyager.product.content') }}</h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-resize-full" data-toggle="panel-fullscreen" aria-hidden="true"></a>
                             </div>
@@ -109,7 +109,7 @@
                     <!-- ### IMAGES ### -->
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="icon wb-search"></i> {{ __('voyager::product.images') }}</h3>
+                            <h3 class="panel-title"><i class="icon wb-search"></i> {{ __('voyager.product.images') }}</h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
@@ -130,14 +130,14 @@
                     <!-- ### SEO CONTENT ### -->
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="icon wb-search"></i> {{ __('voyager::product.seo_content') }}</h3>
+                            <h3 class="panel-title"><i class="icon wb-search"></i> {{ __('voyager.product.seo_content') }}</h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label for="seo_title">{{ __('voyager::product.seo_title') }}</label>
+                                <label for="seo_title">{{ __('voyager.product.seo_title') }}</label>
                                 @include('voyager::multilingual.input-hidden', [
                                     '_field_name'  => 'seo_title',
                                     '_field_trans' => get_field_translations($dataTypeContent, 'seo_title')
@@ -145,7 +145,7 @@
                                 <input type="text" class="form-control" name="seo_title" placeholder="SEO Title" value="@if(isset($dataTypeContent->seo_title)){{ $dataTypeContent->seo_title }}@endif">
                             </div>
                             <div class="form-group">
-                                <label for="meta_keywords">{{ __('voyager::product.meta_keywords') }}</label>
+                                <label for="meta_keywords">{{ __('voyager.product.meta_keywords') }}</label>
                                 @include('voyager::multilingual.input-hidden', [
                                     '_field_name'  => 'meta_keywords',
                                     '_field_trans' => get_field_translations($dataTypeContent, 'meta_keywords')
@@ -153,7 +153,7 @@
                                 <textarea class="form-control" name="meta_keywords">@if(isset($dataTypeContent->meta_keywords)){{ $dataTypeContent->meta_keywords }}@endif</textarea>
                             </div>
                             <div class="form-group">
-                                <label for="meta_description">{{ __('voyager::product.meta_description') }}</label>
+                                <label for="meta_description">{{ __('voyager.product.meta_description') }}</label>
                                 @include('voyager::multilingual.input-hidden', [
                                     '_field_name'  => 'meta_description',
                                     '_field_trans' => get_field_translations($dataTypeContent, 'meta_description')
@@ -168,7 +168,7 @@
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class="voyager-character"></i> {{ __('voyager::product.status') }}
+                                <i class="voyager-character"></i> {{ __('voyager.product.status') }}
                             </h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
@@ -182,7 +182,7 @@
                                 <label for="featured">{{ __('voyager::generic.featured') }}</label>
                             </div>
                             <div class="form-group">
-                                <label for="slug">{{ __('voyager::product.slug') }}</label>
+                                <label for="slug">{{ __('voyager.product.slug') }}</label>
                                 @include('voyager::multilingual.input-hidden', [
                                     '_field_name'  => 'slug',
                                     '_field_trans' => get_field_translations($dataTypeContent, 'slug')
@@ -193,7 +193,7 @@
                                        value="@if(isset($dataTypeContent->slug)){{ $dataTypeContent->slug }}@endif">
                             </div>
                             <div class="form-group">
-                                <label for="status">{{ __('voyager::product.status') }}</label>
+                                <label for="status">{{ __('voyager.product.status') }}</label>
                                 <select class="form-control" name="status">
                                     <option value="PUBLISHED"@if(isset($dataTypeContent->status) && $dataTypeContent->status == 'PUBLISHED') selected="selected"@endif>{{ __('voyager::post.status_published') }}</option>
                                     <option value="DRAFT"@if(isset($dataTypeContent->status) && $dataTypeContent->status == 'DRAFT') selected="selected"@endif>{{ __('voyager::post.status_draft') }}</option>
@@ -208,7 +208,7 @@
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class="voyager-character"></i> {{ __('voyager::product.price') }}
+                                <i class="voyager-character"></i> {{ __('voyager.product.price') }}
                             </h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
@@ -219,7 +219,7 @@
                                 <input type="text" class="form-control" name="price" id="price" value="@if(isset($dataTypeContent->price)){{ $dataTypeContent->price }}@endif"></input>
                             </div>
                             <div class="form-group">
-                                <label for="regular_price">{{ __('voyager::product.regular_price') }}</label>
+                                <label for="regular_price">{{ __('voyager.product.regular_price') }}</label>
                                 <input type="text" class="form-control" name="regular_price" id="regular_price" value="@if(isset($dataTypeContent->regular_price)){{ $dataTypeContent->regular_price }}@endif"></input>
                             </div>
                         </div>
@@ -229,7 +229,7 @@
                     <div class="panel">
                         <div class="panel-heading">
                             <h3 class="panel-title">
-                                <i class="voyager-character"></i> {{ __('voyager::product.category') }}
+                                <i class="voyager-character"></i> {{ __('voyager.product.category') }}
                             </h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
@@ -237,7 +237,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <label>{{ __('voyager::product.Categories') }}</label>
+                                <label>{{ __('voyager.product.Categories') }}</label>
 
                                 <ul style="list-style-type: none; padding-left: 0">
                                     @foreach ($allCategories as $category)
@@ -256,7 +256,7 @@
                     <!-- ### IMAGE ### -->
                     <div class="panel">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><i class="icon wb-image"></i> {{ __('voyager::product.image') }}</h3>
+                            <h3 class="panel-title"><i class="icon wb-image"></i> {{ __('voyager.product.image') }}</h3>
                             <div class="panel-actions">
                                 <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
                             </div>
