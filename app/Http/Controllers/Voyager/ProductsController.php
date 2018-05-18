@@ -164,7 +164,9 @@ class ProductsController extends VoyagerBaseController
         $product = Product::find($id);
         $categoriesForProduct = $product->categories()->get();
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct'));
+        $active_tab = 'detail';
+
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct', 'active_tab'));
     }
 
     // POST BR(E)AD
@@ -256,8 +258,9 @@ class ProductsController extends VoyagerBaseController
 
         $allCategories = Category::all();
         $categoriesForProduct = collect([]);
+        $active_tab = 'detail';
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct', 'active_tab'));
     }
 
     /**
