@@ -68,8 +68,8 @@
 
 @section('javascript')
     <script>
-        var params = {}
-        var $image
+        var params = {};
+        var $image;
 
         $('document').ready(function () {
             $('.toggleswitch').bootstrapToggle();
@@ -92,8 +92,8 @@
             });
 
             $('.form-group').on('click', '.remove-multi-image', function (e) {
+                e.preventDefault();
                 $image = $(this).siblings('img');
-
                 params = {
                     slug: '{{ $dataType->slug }}',
                     image: $image.data('image'),
@@ -125,9 +125,6 @@
                 $('#confirm_delete_modal').modal('hide');
             });
             $('[data-toggle="tooltip"]').tooltip();
-
-            var price = $('input[name="price"]').val();
-            $('input[name="price"]').val(price / 100);
         });
     </script>
 @stop

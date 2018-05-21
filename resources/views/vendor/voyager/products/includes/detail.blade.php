@@ -96,15 +96,21 @@
                     </div>
                 </div>
                 <div class="panel-body">
-                    @if(isset($dataTypeContent->images))
-                        <?php $images = json_decode($dataTypeContent->images); ?>
-                        @if($images != null)
-                            @foreach($images as $image)
-                                <img src="{{ Voyager::image( $image ) }}" style="width:200px; height:auto; clear:both; padding:2px; border:1px solid #ddd; margin-bottom:10px;" />
-                            @endforeach
+                    <div class="form-group">
+                        @if(isset($dataTypeContent->images))
+                            <?php $images = json_decode($dataTypeContent->images); ?>
+                            @if($images != null)
+                                @foreach($images as $image)
+                                    <div class="img_settings_container" data-field-name="images" style="float:left;padding-right:15px;">
+                                        <img src="{{ Voyager::image( $image ) }}" data-image="{{ $image }}" data-id="{{ $dataTypeContent->id }}" style="max-width:200px; height:auto; clear:both; display:block; padding:2px; border:1px solid #ddd; margin-bottom:5px;">
+                                        <a href="#" class="voyager-x remove-multi-image"></a>
+                                    </div>
+                                @endforeach
+                            @endif
                         @endif
-                    @endif
-                    <input type="file" name="images[]" multiple="multiple">
+                        <div class="clearfix"></div>
+                        <input type="file" name="images[]" multiple="multiple">
+                    </div>
                 </div>
             </div>
 
@@ -176,9 +182,8 @@
                     <div class="form-group">
                         <label for="status">{{ __('voyager.product.status') }}</label>
                         <select class="form-control" name="status">
-                            <option value="PUBLISHED"@if(isset($dataTypeContent->status) && $dataTypeContent->status == 'PUBLISHED') selected="selected"@endif>{{ __('voyager::post.status_published') }}</option>
-                            <option value="DRAFT"@if(isset($dataTypeContent->status) && $dataTypeContent->status == 'DRAFT') selected="selected"@endif>{{ __('voyager::post.status_draft') }}</option>
-                            <option value="PENDING"@if(isset($dataTypeContent->status) && $dataTypeContent->status == 'PENDING') selected="selected"@endif>{{ __('voyager::post.status_pending') }}</option>
+                            <option value="ACTIVE"@if(isset($dataTypeContent->status) && $dataTypeContent->status == 'ACTIVE') selected="selected"@endif>{{ __('voyager::product.status_active') }}</option>
+                            <option value="DEACTIVE"@if(isset($dataTypeContent->status) && $dataTypeContent->status == 'DEACTIVE') selected="selected"@endif>{{ __('voyager::product.status_deactive') }}</option>
                         </select>
                     </div>
                 </div>
