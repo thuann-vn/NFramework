@@ -8,21 +8,22 @@
 @section('page_title', __('voyager.generic.'.(isset($dataTypeContent->id) ? 'edit' : 'add')).' '.$dataType->display_name_singular)
 
 @section('page_header')
-    <h1 class="page-title">
-        <i class="{{ $dataType->icon }}"></i>
-        {{ __('voyager.generic.'.(isset($dataTypeContent->id) ? 'edit' : 'add')).' '.$dataType->display_name_singular }}
-    </h1>
-    @include('voyager::multilingual.language-selector')
-    <button form="product_form" type="submit" class="btn btn-primary save">{{ __('voyager.generic.save') }}</button>
+    <div class="page-title-wrapper">
+        <h1 class="page-title">
+            <i class="{{ $dataType->icon }}"></i>
+            {{ __('voyager.generic.'.(isset($dataTypeContent->id) ? 'edit' : 'add')).' '.$dataType->display_name_singular }}
+        </h1>
+        <button form="product_form" type="submit" class="btn btn-primary save">{{ __('voyager.generic.save') }}</button>
+        @include('voyager::multilingual.language-selector')
+    </div>
 @stop
 
 @section('content')
     <div id="gradient_bg"></div>
     <div class="page-content compass container-fluid">
         <ul class="nav nav-tabs">
-            <li @if(empty($active_tab) || (isset($active_tab) && $active_tab == 'detail')){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#detail"><i class="voyager-book"></i> {{ __('voyager::compass.resources.title') }}</a></li>
-            <li @if($active_tab == 'commands'){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#commands"><i class="voyager-terminal"></i> {{ __('voyager::compass.commands.title') }}</a></li>
-            <li @if($active_tab == 'logs'){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#logs"><i class="voyager-logbook"></i> {{ __('voyager::compass.logs.title') }}</a></li>
+            <li @if(empty($active_tab) || (isset($active_tab) && $active_tab == 'detail')){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#detail"><i class="voyager-documentation"></i> {{ __('voyager.product.detail') }}</a></li>
+            <li @if($active_tab == 'commands'){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#commands"><i class="voyager-tag"></i> {{ __('voyager.product.properties') }}</a></li>
         </ul>
 
         <div class="tab-content">
@@ -31,14 +32,7 @@
             </div>
 
             <div id="commands" class="tab-pane fade in @if($active_tab == 'commands'){!! 'active' !!}@endif">
-                <h3><i class="voyager-terminal"></i> {{ __('voyager::compass.commands.title') }} <small>{{ __('voyager::compass.commands.text') }}</small></h3>
-                <div id="command_lists">
-                </div>
-
-            </div>
-            <div id="logs" class="tab-pane fade in @if($active_tab == 'logs'){!! 'active' !!}@endif">
-                <div class="row">
-                </div>
+                @include('vendor.voyager.products.includes.properties')
             </div>
         </div>
     </div>
