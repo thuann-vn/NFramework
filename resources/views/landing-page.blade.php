@@ -41,6 +41,13 @@
                     <img src="img/macbook-pro-laravel.png" alt="hero image">
                 </div> <!-- end hero-image -->
             </div> <!-- end hero -->
+
+
+            @if(!empty($slider))
+                @foreach($slider->slides as $slide)
+                    <img src="{{Voyager::image($slide->image)}}" alt="hero image">
+                @endforeach
+            @endif
         </header>
 
         <div class="featured-section">
