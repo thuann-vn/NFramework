@@ -7,6 +7,9 @@
 
         <title>Laravel Ecommerce Example</title>
 
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat%7CRoboto:300,400,700" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,7 +17,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
-
+        <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
     </head>
     <body>
         <header class="with-background">
@@ -27,27 +30,22 @@
                     @include('partials.menus.main-right')
                 </div>
             </div> <!-- end top-nav -->
-            <div class="hero container">
-                <div class="hero-copy">
-                    <h1>Laravel Ecommerce Demo</h1>
-                    <p>Includes multiple products, categories, a shopping cart and a checkout system with Stripe integration.</p>
-                    <div class="hero-buttons">
-                        <a href="https://www.youtube.com/playlist?list=PLEhEHUEU3x5oPTli631ZX9cxl6cU_sDaR" class="button button-white">Screencasts</a>
-                        <a href="https://github.com/drehimself/laravel-ecommerce-example" class="button button-white">GitHub</a>
-                    </div>
-                </div> <!-- end hero-copy -->
+            <div class="container">
+                <div class="slider fade">
+                    @if(!empty($slider))
+                        @foreach($slider->slides as $slide)
+                            <div>
+                                <div class="image">
+                                    <img src="{{Voyager::image($slide->image)}}" alt="hero image">
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
+                </div>
 
-                <div class="hero-image">
-                    <img src="img/macbook-pro-laravel.png" alt="hero image">
-                </div> <!-- end hero-image -->
             </div> <!-- end hero -->
 
 
-            @if(!empty($slider))
-                @foreach($slider->slides as $slide)
-                    <img src="{{Voyager::image($slide->image)}}" alt="hero image">
-                @endforeach
-            @endif
         </header>
 
         <div class="featured-section">
@@ -118,6 +116,9 @@
 
         @include('partials.footer')
 
-
+        <!-- Scripts -->
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="{{ asset('js/vendor/slick/slick.js') }}"></script>
+        <script src="{{ asset('js/pages/home.js') }}"></script>
     </body>
 </html>

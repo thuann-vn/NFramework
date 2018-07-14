@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/slick/slick.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -76,5 +77,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/vendor/slick/slick.min.js') }}"></script>
+    @stack('after_script')
 </body>
 </html>

@@ -1,8 +1,4 @@
 header.with-background {
-    background: url('/img/triangles.svg');
-    background-size: cover;
-    color: $white;
-
     .top-nav {
       display: flex;
       justify-content: space-between;
@@ -21,7 +17,6 @@ header.with-background {
         // width: 40%;
 
         a {
-          color: $white;
           &:hover {
             color: darken($white, 10%);
           }
@@ -57,7 +52,6 @@ header.with-background {
   }
 
   header {
-    background: $gray-background;
 
     .top-nav {
       display: flex;
@@ -68,7 +62,6 @@ header.with-background {
       .logo {
         font-weight: bold;
         font-size: 28px;
-        color: $white;
         margin-right: 58px;
       }
 
@@ -89,7 +82,6 @@ header.with-background {
         }
 
         a {
-          color: $white;
           &:hover {
             color: darken($white, 10%);
           }
@@ -102,7 +94,6 @@ header.with-background {
           // top: -22px;
           // right: -24px;
           background: $cart-count;
-          color: $text-color;
           line-height: 0;
           border-radius: 50%;
           font-size: 14px;
