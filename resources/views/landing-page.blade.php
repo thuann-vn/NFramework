@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
         <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
+        <link rel="stylesheet" href="{{ asset('vendor/slick/slick-theme.css') }}">
     </head>
     <body>
         <header class="with-background">
@@ -118,7 +119,7 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
-        <script src="{{ asset('js/vendor/slick/slick.js') }}"></script>
+        <script src="{{ asset('vendor/slick/slick.js') }}"></script>
         <script src="{{ asset('js/pages/home.js') }}"></script>
     </body>
 </html>
