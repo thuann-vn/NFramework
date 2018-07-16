@@ -27,11 +27,14 @@
 <body class="@yield('body-class', '')">
     @include('partials.nav')
 
-    @yield('content')
+    <div class="page-content">
+        @yield('content')
+    </div>
 
     @include('partials.footer')
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
     @yield('extra-js')
-
 </body>
 </html>

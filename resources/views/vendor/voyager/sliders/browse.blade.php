@@ -190,7 +190,7 @@
                                                 </a>
                                             @endcan
                                             @can('read', $data)
-                                                <a href="{{ route('voyager.slider-images.index')}}?slider={{$data->getKeyName()}}" title="{{ __('voyager.generic.view') }}" class="btn btn-sm btn-warning pull-right">
+                                                <a href="{{ route('voyager.slider-images.index')}}?slider={{ $data->id }}" title="{{ __('voyager.generic.view') }}" class="btn btn-sm btn-warning pull-right">
                                                     <i class="voyager-eye"></i> <span class="hidden-xs hidden-sm">{{ __('voyager.generic.view') }}</span>
                                                 </a>
                                             @endcan
