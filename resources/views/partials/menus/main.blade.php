@@ -16,6 +16,12 @@
                     <div class="mega-menu-wrap">
                         @foreach($menu_item->children as $child)
                             <div class="mega-menu-col">
+                                @php
+                                    if(!empty($child->mega_option)){
+                                        $megaOption = json_decode($child->mega_option);
+                                    }
+                                    dd($megaOption);
+                                @endphp
                             </div>
                         @endforeach
                         @if(!empty($megaOption))
