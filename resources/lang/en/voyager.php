@@ -185,6 +185,7 @@ return [
     ],
 
     'menu_builder' => [
+        'mega_options'         => 'Mega menu options',
         'color'                => 'Color in RGB or hex (optional)',
         'color_ph'             => 'Color (ex. #ffffff or rgb(255, 255, 255)',
         'create_new_item'      => 'Create a New Menu Item',
