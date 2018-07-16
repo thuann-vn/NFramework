@@ -205,6 +205,7 @@ return [
         'updated_order'        => 'Orden actualizado exitosamente.',
         'url'                  => 'URL para la opción de menú',
         'usage_hint'           => 'Puede emitir un menú en cualquier lugar de su sitio llamando a ',
+        'mega_options'          => 'Mega menu options',
     ],
     'post' => [
         'category'         => 'Categoría del Post',

@@ -211,6 +211,7 @@ return [
         'successfully_updated' => 'Successfully Updated Menu Item.',
         'updated_order'        => 'Successfully updated menu order.',
         'url'                  => 'URL for the Menu Item',
+        'mega_options'          => 'Mega menu options',
         'usage_hint'           => 'You can output a menu anywhere on your site by calling|You can output '.
                                   'this menu anywhere on your site by calling',
     ],

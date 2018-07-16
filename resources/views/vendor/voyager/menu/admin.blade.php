@@ -16,7 +16,7 @@
                 data-color="{{ $item->color }}"
                 data-route="{{ $item->route }}"
                 data-parameters="{{ htmlspecialchars(json_encode($item->parameters)) }}"
-                data-mega-option="{{ htmlspecialchars(json_encode($item->mega_option)) }}"
+                data-mega-option="{{ htmlspecialchars($item->mega_option) }}"
             >
                 <i class="voyager-edit"></i> {{ __('voyager::generic.edit') }}
             </div>

@@ -186,6 +186,17 @@
                 $m_modal.modal('show', {data: $(e.currentTarget)});
             });
 
+            var  rhtmlspecialchars = function(str) {
+                if (typeof(str) == "string") {
+                    str = str.replace(/&gt;/ig, ">");
+                    str = str.replace(/&lt;/ig, "<");
+                    str = str.replace(/&#039;/g, "'");
+                    str = str.replace(/&quot;/ig, '"');
+                    str = str.replace(/&amp;/ig, '&'); /* must do &amp; last */
+                }
+                return str;
+            }
+
             /**
              * Menu Modal is Open
              */
@@ -216,8 +227,8 @@
                     $m_title.val(_src.data('title'));
                     $m_url.val(_src.data('url'));
                     $m_route.val(_src.data('route'));
-                    $m_parameters.val(JSON.stringify(_src.data('parameters')));
-                    $m_mega_options.val(JSON.stringify(_src.data('mega-option')));
+                    $m_parameters.val(JSON.stringify(rhtmlspecialchars(_src.data('parameters'))));
+                    $m_mega_options.val(rhtmlspecialchars(_src.data('mega-option')));
                     $m_icon_class.val(_src.data('icon_class'));
                     $m_color.val(_src.data('color'));
                     $m_id.val(id);
