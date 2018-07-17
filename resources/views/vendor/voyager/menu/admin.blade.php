@@ -1,8 +1,7 @@
 <ol class="dd-list">
 
-@foreach ($items as $item)
-
-    <li class="dd-item" data-id="{{ $item->id }}">
+@foreach ($items->sortBy('order') as $item)
+    <li class="dd-item" data-id="{{ $item->id }}" data-order="{{ $item->order }}">
         <div class="pull-right item_actions">
             <div class="btn btn-sm btn-danger pull-right delete" data-id="{{ $item->id }}">
                 <i class="voyager-trash"></i> {{ __('voyager::generic.delete') }}

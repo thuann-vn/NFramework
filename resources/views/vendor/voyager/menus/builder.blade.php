@@ -104,7 +104,7 @@
                             <option value="_blank">{{ __('voyager::menu_builder.open_new') }}</option>
                         </select><br>
                         <label for="mega_options">{{ __('voyager::menu_builder.mega_options') }}</label>
-                        <textarea rows="3" class="form-control" id="m_mega_option" name="mega_option" placeholder="{{ json_encode(['key' => 'value'], JSON_PRETTY_PRINT) }}"></textarea>
+                        <textarea rows="6" class="form-control" id="m_mega_option" name="mega_option" placeholder="{{ json_encode(['key' => 'value'], JSON_PRETTY_PRINT) }}"></textarea>
                         <input type="hidden" name="menu_id" value="{{ $menu->id }}">
                         <input type="hidden" name="id" id="m_id" value="">
                     </div>
@@ -228,7 +228,25 @@
                     $m_url.val(_src.data('url'));
                     $m_route.val(_src.data('route'));
                     $m_parameters.val(JSON.stringify(rhtmlspecialchars(_src.data('parameters'))));
-                    $m_mega_options.val(rhtmlspecialchars(_src.data('mega-option')));
+
+                    var megaOptions = rhtmlspecialchars(_src.data('mega-option'));
+                    var megaOptionJson = null;
+
+                    try{
+                        if(megaOptions){
+                            megaOptionJson = JSON.parse(megaOptions);
+                        }
+                    }catch (ex){
+                        console.log('Json parser error:', ex);
+                    }
+
+
+                    if(megaOptionJson){
+                        $m_mega_options.val(JSON.stringify(megaOptionJson, null, 4));
+                    }else{
+                        $m_mega_options.val(megaOptions);
+                    }
+
                     $m_icon_class.val(_src.data('icon_class'));
                     $m_color.val(_src.data('color'));
                     $m_id.val(id);

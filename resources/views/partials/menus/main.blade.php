@@ -14,18 +14,33 @@
                 <div class="mega-menu">
                     <div class="mega-menu-title">{{$menu_item->title}}</div>
                     <div class="mega-menu-wrap">
-                        @foreach($menu_item->children as $child)
+                        @foreach($menu_item->children->sortBy('order') as $column)
                             <div class="mega-menu-col">
-                                @php
-                                    if(!empty($child->mega_option)){
-                                        $megaOption = json_decode($child->mega_option);
-                                    }
-                                    dd($megaOption);
-                                @endphp
+                                @foreach($column->children->sortBy('order') as $columSection)
+                                    @php
+                                        if(!empty($columSection->mega_option)){
+                                            $columnOption = json_decode($columSection->mega_option);
+                                        }
+                                    @endphp
+
+                                    @if(!empty($columnOption))
+                                        @if(!isset($columnOption->hide_title))
+                                            <p class="mega-menu-section-title">{{$columSection->title}}</p>
+                                        @endif
+                                        <ul>
+                                            @foreach($columnOption->items as $megaItem)
+                                                <li><a href="{{$megaItem->url}}" title="{{$megaItem->title}}">{{$megaItem->title}}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                    @php
+                                        $columnOption = null;
+                                    @endphp
+                                @endforeach
                             </div>
                         @endforeach
                         @if(!empty($megaOption))
-                            <div class="mega-menu-image">
+                            <div class="mega-menu-col mega-menu-image">
                                 <img src="{{$megaOption->img}}"/>
                             </div>
                         @endif
