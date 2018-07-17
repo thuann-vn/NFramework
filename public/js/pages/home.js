@@ -6,4 +6,11 @@ $(document).ready(function(){
         fade: true,
         cssEase: 'linear'
     });
+
+    $('.products').slick({
+        slidesToShow: 8,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+    });
 })

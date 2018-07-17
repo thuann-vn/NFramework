@@ -1,15 +1,16 @@
-.featured-section {
+.categories-section {
     padding: 50px 0;
 
-    .products {
+    .categories {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-gap: 60px $gutter;
-
-        .product-price {
-            color: $text-color-light !important;
-        }
     }
+}
+
+
+.featured-section {
+    padding: 50px 0;
 }
 
 .blog-section {

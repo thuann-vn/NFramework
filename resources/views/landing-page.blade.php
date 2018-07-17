@@ -20,26 +20,24 @@
         </div>
     </div> <!-- end hero -->
 
-    <div class="featured-section">
-
+    <div class="categories-section">
         <div class="container">
-            <h1 class="text-center">Laravel Ecommerce</h1>
+            <h1 class="text-center">Shop by Category</h1>
 
-            <p class="section-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore vitae nisi, consequuntur illum dolores cumque pariatur quis provident deleniti nesciunt officia est reprehenderit sunt aliquid possimus temporibus enim eum hic lorem.</p>
+            <div class="categories text-center">
+                @foreach ($featuredCategories as $category)
+                    <div class="category">
+                        <a href="{{ route('shop.show', $category->slug) }}"><img src="{{ productImage($category->image) }}" alt="category"></a>
+                    </div>
+                @endforeach
+            </div> <!-- end categories -->
+        </div> <!-- end container -->
 
-            <div class="text-center button-container">
-                <a href="#" class="button">Featured</a>
-                <a href="#" class="button">On Sale</a>
-            </div>
+    </div> <!-- end categories-section -->
 
-            {{-- <div class="tabs">
-                <div class="tab">
-                    Featured
-                </div>
-                <div class="tab">
-                    On Sale
-                </div>
-            </div> --}}
+    <div class="featured-section">
+        <div class="container">
+            <h1 class="text-center">Recommendations For You</h1>
 
             <div class="products text-center">
                 @foreach ($products as $product)
@@ -49,7 +47,6 @@
                         <div class="product-price">{{ $product->presentPrice() }}</div>
                     </div>
                 @endforeach
-
             </div> <!-- end products -->
 
             <div class="text-center button-container">
