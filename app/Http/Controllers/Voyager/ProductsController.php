@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Voyager;
 
+use App\Brand;
 use App\Product;
 use App\Category;
 use App\CategoryProduct;
@@ -160,13 +161,14 @@ class ProductsController extends VoyagerBaseController
         }
 
         $allCategories = Category::all();
+        $allBrands = Brand::all();
 
         $product = Product::find($id);
         $categoriesForProduct = $product->categories()->get();
 
         $active_tab = 'detail';
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct', 'active_tab'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'allBrands', 'categoriesForProduct', 'active_tab'));
     }
 
     // POST BR(E)AD
@@ -259,8 +261,9 @@ class ProductsController extends VoyagerBaseController
         $allCategories = Category::all();
         $categoriesForProduct = collect([]);
         $active_tab = 'detail';
+        $allBrands = Brand::all();
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'categoriesForProduct', 'active_tab'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'allBrands', 'categoriesForProduct', 'active_tab'));
     }
 
     /**

@@ -60,6 +60,21 @@ class ShopController extends Controller
         ]);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  string  $slug
+     * @return \Illuminate\Http\Response
+     */
+    public function category($slug)
+    {
+        $category = Category::where('slug', $slug)->firstOrFail();
+
+        return view('category')->with([
+            'category' => $category
+        ]);
+    }
+
     public function search(Request $request)
     {
         $request->validate([

@@ -202,11 +202,11 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="price" id="price" value="@if(isset($dataTypeContent->price)){{ $dataTypeContent->price }}@endif"></input>
+                        <input type="text" class="form-control" name="price" id="price" value="@if(isset($dataTypeContent->price)){{ $dataTypeContent->price }}@else {{0}} @endif"></input>
                     </div>
                     <div class="form-group">
                         <label for="regular_price">{{ __('voyager.product.regular_price') }}</label>
-                        <input type="text" class="form-control" name="regular_price" id="regular_price" value="@if(isset($dataTypeContent->regular_price)){{ $dataTypeContent->regular_price }}@endif"></input>
+                        <input type="text" class="form-control" name="regular_price" id="regular_price" value="@if(isset($dataTypeContent->regular_price)){{ $dataTypeContent->regular_price }}@else {{0}} @endif"></input>
                     </div>
                 </div>
             </div>
@@ -223,7 +223,17 @@
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label>{{ __('voyager.product.Categories') }}</label>
+                        <label>{{ __('voyager.product.brand') }}</label>
+
+                        <select class="form-control" name="brand">
+                            @foreach($allBrands as $brand)
+                                <option value="{{$brand->id}}" @if(isset($dataTypeContent->brand_id) && $dataTypeContent->brand_id == $brand->id) selected="selected"@endif>{{$brand->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <hr/>
+                    <div class="form-group">
+                        <label>{{ __('voyager.product.categories') }}</label>
 
                         <ul style="list-style-type: none; padding-left: 0">
                             @foreach ($allCategories as $category)
