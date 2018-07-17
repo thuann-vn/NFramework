@@ -202,30 +202,37 @@ header {
   }
 
   .main-menu {
-    ul {
+    > ul {
       display: flex;
-      justify-content: space-between;
+      justify-content: stretch;
+      align-items: stretch;
+      width: 100%;
       font-weight: 400;
       position: relative;
 
-      li {
-        margin-left: 38px;
+      > li {
+        border: 1px solid transparent;
+        box-sizing: border-box;
+        flex: 1;
+        text-align: center;
 
         &:last-child {
           margin-right: 0;
         }
 
         &:hover{
+          border: 1px solid #efefef;
+
           .mega-menu{
             display: block;
           }
         }
       }
 
-      a {
+      > a {
         font-size: 14px;
         font-weight: bold;
-        padding: 10px 15px;
+        padding: 10px 5px;
         display: inline-block;
 
         &:hover {
@@ -263,7 +270,7 @@ header {
       }
 
       .mega-menu-col {
-        width: 33.33%;
+        width: 25%;
         float: left;
         box-sizing: border-box;
 
@@ -275,6 +282,8 @@ header {
             margin-left: 0;
             display: block;
             width: 100%;
+            text-align: left;
+
             a{
               font-size: 13px;
               font-weight: normal;
