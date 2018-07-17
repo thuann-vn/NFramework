@@ -225,7 +225,7 @@
                     <div class="form-group">
                         <label>{{ __('voyager.product.brand') }}</label>
 
-                        <select class="form-control" name="brand">
+                        <select class="form-control" name="brand_id">
                             @foreach($allBrands as $brand)
                                 <option value="{{$brand->id}}" @if(isset($dataTypeContent->brand_id) && $dataTypeContent->brand_id == $brand->id) selected="selected"@endif>{{$brand->name}}</option>
                             @endforeach

@@ -3,9 +3,9 @@
         <img src="{{ productImage($product->image) }}" alt="product">
     </a>
 
-    @foreach($product->categories as $cat)
-        <a href="{{route('shop.category', $cat->slug)}}">{{$cat->name}}</a>
-    @endforeach
+    @if(!empty($product->brand))
+        <a href="{{route('shop.brand', $product->brand->slug)}}">{{$product->brand->name}}</a>
+    @endif
     <a href="{{ route('shop.show', $product->slug) }}">
         <div class="product-name">{{ $product->name }}</div>
     </a>
