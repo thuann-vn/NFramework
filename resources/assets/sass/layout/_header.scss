@@ -1,4 +1,6 @@
 header {
+  background: #fff;
+
   a {
     color: $header-link-color;
 
@@ -7,20 +9,10 @@ header {
     }
   }
 
-  .top-information {
-    background-color: $top-nav-bg;
-    color: $white;
-    text-align: center;
-    padding: 5px 0;
-
-    a {
-      color: $white;
-      text-decoration: none;
-      font-size: 14px;
-      line-height: 20px;
-    }
+  .logo{
+    display: block;
+    line-height: 0;
   }
-
   .top-nav {
     display: flex;
     justify-content: space-between;
@@ -37,6 +29,7 @@ header {
 
       .logo {
         width: 125px;
+        text-align: center;
       }
 
       .search-form {
@@ -77,11 +70,12 @@ header {
   .dropdown.my-account {
     .dropdown-toggle {
       font-size: 11px;
+      display: inline-block;
+      padding-top: 3px;
 
       .my-account-message {
         display: block;
         text-transform: none;
-        margin-bottom: -10px;
       }
 
       .my-account-link {
@@ -151,13 +145,22 @@ header {
     }
   }
 
+  .top-deal{
+    a{
+      display: block;
+    }
+  }
+  .header-wishlist{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .header-cart {
     .cart-total {
       border: 1px solid #002253;
       border-radius: 4px;
       padding: 3px 10px;
       position: relative;
-      top: -10px;
       box-sizing: border-box;
       display: inline-block;
 
@@ -179,6 +182,7 @@ header {
       }
     }
   }
+
   .top-nav-right {
     ul {
       display: flex;
@@ -202,6 +206,8 @@ header {
   }
 
   .main-menu {
+    border-bottom: 1px #f2f0f1 solid;
+
     ul {
       display: flex;
       justify-content: stretch;
@@ -226,6 +232,18 @@ header {
           .mega-menu{
             display: block;
           }
+
+          a:before{
+            content: '';
+            display: block;
+            height: 1px;
+            background: #fff;
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            right: 0;
+            z-index: 11;
+          }
         }
       }
 
@@ -234,6 +252,8 @@ header {
         font-weight: bold;
         padding: 10px 5px;
         display: inline-block;
+        width: 100%;
+        position: relative;
 
         &:hover {
           color: $link-hover-color;
@@ -250,7 +270,6 @@ header {
       z-index: 10;
       padding: 25px;
       border: 1px solid #eee;
-      border-top: none;
       border-bottom: none;
       text-align: left;
       white-space: normal;
@@ -288,6 +307,11 @@ header {
             display: block;
             width: 100%;
             text-align: left;
+            line-height: 18px;
+
+            &:hover{
+              border-color: transparent;
+            }
 
             a{
               font-size: 13px;
@@ -319,27 +343,60 @@ header {
     }
   }
 
-  .promo-information {
-    background-color: $bottom-nav-bg;
+  .top-information {
+    background-color: $top-nav-bg;
     color: $white;
     text-align: center;
     padding: 5px 0;
-    margin-bottom: 10px;
-
-    white-space: nowrap;
-    display: block;
     overflow: hidden;
-    text-overflow: ellipsis;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 20px;
+
+    transition: all 300ms;
 
     a {
       color: $white;
-      text-decoration: underline;
-      font-size: 11px;
+      text-decoration: none;
+      font-size: 14px;
       line-height: 20px;
-      cursor: pointer;
+    }
+  }
+
+  &.sticky{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,.3);
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,.3);
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+
+    & + .page-content{
+        padding-top: 260px;
+    }
+
+    .top-nav, .top-nav-wrap{
+      padding: 0;
+    }
+
+    .top-information, .promo-information{
+      max-height: 0;
+      padding: 0;
+      margin: 0;
+    }
+
+    .main-menu{
+      display: none;
+      border-top: 1px #f2f0f1 solid;
+      border-bottom: 0;
+    }
+
+    .logo img{
+      height: 40px;
+    }
+
+    &.active{
+      .main-menu{
+        display: block;
+      }
     }
   }
 }

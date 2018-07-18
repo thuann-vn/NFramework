@@ -1,7 +1,37 @@
 footer {
-    background: $gray-background;
-    color: $white;
-    padding: 40px 0;
+  padding: 40px 0;
+
+  .footer-top-row{
+    border-top: 1px solid #efefef;
+
+    .footer-top-wrap{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+
+      > div{
+        position: relative;
+        padding-left: 44px;
+
+        > i{
+          position: absolute;
+          left: 0;
+          font-size: 32px;
+        }
+
+        h4{
+          font-size: 16px;
+          line-height: 16px;
+          font-weight: bold;
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+
+        p{
+          color: #000;
+          font-size: 14px;
+        }
+      }
+    }
   }
 
   .footer-content {
@@ -22,3 +52,4 @@ footer {
       color: $white;
     }
   }
+}
