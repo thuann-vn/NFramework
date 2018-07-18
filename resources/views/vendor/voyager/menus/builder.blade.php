@@ -180,8 +180,12 @@
                 $m_modal.find('form').find('#parent_id').remove();
             });
 
+            $('.toggle-child').click(function(){
+                $(this).parents('.dd-item').toggleClass('open');
+            })
+
             /**
-             * Add Menu
+             * Add Child Menu
              */
             $('.add-child').click(function(){
                 $m_form.trigger('reset');

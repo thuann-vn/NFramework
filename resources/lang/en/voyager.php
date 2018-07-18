@@ -215,6 +215,7 @@ return [
         'mega_options'          => 'Mega menu options',
         'usage_hint'           => 'You can output a menu anywhere on your site by calling|You can output '.
                                   'this menu anywhere on your site by calling',
+        'toggle_show'         => 'Show more/Hide'
     ],
 
     'post' => [

@@ -1,7 +1,7 @@
 <ol class="dd-list">
 
 @foreach ($items->sortBy('order') as $item)
-    <li class="dd-item" data-id="{{ $item->id }}" data-order="{{ $item->order }}">
+    <li class="dd-item {{count($item->children)>3?'collapsed':''}}" data-id="{{ $item->id }}" data-order="{{ $item->order }}">
         <div class="pull-right item_actions">
             <div class="btn btn-sm btn-danger pull-right delete" data-id="{{ $item->id }}">
                 <i class="voyager-trash"></i> {{ __('voyager::generic.delete') }}
@@ -22,6 +22,11 @@
             <div class="btn btn-sm btn-success pull-right add-child" data-id="{{ $item->id }}">
                 <i class="voyager-plus"></i> {{ __('voyager.generic.add_child') }}
             </div>
+            @if(count($item->children)>3)
+                <div class="btn btn-sm btn-warning pull-right toggle-child" data-id="{{ $item->id }}" style="margin-right: 10px">
+                    <i class="voyager-resize-full"></i> {{ __('voyager.menu_builder.toggle_show') }}
+                </div>
+            @endif
         </div>
         <div class="dd-handle">
             @if($options->isModelTranslatable)
@@ -31,7 +36,7 @@
                     '_field_trans'        => json_encode($item->getTranslationsOf('title'))
                 ])
             @endif
-            <span>{{ $item->title }}</span> <small class="url">{{ $item->link() }}</small>
+            <span>{{ $item->title }}</span> <small class="url">{{ $item->link() }}</small> @if(count($item->children)>0)| {{count($item->children)}} child(s) @endif
         </div>
         @if(!$item->children->isEmpty())
             @include('voyager::menu.admin', ['items' => $item->children])
