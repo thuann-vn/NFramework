@@ -17,7 +17,7 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-        $products = Product::where('featured', true)->take(8)->inRandomOrder()->get();
+        $products = Product::where('featured', true)->take(16)->inRandomOrder()->get();
         $homeSlider = Slider::where('name', 'Home Slider')->first();
         $featuredCategories = Category::where('featured',1)->get();
         $fearuedBrands = Brand::where('featured',1)->get();

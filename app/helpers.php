@@ -2,7 +2,7 @@
 
 function presentPrice($price)
 {
-    return money_format('$%i', $price / 100);
+    return number_format($price, 0 , '',',') .' ₫';
 }
 
 function setActiveCategory($category, $output = 'active')
@@ -13,6 +13,20 @@ function setActiveCategory($category, $output = 'active')
 function productImage($path)
 {
     return $path && file_exists('storage/'.$path) ? asset('storage/'.$path) : asset('img/not-found.jpg');
+}
+
+function isInCart($id){
+    $existed = Cart::search(function ($cartItem) use ($id) {
+        return $cartItem->id == $id;
+    });
+    return count($existed) > 0;
+}
+
+function isInWishlist($id){
+    $existed = Cart::instance('saveForLater')->search(function ($cartItem) use ($id) {
+        return $cartItem->id == $id;
+    });
+    return count($existed) > 0;
 }
 
 function getNumbers()

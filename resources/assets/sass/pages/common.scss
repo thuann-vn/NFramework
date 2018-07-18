@@ -1,7 +1,14 @@
+a{
+    outline: none;
+}
+
 .products{
     .product{
+        padding: 5px;
         .product-info{
             text-align: left;
+            height: 120px;
+            position: relative;
         }
         .product-brand{
             font-weight: bold;
@@ -15,6 +22,34 @@
             height: 30px;
             font-size: 11px;
             line-height: 14px;
+        }
+
+        .product-price{
+            font-size: 12px;
+            width: 100%;
+            color: $price_color;
+            font-weight: 500;
+            position: absolute;
+            bottom: 15px;
+        }
+        .product-regular-price{
+            color: #333;
+            font-size: 12px;
+            font-weight: 500;
+            position: absolute;
+            bottom: 30px;
+            text-decoration: line-through;
+        }
+
+        .cart-button, .wishlist-button{
+            outline: none;
+            margin: 0 5px;
+            display: inline-block;
+            cursor: pointer;
+
+            &:hover{
+                opacity: .9;
+            }
         }
     }
 }

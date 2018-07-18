@@ -9,3 +9,23 @@
   background-size: 130px 156px;
   background-position: -29px 0;
 }
+
+.cart-icon{
+    background: url("/img/cart_sprite.png") no-repeat;
+    background-size: 133px 18px;
+    width: 26px;
+    height: 19px;
+    display: inline-block;
+
+    &.empty{
+        background-position: -27px 0;
+
+        &.heart{
+            background-position: -55px 0;
+        }
+    }
+
+    &.heart{
+        background-position: -82px 0;
+    }
+}

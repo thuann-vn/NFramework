@@ -10,8 +10,28 @@
             <div class="product-name">{{ $product->name }}</div>
         </a>
         @if(!empty($product->regular_price))
-            <div class="product-regular-price">{{ $product->regularPrice() }}</div>
+            <div class="product-regular-price">{{ presentPrice($product->regular_price)}}</div>
         @endif
-        <div class="product-price">{{ $product->presentPrice() }}</div>
+        <div class="product-price">{{ presentPrice($product->price) }}</div>
     </div>
+
+    @if(isInCart($product->id))
+        <span class="cart-button">
+            <span class="cart-icon"></span>
+        </span>
+    @else
+        <a href="javascript:;" class="cart-button add-to-cart">
+            <span class="cart-icon empty"></span>
+        </a>
+    @endif
+
+    @if(isInWishlist($product->id))
+        <a href="javascript:;" class="wishlist-button add-to-wishlist">
+            <span class="cart-icon heart"></span>
+        </a>
+    @else
+        <span class="wishlist-button">
+            <span class="cart-icon heart empty"></span>
+        </span>
+    @endif
 </div>

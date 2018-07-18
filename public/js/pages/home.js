@@ -8,9 +8,11 @@ $(document).ready(function(){
     });
 
     $('.products').slick({
+        infinite: true,
         slidesToShow: 8,
-        slidesToScroll: 1,
+        slidesToScroll: 8,
         autoplay: true,
         autoplaySpeed: 3000,
+        dots: true,
     });
 })

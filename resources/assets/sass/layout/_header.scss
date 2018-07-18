@@ -154,6 +154,14 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    .wishlist-count{
+        position: relative;
+        right: 0;
+        top: -3px;
+        font-weight: bold;
+    }
+
   }
   .header-cart {
     .cart-total {
@@ -180,6 +188,19 @@ header {
         height: 30px;
         background-position: 0 0;
       }
+
+        .cart-count{
+            display: inline-block;
+            zoom: 1;
+            font-size: 14px;
+            position: relative;
+            text-align: left;
+            top: -5px;
+            left: 20px;
+            font-weight: bold;
+            color: #0252a5;
+
+        }
     }
   }
 
@@ -370,7 +391,7 @@ header {
     box-shadow: 0 0 5px rgba(0,0,0,.3);
 
     & + .page-content{
-        padding-top: 260px;
+        padding-top: 215px;
     }
 
     .top-nav, .top-nav-wrap{

@@ -53,8 +53,11 @@
     @endguest
 
     <li class="header-wishlist">
-        <a href="">
+        <a href="{{route('saveForLater.index')}}">
             <span class="ebalo-icon wish-list-icon"></span>
+            @if (Cart::instance('saveForLater')->count() > 0)
+                <span class="wishlist-count">{{ Cart::instance('saveForLater')->count() }}</span>
+            @endif
         </a>
     </li>
     <li class="header-cart">
