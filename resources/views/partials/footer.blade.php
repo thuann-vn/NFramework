@@ -70,6 +70,11 @@
 
             <div class="footer-content-row">
                 {{ menu('footer', 'partials.menus.footer') }}
+
+                <div class="gift-card">
+                    <h4>{!! __('footer.gift_cards.title') !!}</h4>
+                    <p>{!! __('footer.gift_cards.description') !!}</p>
+                </div>
             </div>
         </div>
     </div> <!-- end footer-content -->
