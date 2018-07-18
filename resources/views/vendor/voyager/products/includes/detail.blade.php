@@ -2,7 +2,7 @@
 <form role="form"
       class="form-edit-add"
       action="@if(isset($dataTypeContent->id)){{ route('voyager.'.$dataType->slug.'.update', $dataTypeContent->id) }}@else{{ route('voyager.'.$dataType->slug.'.store') }}@endif"
-      method="POST" enctype="multipart/form-data" name="product_form" id="product_form">
+      method="POST" enctype="multipart/form-data" name="product_form" id="product_form" novalidate >
 
     <!-- PUT Method if we are editing -->
 @if(isset($dataTypeContent->id))
@@ -73,16 +73,16 @@
                         <a class="panel-action voyager-resize-full" data-toggle="panel-fullscreen" aria-hidden="true"></a>
                     </div>
                 </div>
-                @include('voyager::multilingual.input-hidden', [
-                    '_field_name'  => 'description',
-                    '_field_trans' => get_field_translations($dataTypeContent, 'description')
-                ])
-                @php
-                    $dataTypeRows = $dataType->{(isset($dataTypeContent->id) ? 'editRows' : 'addRows' )};
-                    $row = $dataTypeRows->where('field', 'description')->first();
-                @endphp
 
                 <div class="panel-body">
+                    @include('voyager::multilingual.input-hidden', [
+                        '_field_name'  => 'description',
+                        '_field_trans' => get_field_translations($dataTypeContent, 'description')
+                    ])
+                    @php
+                        $dataTypeRows = $dataType->{(isset($dataTypeContent->id) ? 'editRows' : 'addRows' )};
+                        $row = $dataTypeRows->where('field', 'description')->first();
+                    @endphp
                     {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
                 </div>
             </div><!-- .panel -->

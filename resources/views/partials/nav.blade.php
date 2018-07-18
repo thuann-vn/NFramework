@@ -6,7 +6,7 @@
             <div class="top-nav-wrap">
                 <div class="logo">
                     <a href="/">
-                        <img src="{{Voyager::image(setting('site.logo'))}}" height="60"/>
+                        <img src="{{Voyager::image(setting('site.logo'))}}" height="50"/>
                     </a>
                 </div>
                 <div class="search-form">

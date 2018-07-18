@@ -45,13 +45,21 @@ class Product extends Model
 
     public function brand()
     {
-        return $this->belongsTo('App\Brand');
+        return $this->belongsTo('App\Brand', 'brand_id', 'id');
     }
 
 
     public function presentPrice()
     {
-        return money_format('$%i', $this->price / 100);
+        return money_format('$%i', $this->price);
+    }
+
+    public function regularPrice()
+    {
+        if(!empty($this->regular_price)){
+            return money_format('$%i', $this->regular_price);
+        }
+        return 0;
     }
 
     public function scopeMightAlsoLike($query)
