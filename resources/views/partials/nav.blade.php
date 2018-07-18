@@ -11,7 +11,7 @@
                 </div>
                 <div class="search-form">
                     <form>
-                        <input type="text" name="keyword" class="input-lg" placeholder="{{__('frontend.header.search_placeholder')}}">
+                        <input type="text" id="aa-search-input" name="keyword" class="input-lg" placeholder="{{__('frontend.header.search_placeholder')}}">
                         <button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
                     </form>
                 </div>

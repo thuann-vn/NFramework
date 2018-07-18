@@ -1,5 +1,5 @@
 (function() {
-    var client = algoliasearch('P53SZUIML8', '19f54cccab5efbeb0d351b307326a864');
+    var client = algoliasearch('5R1L0G38JG', '547ce5d98108c2b5b19e37e91073fb75');
     var index = client.initIndex('products');
     var enterPressed = false;
     //initialize autocomplete on search input (ID selector must match)
@@ -19,9 +19,6 @@
                                 ${suggestion._highlightResult.name.value}
                             </span>
                             <span>$${(suggestion.price / 100).toFixed(2)}</span>
-                        </div>
-                        <div class="algolia-details">
-                            <span>${suggestion._highlightResult.details.value}</span>
                         </div>
                     `;
 
