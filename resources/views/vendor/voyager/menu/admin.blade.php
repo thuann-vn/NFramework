@@ -19,6 +19,9 @@
             >
                 <i class="voyager-edit"></i> {{ __('voyager::generic.edit') }}
             </div>
+            <div class="btn btn-sm btn-success pull-right add-child" data-id="{{ $item->id }}">
+                <i class="voyager-plus"></i> {{ __('voyager.generic.add_child') }}
+            </div>
         </div>
         <div class="dd-handle">
             @if($options->isModelTranslatable)

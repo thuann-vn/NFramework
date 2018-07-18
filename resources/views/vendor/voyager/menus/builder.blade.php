@@ -177,7 +177,19 @@
             $('.add_item').click(function() {
                 $m_form.trigger('reset');
                 $m_modal.modal('show', {data: null});
+                $m_modal.find('form').find('#parent_id').remove();
             });
+
+            /**
+             * Add Menu
+             */
+            $('.add-child').click(function(){
+                $m_form.trigger('reset');
+                $m_modal.modal('show', {data: null});
+
+                var parentInput = $('<input type="hidden" name="parent_id" id="parent_id" value="'+ $(this).data('id') +'">');
+                $m_modal.find('form').append(parentInput);
+            })
 
             /**
              * Edit Menu
@@ -214,7 +226,11 @@
                     $m_link_type.val('url').change();
                     $m_url.val('');
                     $m_icon_class.val('');
+                    $m_form.find('#parent_id').remove();
 
+                    setTimeout(function(){
+                        $m_title.focus();
+                    },500)
                 } else {
                     $m_form.attr('action', $m_form.data('action-update'));
                     $m_form_method.val('PUT');

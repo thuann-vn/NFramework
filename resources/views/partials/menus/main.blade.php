@@ -23,16 +23,14 @@
                                         }
                                     @endphp
 
-                                    @if(!empty($columnOption))
-                                        @if(!isset($columnOption->hide_title))
-                                            <p class="mega-menu-section-title">{{$columSection->title}}</p>
-                                        @endif
-                                        <ul>
-                                            @foreach($columnOption->items as $megaItem)
-                                                <li><a href="{{$megaItem->url}}" title="{{$megaItem->title}}">{{$megaItem->title}}</a></li>
-                                            @endforeach
-                                        </ul>
+                                    @if(empty($columnOption) || !isset($columnOption->hide_title))
+                                        <p class="mega-menu-section-title">{{$columSection->title}}</p>
                                     @endif
+                                    <ul>
+                                        @foreach($columSection->children as $megaItem)
+                                            <li><a href="{{$megaItem->url}}" title="{{$megaItem->title}}">{{$megaItem->title}}</a></li>
+                                        @endforeach
+                                    </ul>
                                     @php
                                         $columnOption = null;
                                     @endphp
