@@ -23,7 +23,7 @@
 
     <div class="categories-section">
         <div class="container">
-            <h2 class="section-title">Shop by Category</h2>
+            <h2 class="section-title">{{__('frontend.home.categories')}}</h2>
 
             <div class="categories text-center">
                 @foreach ($featuredCategories as $category)
@@ -38,7 +38,7 @@
 
     <div class="featured-section">
         <div class="container">
-            <h2 class="section-title">Recommendations For You</h2>
+            <h2 class="section-title">{{__('frontend.home.recommendations')}}</h2>
 
             <div class="products text-center">
                 @foreach ($products as $product)
@@ -67,7 +67,7 @@
 
     <div class="brand-section">
         <div class="container">
-            <h2 class="section-title">Home of the Best Travel Brands</h2>
+            <h2 class="section-title">{{__('frontend.home.brands')}}</h2>
 
             <div class="brand-grid">
                 @foreach ($brands as $brand)

@@ -1,34 +1,46 @@
 <ul>
     @guest
-        <li><a href="{{ route('register') }}">Sign Up</a></li>
-        <li><a href="{{ route('login') }}">Login</a></li>
-    @else
         <li class="my-account dropdown">
             <a class="dropdown-toggle" href="/my-account">
                 <span class="my-account-message">
-                    Hello, Sign In
+                    {{__('frontend.header.hello_sign_in')}}
                 </span>
                 <span class="my-account-link">
-                    My Account
+                    {{__('frontend.account.my')}}
                 </span>
             </a>
             <div class="dropdown-menu my-account-wrap">
                 <ul>
-                    <li class="header-login"><a href="{{ route('login') }}">Sign in</a></li>
+                    <li class="header-login"><a href="{{ route('login') }}">{{__('frontend.account.sign_in')}}</a></li>
                     <li class="header-sign-up">
-                        NEW CUSTOMER?
-                        <a href="{{ route('register') }}">Create an account</a>
+                        {{__('frontend.header.new?')}}
+                        <a href="{{ route('register') }}"> {{__('frontend.header.create_account')}}</a>
                     </li>
-                    <li><a href="#">My account</a></li>
-                    <li><a href="#">Track My Orders</a></li>
-                    <li><a href="#">My Favorites</a></li>
-                    <li><a href="#">My Address Book</a></li>
+                </ul>
+            </div>
+        </li>
+    @else
+        <li class="my-account dropdown">
+            <a class="dropdown-toggle" href="/my-account">
+                <span class="my-account-message">
+                    {{__('frontend.header.hello', ['name'=>auth()->user()->name])}}
+                </span>
+                <span class="my-account-link">
+                    {{__('frontend.account.my')}}
+                </span>
+            </a>
+            <div class="dropdown-menu my-account-wrap">
+                <ul>
+                    <li><a href="#">{{__('frontend.account.my')}}</a></li>
+                    <li><a href="#">{{__('frontend.account.track_order')}}</a></li>
+                    <li><a href="#">{{__('frontend.account.favorites')}}</a></li>
+                    <li><a href="#">{{__('frontend.account.address_book')}}</a></li>
                     <li class="divider"></li>
                     <li>
                         <a href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">
-                            Logout
+                            {{__('frontend.account.log_out')}}
                         </a>
                     </li>
                 </ul>

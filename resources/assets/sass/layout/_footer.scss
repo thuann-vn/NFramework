@@ -3,10 +3,15 @@ footer {
 
   .footer-top-row{
     border-top: 1px solid #efefef;
+    padding: 40px 40px;
 
     .footer-top-wrap{
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 260px 260px 260px;
+      grid-gap: 40px;
+      justify-items: center;
+      align-content: center;
+      justify-content: center;
 
       > div{
         position: relative;
