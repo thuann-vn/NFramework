@@ -1,5 +1,17 @@
 footer {
-  padding: 40px 0;
+  font-size: 14px;
+
+  h4{
+    font-size: 16px;
+    font-weight: bold;
+    margin: 40px 0 25px;
+    line-height: 15px;
+  }
+
+  .footer-content{
+    background-color: #f7f7f7;
+    padding: 40px 0;
+  }
 
   .footer-top-row{
     border-top: 1px solid #efefef;
@@ -39,22 +51,71 @@ footer {
     }
   }
 
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
+  .footer-content-row{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 
-    .heart {
-      color: $heart;
+  .footer-description{
+    img{
+      height: 50px;
     }
 
-    ul {
-      display: flex;
-      width: 30%;
-      justify-content: space-between;
+    ul{
+      list-style: disc;
+      margin-left: 20px;
+    }
+  }
+
+  .footer-subscribe-form{
+
+    form{
+      position: relative;
     }
 
-    a {
-      color: $white;
+    .input-group{
+      display: table-row;
+    }
+
+    .input-group-btn{
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    input{
+      display: table-cell;
+      width: 100%;
+      border-top-left-radius: 24px !important;
+      border-bottom-left-radius: 24px !important;
+      height: 36px;
+      padding: 6px 40px 6px 12px;
+    }
+
+    button{
+      border-top-right-radius: 24px !important;
+      border-bottom-right-radius: 24px !important;
+      border: 1px solid #ddd !important;
+      height: 36px;
+      text-align: center;
+      padding: 0 20px 0 10px;
+      background-color: #fff;
+    }
+  }
+
+  .footer-social-links{
+    > a{
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      border:1px solid #000;
+      text-align: center;
+      border-radius: 100%;
+
+      &:hover{
+        background-color: #000;
+        color: #fff;
+      }
     }
   }
 }

@@ -31,7 +31,7 @@
             </a>
             <div class="dropdown-menu my-account-wrap">
                 <ul>
-                    <li><a href="#">{{__('frontend.account.my')}}</a></li>
+                    <li><a href="{{route('voyager.profile')}}">{{__('frontend.account.my')}}</a></li>
                     <li><a href="#">{{__('frontend.account.track_order')}}</a></li>
                     <li><a href="#">{{__('frontend.account.favorites')}}</a></li>
                     <li><a href="#">{{__('frontend.account.address_book')}}</a></li>

@@ -1,8 +1,11 @@
-<ul>
-    @foreach($items as $menu_item)
-        @if ($menu_item->title === 'Follow Me:')
-            <li>{{ $menu_item->title }}</li>
-        @endif
-        <li><a href="{{ $menu_item->link() }}"><i class="fa {{ $menu_item->title }}"></i></a></li>
-    @endforeach
-</ul>
+@foreach($items as $menu_item)
+    <div class="footer-menu">
+        <h4>{{$menu_item->title}}</h4>
+
+        <ul>
+            @foreach($menu_item->children as $child)
+                <li><a href="{{ $child->link() }}">{{ $child->title }}</a></li>
+            @endforeach
+        </ul>
+    </div>
+@endforeach

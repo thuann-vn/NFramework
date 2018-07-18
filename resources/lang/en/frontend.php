@@ -17,6 +17,16 @@ return [
         'new?' => 'NEW CUSTOMER?',
         'create_account'=> 'Create an account'
     ],
+    'footer'=>[
+        'support'=> [
+            'email_us' => 'Email Us',
+            'email_description' => 'We’ll reply within one business day.',
+            'live_chat' => 'Live Chat',
+            'live_chat_description' => 'The quickest way to get help.',
+            'help_center' => 'Customer Help Center',
+            'help_center_description' => 'Find answers online.'
+        ]
+    ],
     'account' => [
         'register' => 'Sign Up',
         'login' => 'Login',

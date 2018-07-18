@@ -16,6 +16,8 @@ class Product extends Model
         Translatable,
         Resizable,
         HasRelationships;
+
+    protected $translatable = ['name', 'description', 'details', 'slug', 'meta_description', 'meta_keywords'];
     /**
      * Searchable rules.
      *
