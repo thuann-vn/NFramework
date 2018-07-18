@@ -53,6 +53,40 @@
 
     </div> <!-- end featured-section -->
 
+
+
+    <div class="banner-section">
+        <div class="container">
+            <div class="banner-grid">
+                <a href="{{setting('home.banner_1_link')}}">
+                    <img src="{{Voyager::image(setting('home.banner_1'))}}" alt="Home Banner">
+                </a>
+                <a href="{{setting('home.banner_2_link')}}">
+                    <img src="{{Voyager::image(setting('home.banner_2'))}}" alt="Home Banner">
+                </a>
+            </div>
+
+            <a class="wide-banner" href="{{setting('home.banner_3_link')}}">
+                <img src="{{Voyager::image(setting('home.banner_3'))}}" alt="Home Banner">
+            </a>
+        </div> <!-- end container -->
+    </div> <!-- end banner-section -->
+
+
+    <div class="brand-section">
+        <div class="container">
+            <h2 class="section-title">Home of the Best Travel Brands</h2>
+
+            <div class="brand-grid">
+                @foreach ($brands as $brand)
+                    <div class="brand">
+                        <a href="{{ route('shop.brand', $brand->slug) }}"><img src="{{ Voyager::image($brand->logo) }}" alt="brand"></a>
+                    </div>
+                @endforeach
+            </div>
+        </div> <!-- end container -->
+    </div> <!-- end brand-section -->
+
     <div class="blog-section">
         <div class="container">
             <h1 class="text-center">From Our Blog</h1>

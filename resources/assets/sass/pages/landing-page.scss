@@ -1,3 +1,9 @@
+.section-title{
+    line-height: 30px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
 .categories-section {
     padding: 50px 0;
 
@@ -11,6 +17,34 @@
 
 .featured-section {
     padding: 50px 0;
+}
+
+.banner-section{
+    .banner-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 0px $gutter*2;
+    }
+
+    a{
+        display: block;
+
+        &.wide-banner{
+            margin-top: 60px;
+        }
+
+        img{
+            width: 100%;
+        }
+    }
+}
+
+.brand-section{
+    .brand-section{
+        display: grid;
+        grid-template-columns: repeat(11, 1fr);
+        grid-gap: 0px $gutter*2;
+    }
 }
 
 .blog-section {
