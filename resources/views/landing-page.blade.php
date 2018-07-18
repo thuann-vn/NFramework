@@ -28,7 +28,7 @@
             <div class="categories text-center">
                 @foreach ($featuredCategories as $category)
                     <div class="category">
-                        <a href="{{ route('shop.show', $category->slug) }}"><img src="{{ productImage($category->image) }}" alt="category"></a>
+                        <a href="{{ route('shop.category', $category->slug) }}"><img src="{{ productImage($category->image) }}" alt="category"></a>
                     </div>
                 @endforeach
             </div> <!-- end categories -->

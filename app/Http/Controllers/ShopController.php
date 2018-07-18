@@ -54,7 +54,7 @@ class ShopController extends Controller
         $product = Product::where('slug', $slug)->firstOrFail();
         $mightAlsoLike = Product::where('slug', '!=', $slug)->mightAlsoLike()->get();
 
-        return view('product')->with([
+        return view('shop.product')->with([
             'product' => $product,
             'mightAlsoLike' => $mightAlsoLike,
         ]);
@@ -68,10 +68,31 @@ class ShopController extends Controller
      */
     public function category($slug)
     {
-        $category = Category::where('slug', $slug)->firstOrFail();
+        $pagination = 9;
+        $categories = Category::all();
 
-        return view('category')->with([
-            'category' => $category
+        if (request()->category) {
+            $products = Product::with('categories')->whereHas('categories', function ($query) use ($slug) {
+                $query->where('slug', $slug);
+            });
+            $categoryName = optional($categories->where('slug', $slug)->first())->name;
+        } else {
+            $products = Product::where('featured', true);
+            $categoryName = 'Featured';
+        }
+
+        if (request()->sort == 'low_high') {
+            $products = $products->orderBy('price')->paginate($pagination);
+        } elseif (request()->sort == 'high_low') {
+            $products = $products->orderBy('price', 'desc')->paginate($pagination);
+        } else {
+            $products = $products->paginate($pagination);
+        }
+
+        return view('shop')->with([
+            'products' => $products,
+            'categories' => $categories,
+            'categoryName' => $categoryName,
         ]);
     }
 
