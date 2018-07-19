@@ -1,20 +1,36 @@
 @charset "utf-8";
 
-.page-title-wrapper{
+.page-title-wrapper {
   position: relative;
   z-index: 9;
 }
 
-.language-selector .btn:not(.active){
-    background-color: #ccc;
-    color: #000;
+.language-selector .btn:not(.active) {
+  background-color: #ccc;
+  color: #000;
 }
 
-.dd-item.collapsed .dd-list{
-    max-height: 0;
-    overflow: hidden;
+.dd-item.collapsed .dd-list {
+  max-height: 0;
+  overflow: hidden;
 }
 
-.dd-item.collapsed.open .dd-list{
-    max-height: 10000px;
+.dd-item.collapsed.open .dd-list {
+  max-height: 10000px;
+}
+
+table.properties {
+  h3 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #37474f;
+    margin: 0;
+  }
+  td {
+    vertical-align: middle !important;
+  }
+
+  a{
+    text-decoration: none;
+  }
 }

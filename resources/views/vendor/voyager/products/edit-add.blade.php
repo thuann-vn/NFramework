@@ -3,6 +3,160 @@
 @section('css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @include('voyager::compass.includes.styles')
+
+
+@section('css')
+    <style>
+        .panel-actions .voyager-trash {
+            cursor: pointer;
+        }
+        .panel-actions .voyager-trash:hover {
+            color: #e94542;
+        }
+        .settings .panel-actions{
+            right:0px;
+        }
+        .panel hr {
+            margin-bottom: 10px;
+        }
+        .panel {
+            padding-bottom: 15px;
+        }
+        .sort-icons {
+            font-size: 21px;
+            color: #ccc;
+            position: relative;
+            cursor: pointer;
+        }
+        .sort-icons:hover {
+            color: #37474F;
+        }
+        .voyager-sort-desc {
+            margin-right: 10px;
+        }
+        .voyager-sort-asc {
+            top: 10px;
+        }
+        .page-title {
+            margin-bottom: 0;
+        }
+        .panel-title code {
+            border-radius: 30px;
+            padding: 5px 10px;
+            font-size: 11px;
+            border: 0;
+            position: relative;
+            top: -2px;
+        }
+        .modal-open .settings  .select2-container {
+            z-index: 9!important;
+            width: 100%!important;
+        }
+        .new-property {
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .new-property .panel-title {
+            margin: 0 auto;
+            display: inline-block;
+            color: #999fac;
+            font-weight: lighter;
+            font-size: 13px;
+            background: #fff;
+            width: auto;
+            height: auto;
+            position: relative;
+            padding-right: 15px;
+        }
+        .settings .panel-title{
+            padding-left:0px;
+            padding-right:0px;
+        }
+        .new-property hr {
+            margin-bottom: 0;
+            position: absolute;
+            top: 7px;
+            width: 96%;
+            margin-left: 2%;
+        }
+        .new-property .panel-title i {
+            position: relative;
+            top: 2px;
+        }
+        .new-propertys-options {
+            display: none;
+            padding-bottom: 10px;
+        }
+        .new-propertys-options label {
+            margin-top: 13px;
+        }
+        .new-propertys-options .alert {
+            margin-bottom: 0;
+        }
+        .new-property-btn {
+            margin-right: 15px;
+            position: relative;
+            margin-bottom: 0;
+            top: 5px;
+        }
+        .new-property-btn i {
+            position: relative;
+            top: 2px;
+        }
+        textarea {
+            min-height: 120px;
+        }
+        textarea.hidden{
+            display:none;
+        }
+
+        .voyager .settings .nav-tabs{
+            background:none;
+            border-bottom:0px;
+        }
+
+        .voyager .settings .nav-tabs .active a{
+            border:0px;
+        }
+
+        .select2{
+            width:100% !important;
+            border: 1px solid #f1f1f1;
+            border-radius: 3px;
+        }
+
+        .voyager .settings input[type=file]{
+            width:100%;
+        }
+
+        .settings .select2{
+            margin-left:10px;
+        }
+
+        .settings .select2-selection{
+            height: 32px;
+            padding: 2px;
+        }
+
+        .voyager .settings .nav-tabs > li{
+            margin-bottom:-1px !important;
+        }
+
+        .voyager .settings .nav-tabs a i{
+            display: block;
+            font-size: 22px;
+        }
+
+        .no-padding-left-right{
+            padding-left:0px;
+            padding-right:0px;
+        }
+
+        .voyager .properties .nav-tabs > li > a:hover{
+            background-color:#fff !important;
+        }
+    </style>
 @stop
 
 @section('page_title', __('voyager.generic.'.(isset($dataTypeContent->id) ? 'edit' : 'add')).' '.$dataType->display_name_singular)
@@ -24,6 +178,7 @@
         <ul class="nav nav-tabs">
             <li @if(empty($active_tab) || (isset($active_tab) && $active_tab == 'detail')){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#detail"><i class="voyager-documentation"></i> {{ __('voyager.product.detail') }}</a></li>
             <li @if($active_tab == 'properties'){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#properties"><i class="voyager-tag"></i> {{ __('voyager.product.properties') }}</a></li>
+            <li @if($active_tab == 'attributes'){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#attributes"><i class="voyager-tag"></i> {{ __('voyager.product.attributes') }}</a></li>
         </ul>
 
         <div class="tab-content">
@@ -33,6 +188,10 @@
 
             <div id="properties" class="tab-pane fade in @if($active_tab == 'properties'){!! 'active' !!}@endif">
                 @include('vendor.voyager.products.includes.properties')
+            </div>
+
+            <div id="attributes" class="tab-pane fade in @if($active_tab == 'attributes'){!! 'active' !!}@endif">
+                @include('vendor.voyager.products.includes.attributes')
             </div>
         </div>
     </div>
@@ -126,5 +285,19 @@
             });
             $('[data-toggle="tooltip"]').tooltip();
         });
+
+        $(".group_select_new").select2({
+            tags: true,
+            width: 'resolve',
+            placeholder: '{{ __("voyager::generic.select_group") }}'
+        });
+
+        $(".property_select_new").select2({
+            tags: true,
+            width: 'resolve',
+            placeholder: '{{ __("voyager.products.select_property") }}'
+        });
+
+        $(".group_select_new, .property_select_new").val('').trigger('change');
     </script>
 @stop

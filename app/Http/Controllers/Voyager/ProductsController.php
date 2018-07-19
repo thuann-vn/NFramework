@@ -6,6 +6,7 @@ use App\Brand;
 use App\Product;
 use App\Category;
 use App\CategoryProduct;
+use App\ProductProperty;
 use App\Property;
 use Illuminate\Http\Request;
 use TCG\Voyager\Facades\Voyager;
@@ -167,11 +168,18 @@ class ProductsController extends VoyagerBaseController
         $product = Product::find($id);
         $categoriesForProduct = $product->categories()->get();
 
-        $active_tab = 'detail';
+        $active_tab = 'properties';
 
-        $property_groups = Property::distinct(['group'])->get();
+        $propertyNames = Property::distinct(['name'])->where('group','Property')->get(['name']);
+        $productProperties = ProductProperty::where('product_id', $id)->whereHas('property', function ($query){
+            return $query->where('group','Property');
+        })->get();
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'allBrands', 'categoriesForProduct', 'active_tab','property_groups'));
+        $attributeNames = Property::distinct(['name'])->where('group','Property')->get(['name']);
+        $productAttributes = ProductProperty::where('product_id', $id)->whereHas('property', function ($query){
+            return $query->where('group','Attribute');
+        })->get();
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'allBrands', 'categoriesForProduct', 'active_tab', 'propertyNames', 'productProperties', 'attributeNames', 'productAttributes'));
     }
 
     // POST BR(E)AD
@@ -321,5 +329,39 @@ class ProductsController extends VoyagerBaseController
                 ]);
             }
         }
+    }
+
+    public function postProductProperty(Request $request){
+        $name = trim($request->input('name'));
+        $value = trim($request->input('value'));
+        $product = trim($request->input('product_id'));
+        $group = 'Property';
+
+        //Get property
+        $property =  Property::where('name', $request->input('name'))->first();
+        if(empty($property)){
+            $property = new Property;
+            $property->name = $name;
+            $property->group = $group;
+            $property->save();
+        }
+
+        //Check if have existed property
+        $productProperty = ProductProperty::where('product_id', $product)->where('property_id', $property->id)->first();
+        if (empty($productProperty)) {
+            $productProperty = new ProductProperty;
+            $productProperty->product_id = $product;
+            $productProperty->property_id = $property->id;
+            $productProperty->value = $value;
+            $productProperty->save();
+        }
+
+        return redirect()
+            ->route("voyager.products.edit", ['id' => $product, 'active_tab' => 'properties'])
+            ->with([
+                'message'    => __('voyager.generic.successfully_updated'),
+                'alert-type' => 'success',
+                'active_tab' => 'properties'
+            ]);
     }
 }

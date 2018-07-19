@@ -103,7 +103,7 @@ return [
 
     'database' => [
         'tables' => [
-            'hidden' => ['migrations', 'data_rows', 'data_types', 'password_resets', 'permission_role', 'settings'],
+            'hidden' => ['migrations', 'data_rows', 'data_types', 'password_resets', 'permission_role', 'settings', 'product_properties', 'category_product', 'user_roles'],
         ],
     ],
 

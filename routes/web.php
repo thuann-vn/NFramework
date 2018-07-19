@@ -30,9 +30,11 @@ Route::get('/guestCheckout', 'CheckoutController@index')->name('guestCheckout.in
 
 Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.index');
 
-
+//ADMIN ROUTES
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    Route::post('product_property', ['uses' => 'Voyager\ProductsController@postProductProperty', 'as' => 'admin.postProductProperty']);
 });
 
 Auth::routes();
