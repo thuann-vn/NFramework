@@ -371,6 +371,14 @@ class ProductsController extends VoyagerBaseController
             ]);
     }
 
+
+    public function getAttributeValue($attribute_name){
+        $values = AttributeValue::whereHas('attribute', function ($query) use ($attribute_name){
+            return $query->where('name', $attribute_name);
+        })->get();
+        return response()->json($values);
+    }
+
     public function postProductAttribute(Request $request)
     {
         $name = trim($request->input('name'));

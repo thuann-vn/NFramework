@@ -148,9 +148,9 @@
     <div id="gradient_bg"></div>
     <div class="page-content compass container-fluid">
         <ul class="nav nav-tabs">
-            <li @if(empty($active_tab) || (isset($active_tab) && $active_tab == 'detail')){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#detail"><i class="voyager-documentation"></i> {{ __('voyager.product.detail') }}</a></li>
-            <li @if($active_tab == 'properties'){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#properties"><i class="voyager-tag"></i> {{ __('voyager.product.properties') }}</a></li>
-            <li @if($active_tab == 'attributes'){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#attributes"><i class="voyager-tag"></i> {{ __('voyager.product.attributes') }}</a></li>
+            <li @if(empty($active_tab) || (isset($active_tab) && $active_tab == 'detail')){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#detail"><i class="voyager-documentation"></i> {{ __('voyager.products.detail') }}</a></li>
+            <li @if($active_tab == 'properties'){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#properties"><i class="voyager-tag"></i> {{ __('voyager.products.properties') }}</a></li>
+            <li @if($active_tab == 'attributes'){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#attributes"><i class="voyager-archive"></i> {{ __('voyager.products.attributes') }}</a></li>
         </ul>
 
         <div class="tab-content">
@@ -203,25 +203,6 @@
         var $image;
 
         $('document').ready(function () {
-            $('.toggleswitch').bootstrapToggle();
-
-            //Init datepicker for date fields if data-datepicker attribute defined
-            //or if browser does not handle date inputs
-            $('.form-group input[type=date]').each(function (idx, elt) {
-                if (elt.type != 'date' || elt.hasAttribute('data-datepicker')) {
-                    elt.type = 'text';
-                    $(elt).datetimepicker($(elt).data('datepicker'));
-                }
-            });
-
-            @if ($isModelTranslatable)
-            $('.side-body').multilingual({"editing": true});
-            @endif
-
-            $('.side-body input[data-slug-origin]').each(function (i, el) {
-                $(el).slugify();
-            });
-
             $('.form-group').on('click', '.remove-multi-image', function (e) {
                 e.preventDefault();
                 $image = $(this).siblings('img');
@@ -257,26 +238,7 @@
             });
             $('[data-toggle="tooltip"]').tooltip();
         });
-
-        $(".property_select_new").select2({
-            tags: true,
-            width: 'resolve',
-            placeholder: '{{ __("voyager.products.select_property") }}'
-        });
-
-        $(".attribute_select_new").select2({
-            tags: true,
-            width: 'resolve',
-            placeholder: '{{ __("voyager.products.select_attribute") }}'
-        });
-
-        $(".attribute_select_value").select2({
-            tags: true,
-            multiple: 'multiple',
-            width: 'resolve',
-            placeholder: '{{ __("voyager.products.select_attribute_value") }}'
-        });
-
-        $(".attribute_select_new, .property_select_new").val('').trigger('change');
     </script>
+
+    <script src="{{asset('js/admin/product.js')}}"></script>
 @stop

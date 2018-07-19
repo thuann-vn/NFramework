@@ -34,8 +34,9 @@ Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.inde
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 
-    Route::post('product_property', ['uses' => 'Voyager\ProductsController@postProductProperty', 'as' => 'admin.postProductProperty']);
-    Route::post('product_variant', ['uses' => 'Voyager\ProductsController@postProductAttribute', 'as' => 'admin.postProductAttribute']);
+    Route::post('product-property', ['uses' => 'Voyager\ProductsController@postProductProperty', 'as' => 'admin.postProductProperty']);
+    Route::post('product-variant', ['uses' => 'Voyager\ProductsController@postProductAttribute', 'as' => 'admin.postProductAttribute']);
+    Route::get('get-attribute-value/{attribute_name}', ['uses' => 'Voyager\ProductsController@getAttributeValue', 'as' => 'admin.getAttributeValue']);
 });
 
 Auth::routes();

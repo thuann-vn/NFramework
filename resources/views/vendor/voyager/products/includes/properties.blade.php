@@ -26,7 +26,7 @@
 <div class="no-padding-left-right" style="margin-top:10px;">
     <div class="panel-heading new-property">
         <hr>
-        <h3 class="panel-title"><i class="voyager-plus"></i> {{ __('voyager.products.properties.new') }}</h3>
+        <h3 class="panel-title"><i class="voyager-plus"></i> {{ __('voyager.products.property.new') }}</h3>
     </div>
     <div class="panel-body no-padding-left-right">
         <form action="{{ route('admin.postProductAttribute') }}" method="POST">
@@ -34,7 +34,7 @@
             <input type="hidden" name="product_id" value="{{isset($dataTypeContent->id)?$dataTypeContent->id:''}}">
             <div class="col-md-6">
                 <label for="display_name">{{ __('voyager.products.property.name') }}</label>
-                <select class="form-control property_select property_select_new" name="name"  required="required">
+                <select class="form-control property_select property_select_new" name="name"  required="required" placeholder="{{ __('voyager.products.property.select_property') }}">
                     @foreach($propertyNames as $propertyName)
                         <option value="{{ $propertyName->name }}" data-type="{{ $propertyName->group }}">{{ $propertyName->name }}</option>
                     @endforeach
