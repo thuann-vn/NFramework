@@ -23,7 +23,7 @@
     <div class="page-content compass container-fluid">
         <ul class="nav nav-tabs">
             <li @if(empty($active_tab) || (isset($active_tab) && $active_tab == 'detail')){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#detail"><i class="voyager-documentation"></i> {{ __('voyager.product.detail') }}</a></li>
-            <li @if($active_tab == 'commands'){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#commands"><i class="voyager-tag"></i> {{ __('voyager.product.properties') }}</a></li>
+            <li @if($active_tab == 'properties'){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#properties"><i class="voyager-tag"></i> {{ __('voyager.product.properties') }}</a></li>
         </ul>
 
         <div class="tab-content">
@@ -31,7 +31,7 @@
                 @include('vendor.voyager.products.includes.detail')
             </div>
 
-            <div id="commands" class="tab-pane fade in @if($active_tab == 'commands'){!! 'active' !!}@endif">
+            <div id="properties" class="tab-pane fade in @if($active_tab == 'properties'){!! 'active' !!}@endif">
                 @include('vendor.voyager.products.includes.properties')
             </div>
         </div>

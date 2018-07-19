@@ -6,6 +6,7 @@ use App\Brand;
 use App\Product;
 use App\Category;
 use App\CategoryProduct;
+use App\Property;
 use Illuminate\Http\Request;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\DB;
@@ -168,7 +169,9 @@ class ProductsController extends VoyagerBaseController
 
         $active_tab = 'detail';
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'allBrands', 'categoriesForProduct', 'active_tab'));
+        $property_groups = Property::distinct(['group'])->get();
+
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'allBrands', 'categoriesForProduct', 'active_tab','property_groups'));
     }
 
     // POST BR(E)AD

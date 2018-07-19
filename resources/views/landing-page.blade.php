@@ -28,12 +28,11 @@
             <div class="categories text-center">
                 @foreach ($featuredCategories as $category)
                     <div class="category">
-                        <a href="{{ route('shop.category', $category->slug) }}"><img src="{{ productImage($category->image) }}" alt="category"></a>
+                        <a href="{{ route('shop.category', ['category'=>$category->slug, 'parent'=>!empty($category->parent)?$category->parent->slug:'']) }}"><img src="{{ productImage($category->image) }}" alt="category"></a>
                     </div>
                 @endforeach
             </div> <!-- end categories -->
         </div> <!-- end container -->
-
     </div> <!-- end categories-section -->
 
     <div class="featured-section">

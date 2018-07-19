@@ -1,181 +1,179 @@
 @if(isset($options->model) && isset($options->type))
-	
-	@if(class_exists($options->model))
 
-		@php $relationshipField = $row->field; @endphp
+    @if(class_exists($options->model))
 
-		@if($options->type == 'belongsTo')
+        @php $relationshipField = $row->field; @endphp
 
-			@if(isset($view) && ($view == 'browse' || $view == 'read'))
+        @if($options->type == 'belongsTo')
 
-				@php 
-					$relationshipData = (isset($data)) ? $data : $dataTypeContent;
-					$model = app($options->model);
-					if (method_exists($model, 'getRelationship')) {
-						$query = $model::getRelationship($relationshipData->{$options->column});
-					} else {
-						$query = $model::find($relationshipData->{$options->column});
-					}
-            	@endphp
+            @if(isset($view) && ($view == 'browse' || $view == 'read'))
 
-            	@if(isset($query))
-					<p>{{ $query->{$options->label} }}</p>
-				@else
-					<p>No results</p>
-				@endif
+                @php
+                    $relationshipData = (isset($data)) ? $data : $dataTypeContent;
+                    $model = app($options->model);
+                    if (method_exists($model, 'getRelationship')) {
+                        $query = $model::getRelationship($relationshipData->{$options->column});
+                    } else {
+                        $query = $model::find($relationshipData->{$options->column});
+                    }
+                @endphp
 
-			@else
-			
-				<select class="form-control select2" name="{{ $options->column }}">
-					@php 
-						$model = app($options->model);
-						$query = $model::all();
-					@endphp
+                @if(isset($query))
+                    <p>{{ $query->{$options->label} }}</p>
+                @else
+                    <p>No results</p>
+                @endif
 
-					@if($row->required === false)
-						<option value="">{{__('voyager::generic.none')}}</option>
-					@endif
-					
-					@foreach($query as $relationshipData)
-						<option value="{{ $relationshipData->{$options->key} }}" @if($dataTypeContent->{$options->column} == $relationshipData->{$options->key}){{ 'selected="selected"' }}@endif>{{ $relationshipData->{$options->label} }}</option>
-					@endforeach
-				</select>
-			@endif
-		
-		@elseif($options->type == 'hasOne')
+            @else
+                <select class="form-control select2" name="{{ $options->column }}">
+                    @php
+                        $model = app($options->model);
+                        $query = $model::all();
+                    @endphp
 
-			@php 
+                    @if($row->required === false)
+                        <option value="">{{__('voyager::generic.none')}}</option>
+                    @endif
 
-				$relationshipData = (isset($data)) ? $data : $dataTypeContent;
-			
-				$model = app($options->model);
-        		$query = $model::where($options->column, '=', $relationshipData->id)->first();
-			
-			@endphp
+                    @foreach($query as $relationshipData)
+                        <option value="{{ $relationshipData->{$options->key} }}" @if($dataTypeContent->{$options->column} == $relationshipData->{$options->key}){{ 'selected="selected"' }}@endif>{{ $relationshipData->{$options->label} }}</option>
+                    @endforeach
+                </select>
+            @endif
 
-			@if(isset($query))
-				<p>{{ $query->{$options->label} }}</p>
-			@else
-				<p>None results</p>
-			@endif
+        @elseif($options->type == 'hasOne')
+            @php
 
-		@elseif($options->type == 'hasMany')
+                $relationshipData = (isset($data)) ? $data : $dataTypeContent;
 
-			@if(isset($view) && ($view == 'browse' || $view == 'read'))
+                $model = app($options->model);
+                $query = $model::where($options->column, '=', $relationshipData->id)->first();
 
-				@php
-					$relationshipData = (isset($data)) ? $data : $dataTypeContent;
-					$model = app($options->model);
-            		$selected_values = $model::where($options->column, '=', $relationshipData->id)->pluck($options->label)->all();
-				@endphp
+            @endphp
 
-	            @if($view == 'browse')
-	            	@php
-	            		$string_values = implode(", ", $selected_values); 
-	            		if(strlen($string_values) > 25){ $string_values = substr($string_values, 0, 25) . '...'; } 
-	            	@endphp
-	            	@if(empty($selected_values))
-		            	<p>No results</p>
-		            @else
-	            		<p>{{ $string_values }}</p>
-	            	@endif
-	            @else
-	            	@if(empty($selected_values))
-		            	<p>No results</p>
-		            @else
-		            	<ul>
-			            	@foreach($selected_values as $selected_value)
-			            		<li>{{ $selected_value }}</li>
-			            	@endforeach
-			            </ul>
-			        @endif
-	            @endif
+            @if(isset($query))
+                <p>{{ $query->{$options->label} }}</p>
+            @else
+                <p>None results</p>
+            @endif
 
-			@else
+        @elseif($options->type == 'hasMany')
 
-				@php
-					$model = app($options->model);
-            		$query = $model::where($options->column, '=', $dataTypeContent->id)->get();
-				@endphp
+            @if(isset($view) && ($view == 'browse' || $view == 'read'))
 
-				@if(isset($query))
-					<ul>
-						@foreach($query as $query_res)
-							<li>{{ $query_res->{$options->label} }}</li>
-						@endforeach
-					</ul>
-					
-				@else
-					<p>No results</p>
-				@endif
+                @php
+                    $relationshipData = (isset($data)) ? $data : $dataTypeContent;
+                    $model = app($options->model);
+                    $selected_values = $model::where($options->column, '=', $relationshipData->id)->pluck($options->label)->all();
+                @endphp
 
-			@endif
+                @if($view == 'browse')
+                    @php
+                        $string_values = implode(", ", $selected_values);
+                        if(strlen($string_values) > 25){ $string_values = substr($string_values, 0, 25) . '...'; }
+                    @endphp
+                    @if(empty($selected_values))
+                        <p>No results</p>
+                    @else
+                        <p>{{ $string_values }}</p>
+                    @endif
+                @else
+                    @if(empty($selected_values))
+                        <p>No results</p>
+                    @else
+                        <ul>
+                            @foreach($selected_values as $selected_value)
+                                <li>{{ $selected_value }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                @endif
 
-		@elseif($options->type == 'belongsToMany')
+            @else
 
-			@if(isset($view) && ($view == 'browse' || $view == 'read'))
+                @php
+                    $model = app($options->model);
+                    $query = $model::where($options->column, '=', $dataTypeContent->id)->get();
+                @endphp
 
-				@php
-					$relationshipData = (isset($data)) ? $data : $dataTypeContent;
-	            	$selected_values = isset($relationshipData) ? $relationshipData->belongsToMany($options->model, $options->pivot_table)->pluck($options->label)->all() : array();
-	            @endphp
+                @if(isset($query))
+                    <ul>
+                        @foreach($query as $query_res)
+                            <li>{{ $query_res->{$options->label} }}</li>
+                        @endforeach
+                    </ul>
 
-	            @if($view == 'browse')
-	            	@php
-	            		$string_values = implode(", ", $selected_values); 
-	            		if(strlen($string_values) > 25){ $string_values = substr($string_values, 0, 25) . '...'; } 
-	            	@endphp
-	            	@if(empty($selected_values))
-		            	<p>No results</p>
-		            @else
-	            		<p>{{ $string_values }}</p>
-	            	@endif
-	            @else
-	            	@if(empty($selected_values))
-		            	<p>No results</p>
-		            @else
-		            	<ul>
-			            	@foreach($selected_values as $selected_value)
-			            		<li>{{ $selected_value }}</li>
-			            	@endforeach
-			            </ul>
-			        @endif
-	            @endif
+                @else
+                    <p>No results</p>
+                @endif
 
-			@else
-				<select
-					class="form-control @if(isset($options->taggable) && $options->taggable == 'on') select2-taggable @else select2 @endif" 
-					name="{{ $relationshipField }}[]" multiple
-					@if(isset($options->taggable) && $options->taggable == 'on')
-						data-route="{{ route('voyager.'.str_slug($options->table).'.store') }}"
-						data-label="{{$options->label}}"
-						data-error-message="{{__('voyager::bread.error_tagging')}}"
-					@endif
-				>
-					
-			            @php 
-							$selected_values = isset($dataTypeContent) ? $dataTypeContent->belongsToMany($options->model, $options->pivot_table)->pluck($options->table.'.'.$options->key)->all() : array();
-			                $relationshipOptions = app($options->model)->all();
-						@endphp
-						
-						@if($row->required === false)
-							<option value="">{{__('voyager::generic.none')}}</option>
-						@endif
+            @endif
 
-			            @foreach($relationshipOptions as $relationshipOption)
-			                <option value="{{ $relationshipOption->{$options->key} }}" @if(in_array($relationshipOption->{$options->key}, $selected_values)){{ 'selected="selected"' }}@endif>{{ $relationshipOption->{$options->label} }}</option>
-			            @endforeach
+        @elseif($options->type == 'belongsToMany')
 
-				</select>
+            @if(isset($view) && ($view == 'browse' || $view == 'read'))
 
-			@endif
+                @php
+                    $relationshipData = (isset($data)) ? $data : $dataTypeContent;
+                    $selected_values = isset($relationshipData) ? $relationshipData->belongsToMany($options->model, $options->pivot_table)->pluck($options->label)->all() : array();
+                @endphp
 
-		@endif
+                @if($view == 'browse')
+                    @php
+                        $string_values = implode(", ", $selected_values);
+                        if(strlen($string_values) > 25){ $string_values = substr($string_values, 0, 25) . '...'; }
+                    @endphp
+                    @if(empty($selected_values))
+                        <p>No results</p>
+                    @else
+                        <p>{{ $string_values }}</p>
+                    @endif
+                @else
+                    @if(empty($selected_values))
+                        <p>No results</p>
+                    @else
+                        <ul>
+                            @foreach($selected_values as $selected_value)
+                                <li>{{ $selected_value }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                @endif
 
-	@else
+            @else
+                <select
+                        class="form-control @if(isset($options->taggable) && $options->taggable == 'on') select2-taggable @else select2 @endif"
+                        name="{{ $relationshipField }}[]" multiple
+                        @if(isset($options->taggable) && $options->taggable == 'on')
+                        data-route="{{ route('voyager.'.str_slug($options->table).'.store') }}"
+                        data-label="{{$options->label}}"
+                        data-error-message="{{__('voyager::bread.error_tagging')}}"
+                        @endif
+                >
 
-		cannot make relationship because {{ $options->model }} does not exist.
+                    @php
+                        $selected_values = isset($dataTypeContent) ? $dataTypeContent->belongsToMany($options->model, $options->pivot_table)->pluck($options->table.'.'.$options->key)->all() : array();
+                        $relationshipOptions = app($options->model)->all();
+                    @endphp
 
-	@endif
+                    @if($row->required === false)
+                        <option value="">{{__('voyager::generic.none')}}</option>
+                    @endif
+
+                    @foreach($relationshipOptions as $relationshipOption)
+                        <option value="{{ $relationshipOption->{$options->key} }}" @if(in_array($relationshipOption->{$options->key}, $selected_values)){{ 'selected="selected"' }}@endif>{{ $relationshipOption->{$options->label} }}</option>
+                    @endforeach
+
+                </select>
+
+            @endif
+
+        @endif
+
+    @else
+
+        cannot make relationship because {{ $options->model }} does not exist.
+
+    @endif
 
 @endif

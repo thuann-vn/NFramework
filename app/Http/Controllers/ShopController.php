@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
+use App\Department;
 use App\Product;
 use App\Category;
+use Cartalyst\Stripe\Api\Products;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -46,7 +49,7 @@ class ShopController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string  $slug
+     * @param  string $slug
      * @return \Illuminate\Http\Response
      */
     public function show($slug)
@@ -63,7 +66,7 @@ class ShopController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string  $slug
+     * @param  string $slug
      * @return \Illuminate\Http\Response
      */
     public function category($slug)
@@ -93,6 +96,42 @@ class ShopController extends Controller
             'products' => $products,
             'categories' => $categories,
             'categoryName' => $categoryName,
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  string $slug
+     * @return \Illuminate\Http\Response
+     */
+    public function department($slug)
+    {
+        $pagination = 9;
+
+        $department = Department::where('slug', $slug)->first();
+        $categories = Category::where('department_id', $department->id)->whereNull('parent_id')->get();
+        $featured_categories = Category::where('department_id', $department->id)->where('featured', true)->get();
+        $brands = Brand::where('featured', 1)->paginate(10);
+
+        $products = Product::with('categories')->whereHas('categories', function ($query) use ($department) {
+            $query->where('department_id', $department->id);
+        });
+
+        if (request()->sort == 'low_high') {
+            $products = $products->orderBy('price')->paginate($pagination);
+        } elseif (request()->sort == 'high_low') {
+            $products = $products->orderBy('price', 'desc')->paginate($pagination);
+        } else {
+            $products = $products->paginate($pagination);
+        }
+
+        return view('shop.department')->with([
+            'department' => $department,
+            'products' => $products,
+            'categories' => $categories,
+            'featuredCategories' => $featured_categories,
+            'brands' => $brands
         ]);
     }
 

@@ -41,5 +41,9 @@ return [
         'categories' => 'Shop by Category',
         'recommendations' => 'Recommendations For You',
         'brands' => 'Home of the Best Travel Brands'
+    ],
+    'department' => [
+        'featured' => 'Featured',
+        'brands' => 'Shop By Brand'
     ]
 ];
