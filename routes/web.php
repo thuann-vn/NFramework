@@ -35,6 +35,7 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 
     Route::post('product_property', ['uses' => 'Voyager\ProductsController@postProductProperty', 'as' => 'admin.postProductProperty']);
+    Route::post('product_variant', ['uses' => 'Voyager\ProductsController@postProductAttribute', 'as' => 'admin.postProductAttribute']);
 });
 
 Auth::routes();

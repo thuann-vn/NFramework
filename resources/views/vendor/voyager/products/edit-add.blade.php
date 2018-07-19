@@ -7,28 +7,13 @@
 
 @section('css')
     <style>
-        .panel-actions .voyager-trash {
-            cursor: pointer;
-        }
-        .panel-actions .voyager-trash:hover {
-            color: #e94542;
-        }
-        .settings .panel-actions{
-            right:0px;
-        }
-        .panel hr {
-            margin-bottom: 10px;
-        }
-        .panel {
-            padding-bottom: 15px;
-        }
         .sort-icons {
             font-size: 21px;
             color: #ccc;
             position: relative;
             cursor: pointer;
         }
-        .sort-icons:hover {
+        .sort-icons:hover, .voyager-trash:hover {
             color: #37474F;
         }
         .voyager-sort-desc {
@@ -52,12 +37,12 @@
             z-index: 9!important;
             width: 100%!important;
         }
-        .new-property {
+        .new-property, .new-attribute {
             text-align: center;
             width: 100%;
             margin-top: 20px;
         }
-        .new-property .panel-title {
+        .new-property .panel-title, .new-attribute .panel-title {
             margin: 0 auto;
             display: inline-block;
             color: #999fac;
@@ -69,18 +54,14 @@
             position: relative;
             padding-right: 15px;
         }
-        .settings .panel-title{
-            padding-left:0px;
-            padding-right:0px;
-        }
-        .new-property hr {
+        .new-property hr , .new-attribute hr {
             margin-bottom: 0;
             position: absolute;
             top: 7px;
             width: 96%;
             margin-left: 2%;
         }
-        .new-property .panel-title i {
+        .new-property .panel-title i, .new-attribute .panel-title i {
             position: relative;
             top: 2px;
         }
@@ -128,15 +109,6 @@
 
         .voyager .settings input[type=file]{
             width:100%;
-        }
-
-        .settings .select2{
-            margin-left:10px;
-        }
-
-        .settings .select2-selection{
-            height: 32px;
-            padding: 2px;
         }
 
         .voyager .settings .nav-tabs > li{
@@ -286,18 +258,25 @@
             $('[data-toggle="tooltip"]').tooltip();
         });
 
-        $(".group_select_new").select2({
-            tags: true,
-            width: 'resolve',
-            placeholder: '{{ __("voyager::generic.select_group") }}'
-        });
-
         $(".property_select_new").select2({
             tags: true,
             width: 'resolve',
             placeholder: '{{ __("voyager.products.select_property") }}'
         });
 
-        $(".group_select_new, .property_select_new").val('').trigger('change');
+        $(".attribute_select_new").select2({
+            tags: true,
+            width: 'resolve',
+            placeholder: '{{ __("voyager.products.select_attribute") }}'
+        });
+
+        $(".attribute_select_value").select2({
+            tags: true,
+            multiple: 'multiple',
+            width: 'resolve',
+            placeholder: '{{ __("voyager.products.select_attribute_value") }}'
+        });
+
+        $(".attribute_select_new, .property_select_new").val('').trigger('change');
     </script>
 @stop

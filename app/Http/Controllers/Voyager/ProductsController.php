@@ -6,8 +6,12 @@ use App\Brand;
 use App\Product;
 use App\Category;
 use App\CategoryProduct;
+use App\ProductAttribute;
+use App\ProductAttributeDetail;
 use App\ProductProperty;
 use App\Property;
+use App\Attribute;
+use App\AttributeValue;
 use Illuminate\Http\Request;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\DB;
@@ -23,6 +27,7 @@ use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
 class ProductsController extends VoyagerBaseController
 {
     use BreadRelationshipParser;
+
     //***************************************
     //               ____
     //              |  _ \
@@ -48,7 +53,7 @@ class ProductsController extends VoyagerBaseController
 
         $getter = $dataType->server_side ? 'paginate' : 'get';
 
-        $search = (object) ['value' => $request->get('s'), 'key' => $request->get('key'), 'filter' => $request->get('filter')];
+        $search = (object)['value' => $request->get('s'), 'key' => $request->get('key'), 'filter' => $request->get('filter')];
         $searchable = $dataType->server_side ? array_keys(SchemaManager::describeTable(app($dataType->model_name)->getTable())->toArray()) : '';
         $orderBy = $request->get('order_by');
         $sortOrder = $request->get('sort_order', null);
@@ -65,7 +70,7 @@ class ProductsController extends VoyagerBaseController
 
             if ($search->value && $search->key && $search->filter) {
                 $search_filter = ($search->filter == 'equals') ? '=' : 'LIKE';
-                $search_value = ($search->filter == 'equals') ? $search->value : '%'.$search->value.'%';
+                $search_value = ($search->filter == 'equals') ? $search->value : '%' . $search->value . '%';
                 $query->where($search->key, $search_filter, $search_value);
             }
 
@@ -168,17 +173,17 @@ class ProductsController extends VoyagerBaseController
         $product = Product::find($id);
         $categoriesForProduct = $product->categories()->get();
 
-        $active_tab = 'properties';
+        $active_tab = 'attributes';
 
-        $propertyNames = Property::distinct(['name'])->where('group','Property')->get(['name']);
-        $productProperties = ProductProperty::where('product_id', $id)->whereHas('property', function ($query){
-            return $query->where('group','Property');
+        $propertyNames = Property::distinct(['name'])->where('group', 'Property')->get(['name']);
+        $productProperties = ProductProperty::where('product_id', $id)->whereHas('property', function ($query) {
+            return $query->where('group', 'Property');
         })->get();
 
-        $attributeNames = Property::distinct(['name'])->where('group','Property')->get(['name']);
-        $productAttributes = ProductProperty::where('product_id', $id)->whereHas('property', function ($query){
-            return $query->where('group','Attribute');
-        })->get();
+        $attributeNames = Attribute::distinct(['name'])->get();
+
+        $productAttributes = ProductAttribute::where('product_id', $id)->get();
+
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'allBrands', 'categoriesForProduct', 'active_tab', 'propertyNames', 'productProperties', 'attributeNames', 'productAttributes'));
     }
 
@@ -220,7 +225,7 @@ class ProductsController extends VoyagerBaseController
             return redirect()
                 ->route("voyager.{$dataType->slug}.index")
                 ->with([
-                    'message'    => __('voyager.generic.successfully_updated')." {$dataType->display_name_singular}",
+                    'message' => __('voyager.generic.successfully_updated') . " {$dataType->display_name_singular}",
                     'alert-type' => 'success',
                 ]);
         }
@@ -249,8 +254,8 @@ class ProductsController extends VoyagerBaseController
         $this->authorize('add', app($dataType->model_name));
 
         $dataTypeContent = (strlen($dataType->model_name) != 0)
-                            ? new $dataType->model_name()
-                            : false;
+            ? new $dataType->model_name()
+            : false;
 
         foreach ($dataType->addRows as $key => $row) {
             $details = json_decode($row->details);
@@ -313,9 +318,9 @@ class ProductsController extends VoyagerBaseController
             return redirect()
                 ->route("voyager.{$dataType->slug}.index")
                 ->with([
-                        'message'    => __('voyager.generic.successfully_added_new')." {$dataType->display_name_singular}",
-                        'alert-type' => 'success',
-                    ]);
+                    'message' => __('voyager.generic.successfully_added_new') . " {$dataType->display_name_singular}",
+                    'alert-type' => 'success',
+                ]);
         }
     }
 
@@ -331,15 +336,16 @@ class ProductsController extends VoyagerBaseController
         }
     }
 
-    public function postProductProperty(Request $request){
+    public function postProductProperty(Request $request)
+    {
         $name = trim($request->input('name'));
         $value = trim($request->input('value'));
         $product = trim($request->input('product_id'));
         $group = 'Property';
 
         //Get property
-        $property =  Property::where('name', $request->input('name'))->first();
-        if(empty($property)){
+        $property = Property::where('name', $name)->first();
+        if (empty($property)) {
             $property = new Property;
             $property->name = $name;
             $property->group = $group;
@@ -359,7 +365,59 @@ class ProductsController extends VoyagerBaseController
         return redirect()
             ->route("voyager.products.edit", ['id' => $product, 'active_tab' => 'properties'])
             ->with([
-                'message'    => __('voyager.generic.successfully_updated'),
+                'message' => __('voyager.generic.successfully_updated'),
+                'alert-type' => 'success',
+                'active_tab' => 'properties'
+            ]);
+    }
+
+    public function postProductAttribute(Request $request)
+    {
+        $name = trim($request->input('name'));
+        $values = $request->input('value');
+        $product = trim($request->input('product_id'));
+
+        //Get property
+        $attribute = Attribute::where('name', $name)->first();
+        if (empty($attribute)) {
+            $attribute = new Attribute;
+            $attribute->name = $name;
+            $attribute->save();
+        }
+
+        //Insert to productAttribute
+        $productAttribute = ProductAttribute::where('product_id', $product)->where('attribute_id', $attribute->id)->first();
+        if (empty($productAttribute)) {
+            $productAttribute = new ProductAttribute();
+            $productAttribute->product_id = $product;
+            $productAttribute->attribute_id = $attribute->id;
+            $productAttribute->save();
+        }
+
+        //Check if have existed property
+        foreach ($values as $value) {
+            $attributeValue = AttributeValue::where('attribute_id', $attribute->id)->where('value', $value)->first();
+            if (empty($attributeValue)) {
+                $attributeValue = new AttributeValue;
+                $attributeValue->attribute_id = $attribute->id;
+                $attributeValue->value = $value;
+                $attributeValue->save();
+            }
+
+            //Insert new
+            $productAttributeDetailExisted = ProductAttributeDetail::where('product_attribute_id', $productAttribute->id)->where('attribute_value_id', $attributeValue->id)->count();
+            if($productAttributeDetailExisted == 0){
+                $productAttributeDetail = new ProductAttributeDetail;
+                $productAttributeDetail->product_attribute_id = $productAttribute->id;
+                $productAttributeDetail->attribute_value_id = $attributeValue->id;
+                $productAttributeDetail->save();
+            }
+        }
+
+        return redirect()
+            ->route("voyager.products.edit", ['id' => $product, 'active_tab' => 'properties'])
+            ->with([
+                'message' => __('voyager.generic.successfully_updated'),
                 'alert-type' => 'success',
                 'active_tab' => 'properties'
             ]);

@@ -29,7 +29,7 @@
         <h3 class="panel-title"><i class="voyager-plus"></i> {{ __('voyager.products.properties.new') }}</h3>
     </div>
     <div class="panel-body no-padding-left-right">
-        <form action="{{ route('admin.postProductProperty') }}" method="POST">
+        <form action="{{ route('admin.postProductAttribute') }}" method="POST">
             {{ csrf_field() }}
             <input type="hidden" name="product_id" value="{{isset($dataTypeContent->id)?$dataTypeContent->id:''}}">
             <div class="col-md-6">
@@ -45,9 +45,11 @@
                 <input type="text" class="form-control" name="value" placeholder="{{ __('voyager.products.property.value_help') }}" required="required">
             </div>
             <div style="clear:both"></div>
-            <button type="submit" class="btn btn-primary pull-right new-setting-btn">
-                <i class="voyager-plus"></i> {{ __('voyager.products.properties.add_new') }}
-            </button>
+            <div class="col-lg-12">
+                <button type="submit" class="btn btn-primary pull-right new-setting-btn">
+                    <i class="voyager-plus"></i> {{ __('voyager.products.properties.add_new') }}
+                </button>
+            </div>
             <div style="clear:both"></div>
         </form>
     </div>
