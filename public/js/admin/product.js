@@ -3,6 +3,7 @@ const eProductManager = {
         this.initComponents();
         this.initPropertyForm();
         this.initAttributeForm();
+        this.initVariantForm();
     },
     initComponents: function(){
         $('.toggleswitch').bootstrapToggle();
@@ -67,6 +68,14 @@ const eProductManager = {
                 $(".attribute_select_value").val('').trigger('change').focus().select2('open')
             });
         });
+    },
+    initVariantForm: function(){
+        $('#generateVariants').click(function(e){
+            e.preventDefault();
+            $.ajax($(this).attr('href')).then(function(response){
+                console.log(response);
+            });
+        })
     }
 }
 

@@ -9,6 +9,9 @@ use App\CategoryProduct;
 use App\ProductAttribute;
 use App\ProductAttributeDetail;
 use App\ProductProperty;
+use App\ProductSKU;
+use App\ProductSKUDetail;
+use App\ProductVariant;
 use App\Property;
 use App\Attribute;
 use App\AttributeValue;
@@ -181,10 +184,10 @@ class ProductsController extends VoyagerBaseController
         })->get();
 
         $attributeNames = Attribute::distinct(['name'])->get();
-
         $productAttributes = ProductAttribute::where('product_id', $id)->get();
+        $productSKUs = ProductSKU::where('product_id', $id)->get();
 
-        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'allBrands', 'categoriesForProduct', 'active_tab', 'propertyNames', 'productProperties', 'attributeNames', 'productAttributes'));
+        return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'allBrands', 'categoriesForProduct', 'active_tab', 'propertyNames', 'productProperties', 'attributeNames', 'productAttributes', 'productSKUs'));
     }
 
     // POST BR(E)AD
@@ -429,5 +432,69 @@ class ProductsController extends VoyagerBaseController
                 'alert-type' => 'success',
                 'active_tab' => 'properties'
             ]);
+    }
+
+    public function generateSkus($id){
+        //Delete old sku first
+        ProductSKUDetail::whereHas('productSku', function($query) use ($id){
+            return $query->where('product_id', $id);
+        })->delete();
+        ProductSKU::where('product_id', $id)->delete();
+
+        //Generate new
+        $product = Product::find($id);
+        $attributes =  ProductAttribute::where('product_id', $id)->get();
+
+        $variants = [];
+        foreach ($attributes as $index => $attribute){
+            if($index == 0){
+                foreach ($attribute->details as $detail){
+                    $variants[] = [$detail->attributeValue];
+                }
+            }else{
+                $variants = $this->combineVariants($variants, $attribute->details);
+            }
+        }
+
+        foreach($variants as $variant){
+            $name = '';
+            foreach ($variant as $value){
+                $name.= (!empty($name)?' + ' : '') . $value->value;
+            }
+
+            $productSKU = new ProductSKU;
+            $productSKU->product_id = $id;
+            $productSKU->name = $name;
+            $productSKU->sku = '';
+            $productSKU->price = $product->price;
+            $productSKU->image = '';
+            $productSKU->save();
+
+            //Save detail
+            foreach ($variant as $value){
+                //Find first
+                $existed = ProductSKUDetail::where('product_sku_id', $productSKU->id)->where('value_id', $value->id)->count() > 0;
+
+                if(!$existed){
+                    $skuDetail = new ProductSKUDetail;
+                    $skuDetail->product_sku_id = $productSKU->id;
+                    $skuDetail->value_id = $value->id;
+
+                    $skuDetail->save();
+                }
+            }
+        }
+    }
+
+    private function combineVariants($variants, $attributes){
+        $result = [];
+        foreach ($variants as $index => $variant){
+            foreach ($attributes as $attribute){
+                $resultItem = $variant;
+                $resultItem[] = $attribute->attributeValue;
+                $result[] = $resultItem;
+            }
+        }
+        return $result;
     }
 }

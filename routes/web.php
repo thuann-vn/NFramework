@@ -37,6 +37,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('product-property', ['uses' => 'Voyager\ProductsController@postProductProperty', 'as' => 'admin.postProductProperty']);
     Route::post('product-variant', ['uses' => 'Voyager\ProductsController@postProductAttribute', 'as' => 'admin.postProductAttribute']);
     Route::get('get-attribute-value/{attribute_name}', ['uses' => 'Voyager\ProductsController@getAttributeValue', 'as' => 'admin.getAttributeValue']);
+    Route::get('generate-product-variants/{id}', ['uses' => 'Voyager\ProductsController@generateSkus', 'as' => 'admin.generateProductVariants']);
 });
 
 Auth::routes();

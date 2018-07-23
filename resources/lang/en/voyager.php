@@ -260,6 +260,21 @@ return [
         'title'            => 'Product Title',
         'title_sub'        => 'The title for your product',
         'update'           => 'Update Product',
+        'detail' => 'Details',
+        'properties'        =>[
+            'title' => 'Properties',
+        ],
+        'attributes'        =>[
+            'title' => 'Attributes',
+            'description' => 'Attributes allow user search or filter products.'
+        ],
+        'variants'        =>[
+            'title' => 'Variants',
+            'description' => 'Variants based on attributes.',
+            'generate' => 'Generate',
+            'delete_all' => 'Delete all',
+            'empty' => 'To generate variants list, click the <b>Generate</b> to process.'
+        ]
     ],
 
     'database' => [

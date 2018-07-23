@@ -34,3 +34,33 @@ table.properties {
     text-decoration: none;
   }
 }
+
+.heading-with-buttons{
+  position: relative;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+
+  .heading-buttons{
+    position: absolute;
+    right: 0;
+    top: -7px;
+  }
+}
+
+.attribute-empty{
+  text-align: center;
+  padding: 20px;
+  color: #22a7f0;
+
+  .voyager-plus{
+    font-size: 48px;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+.alert{
+  &.alert-sm{
+    padding: 10px;
+  }
+}
