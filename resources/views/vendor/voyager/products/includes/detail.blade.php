@@ -235,13 +235,9 @@
                     <div class="form-group">
                         <label>{{ __('voyager.product.categories') }}</label>
 
-                        <ul style="list-style-type: none; padding-left: 0">
+                        <ul style="list-style-type: none; padding-left: 0" class="category-tree">
                             @foreach ($allCategories as $category)
-                                <li>
-                                    <label>
-                                        <input value="{{ $category->id }}" type="checkbox" name="category[]" style="margin-right: 5px;" {{ $categoriesForProduct->contains($category) ? 'checked' : '' }}>{{ $category->name }}
-                                    </label>
-                                </li>
+                                @include('vendor.voyager.formfields.category', ['category' => $category])
                             @endforeach
                         </ul>
                     </div> <!-- end form-group -->

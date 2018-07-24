@@ -171,7 +171,7 @@ class ProductsController extends VoyagerBaseController
             $view = "voyager::$slug.edit-add";
         }
 
-        $allCategories = Category::all();
+        $allCategories = Category::whereNull('parent_id')->get();
         $allBrands = Brand::all();
 
         $product = Product::find($id);

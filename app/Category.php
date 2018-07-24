@@ -10,6 +10,8 @@ class Category extends Model
 {
     use Translatable;
 
+    protected $translatable = ['name', 'slug', 'meta_description', 'meta_keywords'];
+
     protected $table = 'category';
 
     public function products()
