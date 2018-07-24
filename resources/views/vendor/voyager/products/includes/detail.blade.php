@@ -235,11 +235,13 @@
                     <div class="form-group">
                         <label>{{ __('voyager.product.categories') }}</label>
 
-                        <ul style="list-style-type: none; padding-left: 0" class="category-tree">
-                            @foreach ($allCategories as $category)
-                                @include('vendor.voyager.formfields.category', ['category' => $category])
-                            @endforeach
-                        </ul>
+                        <div class="category-tree">
+                            <ul>
+                                @foreach ($allCategories as $category)
+                                    @include('vendor.voyager.formfields.category', ['category' => $category])
+                                @endforeach
+                            </ul>
+                        </div>
                     </div> <!-- end form-group -->
                 </div>
             </div>

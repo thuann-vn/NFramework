@@ -24,6 +24,9 @@ const eProductManager = {
 
         //Init multilingual
         $('.side-body').multilingual({"editing": true});
+
+        //Select2
+        $('select').select2();
     },
     initPropertyForm: function(){
         $(".property_select_new").select2({

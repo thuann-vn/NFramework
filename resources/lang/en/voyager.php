@@ -280,6 +280,7 @@ return [
             'price' => 'Price',
             'price_placeholder' => 'Leave blank to use default product price',
             'update' => 'Update',
+            'alert' => '<b>Warning!</b><p>The product attributes changed, please re-generate the product\'s variants</p>'
         ]
     ],
 

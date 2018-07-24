@@ -80,8 +80,9 @@
             <h3><i class="voyager-buy"></i> {{__('voyager.product.variants.title')}}</h3>
 
             <div class="heading-buttons">
-                <button type="button" class="btn btn-danger" id="deleteAllVariants">{{__('voyager.product.variants.delete_all')}}</button>
-                <a href="{{route('admin.generateProductVariants', $dataTypeContent->id)}}" class="btn btn-primary" id="generateVariants">{{__('voyager.product.variants.generate')}}</a>
+                @if($dataTypeContent->variant_alert_flg)
+                    <a href="{{route('admin.generateProductVariants', $dataTypeContent->id)}}" class="btn btn-primary" id="generateVariants">{{__('voyager.product.variants.generate')}}</a>
+                @endif
             </div>
         </div>
 

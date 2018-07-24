@@ -147,6 +147,9 @@
 @section('content')
     <div id="gradient_bg"></div>
     <div class="page-content compass container-fluid">
+        @if($dataTypeContent->variant_alert_flg)
+            <div class="alert alert-warning product-variant-alert">{!!  __('voyager.product.variants.alert') !!}</div>
+        @endif
         <ul class="nav nav-tabs">
             <li @if(empty($active_tab) || (isset($active_tab) && $active_tab == 'detail')){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#detail"><i class="voyager-documentation"></i> {{ __('voyager.product.detail') }}</a></li>
             <li @if($active_tab == 'properties'){!! 'class="active"' !!}@endif><a data-toggle="tab" href="#properties"><i class="voyager-tag"></i> {{ __('voyager.product.properties.title') }}</a></li>
