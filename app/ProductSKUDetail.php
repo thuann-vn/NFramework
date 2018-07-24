@@ -13,4 +13,8 @@ class ProductSKUDetail extends Model
     public function productSku(){
         return $this->belongsTo(ProductSKU::class, 'product_sku_id', 'id');
     }
+
+    public function attributeValue(){
+        return $this->belongsTo(AttributeValue::class, 'value_id', 'id');
+    }
 }

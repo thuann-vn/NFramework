@@ -59,8 +59,50 @@ table.properties {
   }
 }
 
+.product-variants{
+  .collapse-head{
+    h4{
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
+    }
+  }
+}
+
 .alert{
   &.alert-sm{
     padding: 10px;
+  }
+}
+
+.attribute-image{
+  img{
+    width: 56px;
+    height: 56px;
+  }
+}
+
+.image-picker{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  padding: 1px;
+  background: #fff;
+  text-align: center;
+
+  img{
+    height: 100%;
+    max-width: 100%;
+  }
+
+  input{
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+
   }
 }

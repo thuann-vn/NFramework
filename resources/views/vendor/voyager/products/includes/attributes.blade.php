@@ -35,7 +35,7 @@
                 <h3 class="panel-title"><i class="voyager-plus"></i> {{ __('voyager.products.attribute.new') }}</h3>
             </div>
             <div class="panel-body no-padding-left-right">
-                <form action="{{ route('admin.postProductAttribute') }}" method="POST">
+                <form class="form-edit-add" action="{{ route('admin.postProductAttribute') }}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" name="product_id" value="{{isset($dataTypeContent->id)?$dataTypeContent->id:''}}">
                     <div class="col-md-6">
@@ -76,19 +76,50 @@
             <p>{{__('voyager.product.variants.description')}}</p>
         </div>
 
-        <div class="collapsible">
-            @forelse($productSKUs as $sku)
-                <div class="collapse-head collapsed" data-toggle="collapse" data-target="#links" aria-expanded="false" aria-controls="links">
+        <div class="collapsible product-variants">
+            @forelse($productSKUs as $key => $sku)
+                <div class="collapse-head collapsed" data-toggle="collapse" data-target="#sku{{$key}}" aria-expanded="false" aria-controls="links">
                     <h4>{{$sku->name}}</h4>
                     <i class="voyager-angle-down" style="display: inline;"></i>
                     <i class="voyager-angle-up" style="display: none;"></i>
                 </div>
-                <div class="collapse-content collapse" id="links" aria-expanded="false" style="height: 30px;">
-                    <form method="post" class="form">
-                        <div class="form-group">
-                            <label class="control-label">{{__('voyager.product.variants.image')}}</label>
-
+                <div class="collapse-content collapse" id="sku{{$key}}" aria-expanded="false">
+                    <form method="post" class="form form-edit-add" action="{{route('admin.updateProductVariant', $sku->id)}}" enctype="multipart/form-data">
+                        <!-- CSRF TOKEN -->
+                        {{ csrf_field() }}
+                        <div class="form-group variant-image">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="image-picker" style="{{!empty($sku->image)?'background-image:url("' . filter_var($sku->image, FILTER_VALIDATE_URL) ? $dataTypeContent->image : Voyager::image( $sku->image ) . '")' : ''}}">
+                                        <input type="file" name="image" accept="image/*">
+                                        @if(!empty($sku->image))
+                                            <img src="{{filter_var($sku->image, FILTER_VALIDATE_URL) ? $dataTypeContent->image : Voyager::image( $sku->image )}}">
+                                        @else
+                                            <img src="/img/voyager/placeholder.jpg"/>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>{{ __('voyager.product.variants.details')}}</h4>
+                                    @foreach($sku->details as $detail)
+                                        <p style="color: #22A7F0"><strong>{{$detail->attributeValue->attribute->name}}</strong>: {{$detail->attributeValue->value}}</p>
+                                    @endforeach
+                                </div>
+                            </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label">{{ __('voyager.product.variants.name')}}</label>
+                            <input class="form-control" name="name" value="{{$sku->name}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">{{ __('voyager.product.variants.sku')}}</label>
+                            <input class="form-control" name="sku" value="{{$sku->sku}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">{{ __('voyager.product.variants.price')}}</label>
+                            <input type="number" class="form-control" name="price" value="{{$sku->price}}" placeholder="{{ __('voyager.product.variants.price_placeholder')}}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">{{ __('voyager.product.variants.update')}}</button>
                     </form>
                 </div>
             @empty

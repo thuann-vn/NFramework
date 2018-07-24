@@ -5,11 +5,11 @@
       method="POST" enctype="multipart/form-data" name="product_form" id="product_form" novalidate >
 
     <!-- PUT Method if we are editing -->
-@if(isset($dataTypeContent->id))
-    {{ method_field("PUT") }}
-@endif
+    @if(isset($dataTypeContent->id))
+        {{ method_field("PUT") }}
+    @endif
 
-<!-- CSRF TOKEN -->
+    <!-- CSRF TOKEN -->
     {{ csrf_field() }}
 
     @if (count($errors) > 0)

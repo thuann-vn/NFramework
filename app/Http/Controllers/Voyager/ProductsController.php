@@ -11,11 +11,11 @@ use App\ProductAttributeDetail;
 use App\ProductProperty;
 use App\ProductSKU;
 use App\ProductSKUDetail;
-use App\ProductVariant;
 use App\Property;
 use App\Attribute;
 use App\AttributeValue;
 use Illuminate\Http\Request;
+use Mockery\Exception;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\DB;
 use TCG\Voyager\Events\BreadDataAdded;
@@ -26,6 +26,7 @@ use TCG\Voyager\Events\BreadImagesDeleted;
 use TCG\Voyager\Database\Schema\SchemaManager;
 use TCG\Voyager\Http\Controllers\VoyagerBaseController;
 use TCG\Voyager\Http\Controllers\Traits\BreadRelationshipParser;
+use TCG\Voyager\Http\Controllers\ContentTypes\Image as ContentImage;
 
 class ProductsController extends VoyagerBaseController
 {
@@ -496,5 +497,11 @@ class ProductsController extends VoyagerBaseController
             }
         }
         return $result;
+    }
+
+    public function updateSku(Request $request, $id){
+        $image = (new ContentImage($request, 'productskus', (object) array('field' => 'image'), (object) array()))->handle();
+        
+        throw new \Exception($image);
     }
 }

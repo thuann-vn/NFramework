@@ -75,6 +75,14 @@ const eProductManager = {
             $.ajax($(this).attr('href')).then(function(response){
                 console.log(response);
             });
+        });
+
+        $('.product-variants').find('.collapse-content').each(function(){
+            var variantEl = $(this);
+            var variantHeaderEl = $('.product-variants').find('.collapse-head[data-target="#'+ variantEl.attr('id') +'"]');
+            variantEl.find('input[name="name"]').change(function(){
+                variantHeaderEl.find('h4').text($(this).val());
+            })
         })
     }
 }

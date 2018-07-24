@@ -273,7 +273,13 @@ return [
             'description' => 'Variants based on attributes.',
             'generate' => 'Generate',
             'delete_all' => 'Delete all',
-            'empty' => 'To generate variants list, click the <b>Generate</b> to process.'
+            'empty' => 'To generate variants list, click the <b>Generate</b> to process.',
+            'details' => 'Attributes',
+            'name' => 'Name',
+            'sku' => 'SKU',
+            'price' => 'Price',
+            'price_placeholder' => 'Leave blank to use default product price',
+            'update' => 'Update'
         ]
     ],
 
