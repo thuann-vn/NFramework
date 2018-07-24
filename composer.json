@@ -10,7 +10,9 @@
     "require": {
         "php": ">=7.0.0",
         "algolia/algoliasearch-client-php": "^1.25",
+        "barryvdh/laravel-ide-helper": "^2.4",
         "cartalyst/stripe-laravel": "^8.0",
+        "doctrine/dbal": "^2.8",
         "fideloper/proxy": "~4.0",
         "gloudemans/shoppingcart": "^2.5",
         "laravel/framework": "5.6.*",
