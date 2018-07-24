@@ -35,10 +35,15 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 
     Route::post('product-property', ['uses' => 'Voyager\ProductsController@postProductProperty', 'as' => 'admin.postProductProperty']);
-    Route::post('product-variant', ['uses' => 'Voyager\ProductsController@postProductAttribute', 'as' => 'admin.postProductAttribute']);
+    Route::post('post-variant', ['uses' => 'Voyager\ProductsController@postProductAttribute', 'as' => 'admin.postProductAttribute']);
+
     Route::get('get-attribute-value/{attribute_name}', ['uses' => 'Voyager\ProductsController@getAttributeValue', 'as' => 'admin.getAttributeValue']);
     Route::get('generate-product-variants/{id}', ['uses' => 'Voyager\ProductsController@generateSkus', 'as' => 'admin.generateProductVariants']);
+
     Route::post('update-product-variant/{id}', ['uses' => 'Voyager\ProductsController@updateSku', 'as' => 'admin.updateProductVariant']);
+
+    Route::delete('delete-variant/{id}', ['uses' => 'Voyager\ProductsController@deleteProductAttribute', 'as' => 'admin.deleteProductAttribute']);
+    Route::delete('delete-variant-value/{id}', ['uses' => 'Voyager\ProductsController@deleteProductAttributeValue', 'as' => 'admin.deleteProductAttributeValue']);
 });
 
 Auth::routes();

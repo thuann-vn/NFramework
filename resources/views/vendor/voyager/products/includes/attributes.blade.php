@@ -19,12 +19,26 @@
                     </td>
                     <td>
                         @foreach($attribute->details as $productAttributeDetail)
-                            <a class="btn btn-default delete-attribute" data-id="{{$productAttributeDetail->id}}">{{$productAttributeDetail->attributeValue->value}} <span style="color: red">x</span></a>
+                            <a class="btn btn-default delete-attribute-value">{{$productAttributeDetail->attributeValue->value}} <span style="color: red">x</span></a>
+                            <form action="{{route('admin.deleteProductAttributeValue', $productAttributeDetail->id)}}" method="POST" enctype="multipart/form-data" class="hidden">
+                                {{csrf_field()}}
+                                {{method_field('delete')}}
+
+                                <input type="hidden" name="product_id" value="{{$attribute->product_id}}">
+                            </form>
                         @endforeach
                     </td>
                     <td class="text-center" width="50">
-                        <i class="voyager-trash"
-                           data-id="{{ $attribute->id }}"></i>
+                        <a href="{{route('admin.deleteProductAttribute', $attribute->id)}}" class="delete-attribute">
+                            <i class="voyager-trash"></i>
+                        </a>
+
+                        <form action="{{route('admin.deleteProductAttribute', $attribute->id)}}" method="POST" enctype="multipart/form-data" class="hidden">
+                            {{csrf_field()}}
+                            {{method_field('delete')}}
+
+                            <input type="hidden" name="product_id" value="{{$attribute->product_id}}">
+                        </form>
                     </td>
                 </tr>
             @endforeach
@@ -66,7 +80,7 @@
             <h3><i class="voyager-buy"></i> {{__('voyager.product.variants.title')}}</h3>
 
             <div class="heading-buttons">
-                <button type="button" class="btn btn-danger">{{__('voyager.product.variants.delete_all')}}</button>
+                <button type="button" class="btn btn-danger" id="deleteAllVariants">{{__('voyager.product.variants.delete_all')}}</button>
                 <a href="{{route('admin.generateProductVariants', $dataTypeContent->id)}}" class="btn btn-primary" id="generateVariants">{{__('voyager.product.variants.generate')}}</a>
             </div>
         </div>
@@ -85,6 +99,7 @@
                 </div>
                 <div class="collapse-content collapse" id="sku{{$key}}" aria-expanded="false">
                     <form method="post" class="form form-edit-add" action="{{route('admin.updateProductVariant', $sku->id)}}" enctype="multipart/form-data">
+                        <input type="hidden" name="product_id" value="{{$sku->product_id}}">
                         <!-- CSRF TOKEN -->
                         {{ csrf_field() }}
                         <div class="form-group variant-image">

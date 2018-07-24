@@ -1,4 +1,5 @@
 let mix = require('laravel-mix');
+const WebpackShellPlugin = require('webpack-shell-plugin');
 
 /*
  |--------------------------------------------------------------------------
@@ -12,8 +13,10 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+    .js('resources/assets/backend/plugin.js', 'public/js/admin/plugin.js')
     .sass('resources/assets/sass/voyager.scss', 'public/css')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .sass('resources/assets/sass/responsive.scss', 'public/css')
     .sourceMaps()
-    .browserSync('laravel-ecommerce-example.test');
+    .browserSync('new-framework.com');
+

@@ -1,6 +1,10 @@
 const eCMS = {
     init: function(){
         this.initImagePicker();
+        this.initLanguage();
+    },
+    initLanguage: function(){
+        Lang.setLocale('en');
     },
     initImagePicker: function(){
         $(".image-picker").find('input').change(function() {

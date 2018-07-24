@@ -210,6 +210,8 @@ return [
 
     'additional_js' => [
         //'js/custom.js',
+        'js/admin/plugin.js',
+        'js/lang.dist.js',
         'js/admin/common.js'
     ],
 

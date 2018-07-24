@@ -186,7 +186,7 @@ class ProductsController extends VoyagerBaseController
 
         $attributeNames = Attribute::distinct(['name'])->get();
         $productAttributes = ProductAttribute::where('product_id', $id)->get();
-        $productSKUs = ProductSKU::where('product_id', $id)->get();
+        $productSKUs = ProductSKU::where('product_id', $id)->orderBy('id')->get();
 
         return Voyager::view($view, compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'allCategories', 'allBrands', 'categoriesForProduct', 'active_tab', 'propertyNames', 'productProperties', 'attributeNames', 'productAttributes', 'productSKUs'));
     }
@@ -387,7 +387,7 @@ class ProductsController extends VoyagerBaseController
     {
         $name = trim($request->input('name'));
         $values = $request->input('value');
-        $product = trim($request->input('product_id'));
+        $product_id = trim($request->input('product_id'));
 
         //Get property
         $attribute = Attribute::where('name', $name)->first();
@@ -398,10 +398,10 @@ class ProductsController extends VoyagerBaseController
         }
 
         //Insert to productAttribute
-        $productAttribute = ProductAttribute::where('product_id', $product)->where('attribute_id', $attribute->id)->first();
+        $productAttribute = ProductAttribute::where('product_id', $product_id)->where('attribute_id', $attribute->id)->first();
         if (empty($productAttribute)) {
             $productAttribute = new ProductAttribute();
-            $productAttribute->product_id = $product;
+            $productAttribute->product_id = $product_id;
             $productAttribute->attribute_id = $attribute->id;
             $productAttribute->save();
         }
@@ -426,13 +426,58 @@ class ProductsController extends VoyagerBaseController
             }
         }
 
+        //Update product flag
+        $product = Product::where('id', $product_id)->first();
+        $product->variant_alert_flg = 1;
+        $product->save();
+
         return redirect()
-            ->route("voyager.products.edit", ['id' => $product, 'active_tab' => 'properties'])
+            ->route("voyager.products.edit", ['id' => $product_id, 'active_tab' => 'properties'])
             ->with([
                 'message' => __('voyager.generic.successfully_updated'),
                 'alert-type' => 'success',
                 'active_tab' => 'properties'
             ]);
+    }
+
+    public function deleteProductAttribute(Request $request, $id){
+        $product_id =$request->input('product_id');
+
+        //Delete
+        ProductAttribute::findOrFail($id)->delete();
+
+        //Update product flag
+        $product = Product::where('id', $product_id)->first();
+        $product->variant_alert_flg = 1;
+        $product->save();
+
+        return redirect()
+            ->route("voyager.products.edit", ['id' => $product_id, 'active_tab' => 'properties'])
+            ->with([
+                'message' => __('voyager.generic.successfully_deleted'),
+                'alert-type' => 'success',
+                'active_tab' => 'properties'
+            ]);
+    }
+
+    public function deleteProductAttributeValue(Request $request, $id){
+        $product_id =$request->input('product_id');
+
+        ProductAttributeDetail::findOrFail($id)->delete();
+
+        //Update product flag
+        $product = Product::where('id', $product_id)->first();
+        $product->variant_alert_flg = 1;
+        $product->save();
+
+        return redirect()
+            ->route("voyager.products.edit", ['id' => $product_id, 'active_tab' => 'properties'])
+            ->with([
+                'message' => __('voyager.generic.successfully_deleted'),
+                'alert-type' => 'success',
+                'active_tab' => 'properties'
+            ]);
+
     }
 
     public function generateSkus($id){
@@ -500,8 +545,23 @@ class ProductsController extends VoyagerBaseController
     }
 
     public function updateSku(Request $request, $id){
+        $productSKU= ProductSKU::findOrFail($id);
         $image = (new ContentImage($request, 'productskus', (object) array('field' => 'image'), (object) array()))->handle();
-        
-        throw new \Exception($image);
+        if($image){
+            $productSKU->image = $image;
+        }
+        $productSKU->name = $request->input('name');
+        $productSKU->sku = $request->input('sku');
+        $productSKU->price = $request->input('price');
+        $productSKU->save();
+
+        return redirect()
+            ->route("voyager.products.edit", ['id' => $request->input('product_id'), 'active_tab' => 'properties'])
+            ->with([
+                'message' => __('voyager.generic.successfully_updated'),
+                'alert-type' => 'success',
+                'active_tab' => 'properties'
+            ]);
+
     }
 }

@@ -68,6 +68,25 @@ const eProductManager = {
                 $(".attribute_select_value").val('').trigger('change').focus().select2('open')
             });
         });
+
+        $('.delete-attribute, .delete-attribute-value').click(function(e){
+            e.preventDefault();
+
+            var deleteHref= $(this);
+
+            swal({
+                title: Lang.get('voyager.generic.are_you_sure'),
+                text: Lang.get('voyager.generic.are_you_sure_delete'),
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    deleteHref.next('form').submit();
+                }
+            });
+        })
     },
     initVariantForm: function(){
         $('#generateVariants').click(function(e){
@@ -83,7 +102,7 @@ const eProductManager = {
             variantEl.find('input[name="name"]').change(function(){
                 variantHeaderEl.find('h4').text($(this).val());
             })
-        })
+        });
     }
 }
 

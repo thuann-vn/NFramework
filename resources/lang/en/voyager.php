@@ -279,7 +279,7 @@ return [
             'sku' => 'SKU',
             'price' => 'Price',
             'price_placeholder' => 'Leave blank to use default product price',
-            'update' => 'Update'
+            'update' => 'Update',
         ]
     ],
 
