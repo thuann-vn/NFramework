@@ -53,6 +53,10 @@ class Product extends Model
         return $this->belongsTo('App\Brand', 'brand_id', 'id');
     }
 
+    public function attributes(){
+        return $this->hasMany(ProductAttribute::class,'product_id', 'id');
+    }
+
 
     public function presentPrice()
     {

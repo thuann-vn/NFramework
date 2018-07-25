@@ -13,7 +13,31 @@ const eCategory = {
     },
     initFilters: function(){
         $('.filter-item').find(':checkbox').change(function(){
+            $('#filter-form').find('input').each(function(){
+                var name= $(this).attr('name');
+                var items = '';
+                $('[name="filter_'+name+'"]:checked').each(function(){
+                    items+= ((items)?'~':'') +  $(this).val();
+                });
+
+                if(items){
+                    $(this).val(items);
+                }else{
+                    $(this).remove();
+                }
+            })
             $('#filter-form').submit();
+        });
+
+        $('.remove-filter').click(function(e){
+            e.preventDefault();
+            $('.filter-item').find('#' + $(this).data('target')).prop('checked', false).trigger('change');
+        })
+
+        $('.clear-filters').click(function(e){
+            e.preventDefault();
+
+            $('.filter-item').find(':checkbox').prop('checked', false).trigger('change');
         })
     }
 }

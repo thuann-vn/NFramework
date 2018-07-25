@@ -46,5 +46,10 @@ return [
         'featured' => 'Featured',
         'brands' => 'Shop By Brand',
         'attributes' => 'Shop By :name'
+    ],
+    'category' => [
+        'children' => 'Categories',
+        'filters' => 'YOUR REFINEMENTS',
+        'clear_filters'=> 'Clear all filters'
     ]
 ];

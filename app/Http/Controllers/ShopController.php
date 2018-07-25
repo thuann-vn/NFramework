@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Attribute;
+use App\AttributeValue;
 use App\Brand;
 use App\Department;
 use App\Product;
@@ -19,7 +20,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        $pagination = 9;
+        $pagination = config('shop.pagination');;
         $categories = Category::all();
 
         if (request()->category) {
@@ -70,23 +71,63 @@ class ShopController extends Controller
      * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function category(Request $request,$parentSlug, $slug)
+    public function category(Request $request, $parentSlug, $slug)
     {
-        $pagination = 9;
-        $category = Category::where('slug', $slug)->first();
+        $pagination = config('shop.pagination');
+        $category = Category::with('children')->where('slug', $slug)->first();
         $brands = Brand::where('featured', 1)->paginate(10);
-        $attributes = Attribute::all();
+        $attributes = Attribute::has('values')->get();
         $department = Department::find($category->id);
 
-        if (request()->category) {
-            $products = Product::with('categories')->whereHas('categories', function ($query) use ($slug) {
-                $query->where('slug', $slug);
+        $products = Product::with(['categories','attributes'])->whereHas('categories', function ($query) use ($slug) {
+            return $query->where('slug', $slug)->orWhere(function($query) use ($slug){
+                return $query->whereHas('parent', function($child) use ($slug){
+                    return $child->where('slug', $slug);
+                });
             });
-        } else {
-            $products = Product::where('featured', true);
-            $categoryName = 'Featured';
+        });
+
+        //Filters
+        $filters= [
+            'category' => $request->input('category'),
+            'brand' => []
+        ];
+        $brandFilters = $request->has('brand')? explode('~',$request->input('brand')): [];
+
+        $currentFilters = [];
+        if(!empty($brandFilters)){
+            $filters['brand'] = $brandFilters;
+
+            $products = $products->whereHas('brand', function($query) use ($brandFilters){
+                return $query->whereIn('slug', $brandFilters);
+            });
+
+            //Add to current filters
+            $currentFilters['brand'] = Brand::whereIn('slug', $brandFilters)->get(['name', 'slug', 'id'])->toArray();
         }
 
+        foreach ($attributes as $attribute){
+            if(!empty($request->input($attribute->slug))){
+                $filterSlugs = explode('~',$request->input($attribute->slug));
+                $filters[$attribute->slug] = $filterSlugs;
+
+                //Add to filters
+                $products = $products->whereHas('attributes', function($attributes) use ($filterSlugs){
+                    return $attributes -> whereHas('details', function ($details) use ($filterSlugs){
+                        return $details->whereHas('attributeValue', function($values) use ($filterSlugs){
+                            return $values->whereIn('slug', $filterSlugs);
+                        });
+                    });
+                });
+
+                //Add to current filters
+                $currentFilters[$attribute->slug] = AttributeValue::whereIn('slug', $filterSlugs)->get(['value', 'slug', 'id'])->toArray();
+            }else{
+                $filters[$attribute->slug] = [];
+            }
+        }
+
+        //Sort
         if (request()->sort == 'low_high') {
             $products = $products->orderBy('price')->paginate($pagination);
         } elseif (request()->sort == 'high_low') {
@@ -95,26 +136,15 @@ class ShopController extends Controller
             $products = $products->paginate($pagination);
         }
 
-        //Filters
-        $filters= [
-            'category' => $request->input('category'),
-            'brand' => $request->input('brand'),
-        ];
-
-        foreach ($attributes as $attribute){
-            if(!empty($request->input($attribute->slug))){
-                $filters[$attribute->slug] = $request->input($attribute->slug);
-            }
-        }
-
-
         return view('shop.category')->with([
             'products' => $products,
             'department' => $department,
             'category' => $category,
             'categoryName' => $category->name,
             'brands' => $brands,
-            'attributes' => $attributes
+            'attributes' => $attributes,
+            'filters' =>$filters,
+            'currentFilters'=>$currentFilters
         ]);
     }
 
