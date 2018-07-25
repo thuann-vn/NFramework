@@ -17,10 +17,13 @@ namespace App{
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property string|null $deleted_at
+ * @property string|null $slug
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\AttributeValue[] $values
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Attribute whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Attribute whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Attribute whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Attribute whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Attribute whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Attribute whereUpdatedAt($value)
  */
 	class Attribute extends \Eloquent {}
@@ -33,9 +36,11 @@ namespace App{
  * @property int $id
  * @property int $attribute_id
  * @property string $value
+ * @property string|null $slug
  * @property-read \App\Attribute $attribute
  * @method static \Illuminate\Database\Eloquent\Builder|\App\AttributeValue whereAttributeId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\AttributeValue whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\AttributeValue whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\AttributeValue whereValue($value)
  */
 	class AttributeValue extends \Eloquent {}
@@ -263,7 +268,7 @@ namespace App{
  * @property int|null $brand_id
  * @property string|null $meta_description
  * @property string|null $meta_keywords
- * @property bool|null $variant_alert_flg
+ * @property int|null $variant_alert_flg
  * @property-read \App\Brand|null $brand
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Category[] $categories
  * @property-read null $translated
@@ -361,16 +366,43 @@ namespace App{
 /**
  * App\ProductSKU
  *
+ * @property int $id
+ * @property int $product_id
+ * @property string $name
+ * @property string|null $sku
+ * @property string|null $image
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property string|null $deleted_at
+ * @property int|null $price
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\ProductSKUDetail[] $details
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ProductSKU whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ProductSKU whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ProductSKU whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ProductSKU whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ProductSKU whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ProductSKU wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ProductSKU whereProductId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ProductSKU whereSku($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ProductSKU whereUpdatedAt($value)
  */
 	class ProductSKU extends \Eloquent {}
 }
 
 namespace App{
 /**
- * App\ProductVariant
+ * App\ProductSKUDetail
  *
+ * @property int $id
+ * @property int $product_sku_id
+ * @property int $value_id
+ * @property-read \App\AttributeValue $attributeValue
+ * @property-read \App\ProductSKU $productSku
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ProductSKUDetail whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ProductSKUDetail whereProductSkuId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\ProductSKUDetail whereValueId($value)
  */
-	class ProductVariant extends \Eloquent {}
+	class ProductSKUDetail extends \Eloquent {}
 }
 
 namespace App{
@@ -385,6 +417,7 @@ namespace App{
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property string|null $deleted_at
+ * @property string|null $slug
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Property whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Property whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Property whereDescription($value)
@@ -392,6 +425,7 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Property whereGroup($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Property whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Property whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Property whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Property whereUpdatedAt($value)
  */
 	class Property extends \Eloquent {}
