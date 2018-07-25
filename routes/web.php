@@ -35,6 +35,7 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 
     Route::post('product-property', ['uses' => 'Voyager\ProductPropertiesController@postProductProperty', 'as' => 'admin.postProductProperty']);
+    Route::delete('delete-product-property/{id}', ['uses' => 'Voyager\ProductPropertiesController@deleteProductProperty', 'as' => 'admin.deleteProductProperty']);
 
     Route::post('post-variant', ['uses' => 'Voyager\ProductVariantsController@postProductAttribute', 'as' => 'admin.postProductAttribute']);
     Route::get('get-attribute-value/{attribute_name}', ['uses' => 'Voyager\ProductVariantsController@getAttributeValue', 'as' => 'admin.getAttributeValue']);

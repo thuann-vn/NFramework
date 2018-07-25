@@ -66,4 +66,18 @@ class ProductPropertiesController extends VoyagerBaseController
                 'active_tab' => 'properties'
             ]);
     }
+
+    public function deleteProductProperty(Request $request, $id){
+        $product_id =$request->input('product_id');
+
+        //Delete
+        ProductProperty::findOrFail($id)->delete();
+
+        return redirect()
+            ->route("voyager.products.edit", ['id' => $product_id, 'active_tab' => 'properties'])
+            ->with([
+                'message' => __('voyager.generic.successfully_deleted'),
+                'alert-type' => 'success'
+            ]);
+    }
 }

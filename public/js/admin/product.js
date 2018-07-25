@@ -104,6 +104,26 @@ const eProductManager = {
                 variantHeaderEl.find('h4').text($(this).val());
             })
         });
+
+        $('.delete-property').click(function(e){
+            e.preventDefault();
+
+            var deleteHref= $(this);
+
+            swal({
+                title: Lang.get('voyager.generic.are_you_sure'),
+                text: Lang.get('voyager.generic.are_you_sure_delete'),
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        eCMS.block();
+                        deleteHref.next('form').submit();
+                    }
+                });
+        })
     }
 }
 

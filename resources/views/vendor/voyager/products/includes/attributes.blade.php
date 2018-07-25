@@ -46,23 +46,23 @@
         <div class="no-padding-left-right" style="margin-top:10px;">
             <div class="panel-heading new-attribute">
                 <hr>
-                <h3 class="panel-title"><i class="voyager-plus"></i> {{ __('voyager.products.attribute.new') }}</h3>
+                <h3 class="panel-title"><i class="voyager-plus"></i> {{ __('voyager.product.attributes.new') }}</h3>
             </div>
             <div class="panel-body no-padding-left-right">
                 <form class="form-edit-add" action="{{ route('admin.postProductAttribute') }}" method="POST">
                     {{ csrf_field() }}
                     <input type="hidden" name="product_id" value="{{isset($dataTypeContent->id)?$dataTypeContent->id:''}}">
                     <div class="col-md-6">
-                        <label for="display_name">{{ __('voyager.products.attribute.name') }}</label>
-                        <select class="form-control attribute_select attribute_select_new" placeholder="{{ __('voyager.products.attribute.select_attribute') }}" name="name"  required="required">
+                        <label for="display_name">{{ __('voyager.product.attributes.name') }}</label>
+                        <select class="form-control attribute_select attribute_select_new" placeholder="{{ __('voyager.product.attributes.select_attribute') }}" name="name"  required="required">
                             @foreach($attributeNames as $attributeName)
                                 <option value="{{ $attributeName->name }}">{{ $attributeName->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="key">{{ __('voyager.products.attribute.value') }}</label>
-                        <select type="text" class="form-control attribute_select_value" name="value[]" placeholder="{{ __('voyager.products.attribute.select_attribute_value') }}" required="required"></select>
+                        <label for="key">{!! __('voyager.product.attributes.value') !!}</label>
+                        <select type="text" class="form-control attribute_select_value" name="value[]" placeholder="{{ __('voyager.product.attributes.select_attribute_value') }}" required="required"></select>
                     </div>
                     <div style="clear:both"></div>
                     <div class="col-lg-12">

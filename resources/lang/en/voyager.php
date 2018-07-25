@@ -263,10 +263,18 @@ return [
         'detail' => 'Details',
         'properties'        =>[
             'title' => 'Properties',
+            'name' => 'Property name',
+            'new' => 'Add new property',
+            'value' => 'Value',
+            'add_new' => 'Add'
         ],
         'attributes'        =>[
             'title' => 'Attributes',
-            'description' => 'Attributes allow user search or filter products.'
+            'description' => 'Attributes allow user search or filter products.',
+            'name' => 'Attribute name',
+            'new' => 'Add new attribute',
+            'value' => 'Value <em>(Press enter to add multiple value)</em>',
+            'add_new' => 'Add'
         ],
         'variants'        =>[
             'title' => 'Variants',
