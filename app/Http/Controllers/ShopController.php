@@ -70,17 +70,17 @@ class ShopController extends Controller
      * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function category($parent, $category)
+    public function category(Request $request,$parentSlug, $slug)
     {
         $pagination = 9;
-        $category = Category::where('slug', $category)->first();
+        $category = Category::where('slug', $slug)->first();
         $brands = Brand::where('featured', 1)->paginate(10);
         $attributes = Attribute::all();
         $department = Department::find($category->id);
 
         if (request()->category) {
-            $products = Product::with('categories')->whereHas('categories', function ($query) use ($category) {
-                $query->where('slug', $category);
+            $products = Product::with('categories')->whereHas('categories', function ($query) use ($slug) {
+                $query->where('slug', $slug);
             });
         } else {
             $products = Product::where('featured', true);
@@ -94,6 +94,19 @@ class ShopController extends Controller
         } else {
             $products = $products->paginate($pagination);
         }
+
+        //Filters
+        $filters= [
+            'category' => $request->input('category'),
+            'brand' => $request->input('brand'),
+        ];
+
+        foreach ($attributes as $attribute){
+            if(!empty($request->input($attribute->slug))){
+                $filters[$attribute->slug] = $request->input($attribute->slug);
+            }
+        }
+
 
         return view('shop.category')->with([
             'products' => $products,

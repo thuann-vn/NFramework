@@ -25,9 +25,9 @@
                 </div>
             </div>
 
-            <div class="products text-center">
+            <div class="products product-4-columns text-center">
                 @forelse ($products as $product)
-                    @include('partials.products.product)
+                    @include('partials.products.product')
                 @empty
                     <div style="text-align: left">No items found</div>
                 @endforelse
@@ -41,8 +41,5 @@
 @endsection
 
 @section('extra-js')
-    <!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
-    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-    <script src="{{ asset('js/algolia.js') }}"></script>
+    <script src="{{ asset('js/pages/category.js') }}"></script>
 @endsection

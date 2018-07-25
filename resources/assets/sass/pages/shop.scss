@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 230px 1fr;
     margin: 10px auto 10px;
+    grid-gap: 20px;
 
     .sidebar li.active {
         font-weight: 500;
@@ -9,7 +10,7 @@
 
     .products {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-gap: 60px $gutter;
 
         .product-price {
@@ -47,3 +48,78 @@
     }
 }
 
+.sidebar.filter-sidebar{
+    .sidebar_toggleable{
+        h3{
+            border-top: 1px solid #e3e3e3;
+            color: #000;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 18px;
+            padding: 12px 6px;
+            position: relative;
+            cursor: pointer;
+
+            &:after{
+                content: '\f106';
+                font-family: FontAwesome;
+                display: inline-block;
+                position: absolute;
+                right: 6px;
+                top: 10px;
+            }
+
+            & + ul{
+                margin-bottom: 0;
+                max-height: 240px;
+                overflow: auto;
+                padding: 0 6px;
+
+                transition: max-height 300ms ease;
+            }
+
+            &.collapsed{
+                &:after{
+                    content: '\f107';
+                }
+
+                & + ul{
+                    max-height: 0;
+                    overflow: hidden;
+                }
+            }
+        }
+    }
+
+    .filter-item{
+        position: relative;
+        line-height: 18px;
+        font-size: 13px;
+        text-transform: capitalize;
+        font-weight: normal;
+
+        .filter-checkbox{
+            border: 1px solid #333;
+            background: #fff;
+            width: 10px;
+            height: 10px;
+            margin-right: 5px;
+            margin-top: 8px;
+            float: left;
+
+            &.checked{
+                border: 1px solid #0a50ba;
+                background: #0a50ba;
+            }
+        }
+
+        input[type="checkbox"]{
+            display: none;
+        }
+
+        &:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+}
