@@ -211,6 +211,7 @@ return [
     'additional_js' => [
         //'js/custom.js',
         'js/admin/plugin.js',
+        'vendor/blockui/jquery.blockUI.js',
         'js/lang.dist.js',
         'js/admin/common.js'
     ],

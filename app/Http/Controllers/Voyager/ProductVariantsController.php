@@ -44,6 +44,7 @@ class ProductVariantsController extends VoyagerBaseController
         $name = trim($request->input('name'));
         $values = $request->input('value');
         $product_id = trim($request->input('product_id'));
+        $product = Product::where('id', $product_id)->first();
 
         //Get property
         $attribute = Attribute::where('name', $name)->first();
@@ -60,6 +61,12 @@ class ProductVariantsController extends VoyagerBaseController
             $productAttribute->product_id = $product_id;
             $productAttribute->attribute_id = $attribute->id;
             $productAttribute->save();
+
+            //Update product flag
+            if($product->variant_alert_flg != $product::ATTRIBUTE_CHANGED_FLG){
+                $product->variant_alert_flg = Product::ATTRIBUTE_CHANGED_FLG;
+                $product->save();
+            }
         }
 
         //Check if have existed property
@@ -79,20 +86,20 @@ class ProductVariantsController extends VoyagerBaseController
                 $productAttributeDetail->product_attribute_id = $productAttribute->id;
                 $productAttributeDetail->attribute_value_id = $attributeValue->id;
                 $productAttributeDetail->save();
+
+                //Update product flag
+                if($product->variant_alert_flg != $product::ATTRIBUTE_CHANGED_FLG){
+                    $product->variant_alert_flg = Product::ATTRIBUTE_VALUE_CHANGED_FLG;
+                    $product->save();
+                }
             }
         }
 
-        //Update product flag
-        $product = Product::where('id', $product_id)->first();
-        $product->variant_alert_flg = 1;
-        $product->save();
-
         return redirect()
-            ->route("voyager.products.edit", ['id' => $product_id, 'active_tab' => 'properties'])
+            ->route("voyager.products.edit", ['id' => $product_id, 'active_tab' => 'attributes'])
             ->with([
                 'message' => __('voyager.generic.successfully_updated'),
-                'alert-type' => 'success',
-                'active_tab' => 'attributes'
+                'alert-type' => 'success'
             ]);
     }
 
@@ -104,15 +111,16 @@ class ProductVariantsController extends VoyagerBaseController
 
         //Update product flag
         $product = Product::where('id', $product_id)->first();
-        $product->variant_alert_flg = 1;
-        $product->save();
+        if($product->variant_alert_flg != $product::ATTRIBUTE_CHANGED_FLG){
+            $product->variant_alert_flg = Product::ATTRIBUTE_CHANGED_FLG;
+            $product->save();
+        }
 
         return redirect()
-            ->route("voyager.products.edit", ['id' => $product_id, 'active_tab' => 'properties'])
+            ->route("voyager.products.edit", ['id' => $product_id, 'active_tab' => 'attributes'])
             ->with([
                 'message' => __('voyager.generic.successfully_deleted'),
-                'alert-type' => 'success',
-                'active_tab' => 'attributes'
+                'alert-type' => 'success'
             ]);
     }
 
@@ -123,15 +131,16 @@ class ProductVariantsController extends VoyagerBaseController
 
         //Update product flag
         $product = Product::where('id', $product_id)->first();
-        $product->variant_alert_flg = 1;
-        $product->save();
+        if($product->variant_alert_flg != $product::ATTRIBUTE_CHANGED_FLG){
+            $product->variant_alert_flg = Product::ATTRIBUTE_VALUE_CHANGED_FLG;
+            $product->save();
+        }
 
         return redirect()
-            ->route("voyager.products.edit", ['id' => $product_id, 'active_tab' => 'properties'])
+            ->route("voyager.products.edit", ['id' => $product_id, 'active_tab' => 'attributes'])
             ->with([
                 'message' => __('voyager.generic.successfully_deleted'),
-                'alert-type' => 'success',
-                'active_tab' => 'attributes'
+                'alert-type' => 'success'
             ]);
 
     }
@@ -139,20 +148,14 @@ class ProductVariantsController extends VoyagerBaseController
     public function generateSkus($id){
         $product = Product::where('id', $id)->first();
 
-        if(!$product->variant_alert_flg){
+        if($product->variant_alert_flg != Product::ATTRIBUTE_CHANGED_FLG && $product->variant_alert_flg != Product::ATTRIBUTE_VALUE_CHANGED_FLG ){
             return redirect()
-                ->route("voyager.products.edit", ['id' => $id, 'active_tab' => 'properties'])
-                ->with([
-                    'message' => __('voyager.generic.successfully_updated'),
-                    'alert-type' => 'success',
-                    'active_tab' => 'attributes'
-                ]);
+            ->route("voyager.products.edit", ['id' => $id, 'active_tab' => 'attributes'])
+            ->with([
+                'message' => __('voyager.generic.successfully_updated'),
+                'alert-type' => 'success'
+            ]);
         }
-        //Delete old sku first
-        ProductSKUDetail::whereHas('productSku', function($query) use ($id){
-            return $query->where('product_id', $id);
-        })->delete();
-        ProductSKU::where('product_id', $id)->delete();
 
         //Generate new
         $product = Product::find($id);
@@ -169,31 +172,65 @@ class ProductVariantsController extends VoyagerBaseController
             }
         }
 
+        //Delete old sku first
+        if(Product::ATTRIBUTE_CHANGED_FLG == $product->variant_alert_flg){
+            ProductSKUDetail::whereHas('productSku', function($query) use ($id){
+                return $query->where('product_id', $id);
+            })->delete();
+
+            ProductSKU::where('product_id', $id)->delete();
+        }
+
+
+        //Existed SKU
+        $existedSKUs =  ProductSKU::where('product_id', $id)->get();
+
         foreach($variants as $variant){
             $name = '';
             foreach ($variant as $value){
                 $name.= (!empty($name)?' + ' : '') . $value->value;
             }
 
-            $productSKU = new ProductSKU;
-            $productSKU->product_id = $id;
-            $productSKU->name = $name;
-            $productSKU->sku = '';
-            $productSKU->price = $product->price;
-            $productSKU->image = '';
-            $productSKU->save();
+            //Check if existed
+            $productSKU = null;
+            if(Product::ATTRIBUTE_VALUE_CHANGED_FLG == $product->variant_alert_flg){
+                $existedSku = null;
+                foreach ($existedSKUs as $sku){
+                    if($sku->details->count()==count($variant)){
+                        $existedValues = array_map(create_function('$o', 'return $o[\'value_id\'];'), $sku->details->toArray());
+                        sort($existedValues);
 
-            //Save detail
-            foreach ($variant as $value){
-                //Find first
-                $existed = ProductSKUDetail::where('product_sku_id', $productSKU->id)->where('value_id', $value->id)->count() > 0;
+                        $newValues = array_map(create_function('$o', 'return $o->id;'), $variant);
+                        sort($newValues);
 
-                if(!$existed){
-                    $skuDetail = new ProductSKUDetail;
-                    $skuDetail->product_sku_id = $productSKU->id;
-                    $skuDetail->value_id = $value->id;
+                        if(empty(array_diff($existedValues, $newValues))){
+                            $productSKU = $sku;
+                        };
+                    }
+                }
+            }
 
-                    $skuDetail->save();
+            if(empty($productSKU)){
+                $productSKU = new ProductSKU;
+                $productSKU->product_id = $id;
+                $productSKU->name = $name;
+                $productSKU->sku = '';
+                $productSKU->price = $product->price;
+                $productSKU->image = '';
+                $productSKU->save();
+
+                //Save detail
+                foreach ($variant as $value){
+                    //Find first
+                    $existed = ProductSKUDetail::where('product_sku_id', $productSKU->id)->where('value_id', $value->id)->count() > 0;
+
+                    if(!$existed){
+                        $skuDetail = new ProductSKUDetail;
+                        $skuDetail->product_sku_id = $productSKU->id;
+                        $skuDetail->value_id = $value->id;
+
+                        $skuDetail->save();
+                    }
                 }
             }
         }
@@ -201,15 +238,14 @@ class ProductVariantsController extends VoyagerBaseController
 
         //Update product flag
         $product = Product::where('id', $id)->first();
-        $product->variant_alert_flg = 1;
+        $product->variant_alert_flg = Product::NO_CHANGED_FLG;
         $product->save();
 
         return redirect()
-            ->route("voyager.products.edit", ['id' => $id, 'active_tab' => 'properties'])
+            ->route("voyager.products.edit", ['id' => $id, 'active_tab' => 'attributes'])
             ->with([
                 'message' => __('voyager.generic.successfully_updated'),
-                'alert-type' => 'success',
-                'active_tab' => 'attributes'
+                'alert-type' => 'success'
             ]);
     }
 
@@ -237,11 +273,10 @@ class ProductVariantsController extends VoyagerBaseController
         $productSKU->save();
 
         return redirect()
-            ->route("voyager.products.edit", ['id' => $request->input('product_id'), 'active_tab' => 'properties'])
+            ->route("voyager.products.edit", ['id' => $request->input('product_id'), 'active_tab' => 'attributes'])
             ->with([
                 'message' => __('voyager.generic.successfully_updated'),
-                'alert-type' => 'success',
-                'active_tab' => 'attributes'
+                'alert-type' => 'success'
             ]);
     }
 }

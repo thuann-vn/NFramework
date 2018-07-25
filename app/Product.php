@@ -17,7 +17,12 @@ class Product extends Model
         Resizable,
         HasRelationships;
 
+    const NO_CHANGED_FLG = 0;
+    const ATTRIBUTE_CHANGED_FLG = 1;
+    const ATTRIBUTE_VALUE_CHANGED_FLG = 2;
+
     protected $translatable = ['name', 'description', 'details', 'slug', 'meta_description', 'meta_keywords'];
+
     /**
      * Searchable rules.
      *

@@ -86,6 +86,7 @@ const eProductManager = {
             })
             .then((willDelete) => {
                 if (willDelete) {
+                    eCMS.block();
                     deleteHref.next('form').submit();
                 }
             });
@@ -93,10 +94,7 @@ const eProductManager = {
     },
     initVariantForm: function(){
         $('#generateVariants').click(function(e){
-            e.preventDefault();
-            $.ajax($(this).attr('href')).then(function(response){
-                console.log(response);
-            });
+            eCMS.block();
         });
 
         $('.product-variants').find('.collapse-content').each(function(){

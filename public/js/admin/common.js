@@ -19,6 +19,19 @@ const eCMS = {
                 reader.readAsDataURL(self.files[0]);
             }
         });
+    },
+    block: function(){
+        $.blockUI({
+            message: '<div class="spinner"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>',
+            css: {
+                backgroundColor: 'transparent',
+                zIndex: '1001',
+                border: 'none'
+            }
+        });
+    },
+    unblock:function(){
+        $.unblockUI();
     }
 }
 
