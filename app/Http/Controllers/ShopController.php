@@ -128,13 +128,22 @@ class ShopController extends Controller
         }
 
         //Sort
-        if (request()->sort == 'low_high') {
-            $products = $products->orderBy('price')->paginate($pagination);
-        } elseif (request()->sort == 'high_low') {
-            $products = $products->orderBy('price', 'desc')->paginate($pagination);
-        } else {
-            $products = $products->paginate($pagination);
+        switch (request()->sort){
+            case 'featured':
+                $products = $products->orderBy('featured', 'desc'); break;
+            case 'best_seller':
+                $products = $products->orderBy('price'); break;
+            case 'newest':
+                $products = $products->orderBy('created_at', 'desc'); break;
+            case 'low_high':
+                $products = $products->orderBy('price'); break;
+            case 'high_low':
+                $products = $products->orderBy('price', 'desc'); break;
+            case 'top_rated':
+                $products = $products->orderBy('price'); break;
         }
+
+        $products = $products->paginate($pagination);
 
         return view('shop.category')->with([
             'products' => $products,
@@ -144,6 +153,7 @@ class ShopController extends Controller
             'brands' => $brands,
             'attributes' => $attributes,
             'filters' =>$filters,
+            'sort' => $request->input('sort'),
             'currentFilters'=>$currentFilters
         ]);
     }

@@ -1,16 +1,26 @@
 .breadcrumbs {
-    background: $light-gray-background;
-    border-bottom: 1px solid $separator-color;
-    padding: 24px 0;
+    font-size: 11px;
+    font-weight: 500;
 
     .breadcrumb-separator {
-        font-size: 14px;
-        color: lighten($text-color, 20%);
+        font-size: 8px;
+        display: inline-block;
+        color: #666;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .breadcrumbs-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+
+    a, span{
+        color: #666;
+
+        &:hover{
+            text-decoration: underline
+        }
     }
 }

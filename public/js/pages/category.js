@@ -2,6 +2,7 @@ const eCategory = {
     init: function(){
         this.initSidebarToggle();
         this.initFilters();
+        this.initSortForm();
     },
     initSidebarToggle: function(){
         $('.sidebar_toggleable').each(function(){
@@ -38,6 +39,11 @@ const eCategory = {
             e.preventDefault();
 
             $('.filter-item').find(':checkbox').prop('checked', false).trigger('change');
+        })
+    },
+    initSortForm: function(){
+        $('#searchSortDropdown').change(function(){
+            $(this).parents('form').submit();
         })
     }
 }

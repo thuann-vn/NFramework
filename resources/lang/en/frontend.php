@@ -50,6 +50,15 @@ return [
     'category' => [
         'children' => 'Categories',
         'filters' => 'YOUR REFINEMENTS',
-        'clear_filters'=> 'Clear all filters'
+        'clear_filters'=> 'Clear all filters',
+        'sort' => 'Sort by',
+        'sorts' => [
+            'best_sellers'=> 'Best Sellers',
+            'featured'=> 'Featured',
+            'newest'=> 'Newest',
+            'low_to_high'=> 'Lowest Price',
+            'high_to_low'=> 'Highest Price',
+            'top_rated'=> 'Customer Rating'
+        ]
     ]
 ];
