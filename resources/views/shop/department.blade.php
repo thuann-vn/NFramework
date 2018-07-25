@@ -8,31 +8,8 @@
 
 @section('content')
     <div class="products-section container">
-        <div class="sidebar">
-            <h3>{{__('frontend.department.featured')}}</h3>
-            <ul>
-                @foreach ($featuredCategories as $category)
-                    <li class="{{ setActiveCategory($category->slug) }}"><a href="{{ route('shop.category', ['category' => $category->slug,'parent'=>$category->parent->slug]) }}">{{ $category->name }}</a></li>
-                @endforeach
-            </ul>
+        @include('partials.shop.department_sidebar')
 
-            @foreach ($categories as $category)
-                <h3>{{$category->name}}</h3>
-                <ul>
-                    @foreach ($category->children as $childCategory)
-                        <li class="{{ setActiveCategory($childCategory->slug) }}"><a href="{{ route('shop.category', ['category' => $childCategory->slug, 'parent'=>!empty($childCategory->parent)?$childCategory->parent->slug:'']) }}">{{ $childCategory->name }}</a></li>
-                    @endforeach
-                </ul>
-            @endforeach
-
-
-            <h3>{{__('frontend.department.brands')}}</h3>
-            <ul>
-                @foreach ($brands as $brand)
-                    <li class="{{ setActiveCategory($brand->slug) }}"><a href="{{ route('shop.brand', ['brand' => $brand->slug]) }}">{{ $brand->name }}</a></li>
-                @endforeach
-            </ul>
-        </div> <!-- end sidebar -->
         <div>
             @if(!empty($department->image))
                 <div class="products-banner">

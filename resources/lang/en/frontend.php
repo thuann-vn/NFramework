@@ -44,6 +44,7 @@ return [
     ],
     'department' => [
         'featured' => 'Featured',
-        'brands' => 'Shop By Brand'
+        'brands' => 'Shop By Brand',
+        'attributes' => 'Shop By :name'
     ]
 ];

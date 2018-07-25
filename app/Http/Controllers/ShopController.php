@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Attribute;
 use App\Brand;
 use App\Department;
 use App\Product;
@@ -69,16 +70,18 @@ class ShopController extends Controller
      * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function category($slug)
+    public function category($parent, $category)
     {
         $pagination = 9;
-        $categories = Category::all();
+        $category = Category::where('slug', $category)->first();
+        $brands = Brand::where('featured', 1)->paginate(10);
+        $attributes = Attribute::all();
+        $department = Department::find($category->id);
 
         if (request()->category) {
-            $products = Product::with('categories')->whereHas('categories', function ($query) use ($slug) {
-                $query->where('slug', $slug);
+            $products = Product::with('categories')->whereHas('categories', function ($query) use ($category) {
+                $query->where('slug', $category);
             });
-            $categoryName = optional($categories->where('slug', $slug)->first())->name;
         } else {
             $products = Product::where('featured', true);
             $categoryName = 'Featured';
@@ -92,10 +95,13 @@ class ShopController extends Controller
             $products = $products->paginate($pagination);
         }
 
-        return view('shop')->with([
+        return view('shop.category')->with([
             'products' => $products,
-            'categories' => $categories,
-            'categoryName' => $categoryName,
+            'department' => $department,
+            'category' => $category,
+            'categoryName' => $category->name,
+            'brands' => $brands,
+            'attributes' => $attributes
         ]);
     }
 
@@ -107,12 +113,13 @@ class ShopController extends Controller
      */
     public function department($slug)
     {
-        $pagination = 9;
+        $pagination = config('shop.pagination');
 
         $department = Department::where('slug', $slug)->first();
         $categories = Category::where('department_id', $department->id)->whereNull('parent_id')->get();
         $featured_categories = Category::where('department_id', $department->id)->where('featured', true)->get();
         $brands = Brand::where('featured', 1)->paginate(10);
+        $attributes = Attribute::all();
 
         $products = Product::with('categories')->whereHas('categories', function ($query) use ($department) {
             $query->where('department_id', $department->id);
@@ -131,7 +138,8 @@ class ShopController extends Controller
             'products' => $products,
             'categories' => $categories,
             'featuredCategories' => $featured_categories,
-            'brands' => $brands
+            'brands' => $brands,
+            'attributes' => $attributes
         ]);
     }
 
