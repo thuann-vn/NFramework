@@ -59,6 +59,10 @@ class Product extends Model
         return $this->hasMany(OrderProduct::class,'product_id', 'id');
     }
 
+    public function variants(){
+        return $this->hasMany(ProductSKU::class,'product_id', 'id');
+    }
+
     public function presentPrice()
     {
         return money_format('$%i', $this->price);
@@ -84,10 +88,11 @@ class Product extends Model
      */
     public function toSearchableArray()
     {
-        $array = $this->toArray();
+        $array = $this->only('name', 'price','slug', 'image');
 
         $extraFields = [
             'categories' => $this->categories->pluck('name')->toArray(),
+            'brand' => $this->brand->name,
         ];
 
         return array_merge($array, $extraFields);

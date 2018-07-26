@@ -101,3 +101,13 @@
     margin-bottom: 16px;
 }
 
+.product-variants{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    .product-variant{
+        img{
+            max-width: 100%;
+        }
+    }
+}

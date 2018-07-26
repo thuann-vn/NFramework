@@ -57,6 +57,24 @@
             <div class="product-section-subtitle">{{ $product->details }}</div>
             <div class="product-section-price">{{ $product->presentPrice() }}</div>
 
+            @if($product->variants->count()>0)
+                <div class="product-variant-select">
+                    <select>
+                        @foreach($product->variants as $variant)
+                            <option value="{{$variant->id}}">{{$variant->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="product-variants">
+                    @foreach($product->variants as $variant)
+                        <div class="product-variant">
+                            <input name="" type="checkbox"/>
+                            <img src="{{productImage($variant->image)}}"/>
+                        </div>
+                    @endforeach
+                </div>
+
+            @endif
             <p>
                 {!! $product->description !!}
             </p>
