@@ -15,5 +15,7 @@ return [
 
     'previous' => '&laquo; Previous',
     'next' => 'Next &raquo;',
-
+    'page' => 'Page',
+    'total' => ':total items',
+    'total_page' => ' of :total'
 ];

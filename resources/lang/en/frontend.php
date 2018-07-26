@@ -27,6 +27,9 @@ return [
             'help_center_description' => 'Find answers online.'
         ]
     ],
+    'breadcrumb' => [
+        'home' => 'Home',
+    ],
     'account' => [
         'register' => 'Sign Up',
         'login' => 'Login',

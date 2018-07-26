@@ -13,9 +13,19 @@
             <div class="breadcrumbs">
                 <div class="breadcrumbs-container container">
                     <div>
-                        <a href="/">Home</a>
+                        <a href="/">{{__('frontend.breadcrumb.home')}}</a>
                         <i class="fa fa-chevron-right breadcrumb-separator"></i>
-                        <span>Shop</span>
+
+                        @if(empty($childCategory))
+                            <span>{{$category->name}}</span>
+                        @else
+                            <a href="{{route('shop.category', $category->slug)}}">{{$category->name}}</a>
+                        @endif
+
+                        @if(!empty($childCategory))
+                            <i class="fa fa-chevron-right breadcrumb-separator"></i>
+                            <span>{{$childCategory->name}}</span>
+                        @endif
                     </div>
                 </div>
             </div> <!-- end breadcrumbs -->
@@ -25,7 +35,7 @@
                 </div>
             @endif
             <div class="products-header">
-                <h1 class="stylish-heading">{{ $category->name }}</h1>
+                <h1 class="stylish-heading">{{ !empty($childCategory)? $childCategory->name :$category->name }}</h1>
                 <form action="{{request()->fullUrl()}}" method="get" class="sort-form">
                     <strong>{{__('frontend.category.sort')}}: </strong>
                     <select name="sort" id="searchSortDropdown" class="form-control">
@@ -39,6 +49,11 @@
                 </form>
             </div>
 
+            <div class="shop-pagination">
+                <span class="total-items">{{__('pagination.total', ['total' => $products->total()])}}</span>
+                {{ $products->appends(request()->input())->links('partials.shop.pagination') }}
+            </div>
+
             <div class="products product-4-columns text-center">
                 @forelse ($products as $product)
                     @include('partials.products.list_product')
@@ -48,7 +63,9 @@
             </div> <!-- end products -->
 
             <div class="spacer"></div>
-            {{ $products->appends(request()->input())->links() }}
+            <div class="shop-pagination">
+                {{ $products->appends(request()->input())->links('partials.shop.pagination')}}
+            </div>
         </div>
     </div>
 

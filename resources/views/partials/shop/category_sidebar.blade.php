@@ -29,10 +29,9 @@
         <ul>
             @foreach ($category->children as $child)
                 <li>
-                    <label class="filter-item {{$child->slug== $filters['category']? 'active':''}}" for="cat_{{$child->id}}">
+                    <a href="{{route('shop.category', [$category->slug, $child->slug])}}" class="filter-item {{!empty($childCategory) && $child->slug== $childCategory->slug? 'active':''}}" for="cat_{{$child->id}}">
                         {{ $child->name }}
-                        <input type="checkbox" value="{{$child->slug}}" name="filter_category" id="cat_{{$child->id}}">
-                    </label>
+                    </a>
                 </li>
             @endforeach
         </ul>

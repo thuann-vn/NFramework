@@ -71,17 +71,36 @@ class ShopController extends Controller
      * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function category(Request $request, $parentSlug, $slug)
+    public function category(Request $request, $parentSlug , $slug)
     {
         $pagination = config('shop.pagination');
-        $category = Category::with('children')->where('slug', $slug)->first();
+        $category = Category::with('children')->where('slug', $parentSlug)->first();
+
         $brands = Brand::where('featured', 1)->paginate(10);
         $attributes = Attribute::has('values')->get();
         $department = Department::find($category->id);
 
-        $products = Product::with(['categories','attributes'])->whereHas('categories', function ($query) use ($slug) {
-            return $query->where('slug', $slug)->orWhere(function($query) use ($slug){
-                return $query->whereHas('parent', function($child) use ($slug){
+        //Get product by category
+        $products = null;
+        if(!empty($slug)){
+            $childCategory = Category::with('children')->where('slug', $slug)->first();
+
+            $products = Product::with(['categories','attributes'])->whereHas('categories', function ($query) use ($slug) {
+                return $query->where('slug', $slug)->orWhere(function($query) use ($slug){
+                    return $query->whereHas('parent', function($child) use ($slug){
+                        return $child->where('slug', $slug);
+                    });
+                });
+            });
+        }else{
+            $products = Product::with(['categories','attributes'])->whereHas('categories', function ($query) use ($parentSlug) {
+                return $query->where('slug', $parentSlug);
+            });
+        }
+
+        $products = Product::with(['categories','attributes'])->whereHas('categories', function ($query) use ($parentSlug, $slug) {
+            return $query->where('slug', $slug)->orWhere(function($query) use ($parentSlug, $slug){
+                return $query->whereHas('parent', function($child) use ($parentSlug, $slug){
                     return $child->where('slug', $slug);
                 });
             });
@@ -132,15 +151,13 @@ class ShopController extends Controller
             case 'featured':
                 $products = $products->orderBy('featured', 'desc'); break;
             case 'best_seller':
-                $products = $products->orderBy('price'); break;
+                $products = $products->withCount('orders')->orderBy('orders_count', 'desc'); break;
             case 'newest':
                 $products = $products->orderBy('created_at', 'desc'); break;
             case 'low_high':
                 $products = $products->orderBy('price'); break;
             case 'high_low':
                 $products = $products->orderBy('price', 'desc'); break;
-            case 'top_rated':
-                $products = $products->orderBy('price'); break;
         }
 
         $products = $products->paginate($pagination);
@@ -154,7 +171,8 @@ class ShopController extends Controller
             'attributes' => $attributes,
             'filters' =>$filters,
             'sort' => $request->input('sort'),
-            'currentFilters'=>$currentFilters
+            'currentFilters'=>$currentFilters,
+            'childCategory' => $childCategory
         ]);
     }
 

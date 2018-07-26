@@ -27,7 +27,7 @@
                                         <p class="mega-menu-section-title">{{$columSection->title}}</p>
                                     @endif
                                     <ul>
-                                        @foreach($columSection->children as $megaItem)
+                                        @foreach($columSection->children->sortBy('order') as $megaItem)
                                             <li><a href="{{$megaItem->url}}" title="{{$megaItem->title}}">{{$megaItem->title}}</a></li>
                                         @endforeach
                                     </ul>

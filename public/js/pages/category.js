@@ -3,6 +3,7 @@ const eCategory = {
         this.initSidebarToggle();
         this.initFilters();
         this.initSortForm();
+        this.initPagination();
     },
     initSidebarToggle: function(){
         $('.sidebar_toggleable').each(function(){
@@ -45,7 +46,12 @@ const eCategory = {
         $('#searchSortDropdown').change(function(){
             $(this).parents('form').submit();
         })
-    }
+    },
+    initPagination: function(){
+        $('.pagination').find('select').change(function(){
+            window.location.href = $(this).val();
+        })
+    },
 }
 
 $(document).ready(function() {

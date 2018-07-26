@@ -1,5 +1,33 @@
 // Pagination styles stolen from some bootstrap theme I'm using
+.shop-pagination{
+    text-align: left;
 
+    &:before, &:after{
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    .total-items{
+        font-size: 13px;
+        font-weight: normal;
+    }
+    .pagination{
+        display: flex;
+        align-items: center;
+        float: right;
+
+        line-height: 14px;
+        font-size: 13px;
+        font-weight: bold;
+        margin-top: 0;
+
+        > span{
+            display: inline-block;
+            margin: 0 10px;
+        }
+    }
+}
 .pagination {
     display: inline-block;
     padding-left: 0;
@@ -32,7 +60,7 @@
     float: left;
     line-height: 1.42857;
     margin-left: -1px;
-    padding: 16px 22px;
+    padding: 5px 15px;
     position: relative;
     text-decoration: none;
 }
