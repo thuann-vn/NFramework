@@ -66,6 +66,11 @@ return [
     ],
     'product' => [
         'quantity' => 'Quantity',
-        'variants' => 'Choose version'
+        'variants' => 'Choose version',
+        'related_products' => 'Recently Viewed and Similar Items',
+        'similar_products' => 'Customers Also Bought',
+        'features' => 'Product Features',
+        'specifications' => 'Product Specifications',
+        'description' => 'Detailed Product Description'
     ]
 ];

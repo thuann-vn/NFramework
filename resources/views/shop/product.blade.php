@@ -58,7 +58,6 @@
         <div class="product-section-information">
             <h2 class="product-brand"><a href="{{route('shop.brand', $product->brand->slug)}}">{{$product->brand->name}}</a></h2>
             <h1 class="product-name">{{ $product->name }}</h1>
-            <div class="product-subtitle">{{ $product->details }}</div>
             <div class="price">
                 <span class="product-regular-price">{{ priceFormat($product->regular_price) }}</span>
                 <span class="product-price">{{ priceFormat($product->price) }}</span>
@@ -72,9 +71,9 @@
                     <div class="form-group">
                         <label>{{__('frontend.product.variants')}}</label>
                         <div class="product-variants">
-                            @foreach($product->variants as $variant)
-                                <label for="sku_{{$variant->id}}" class="product-variant">
-                                    <input name="sku_id" id="sku_{{$variant->id}}" value="{{$variant->id}}" type="radio"/>
+                            @foreach($product->variants as $key => $variant)
+                                <label for="sku_{{$variant->id}}" class="product-variant" data-price="{{$variant->getPrice($product->price)}}" data-price-text="{{priceFormat($variant->getPrice($product->price))}}">
+                                    <input name="sku_id" id="sku_{{$variant->id}}" value="{{$variant->id}}" {{$key==0?'checked':''}} type="radio"/>
                                     <img src="{{productImage($variant->image)}}" width="65" height="65"/>
                                 </label>
                             @endforeach
@@ -94,17 +93,57 @@
         </div>
     </div> <!-- end product-section -->
 
-    @include('partials.might-like')
+    <div class="container">
+        <ul class="features-navigation-bar">
+            <li class="text-center">
+                <a class="scrollToAnchor" href="#productFeatures">View Product Features<span class="hidden-xs hidden-sm hidden-md"> and Specifications</span></a>
+            </li>
 
-    <div class="">
+            <li class="text-center">
+                <a class="scrollToAnchor" href="#productDescr">See Product Description</a>
+            </li>
 
-        <p>
-            {!! $product->description !!}
-        </p>
-
-        <p>&nbsp;</p>
+            <li class="text-center">
+                <a class="scrollToAnchor" href="#ratings-and-reviews">Read Customer Rating + Reviews</a>
+            </li>
+        </ul>
     </div>
 
+    @if(!empty($mightAlsoLike))
+        @include('partials.shop.might-like')
+    @endif
+
+
+    @if(!empty($similar))
+        @include('partials.shop.similar')
+    @endif
+
+    <div class="container">
+        <hr/>
+        <div class="product-details">
+            <div>
+                <h3 id="productFeatures">{{__('frontend.product.features')}} </h3>
+                <div class="product-features">{!! $product->description !!}</div>
+
+                <h3 id="productDescr">{{__('frontend.product.description')}} </h3>
+                <div class="product-features">{!! $product->details !!}</div>
+            </div>
+            <div>
+                <h3>{{__('frontend.product.specifications')}} </h3>
+
+                <div class="product-specifications">
+                    @foreach($product->properties as $productProperty)
+                        <div class="specification">
+                            <strong>{{$productProperty->property->name}}:</strong> {{$productProperty->value}}
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <h3 id="ratings-and-reviews">{{__('frontend.product.rating_and_reviews')}} </h3>
+        <div class="fb-comments" data-href="{{request()->fullUrl()}}" data-width="100%" data-numposts="40"></div>
+    </div>
 @endsection
 
 @section('extra-js')

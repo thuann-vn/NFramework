@@ -1,6 +1,7 @@
 const eApp = {
     init: function(){
         this.initStickyNav();
+        this.initScrollToAchor();
     },
     initStickyNav: function(){
         // grab the initial top offset of the navigation
@@ -39,6 +40,15 @@ const eApp = {
         var addToCartButton = $('.add-to-card.not-added');
         addToCartButton.click(function(e){
             e.preventDefault();
+        })
+    },
+    initScrollToAchor: function(){
+        $('.scrollToAnchor').click(function(e){
+            e.preventDefault();
+            var target = $(this).attr('href');
+            $('html, body').animate({
+                scrollTop: $(target).offset().top - 100
+            }, 300);
         })
     }
 }

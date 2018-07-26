@@ -45,7 +45,7 @@ class ProductPropertiesController extends VoyagerBaseController
             $property = new Property;
             $property->name = $name;
             $property->group = $group;
-            $property->slug = str_slug($name, ''-'');
+            $property->slug = str_slug($name, '-');
             $property->save();
         }
 
@@ -56,7 +56,6 @@ class ProductPropertiesController extends VoyagerBaseController
             $productProperty->product_id = $product;
             $productProperty->property_id = $property->id;
             $productProperty->value = $value;
-            $productProperty->slug = str_slug($value, ''-'');
             $productProperty->save();
         }
 

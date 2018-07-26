@@ -63,6 +63,10 @@ class Product extends Model
         return $this->hasMany(ProductSKU::class,'product_id', 'id');
     }
 
+    public  function properties(){
+        return $this->hasMany(ProductProperty::class,'product_id', 'id');
+    }
+
     public function presentPrice()
     {
         return money_format('%i', $this->price);
@@ -78,7 +82,7 @@ class Product extends Model
 
     public function scopeMightAlsoLike($query)
     {
-        return $query->inRandomOrder()->take(4);
+        return $query->inRandomOrder()->take(24);
     }
 
     /**
