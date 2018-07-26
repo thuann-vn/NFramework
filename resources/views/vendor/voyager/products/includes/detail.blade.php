@@ -155,7 +155,7 @@
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        <i class="voyager-character"></i> {{ __('voyager.product.status') }}
+                       {{ __('voyager.product.status') }}
                     </h3>
                     <div class="panel-actions">
                         <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
@@ -194,7 +194,7 @@
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        <i class="voyager-character"></i> {{ __('voyager.product.price') }}
+                        {{ __('voyager.product.price') }}
                     </h3>
                     <div class="panel-actions">
                         <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
@@ -215,7 +215,7 @@
             <div class="panel">
                 <div class="panel-heading">
                     <h3 class="panel-title">
-                        <i class="voyager-character"></i> {{ __('voyager.product.category') }}
+                        {{ __('voyager.product.category') }}
                     </h3>
                     <div class="panel-actions">
                         <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>

@@ -3,7 +3,8 @@
 @section('title', $product->name)
 
 @section('extra-css')
-    <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/slick/slick-theme.css') }}">
 @endsection
 
 @section('content')
@@ -36,21 +37,19 @@
 
     <div class="product-section container">
         <div>
-            <div class="product-section-image">
-                <img src="{{ productImage($product->image) }}" alt="product" class="active" id="currentImage">
-            </div>
             <div class="product-section-images">
-                <div class="product-section-thumbnail selected">
-                    <img src="{{ productImage($product->image) }}" alt="product">
+                <div class="product-vertical-slider">
+                    @if ($product->images)
+                        @foreach (json_decode($product->images, true) as $image)
+                            <div class="product-section-thumbnail">
+                                <img src="{{ productImage($image) }}" alt="product">
+                            </div>
+                        @endforeach
+                    @endif
                 </div>
-
-                @if ($product->images)
-                    @foreach (json_decode($product->images, true) as $image)
-                    <div class="product-section-thumbnail">
-                        <img src="{{ productImage($image) }}" alt="product">
-                    </div>
-                    @endforeach
-                @endif
+                <div class="product-section-image">
+                    <img src="{{ productImage($product->image) }}" alt="product" class="active" id="currentImage">
+                </div>
             </div>
         </div>
         <div class="product-section-information">
@@ -79,6 +78,8 @@
 @endsection
 
 @section('extra-js')
+    <script src="{{ asset('vendor/slick/slick.js') }}"></script>
+    <script src="{{ asset('js/pages/product.js') }}"></script>
     <script>
         (function(){
             const currentImage = document.querySelector('#currentImage');
@@ -100,10 +101,5 @@
 
         })();
     </script>
-
-    <!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
-    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-    <script src="{{ asset('js/algolia.js') }}"></script>
 
 @endsection

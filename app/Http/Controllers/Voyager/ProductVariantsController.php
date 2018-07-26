@@ -51,7 +51,7 @@ class ProductVariantsController extends VoyagerBaseController
         if (empty($attribute)) {
             $attribute = new Attribute;
             $attribute->name = $name;
-            $attribute->slug = str_slug($name, ''-'');
+            $attribute->slug = str_slug($name, '-');
             $attribute->save();
         }
 
@@ -77,7 +77,7 @@ class ProductVariantsController extends VoyagerBaseController
                 $attributeValue = new AttributeValue;
                 $attributeValue->attribute_id = $attribute->id;
                 $attributeValue->value = $value;
-                $attributeValue->slug = str_slug($value, ''-'');
+                $attributeValue->slug = str_slug($value, '-');
                 $attributeValue->save();
             }
 

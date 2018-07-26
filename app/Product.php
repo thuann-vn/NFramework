@@ -38,8 +38,6 @@ class Product extends Model
          */
         'columns' => [
             'products.name' => 10,
-            'products.details' => 5,
-            'products.description' => 2,
         ],
     ];
 

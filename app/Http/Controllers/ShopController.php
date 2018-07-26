@@ -71,7 +71,7 @@ class ShopController extends Controller
      * @param  string $slug
      * @return \Illuminate\Http\Response
      */
-    public function category(Request $request, $parentSlug , $slug)
+    public function category(Request $request, $parentSlug , $slug = null)
     {
         $pagination = config('shop.pagination');
         $category = Category::with('children')->where('slug', $parentSlug)->first();
@@ -93,6 +93,7 @@ class ShopController extends Controller
                 });
             });
         }else{
+            $childCategory = null;
             $products = Product::with(['categories','attributes'])->whereHas('categories', function ($query) use ($parentSlug) {
                 return $query->where('slug', $parentSlug);
             });
