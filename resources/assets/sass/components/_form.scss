@@ -1,12 +1,11 @@
 input {
   background: #fff;
   border: 1px solid #ddd !important;
-  border-bottom-left-radius: 0 !important;
-  border-top-left-radius: 0 !important;
+  border-radius: 4px;
   -webkit-box-shadow: none;
   box-shadow: none;
   -webkit-transition: none;
-  height: 44px;
+  height: 34px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;

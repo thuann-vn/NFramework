@@ -9,14 +9,17 @@
 
 @section('content')
 
-    @component('components.breadcrumbs')
-        <a href="/">Home</a>
-        <i class="fa fa-chevron-right breadcrumb-separator"></i>
-        <span><a href="{{ route('shop.index') }}">Shop</a></span>
-        <i class="fa fa-chevron-right breadcrumb-separator"></i>
-        <span>{{ $product->name }}</span>
-    @endcomponent
-
+    <div class="breadcrumbs">
+        <div class="breadcrumbs-container container">
+            <div>
+                <a href="/">{{__('frontend.breadcrumb.home')}}</a>
+                <i class="fa fa-chevron-right breadcrumb-separator"></i>
+                <span><a href="{{ route('shop.index') }}">Shop</a></span>
+                <i class="fa fa-chevron-right breadcrumb-separator"></i>
+                <span>{{ $product->name }}</span>
+            </div>
+        </div>
+    </div> <!-- end breadcrumbs -->
     <div class="container">
         @if (session()->has('success_message'))
             <div class="alert alert-success">
@@ -53,45 +56,54 @@
             </div>
         </div>
         <div class="product-section-information">
-            <h1 class="product-section-title">{{ $product->name }}</h1>
-            <div class="product-section-subtitle">{{ $product->details }}</div>
-            <div class="product-section-price">{{ $product->presentPrice() }}</div>
+            <h2 class="product-brand"><a href="{{route('shop.brand', $product->brand->slug)}}">{{$product->brand->name}}</a></h2>
+            <h1 class="product-name">{{ $product->name }}</h1>
+            <div class="product-subtitle">{{ $product->details }}</div>
+            <div class="price">
+                <span class="product-regular-price">{{ priceFormat($product->regular_price) }}</span>
+                <span class="product-price">{{ priceFormat($product->price) }}</span>
+            </div>
 
-            @if($product->variants->count()>0)
-                <div class="product-variant-select">
-                    <select>
-                        @foreach($product->variants as $variant)
-                            <option value="{{$variant->id}}">{{$variant->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="product-variants">
-                    @foreach($product->variants as $variant)
-                        <div class="product-variant">
-                            <input name="" type="checkbox"/>
-                            <img src="{{productImage($variant->image)}}"/>
-                        </div>
-                    @endforeach
-                </div>
 
-            @endif
-            <p>
-                {!! $product->description !!}
-            </p>
-
-            <p>&nbsp;</p>
-
-            <form action="{{ route('cart.store') }}" method="POST">
+            <form class="cart-form" action="{{ route('cart.store') }}" method="POST">
                 {{ csrf_field() }}
+
+                @if($product->variants->count()>0)
+                    <div class="form-group">
+                        <label>{{__('frontend.product.variants')}}</label>
+                        <div class="product-variants">
+                            @foreach($product->variants as $variant)
+                                <label for="sku_{{$variant->id}}" class="product-variant">
+                                    <input name="sku_id" id="sku_{{$variant->id}}" value="{{$variant->id}}" type="radio"/>
+                                    <img src="{{productImage($variant->image)}}" width="65" height="65"/>
+                                </label>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+
+                <div class="form-group">
+                    <label>{{__('frontend.product.quantity')}}:</label>
+                    <input class="quantity-input" name="quantity" value="1"/>
+                </div>
                 <input type="hidden" name="id" value="{{ $product->id }}">
                 <input type="hidden" name="name" value="{{ $product->name }}">
                 <input type="hidden" name="price" value="{{ $product->price }}">
-                <button type="submit" class="button button-plain">Add to Cart</button>
+                <button type="submit" class="button button-green button-cart">Add to Cart</button>
             </form>
         </div>
     </div> <!-- end product-section -->
 
     @include('partials.might-like')
+
+    <div class="">
+
+        <p>
+            {!! $product->description !!}
+        </p>
+
+        <p>&nbsp;</p>
+    </div>
 
 @endsection
 

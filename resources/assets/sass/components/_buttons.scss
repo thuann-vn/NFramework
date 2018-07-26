@@ -1,6 +1,7 @@
 .button {
     border: 1px solid $text-color;
-    padding: 12px 40px;
+    padding: 5px 38px;
+    border-radius: 4px;
 
     &:hover {
         color: $white;
@@ -40,4 +41,19 @@
 
 .button-container {
     margin: 80px 0;
+}
+
+.button-green{
+    background: $green;
+    color: white !important;
+    padding: 12px 40px;
+
+    &:hover {
+        background: darken($green, 7%);
+    }
+
+    &:disabled {
+        background: lighten($green, 10%);
+        cursor: not-allowed;
+    }
 }

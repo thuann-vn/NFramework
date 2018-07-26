@@ -1,6 +1,6 @@
 <?php
 
-function presentPrice($price)
+function priceFormat($price)
 {
     return number_format($price, 0 , '',',') .' ₫';
 }

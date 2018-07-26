@@ -65,13 +65,13 @@ class Product extends Model
 
     public function presentPrice()
     {
-        return money_format('$%i', $this->price);
+        return money_format('%i', $this->price);
     }
 
     public function regularPrice()
     {
         if(!empty($this->regular_price)){
-            return money_format('$%i', $this->regular_price);
+            return money_format('%i', $this->regular_price);
         }
         return 0;
     }

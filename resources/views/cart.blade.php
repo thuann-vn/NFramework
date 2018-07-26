@@ -68,7 +68,7 @@
                                 @endfor
                             </select>
                         </div>
-                        <div>{{ presentPrice($item->subtotal) }}</div>
+                        <div>{{ priceFormat($item->subtotal) }}</div>
                     </div>
                 </div> <!-- end cart-table-row -->
                 @endforeach
@@ -110,14 +110,14 @@
                         <span class="cart-totals-total">Total</span>
                     </div>
                     <div class="cart-totals-subtotal">
-                        {{ presentPrice(Cart::subtotal()) }} <br>
+                        {{ priceFormat(Cart::subtotal()) }} <br>
                         @if (session()->has('coupon'))
-                            -{{ presentPrice($discount) }} <br>&nbsp;<br>
+                            -{{ priceFormat($discount) }} <br>&nbsp;<br>
                             <hr>
-                            {{ presentPrice($newSubtotal) }} <br>
+                            {{ priceFormat($newSubtotal) }} <br>
                         @endif
-                        {{ presentPrice($newTax) }} <br>
-                        <span class="cart-totals-total">{{ presentPrice($newTotal) }}</span>
+                        {{ priceFormat($newTax) }} <br>
+                        <span class="cart-totals-total">{{ priceFormat($newTotal) }}</span>
                     </div>
                 </div>
             </div> <!-- end cart-totals -->

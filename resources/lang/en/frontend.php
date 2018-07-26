@@ -63,5 +63,9 @@ return [
             'high_to_low'=> 'Highest Price',
             'top_rated'=> 'Customer Rating'
         ]
+    ],
+    'product' => [
+        'quantity' => 'Quantity',
+        'variants' => 'Choose version'
     ]
 ];

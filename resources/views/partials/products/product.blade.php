@@ -10,9 +10,9 @@
             <div class="product-name">{{ $product->name }}</div>
         </a>
         @if(!empty($product->regular_price))
-            <div class="product-regular-price">{{ presentPrice($product->regular_price)}}</div>
+            <div class="product-regular-price">{{ priceFormat($product->regular_price)}}</div>
         @endif
-        <div class="product-price">{{ presentPrice($product->price) }}</div>
+        <div class="product-price">{{ priceFormat($product->price) }}</div>
     </div>
 
     @if(isInCart($product->id))
