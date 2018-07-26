@@ -44,7 +44,7 @@
                         <option value="newest" {{$sort=='newest'?'selected':''}}>{{__('frontend.category.sorts.newest')}}</option>
                         <option value="low_high" {{$sort=='low_high'?'selected':''}}>{{__('frontend.category.sorts.low_to_high')}}</option>
                         <option value="high_low" {{$sort=='high_low'?'selected':''}}>{{__('frontend.category.sorts.high_to_low')}}</option>
-                        <option value="top_rated" {{$sort=='top_rated'?'selected':''}}>{{__('frontend.category.sorts.top_rated')}}</option>
+                        {{--<option value="top_rated" {{$sort=='top_rated'?'selected':''}}>{{__('frontend.category.sorts.top_rated')}}</option>--}}
                     </select>
                 </form>
             </div>

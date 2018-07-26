@@ -58,7 +58,7 @@ class Product extends Model
     }
 
     public function orders(){
-        return $this->belongsToMany(OrderProduct::class,'product_id', 'id');
+        return $this->hasMany(OrderProduct::class,'product_id', 'id');
     }
 
     public function presentPrice()

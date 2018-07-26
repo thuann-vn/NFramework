@@ -2,5 +2,5 @@
 
 return [
 
-    'pagination' => env('SHOP_PAGINATION', 2),
+    'pagination' => env('SHOP_PAGINATION', 40),
 ];
