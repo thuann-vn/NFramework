@@ -8,7 +8,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>Laravel Ecommerce | @yield('title', '')</title>
+        <title>eBalo | @yield('title', '')</title>
 
         <link href="/img/favicon.ico" rel="SHORTCUT ICON" />
 
@@ -34,6 +34,13 @@
     @include('partials.footer')
 
     <!-- Scripts -->
+    <script>
+        const ROUTES={
+            'cart' : {
+                'add_to_cart': '{{route('cart.store')}}'
+            }
+        };
+    </script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 

@@ -183,7 +183,7 @@
 
     </div> <!-- end cart-section -->
 
-    @include('partials.might-like')
+    {{--@include('partials.might-like')--}}
 
 
 @endsection

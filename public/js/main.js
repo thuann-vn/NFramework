@@ -2,6 +2,7 @@ const eApp = {
     init: function(){
         this.initStickyNav();
         this.initScrollToAchor();
+        this.initCartButton();
     },
     initStickyNav: function(){
         // grab the initial top offset of the navigation
@@ -37,9 +38,17 @@ const eApp = {
         });
     },
     initCartButton: function(){
-        var addToCartButton = $('.add-to-card.not-added');
+        var addToCartButton = $('.add-to-cart.not-added');
         addToCartButton.click(function(e){
             e.preventDefault();
+
+            axios.post(ROUTES.cart.add_to_cart, {
+                'id' : $(this).data('id')
+            }).then(function (response) {
+                var modal = $(response.data);
+                $('body').append(modal);
+                modal.show();
+            })
         })
     },
     initScrollToAchor: function(){

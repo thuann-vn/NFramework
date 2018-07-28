@@ -59,7 +59,9 @@
             <h2 class="product-brand"><a href="{{route('shop.brand', $product->brand->slug)}}">{{$product->brand->name}}</a></h2>
             <h1 class="product-name">{{ $product->name }}</h1>
             <div class="price">
-                <span class="product-regular-price">{{ priceFormat($product->regular_price) }}</span>
+                @if(!empty($product->regular_price))
+                    <span class="product-regular-price">{{ priceFormat($product->regular_price) }}</span>
+                @endif
                 <span class="product-price">{{ priceFormat($product->price) }}</span>
             </div>
 

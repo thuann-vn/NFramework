@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\ProductSKU;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Validator;
@@ -35,18 +36,39 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        /**
+         * @var $product Product
+         */
+        $product = Product::findOrFail($request->id);
+
         $duplicates = Cart::search(function ($cartItem, $rowId) use ($request) {
             return $cartItem->id === $request->id;
         });
 
         if ($duplicates->isNotEmpty()) {
-            return redirect()->route('cart.index')->with('success_message', 'Item is already in your cart!');
+            $cartItem = $duplicates->first();
+            Cart::update($cartItem->rowId, $cartItem->qty + 1);
+        } else {
+            if ($request->sku_id) {
+                /**
+                 * @var $product ProductSKU
+                 */
+                $skuDetail = ProductSKU::find($request->sku_id);
+                Cart::add($product->id, $product->name, 1, $skuDetail->price, [$skuDetail])
+                    ->associate('App\Product');
+            } else {
+                Cart::add($product->id, $product->name, 1, $product->price)
+                    ->associate('App\Product');
+            }
         }
 
-        Cart::add($request->id, $request->name, 1, $request->price)
-            ->associate('App\Product');
+        $data = [
+            'count_items' => Cart::count(),
+            'total' => Cart::total(),
+            'product' => $product
+        ];
 
-        return redirect()->route('cart.index')->with('success_message', 'Item was added to your cart!');
+        return view('partials.shop.cart_popup')->with($data);
     }
 
     /**

@@ -20,19 +20,25 @@
             <span class="cart-icon"></span>
         </span>
         @else
-            <a href="javascript:;" class="cart-button add-to-cart">
-                <span class="cart-icon empty"></span>
-            </a>
+            @if($product->variants->count()>0)
+                <a href="{{route('shop.show', $product->slug)}}" class="cart-button add-to-cart" data-id="{{$product->id}}">
+                    <span class="cart-icon empty"></span>
+                </a>
+            @else
+                <a href="javascript:;" class="cart-button add-to-cart not-added" data-id="{{$product->id}}">
+                    <span class="cart-icon empty"></span>
+                </a>
+            @endif
         @endif
 
         @if(isInWishlist($product->id))
-            <a href="javascript:;" class="wishlist-button add-to-wishlist">
-                <span class="cart-icon heart"></span>
-            </a>
-        @else
-            <span class="wishlist-button">
-            <span class="cart-icon heart empty"></span>
+            <span class="wishlist-button" data-id="{{$product->id}}">
+            <span class="cart-icon heart"></span>
         </span>
+        @else
+            <a href="javascript:;" class="wishlist-button add-to-wishlist">
+                <span class="cart-icon heart empty"></span>
+            </a>
         @endif
     </div>
 </div>
