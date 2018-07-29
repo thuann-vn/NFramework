@@ -31,7 +31,7 @@ function isInWishlist($id){
 
 function getNumbers()
 {
-    $tax = config('cart.tax') / 100;
+    $tax = config('cart.tax');
     $discount = session()->get('coupon')['discount'] ?? 0;
     $code = session()->get('coupon')['name'] ?? null;
     $newSubtotal = (Cart::subtotal() - $discount);

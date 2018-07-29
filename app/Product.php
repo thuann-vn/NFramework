@@ -85,6 +85,11 @@ class Product extends Model
         return $query->inRandomOrder()->take(24);
     }
 
+
+    public function scopeRelatedProduct($query)
+    {
+        return $query->inRandomOrder()->take(8);
+    }
     /**
      * Get the indexable data array for the model.
      *

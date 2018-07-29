@@ -117,7 +117,7 @@
                             <div class="checkout-item-details">
                                 <div class="checkout-table-item">{{ $item->model->name }}</div>
                                 <div class="checkout-table-description">{{ $item->model->details }}</div>
-                                <div class="checkout-table-price">{{ $item->model->presentPrice() }}</div>
+                                <div class="checkout-table-price">{{ priceFormat($item->model->price) }}</div>
                             </div>
                         </div> <!-- end checkout-table -->
 
@@ -138,9 +138,7 @@
                             <hr>
                             New Subtotal <br>
                         @endif
-                        Tax (13%)<br>
                         <span class="checkout-totals-total">Total</span>
-
                     </div>
 
                     <div class="checkout-totals-right">
@@ -150,7 +148,6 @@
                             <hr>
                             {{ priceFormat($newSubtotal) }} <br>
                         @endif
-                        {{ priceFormat($newTax) }} <br>
                         <span class="checkout-totals-total">{{ priceFormat($newTotal) }}</span>
 
                     </div>

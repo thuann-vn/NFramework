@@ -72,5 +72,19 @@ return [
         'features' => 'Product Features',
         'specifications' => 'Product Specifications',
         'description' => 'Detailed Product Description'
+    ],
+    'cart' => [
+        'added_to_cart' => [
+            'item_added' => 'Item added to cart',
+            'ready' => ':count items ready to Checkout',
+            'view_cart' => 'View cart',
+            'check_out' => 'Check out',
+            'continue_shopping' => 'Continue shopping',
+            'total' => 'Total',
+            'cart_related' => 'Bought Together and Related Items'
+        ],
+        'item_price' => 'Item price',
+        'item_total' => 'Total',
+        'quantity' => 'Quantity'
     ]
 ];
