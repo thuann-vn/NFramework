@@ -32,9 +32,21 @@
                             @foreach (Cart::content() as $item)
                                 <div class="cart-table-row">
                                     <div class="cart-table-row-left">
-                                        <a href="{{ route('shop.show', $item->model->slug) }}"><img src="{{ productImage($item->model->image) }}" alt="item" class="cart-table-img"></a>
+                                        <a href="{{ route('shop.show', $item->model->slug) }}">
+                                            @if(!empty($item->options) && !empty($item->options[0]->image))
+                                                <img src="{{ productImage($item->options[0]->image) }}" alt="item" class="cart-table-img">
+                                            @else
+                                                <img src="{{ productImage($item->model->image) }}" alt="item" class="cart-table-img">
+                                            @endif
+                                        </a>
                                         <div class="cart-item-details">
-                                            <div class="cart-table-item"><a class="bold" href="{{ route('shop.show', $item->model->slug) }}">{{ $item->model->name }}</a></div>
+                                            <div class="cart-table-item">
+                                                <a class="bold" href="{{ route('shop.show', $item->model->slug) }}">{{ $item->model->name }}</a>
+                                                @foreach($item->options as $option)
+                                                    <br/>
+                                                    <span class="gray small">{{$option->name}}</span>
+                                                @endforeach
+                                            </div>
 
                                             <div class="cart-table-quantity">
                                                 <label class="">{{__('frontend.cart.quantity')}} : </label>

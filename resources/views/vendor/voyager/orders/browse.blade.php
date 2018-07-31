@@ -187,7 +187,7 @@
                                                 @else
                                                     @include('voyager::multilingual.input-hidden-bread-browse')
                                                     @if ($row->display_name == 'Total' || $row->display_name == 'Subtotal' || $row->display_name == 'Tax' || $row->display_name == 'Discount')
-                                                        <span>${{ $data->{$row->field} / 100 }}</span>
+                                                        <span> {{priceFormat($data->{$row->field} ) }}</span>
                                                     @else
                                                         <span>{{ $data->{$row->field} }}</span>
                                                     @endif

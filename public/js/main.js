@@ -49,6 +49,11 @@ const eApp = {
                 $('body').append(modal);
                 modal.show();
             })
+        });
+
+        $(document).on('click', '.modal-remove', function(e){
+            e.preventDefault();
+            $(this).parents('.modal').remove();
         })
     },
     initScrollToAchor: function(){

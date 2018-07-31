@@ -43,3 +43,63 @@ form {
     font-size: 16px;
   }
 }
+
+
+
+.control-indicator {
+    color: #fff
+}
+
+.control input:checked~.control-indicator {
+    color: #2a9dcc;
+    border: 1px solid #2a9dcc;
+    background-color: #fff
+}
+
+.checkbox input~.control-indicator::after {
+    content: "\ea22";
+    font: normal normal normal 17px/1 "Nucleo Mini";
+    background-image: none;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0;
+    position: initial;
+    -webkit-transform: none
+}
+
+.control input:focus~.control-indicator {
+    box-shadow: none
+}
+
+.control input:checked~.control-indicator {
+    color: #2a9dcc;
+    border: 1px solid #2a9dcc;
+    background-color: #fff
+}
+
+.control input:active~.control-indicator {
+    color: #2a9dcc;
+    background-color: #fff
+}
+
+.control input[disabled]~.control-indicator,.control.disabled input~.control-indicator {
+    color: silver;
+    background-color: #f0f0f0;
+    border: 1px solid silver;
+    cursor: default
+}
+
+.checkbox.disabled label,.control.disabled,.radio.disabled label {
+    color: silver;
+    cursor: default
+}
+
+.checkbox .control-indicator {
+    border-radius: 4px
+}
+
+.radio input~.control-indicator::after {
+    color: #2a9dcc;
+    background-color: #2a9dcc
+}

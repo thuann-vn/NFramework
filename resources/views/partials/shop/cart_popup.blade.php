@@ -5,7 +5,11 @@
             <div class="modal-body">
                 <div id="addToCartData" class="row">
                     <div class="text-center">
-                        <img src="{{productImage($product->image)}}">
+                        @if(!empty($skuDetail) && !empty($skuDetail->image))
+                            <img src="{{productImage($skuDetail->image)}}">
+                        @else
+                            <img src="{{productImage($product->image)}}">
+                        @endif
                     </div>
                     <div class="cart-info">
                         <i class="fas fa-check"></i>

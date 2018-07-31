@@ -3,6 +3,7 @@ const eProduct = {
         this.initSlider();
         this.initVariant();
         this.initRelatedProducts();
+        this.initCartForm();
     },
     initSlider: function(){
         $('.product-vertical-slider').slick({
@@ -40,6 +41,17 @@ const eProduct = {
             dots: true,
             centerMode: false,
         });
+    },
+    initCartForm: function () {
+        $('.cart-form').submit(function(e){
+            e.preventDefault();
+
+            axios.post(ROUTES.cart.add_to_cart, $(this).serialize()).then(function (response) {
+                var modal = $(response.data);
+                $('body').append(modal);
+                modal.show();
+            })
+        })
     }
 }
 

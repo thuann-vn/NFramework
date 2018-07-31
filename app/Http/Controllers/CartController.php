@@ -41,6 +41,7 @@ class CartController extends Controller
          */
         $product = Product::findOrFail($request->id);
         $relatedProducts = Product::where('slug', '!=', $product->slug)->relatedProduct()->get();
+        $skuDetail= null;
 
         $duplicates = Cart::search(function ($cartItem, $rowId) use ($request) {
             return $cartItem->id === $request->id;
@@ -67,7 +68,8 @@ class CartController extends Controller
             'count_items' => Cart::count(),
             'total' => Cart::total(),
             'product' => $product,
-            'relatedProducts' => $relatedProducts
+            'relatedProducts' => $relatedProducts,
+            'skuDetail' => $skuDetail
         ];
 
         return view('partials.shop.cart_popup')->with($data);

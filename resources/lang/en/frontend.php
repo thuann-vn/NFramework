@@ -10,15 +10,15 @@ return [
     | The following language lines are used by front end
     |
     */
-    'header'=> [
+    'header' => [
         'search_placeholder' => 'Search anything for travel',
         'hello_sign_in' => 'Hello, Sign In',
         'hello' => 'Hello, :name',
         'new?' => 'NEW CUSTOMER?',
-        'create_account'=> 'Create an account'
+        'create_account' => 'Create an account'
     ],
-    'footer'=>[
-        'support'=> [
+    'footer' => [
+        'support' => [
             'email_us' => 'Email Us',
             'email_description' => 'We’ll reply within one business day.',
             'live_chat' => 'Live Chat',
@@ -34,13 +34,13 @@ return [
         'register' => 'Sign Up',
         'login' => 'Login',
         'sign_in' => 'Sign in',
-        'my'=> 'My Account',
-        'track_order'=> 'Track My Orders',
+        'my' => 'My Account',
+        'track_order' => 'Track My Orders',
         'favorites' => 'My Favorites',
-        'address_book'=> 'My Address Book',
+        'address_book' => 'My Address Book',
         'log_out' => 'Log out'
     ],
-    'home'=>[
+    'home' => [
         'categories' => 'Shop by Category',
         'recommendations' => 'Recommendations For You',
         'brands' => 'Home of the Best Travel Brands'
@@ -53,15 +53,15 @@ return [
     'category' => [
         'children' => 'Categories',
         'filters' => 'YOUR REFINEMENTS',
-        'clear_filters'=> 'Clear all filters',
+        'clear_filters' => 'Clear all filters',
         'sort' => 'Sort by',
         'sorts' => [
-            'best_sellers'=> 'Best Sellers',
-            'featured'=> 'Featured',
-            'newest'=> 'Newest',
-            'low_to_high'=> 'Lowest Price',
-            'high_to_low'=> 'Highest Price',
-            'top_rated'=> 'Customer Rating'
+            'best_sellers' => 'Best Sellers',
+            'featured' => 'Featured',
+            'newest' => 'Newest',
+            'low_to_high' => 'Lowest Price',
+            'high_to_low' => 'Highest Price',
+            'top_rated' => 'Customer Rating'
         ]
     ],
     'product' => [
@@ -71,7 +71,8 @@ return [
         'similar_products' => 'Customers Also Bought',
         'features' => 'Product Features',
         'specifications' => 'Product Specifications',
-        'description' => 'Detailed Product Description'
+        'description' => 'Detailed Product Description',
+        'rating_and_reviews' => 'Reviews '
     ],
     'cart' => [
         'added_to_cart' => [
@@ -86,5 +87,23 @@ return [
         'item_price' => 'Item price',
         'item_total' => 'Total',
         'quantity' => 'Quantity'
+    ],
+    'checkout' => [
+        'your_order' => 'Your order',
+        'title' => 'Checkout',
+        'delivery' => [
+            'title' => 'Shipping address',
+            'email' => 'Your email',
+            'name' => 'Name',
+            'phone' => 'Phone number',
+            'address' => 'Address',
+            'city' => 'City',
+            'province' => 'Province'
+        ],
+        'payment' => [
+            'title' => 'Payment method',
+            'cash' => 'Cash on delivery',
+            'transfer' => 'Bank transfer'
+        ]
     ]
 ];
