@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', $product->name)
+@section('title', $product->getTranslatedAttribute('name'))
 
 @section('extra-css')
     <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
@@ -16,7 +16,7 @@
                 <i class="fa fa-chevron-right breadcrumb-separator"></i>
                 <span><a href="{{ route('shop.index') }}">Shop</a></span>
                 <i class="fa fa-chevron-right breadcrumb-separator"></i>
-                <span>{{ $product->name }}</span>
+                <span>{{ $product->getTranslatedAttribute('name') }}</span>
             </div>
         </div>
     </div> <!-- end breadcrumbs -->
@@ -56,8 +56,8 @@
             </div>
         </div>
         <div class="product-section-information">
-            <h2 class="product-brand"><a href="{{route('shop.brand', $product->brand->slug)}}">{{$product->brand->name}}</a></h2>
-            <h1 class="product-name">{{ $product->name }}</h1>
+            <h2 class="product-brand"><a href="{{route('shop.brand', $product->brand->slug)}}">{{$product->brand->getTranslatedAttribute('name')}}</a></h2>
+            <h1 class="product-name">{{ $product->getTranslatedAttribute('name') }}</h1>
             <div class="price">
                 @if(!empty($product->regular_price))
                     <span class="product-regular-price">{{ priceFormat($product->regular_price) }}</span>
@@ -88,9 +88,9 @@
                     <input class="quantity-input" name="quantity" value="1"/>
                 </div>
                 <input type="hidden" name="id" value="{{ $product->id }}">
-                <input type="hidden" name="name" value="{{ $product->name }}">
+                <input type="hidden" name="name" value="{{ $product->getTranslatedAttribute('name') }}">
                 <input type="hidden" name="price" value="{{ $product->price }}">
-                <button type="submit" class="button button-green button-cart">Add to Cart</button>
+                <button type="submit" class="button button-green button-cart">{{__('frontend.product.add_to_cart')}}</button>
             </form>
         </div>
     </div> <!-- end product-section -->
@@ -98,15 +98,15 @@
     <div class="container">
         <ul class="features-navigation-bar">
             <li class="text-center">
-                <a class="scrollToAnchor" href="#productFeatures">View Product Features<span class="hidden-xs hidden-sm hidden-md"> and Specifications</span></a>
+                <a class="scrollToAnchor" href="#productFeatures">{!! __('frontend.product.view_features') !!}</a>
             </li>
 
             <li class="text-center">
-                <a class="scrollToAnchor" href="#productDescr">See Product Description</a>
+                <a class="scrollToAnchor" href="#productDescr">{{__('frontend.product.see_description')}}</a>
             </li>
 
             <li class="text-center">
-                <a class="scrollToAnchor" href="#ratings-and-reviews">Read Customer Rating + Reviews</a>
+                <a class="scrollToAnchor" href="#ratings-and-reviews">{{__('frontend.product.read_reviews')}}</a>
             </li>
         </ul>
     </div>
@@ -125,10 +125,10 @@
         <div class="product-details">
             <div>
                 <h3 id="productFeatures">{{__('frontend.product.features')}} </h3>
-                <div class="product-features">{!! $product->description !!}</div>
+                <div class="product-features">{!! $product->getTranslatedAttribute('description') !!}</div>
 
                 <h3 id="productDescr">{{__('frontend.product.description')}} </h3>
-                <div class="product-features">{!! $product->details !!}</div>
+                <div class="product-features">{!! $product->getTranslatedAttribute('details') !!}</div>
             </div>
             <div>
                 <h3>{{__('frontend.product.specifications')}} </h3>

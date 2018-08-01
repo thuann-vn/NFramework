@@ -13,7 +13,7 @@
         <div>
             @if(!empty($department->image))
                 <div class="products-banner">
-                    <img src="{{productImage($department->image)}}" title="{{$department->name}}" alt="{{$department->name}}"/>
+                    <img src="{{productImage($department->image)}}" title="{{$department->getTranslatedAttribute('name')}}" alt="{{$department->getTranslatedAttribute('name')}}"/>
                 </div>
             @endif
 
@@ -23,7 +23,7 @@
                         <a href="{{route('shop.category', ['category'=>$category->slug,'parent'=>$category->parent->slug])}}">
                             <img src="{{productImage($category->image)}}"/>
 
-                            <h3>{{$category->name}}</h3>
+                            <h3>{{$category->getTranslatedAttribute('name')}}</h3>
                         </a>
                     @endforeach
                 </div>
@@ -35,7 +35,7 @@
                 </div>
             @endif
             <div class="products-header">
-                <h1 class="stylish-heading">{{ $department->name }}</h1>
+                <h1 class="stylish-heading">{{ $department->getTranslatedAttribute('name') }}</h1>
                 <div>
                     <strong>Price: </strong>
                     <a href="{{ route('shop.index', ['category'=> request()->category, 'sort' => 'low_high']) }}">Low to High</a> |
@@ -47,7 +47,7 @@
                 @forelse ($products as $product)
                     <div class="product">
                         <a href="{{ route('shop.show', $product->slug) }}"><img src="{{ productImage($product->image) }}" alt="product"></a>
-                        <a href="{{ route('shop.show', $product->slug) }}"><div class="product-name">{{ $product->name }}</div></a>
+                        <a href="{{ route('shop.show', $product->slug) }}"><div class="product-name">{{ $product->getTranslatedAttribute('name') }}</div></a>
                         <div class="product-price">{{ $product->presentPrice() }}</div>
                     </div>
                 @empty

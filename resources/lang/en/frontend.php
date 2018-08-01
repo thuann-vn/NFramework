@@ -79,7 +79,11 @@ return [
         'features' => 'Product Features',
         'specifications' => 'Product Specifications',
         'description' => 'Detailed Product Description',
-        'rating_and_reviews' => 'Reviews '
+        'rating_and_reviews' => 'Reviews ',
+        'add_to_cart' => 'Add to cart',
+        'view_features' => 'View Product Features<span class="hidden-xs hidden-sm hidden-md"> and Specifications</span>',
+        'see_description' => 'See Product Description',
+        'read_reviews' => 'Read Customer Rating + Reviews'
     ],
     'cart' => [
         'added_to_cart' => [

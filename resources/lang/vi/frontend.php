@@ -79,7 +79,11 @@ return [
         'features' => 'Tính năng sản phẩm',
         'specifications' => 'Thông số sản phẩm',
         'description' => 'Chi tiết sản phẩm',
-        'rating_and_reviews' => 'Đánh giá người dùng'
+        'rating_and_reviews' => 'Đánh giá người dùng',
+        'add_to_cart' => 'Thêm vào giỏ hàng',
+        'view_features' => 'Xem tính năng<span class="hidden-xs hidden-sm hidden-md"> và Thông số</span>',
+        'see_description' => 'Xem mô tả chi tiết',
+        'read_reviews' => 'Đọc đánh giá của khách hàng'
     ],
     'cart' => [
         'added_to_cart' => [

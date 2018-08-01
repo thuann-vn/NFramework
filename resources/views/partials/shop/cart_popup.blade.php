@@ -21,10 +21,10 @@
                             <span>{{__('frontend.cart.added_to_cart.ready', ['count' => $count_items])}}</span> - <a class="link" href="{{route('cart.index')}}">{{__('frontend.cart.added_to_cart.view_cart')}}</a>
                         </div>
                         <div class="small brand-name">
-                            <span>{{$product->brand->name}}</span>
+                            <span>{{$product->brand->getTranslatedAttribute('name')}}</span>
                         </div>
                         <div class="buffer-bottom small bold black">
-                            <span>{{$product->name}}</span>
+                            <span>{{$product->getTranslatedAttribute('name')}}</span>
                         </div>
                         <div class="buffer-bottom-medium large bold">
                             <span class="cart-price">{{priceFormat($product->price)}}</span>

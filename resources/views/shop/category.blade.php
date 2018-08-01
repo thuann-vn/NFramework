@@ -17,14 +17,14 @@
                         <i class="fa fa-chevron-right breadcrumb-separator"></i>
 
                         @if(empty($childCategory))
-                            <span>{{$category->name}}</span>
+                            <span>{{$category->getTranslatedAttribute('name')}}</span>
                         @else
-                            <a href="{{route('shop.category', $category->slug)}}">{{$category->name}}</a>
+                            <a href="{{route('shop.category', $category->slug)}}">{{$category->getTranslatedAttribute('name')}}</a>
                         @endif
 
                         @if(!empty($childCategory))
                             <i class="fa fa-chevron-right breadcrumb-separator"></i>
-                            <span>{{$childCategory->name}}</span>
+                            <span>{{$childCategory->getTranslatedAttribute('name')}}</span>
                         @endif
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                 </div>
             @endif
             <div class="products-header">
-                <h1 class="stylish-heading">{{ !empty($childCategory)? $childCategory->name :$category->name }}</h1>
+                <h1 class="stylish-heading">{{ !empty($childCategory)? $childCategory->getTranslatedAttribute('name') :$category->getTranslatedAttribute('name') }}</h1>
                 <form action="{{request()->fullUrl()}}" method="get" class="sort-form">
                     <strong>{{__('frontend.category.sort')}}: </strong>
                     <select name="sort" id="searchSortDropdown" class="form-control">
