@@ -54,3 +54,5 @@ Route::get('/contact', 'HomeController@index')->name('contact');
 Route::get('/search', 'ShopController@search')->name('search');
 
 Route::get('/search-algolia', 'ShopController@searchAlgolia')->name('search-algolia');
+
+Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@changeLocale']);

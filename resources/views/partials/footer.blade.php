@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="footer-subscribe-form">
-                    <h4>{!! __('footer.subscribe_form.title') !!}</h4>
+                    <h4>{!! __('frontend.footer.subscribe_form.title') !!}</h4>
 
                     <form>
                         <div class="form-group">
@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="footer-social-links">
-                    <h4>{!! __('footer.social_links.title') !!}</h4>
+                    <h4>{!! __('frontend.footer.social_links.title') !!}</h4>
 
                     <a href="{{setting('site.facebook_url')}}"><i class="fab fa-facebook-f"></i></a>
                     <a href="{{setting('site.twitter_url')}}"><i class="fab fa-twitter"></i></a>
@@ -72,8 +72,8 @@
                 {{ menu('footer', 'partials.menus.footer') }}
 
                 <div class="gift-card">
-                    <h4>{!! __('footer.gift_cards.title') !!}</h4>
-                    <p>{!! __('footer.gift_cards.description') !!}</p>
+                    <h4>{!! __('frontend.footer.gift_cards.title') !!}</h4>
+                    <p>{!! __('frontend.footer.gift_cards.description') !!}</p>
                 </div>
             </div>
         </div>

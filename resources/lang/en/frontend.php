@@ -25,6 +25,13 @@ return [
             'live_chat_description' => 'The quickest way to get help.',
             'help_center' => 'Customer Help Center',
             'help_center_description' => 'Find answers online.'
+        ],
+        'subscribe_form' => [
+            'title'=> 'Newsletter Subscribe'
+        ],
+        'gift_cards' => [
+            'title'=> 'Gift Cards',
+            'description' => 'Please contact us for more information'
         ]
     ],
     'breadcrumb' => [
