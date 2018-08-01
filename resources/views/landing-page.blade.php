@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', setting('home.home_title'))
+
 @section('extra-css')
     <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/slick/slick-theme.css') }}">

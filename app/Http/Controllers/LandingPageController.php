@@ -19,7 +19,7 @@ class LandingPageController extends Controller
     {
         $products = Product::where('featured', true)->take(16)->inRandomOrder()->get();
         $homeSlider = Slider::where('name', 'Home Slider')->first();
-        $featuredCategories = Category::where('featured',1)->get();
+        $featuredCategories = Category::where('home_featured',1)->get();
         $fearuedBrands = Brand::where('featured',1)->get();
         return view('landing-page')
             ->with('featuredCategories', $featuredCategories)
