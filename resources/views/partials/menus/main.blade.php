@@ -2,7 +2,7 @@
     @foreach($items as $menu_item)
         <li>
             <a href="{{ $menu_item->link() }}">
-                {{ $menu_item->title }}
+                {{ $menu_item->getTranslatedAttribute('title') }}
             </a>
 
             @if(!empty($menu_item->children))
@@ -12,7 +12,7 @@
                     }
                 @endphp
                 <div class="mega-menu">
-                    <div class="mega-menu-title">{{$menu_item->title}}</div>
+                    <div class="mega-menu-title">{{$menu_item->getTranslatedAttribute('title')}}</div>
                     <div class="mega-menu-wrap">
                         @foreach($menu_item->children->sortBy('order') as $column)
                             <div class="mega-menu-col">
@@ -24,11 +24,11 @@
                                     @endphp
 
                                     @if(empty($columnOption) || !isset($columnOption->hide_title))
-                                        <p class="mega-menu-section-title">{{$columSection->title}}</p>
+                                        <p class="mega-menu-section-title">{{$columSection->getTranslatedAttribute('title')}}</p>
                                     @endif
                                     <ul>
                                         @foreach($columSection->children->sortBy('order') as $megaItem)
-                                            <li><a href="{{$megaItem->url}}" title="{{$megaItem->title}}">{{$megaItem->title}}</a></li>
+                                            <li><a href="{{$megaItem->url}}" title="{{$megaItem->getTranslatedAttribute('title')}}">{{$megaItem->getTranslatedAttribute('title')}}</a></li>
                                         @endforeach
                                     </ul>
                                     @php
