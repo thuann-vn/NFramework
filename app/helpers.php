@@ -50,3 +50,7 @@ function getNumbers()
         'newTotal' => $newTotal,
     ]);
 }
+
+function getRelatedProducts($slug){
+    return \App\Product::where('slug', '!=', $slug)->relatedProduct()->get();
+}

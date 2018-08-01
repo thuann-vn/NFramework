@@ -4,7 +4,7 @@
     </a>
     <div class="product-info">
         @if(!empty($product->brand))
-            <a class="product-brand" href="{{route('shop.brand', $product->brand->slug)}}">{{$product->brand->getTranslatedAttribute('name')}}</a>
+            <a class="product-brand" href="{{ route('shop.show', $product->slug) }}">{{$product->brand->getTranslatedAttribute('name')}}</a>
         @endif
         <a href="{{ route('shop.show', $product->slug) }}">
             <div class="product-name">{{ $product->getTranslatedAttribute('name') }}</div>
@@ -33,8 +33,8 @@
 
         @if(isInWishlist($product->id))
             <span class="wishlist-button" data-id="{{$product->id}}">
-            <span class="cart-icon heart"></span>
-        </span>
+                <span class="cart-icon heart"></span>
+            </span>
         @else
             <a href="javascript:;" class="wishlist-button add-to-wishlist">
                 <span class="cart-icon heart empty"></span>

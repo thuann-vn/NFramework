@@ -7,6 +7,11 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 
 class SaveForLaterController extends Controller
 {
+    public function index(){
+        $items= Cart::instance('saveForLater')->content();
+        return view('favorites')->with(['items'=> $items]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

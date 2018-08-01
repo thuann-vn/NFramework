@@ -14,7 +14,7 @@ Route::patch('/cart/{product}', 'CartController@update')->name('cart.update');
 Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
 Route::post('/cart/switchToSaveForLater/{product}', 'CartController@switchToSaveForLater')->name('cart.switchToSaveForLater');
 
-Route::delete('/wish-list', 'SaveForLaterController@destroy')->name('saveForLater.index');
+Route::get('/wish-list', 'SaveForLaterController@index')->name('saveForLater.index');
 Route::delete('/wish-list/{product}', 'SaveForLaterController@destroy')->name('saveForLater.destroy');
 Route::post('/wish-list/switchToCart/{product}', 'SaveForLaterController@store')->name('saveForLater.store');
 Route::post('/wish-list/switchToCart/{product}', 'SaveForLaterController@switchToCart')->name('saveForLater.switchToCart');

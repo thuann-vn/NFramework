@@ -2,10 +2,6 @@
 
 @section('title', 'Products')
 
-@section('extra-css')
-    <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">
-@endsection
-
 @section('content')
     <div class="products-section container">
         @include('partials.shop.category_sidebar')

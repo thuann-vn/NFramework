@@ -24,7 +24,7 @@
             @if (Cart::count() > 0)
                 <div class="cart-wrapper">
                     <div class="cart-heading">
-                        <h4>{{ Cart::count() }} item(s) in Shopping Cart</h4>
+                        <h4>{{__('frontend.cart.items_in_cart', ['total' => Cart::count()])}}</h4>
                     </div>
                     <div class="cart-content">
 
@@ -61,13 +61,13 @@
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
 
-                                                    <button type="submit" class="cart-options">Remove</button>
+                                                    <button type="submit" class="cart-options">{{__('frontend.cart.remove')}}</button>
                                                 </form>
                                                 <span class="separator">|</span>
                                                 <form action="{{ route('cart.switchToSaveForLater', $item->rowId) }}" method="POST">
                                                     {{ csrf_field() }}
 
-                                                    <button type="submit" class="cart-options">Save for Later</button>
+                                                    <button type="submit" class="cart-options">{{__('frontend.cart.move_to_wishlist')}}</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -84,13 +84,13 @@
 
                         @if (! session()->has('coupon'))
 
-                            <a href="#" class="have-code">Have a Code?</a>
+                            <a href="#" class="have-code">{{__('frontend.cart.have_code')}}</a>
 
                             <div class="have-code-container">
                                 <form action="{{ route('coupon.store') }}" method="POST">
                                     {{ csrf_field() }}
                                     <input type="text" name="coupon_code" id="coupon_code">
-                                    <button type="submit" class="button button-green">Apply</button>
+                                    <button type="submit" class="button button-green">{{__('frontend.cart.apply_code')}}</button>
                                 </form>
                             </div> <!-- end have-code-container -->
                         @endif
@@ -98,47 +98,11 @@
                 </div>
             @else
 
-                <h3>No items in Cart!</h3>
+                <h3>{{__('frontend.cart.empty')}}</h3>
                 <div class="spacer"></div>
-                <a href="{{ route('shop.index') }}" class="button">Continue Shopping</a>
+                <a href="{{ route('landing-page') }}" class="button">{{__('frontend.cart.added_to_cart.continue_shopping')}}</a>
                 <div class="spacer"></div>
 
-            @endif
-
-            @if (Cart::instance('saveForLater')->count() > 0)
-                <h2>{{ Cart::instance('saveForLater')->count() }} item(s) Saved For Later</h2>
-
-                <div class="saved-for-later cart-table">
-                    @foreach (Cart::instance('saveForLater')->content() as $item)
-                    <div class="cart-table-row">
-                        <div class="cart-table-row-left">
-                            <a href="{{ route('shop.show', $item->model->slug) }}"><img src="{{ asset('img/products/'.$item->model->slug.'.jpg') }}" alt="item" class="cart-table-img"></a>
-                            <div class="cart-item-details">
-                                <div class="cart-table-item"><a href="{{ route('shop.show', $item->model->slug) }}">{{ $item->model->name }}</a></div>
-                                <div class="cart-table-description">{{ $item->model->details }}</div>
-                            </div>
-                        </div>
-                        <div class="cart-table-row-right">
-                            <div class="cart-table-actions">
-                                <form action="{{ route('saveForLater.destroy', $item->rowId) }}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-
-                                    <button type="submit" class="cart-options">Remove</button>
-                                </form>
-
-                                <form action="{{ route('saveForLater.switchToCart', $item->rowId) }}" method="POST">
-                                    {{ csrf_field() }}
-
-                                    <button type="submit" class="cart-options">Move to Cart</button>
-                                </form>
-                            </div>
-
-                            <div>{{ $item->model->presentPrice() }}</div>
-                        </div>
-                    </div> <!-- end cart-table-row -->
-                    @endforeach
-                </div> <!-- end saved-for-later -->
             @endif
         </div>
 
@@ -147,7 +111,7 @@
                 <div class="cart-totals">
                     <div class="cart-totals-right">
                         <div class="text-left">
-                            Subtotal <br>
+                            {{__('frontend.cart.subTotal')}} <br>
                             @if (session()->has('coupon'))
                                 Code ({{ session()->get('coupon')['name'] }})
                                 <form action="{{ route('coupon.destroy') }}" method="POST" style="display:block">
@@ -158,7 +122,7 @@
                                 <hr>
                                 New Subtotal <br>
                             @endif
-                            <span class="cart-totals-total">Total</span>
+                            <span class="cart-totals-total">{{__('frontend.cart.total')}}</span>
                         </div>
                         <div class="cart-totals-subtotal">
                             {{ priceFormat(Cart::instance('default')->subtotal()) }} <br>
@@ -173,8 +137,8 @@
                 </div> <!-- end cart-totals -->
 
                 <div class="cart-buttons">
-                    <a href="{{ route('shop.index') }}" class="button">Continue Shopping</a>
-                    <a href="{{ route('checkout.index') }}" class="button button-green">Proceed to Checkout</a>
+                    <a href="{{ route('landing-page') }}" class="button">{{__('frontend.cart.continue_shopping')}}</a>
+                    <a href="{{ route('checkout.index') }}" class="button button-green">{{__('frontend.cart.process_to_checkout')}}</a>
                 </div>
             </div>
         @endif

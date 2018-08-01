@@ -2,10 +2,6 @@
 
 @section('title', 'Products')
 
-@section('extra-css')
-    <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">
-@endsection
-
 @section('content')
     <div class="products-section container">
         @include('partials.shop.department_sidebar')
@@ -45,11 +41,7 @@
 
             <div class="products text-center">
                 @forelse ($products as $product)
-                    <div class="product">
-                        <a href="{{ route('shop.show', $product->slug) }}"><img src="{{ productImage($product->image) }}" alt="product"></a>
-                        <a href="{{ route('shop.show', $product->slug) }}"><div class="product-name">{{ $product->getTranslatedAttribute('name') }}</div></a>
-                        <div class="product-price">{{ $product->presentPrice() }}</div>
-                    </div>
+                   @include('partials.products.list_product')
                 @empty
                     <div style="text-align: left">No items found</div>
                 @endforelse
@@ -60,11 +52,4 @@
         </div>
     </div>
 
-@endsection
-
-@section('extra-js')
-    <!-- Include AlgoliaSearch JS Client and autocomplete.js library -->
-    <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-    <script src="{{ asset('js/algolia.js') }}"></script>
 @endsection

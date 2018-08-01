@@ -90,6 +90,7 @@ class Product extends Model
     {
         return $query->inRandomOrder()->take(8);
     }
+
     /**
      * Get the indexable data array for the model.
      *

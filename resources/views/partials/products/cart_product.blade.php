@@ -4,7 +4,7 @@
     </a>
     <div class="product-info">
         @if(!empty($product->brand))
-            <a class="product-brand" href="{{route('shop.brand', $product->brand->slug)}}">{{$product->brand->getTranslatedAttribute('name')}}</a>
+            <a class="product-brand" href="{{ route('shop.show', $product->slug) }}">{{$product->brand->getTranslatedAttribute('name')}}</a>
         @endif
         <a href="{{ route('shop.show', $product->slug) }}">
             <div class="product-name">{{ $product->getTranslatedAttribute('name') }}</div>

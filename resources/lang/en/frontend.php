@@ -32,6 +32,9 @@ return [
         'gift_cards' => [
             'title'=> 'Gift Cards',
             'description' => 'Please contact us for more information'
+        ],
+        'social_links'=> [
+            'title' => 'Social links'
         ]
     ],
     'breadcrumb' => [
@@ -45,7 +48,24 @@ return [
         'track_order' => 'Track My Orders',
         'favorites' => 'My Favorites',
         'address_book' => 'My Address Book',
-        'log_out' => 'Log out'
+        'log_out' => 'Log out',
+        'new_customer' => 'New Customer',
+        'new_customer_description' => '<p><strong>Save time now.</strong></p><p>You don\'t need an account to checkout.</p>',
+        'create_account' => 'Create Account',
+        'create_account_description' => '<p><strong>Save time later.</strong></p><p>Create an account for fast checkout and easy access to order history.</p>',
+        'return_customer' => 'Return Customer',
+        'continue_as_guest' => 'Continue as Guest',
+        'login_button' => 'Login',
+        'remember_me' => 'Remember me',
+        'forgot_your_password' => 'Forgot your password?',
+        'register' => 'Register your account',
+        'already_have_an_account' => 'Already have an account?',
+        'name' => 'Your name',
+        'email' => 'Email address',
+        'password' => 'Password',
+        'confirm_password' => 'Confirm password',
+        'register_description' => '<p><strong>Save time now.</strong></p><p>Creating an account will allow you to checkout faster in the future, have easy access to order history and customize your experience to suit your preferences.</p>',
+
     ],
     'home' => [
         'categories' => 'Shop by Category',
@@ -86,6 +106,8 @@ return [
         'read_reviews' => 'Read Customer Rating + Reviews'
     ],
     'cart' => [
+        'empty' => 'Your shopping cart is empty.',
+        'items_in_cart' => ':total Items in your cart',
         'added_to_cart' => [
             'item_added' => 'Item added to cart',
             'ready' => ':count items ready to Checkout',
@@ -97,7 +119,15 @@ return [
         ],
         'item_price' => 'Item price',
         'item_total' => 'Total',
-        'quantity' => 'Quantity'
+        'quantity' => 'Quantity',
+        'remove' => 'Remove',
+        'move_to_wishlist' => 'Move to favorites',
+        'have_code' => 'Have code',
+        'apply_code' => 'Apply code',
+        'subTotal' => 'Subtotal',
+        'total' => 'Total',
+        'continue_shopping' => 'Continue Shopping',
+        'process_to_checkout' => 'Process to Checkout'
     ],
     'checkout' => [
         'your_order' => 'Your order',
@@ -115,6 +145,14 @@ return [
             'title' => 'Payment method',
             'cash' => 'Cash on delivery',
             'transfer' => 'Bank transfer'
-        ]
+        ],
+        'complete' => 'Complete Order'
+    ],
+    'wishlist' => [
+        'items_in_wishlist' => ':total Items in your cart',
+        'your_favorites' => 'Your favorites',
+        'you_may_also_like' => 'You may also like...',
+        'remove' => 'Remove favorites',
+        'move_to_cart' => 'Move to cart'
     ]
 ];

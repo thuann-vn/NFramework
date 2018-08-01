@@ -89,7 +89,7 @@
 
                         <div class="spacer"></div>
 
-                        <button type="submit" id="complete-order" class="button-primary full-width">Complete Order</button>
+                        <button type="submit" id="complete-order" class="button-primary full-width">{{__('frontend.checkout.complete')}}</button>
                     </form>
                 </div>
 
@@ -100,14 +100,14 @@
 
                     <div class="checkout-totals">
                         <div class="checkout-totals-left">
-                            Subtotal <br>
+                            {{__('frontend.cart.subTotal')}} <br>
                             @if (session()->has('coupon'))
                                 Discount ({{ session()->get('coupon')['name'] }}) :
                                 <br>
                                 <hr>
                                 New Subtotal <br>
                             @endif
-                            <span class="checkout-totals-total">Total</span>
+                            <span class="checkout-totals-total">{{__('frontend.cart.total')}}</span>
                         </div>
 
                         <div class="checkout-totals-right">

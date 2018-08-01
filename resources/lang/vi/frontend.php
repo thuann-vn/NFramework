@@ -32,6 +32,9 @@ return [
         'gift_cards' => [
             'title'=> 'Thẻ mua sắm',
             'description' => 'Vui lòng liên hệ chúng tôi để đăng ký thẻ tặng mua sắm tại cửa hàng.'
+        ],
+        'social_links'=> [
+            'title' => 'Liên kết'
         ]
     ],
     'breadcrumb' => [
@@ -45,7 +48,24 @@ return [
         'track_order' => 'Theo dõi đơn hàng',
         'favorites' => 'Danh sách yêu thích',
         'address_book' => 'Địa chỉ giao hàng',
-        'log_out' => 'Đăng xuất'
+        'log_out' => 'Đăng xuất',
+        'new_customer' => 'Khách hàng mới',
+        'new_customer_description' => '<p><strong>Tiến hành đặt hàng ngay.</strong></p><p>Không cần tài khoản để đặt hàng.</p>',
+        'create_account' => 'Tạo tài khoản',
+        'create_account_description' => '<p><strong>Tiết kiệm thời gian cho lần sau.</strong></p><p>Tạo tài khoản để quản lý đơn hàng và theo dõi đơn hàng của bạn.</p>',
+        'return_customer' => 'Đăng nhập tài khoản',
+        'login_button' => 'Đăng nhập',
+        'remember_me' => 'Ghi nhớ đăng nhập',
+        'continue_as_guest' => 'Tiếp tục',
+        'forgot_your_password' => 'Quên mật khẩu?',
+        'register' => 'Đăng ký tài khoản',
+        'already_have_an_account' => 'Đã có tài khoản?',
+        'name' => 'Họ tên',
+        'email' => 'Email',
+        'password' => 'Mật khẩu',
+        'confirm_password' => 'Xác nhận mật khẩu',
+        'register_description' => '<p><strong>Tiết kiệm thời gian.</strong></p><p>Tạo tài khoản để đặt hàng nhanh hơn, quản lý địa chỉ giao hàng, theo dõi đơn hàng và lịch sử đặt hàng.</p>',
+
     ],
     'home' => [
         'categories' => 'Danh mục cho bạn',
@@ -86,6 +106,8 @@ return [
         'read_reviews' => 'Đọc đánh giá của khách hàng'
     ],
     'cart' => [
+        'empty' => 'Giỏ hàng của bạn chưa có sản phẩm nào.',
+        'items_in_cart' => ':total Sản phẩm trong giỏ hàng',
         'added_to_cart' => [
             'item_added' => 'Sản phẩm đã thêm vào giỏ',
             'ready' => ':count sản phẩm sẵn sàng đặt hàng',
@@ -97,7 +119,15 @@ return [
         ],
         'item_price' => 'Giá sản phẩm',
         'item_total' => 'Thành tiền',
-        'quantity' => 'Số lượng'
+        'quantity' => 'Số lượng',
+        'remove' => 'Xóa khỏi giỏ hàng',
+        'move_to_wishlist' => 'Chuyển vào yêu thích',
+        'have_code' => 'Mã giảm giá',
+        'apply_code' => 'Áp dụng',
+        'subTotal' => 'Tạm tính',
+        'total' => 'Tổng tiền',
+        'continue_shopping' => 'Tiếp tục mua hàng',
+        'process_to_checkout' => 'Tiến hành đặt hàng'
     ],
     'checkout' => [
         'your_order' => 'ĐƠN HÀNG',
@@ -115,6 +145,14 @@ return [
             'title' => 'Phương thức thanh toán',
             'cash' => 'Tiền mặt khi nhận hàng',
             'transfer' => 'Chuyển khoản qua ngân hàng'
-        ]
+        ],
+        'complete' => 'Đặt Hàng'
+    ],
+    'wishlist' => [
+        'items_in_wishlist' => ':total Sản phẩm yêu thích',
+        'your_favorites' => 'Yêu thích',
+        'you_may_also_like' => 'Có thể bạn quan tâm...',
+        'remove' => 'Xóa khỏi danh sách',
+        'move_to_cart' => 'Chuyển vào giỏ hàng'
     ]
 ];
