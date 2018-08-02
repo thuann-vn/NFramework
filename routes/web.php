@@ -6,7 +6,7 @@ Route::get('/shop', 'ShopController@index')->name('shop.index');
 Route::get('/product/{product}', 'ShopController@show')->name('shop.show');
 Route::get('/category/{parent}/{category?}', 'ShopController@category')->name('shop.category');
 Route::get('/department/{department}', 'ShopController@department')->name('shop.department');
-Route::get('/brand/{brand}', 'ShopController@brand')->name('shop.brand');
+Route::get('/brand/{brand}/{category?}', 'ShopController@brand')->name('shop.brand');
 
 Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::post('/cart', 'CartController@store')->name('cart.store');
@@ -30,6 +30,8 @@ Route::get('/guestCheckout', 'CheckoutController@index')->name('guestCheckout.in
 
 Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.index');
 
+Route::get('/travel-center', 'postController@index')->name('travel_center.index');
+Route::get('/travel-center/{post}', 'postController@show')->name('travel_center.show');
 //ADMIN ROUTES
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

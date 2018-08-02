@@ -74,8 +74,8 @@ return [
     ],
     'department' => [
         'featured' => 'Nổi bật',
-        'brands' => 'Mua theo nhãn hiệu',
-        'attributes' => 'Mua theo :name'
+        'brands' => 'Lọc theo nhãn hiệu',
+        'attributes' => 'Lọc theo :name'
     ],
     'category' => [
         'children' => 'Danh mục',

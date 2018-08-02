@@ -60,8 +60,9 @@ const eApp = {
         $('.scrollToAnchor').click(function(e){
             e.preventDefault();
             var target = $(this).attr('href');
+            var offset = $(this).data('offset');
             $('html, body').animate({
-                scrollTop: $(target).offset().top - 100
+                scrollTop: $(target).offset().top - (offset?parseInt(offset):100)
             }, 300);
         })
     }

@@ -105,14 +105,6 @@ class ShopController extends Controller
             });
         }
 
-        $products = Product::with(['categories','attributes'])->whereHas('categories', function ($query) use ($parentSlug, $slug) {
-            return $query->where('slug', $slug)->orWhere(function($query) use ($parentSlug, $slug){
-                return $query->whereHas('parent', function($child) use ($parentSlug, $slug){
-                    return $child->where('slug', $slug);
-                });
-            });
-        });
-
         //Filters
         $filters= [
             'category' => $request->input('category'),
@@ -175,6 +167,110 @@ class ShopController extends Controller
             'category' => $category,
             'categoryName' => $category->name,
             'brands' => $brands,
+            'attributes' => $attributes,
+            'filters' =>$filters,
+            'sort' => $request->input('sort'),
+            'currentFilters'=>$currentFilters,
+            'childCategory' => $childCategory
+        ]);
+    }
+
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  string $slug
+     * @return \Illuminate\Http\Response
+     */
+    public function brand(Request $request, $slug, $categorySlug = null)
+    {
+        $pagination = config('shop.pagination');
+        $brand = Brand::where('slug', $slug)->first();
+
+        $categories = Category::whereHas('products', function ($products) use ($brand) {
+            return $products->where('brand_id', $brand->id);
+        })->get();
+        $attributes = Attribute::has('values')->get();
+
+        //Get product by category
+        $products = null;
+        if(!empty($categorySlug)){
+            $childCategory = Category::with('children')->where('slug', $categorySlug)->first();
+
+            $products = Product::with(['attributes'])->where('brand_id', $brand->id)->whereHas('categories', function ($query) use ($categorySlug) {
+                return $query->where('slug', $categorySlug)->orWhere(function($query) use ($categorySlug){
+                    return $query->whereHas('parent', function($child) use ($categorySlug){
+                        return $child->where('slug', $categorySlug);
+                    });
+                });
+            });
+        }else{
+            $childCategory = null;
+            $products = Product::with(['categories','attributes'])->where('brand_id', $brand->id);
+        }
+
+        //Filters
+        $filters= [
+            'category' => $request->input('category'),
+            'brand' => []
+        ];
+        $brandFilters = $request->has('brand')? explode('~',$request->input('brand')): [];
+
+        $currentFilters = [];
+        if(!empty($brandFilters)){
+            $filters['brand'] = $brandFilters;
+
+            $products = $products->whereHas('brand', function($query) use ($brandFilters){
+                return $query->whereIn('slug', $brandFilters);
+            });
+
+            //Add to current filters
+            $currentFilters['brand'] = Brand::whereIn('slug', $brandFilters)->get(['name', 'slug', 'id'])->toArray();
+        }
+
+        foreach ($attributes as $attribute){
+            if(!empty($request->input($attribute->slug))){
+                $filterSlugs = explode('~',$request->input($attribute->slug));
+                $filters[$attribute->slug] = $filterSlugs;
+
+                //Add to filters
+                $products = $products->whereHas('attributes', function($attributes) use ($filterSlugs){
+                    return $attributes -> whereHas('details', function ($details) use ($filterSlugs){
+                        return $details->whereHas('attributeValue', function($values) use ($filterSlugs){
+                            return $values->whereIn('slug', $filterSlugs);
+                        });
+                    });
+                });
+
+                //Add to current filters
+                $currentFilters[$attribute->slug] = AttributeValue::whereIn('slug', $filterSlugs)->get(['value', 'slug', 'id'])->toArray();
+            }else{
+                $filters[$attribute->slug] = [];
+            }
+        }
+
+        //Sort
+        switch (request()->sort){
+            case 'featured':
+                $products = $products->orderBy('featured', 'desc'); break;
+            case 'best_seller':
+                $products = $products->withCount('orders')->orderBy('orders_count', 'desc'); break;
+            case 'newest':
+                $products = $products->orderBy('created_at', 'desc'); break;
+            case 'low_high':
+                $products = $products->orderBy('price'); break;
+            case 'high_low':
+                $products = $products->orderBy('price', 'desc'); break;
+        }
+
+        $products = $products->paginate($pagination);
+
+        return view('shop.brand')->with([
+            'products' => $products,
+            'categories'=>$categories,
+            'brand' => $brand,
+            'brandName' => $brand->name,
             'attributes' => $attributes,
             'filters' =>$filters,
             'sort' => $request->input('sort'),

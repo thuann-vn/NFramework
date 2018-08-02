@@ -154,5 +154,13 @@ return [
         'you_may_also_like' => 'You may also like...',
         'remove' => 'Remove favorites',
         'move_to_cart' => 'Move to cart'
+    ],
+    'travel_center' => [
+        'guides_and_lists' => 'Travel Guides + Lists',
+        'featured_categories' => 'Featured Categories',
+        'featured_brands' => 'Featured Brands',
+        'guides_and_lists_heading' => 'Travel<h3>Guides + Lists</h3>',
+        'featured_categories_heading' => 'Featured<h3>Categories</h3>',
+        'featured_brands_heading' => 'Featured<h3>Brands</h3>'
     ]
 ];
