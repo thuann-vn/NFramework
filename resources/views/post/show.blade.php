@@ -1,6 +1,8 @@
 @extends('layout')
 
 @section('title', $post->getTranslatedAttribute('title'))
+@section('description',!empty($post->getTranslatedAttribute('meta_description'))?$post->getTranslatedAttribute('meta_description'):$post->getTranslatedAttribute('description'))
+@section('keywords',!empty($post->getTranslatedAttribute('meta_keywords'))?$post->getTranslatedAttribute('meta_keywords'):'')
 
 @section('content')
     <div class="travel-center-post">

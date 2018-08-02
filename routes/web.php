@@ -32,6 +32,8 @@ Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.inde
 
 Route::get('/travel-center', 'postController@index')->name('travel_center.index');
 Route::get('/travel-center/{post}', 'postController@show')->name('travel_center.show');
+
+Route::get('/page/{page}', 'pageController@show')->name('page.show');
 //ADMIN ROUTES
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

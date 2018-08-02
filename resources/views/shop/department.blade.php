@@ -1,6 +1,8 @@
 @extends('layout')
 
-@section('title', 'Products')
+@section('title', $department->getTranslatedAttribute('name'))
+@section('description',!empty($department->getTranslatedAttribute('meta_description'))?$department->getTranslatedAttribute('meta_description'):$department->getTranslatedAttribute('description'))
+@section('keywords',!empty($department->getTranslatedAttribute('meta_keywords'))?$department->getTranslatedAttribute('meta_keywords'):'')
 
 @section('content')
     <div class="products-section container">

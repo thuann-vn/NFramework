@@ -1,5 +1,9 @@
 @extends('layout')
 
+@section('title', $brand->getTranslatedAttribute('name'))
+@section('description',!empty($brand->getTranslatedAttribute('meta_description'))?$brand->getTranslatedAttribute('meta_description'):$brand->getTranslatedAttribute('description'))
+@section('keywords',!empty($brand->getTranslatedAttribute('meta_keywords'))?$brand->getTranslatedAttribute('meta_keywords'):'')
+
 @section('title', 'Products')
 
 @section('content')

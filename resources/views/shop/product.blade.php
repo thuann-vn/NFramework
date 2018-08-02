@@ -1,6 +1,8 @@
 @extends('layout')
 
 @section('title', $product->getTranslatedAttribute('name'))
+@section('description',!empty($product->getTranslatedAttribute('meta_description'))?$product->getTranslatedAttribute('meta_description'):$product->getTranslatedAttribute('details'))
+@section('keywords',!empty($product->getTranslatedAttribute('meta_keywords'))?$product->getTranslatedAttribute('meta_keywords'):'')
 
 @section('extra-css')
     <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
