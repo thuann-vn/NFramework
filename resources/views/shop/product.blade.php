@@ -5,6 +5,7 @@
 @section('keywords',!empty($product->getTranslatedAttribute('meta_keywords'))?$product->getTranslatedAttribute('meta_keywords'):'')
 
 @section('extra-css')
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.3.23/plyr.css">
     <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/slick/slick-theme.css') }}">
 @endsection
@@ -133,6 +134,14 @@
                 <div class="product-features">{!! $product->getTranslatedAttribute('details') !!}</div>
             </div>
             <div>
+                @if(!empty($product->videos))
+                    <h3>{{__('frontend.product.videos')}} </h3>
+                    <div class="product-videos">
+                        @foreach(preg_split('/\r\n|[\r\n]/', $product->videos) as $video)
+                            <div class="video" data-url="{{$video}}"></div>
+                        @endforeach
+                    </div>
+                @endif
                 <h3>{{__('frontend.product.specifications')}} </h3>
 
                 <div class="product-specifications">
@@ -148,9 +157,12 @@
         <h3 id="ratings-and-reviews">{{__('frontend.product.rating_and_reviews')}} </h3>
         <div class="fb-comments" data-href="{{request()->fullUrl()}}" data-width="100%" data-numposts="40"></div>
     </div>
+
+    @include('partials.products.video_player')
 @endsection
 
 @section('extra-js')
+    <script src="https://cdn.plyr.io/3.3.23/plyr.polyfilled.js"></script>
     <script src="{{ asset('vendor/slick/slick.js') }}"></script>
     <script src="{{ asset('js/pages/product.js') }}"></script>
     <script>

@@ -262,6 +262,21 @@
                     <input type="file" name="image">
                 </div>
             </div>
+
+            <!-- ### VIDEOS ### -->
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="icon wb-image"></i> {{ __('voyager.product.videos') }}</h3>
+                    <div class="panel-actions">
+                        <a class="panel-action voyager-angle-down" data-toggle="panel-collapse" aria-hidden="true"></a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <textarea class="form-control" name="videos" placeholder="{{ __('voyager.product.videos_placeholder')}}'">{{$dataTypeContent->videos}}</textarea>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </form>

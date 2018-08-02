@@ -55,6 +55,11 @@ const eApp = {
             e.preventDefault();
             $(this).parents('.modal').remove();
         })
+
+        $(document).on('click', '.modal-close', function(e){
+            e.preventDefault();
+            $(this).parents('.modal').hide();
+        })
     },
     initScrollToAchor: function(){
         $('.scrollToAnchor').click(function(e){
@@ -65,6 +70,24 @@ const eApp = {
                 scrollTop: $(target).offset().top - (offset?parseInt(offset):100)
             }, 300);
         })
+    },
+    getYoutubeThumbnail: function(url, size){
+        if(url === null){ return ""; }
+
+        size = (size === null) ? "big" : size;
+
+        var vid;
+        var results;
+
+        results = url.match("[\?&]v=([^&#]*)");
+
+        vid = ( results === null ) ? url : results[1];
+
+        if(size == "small"){
+            return "http://img.youtube.com/vi/"+vid+"/2.jpg";
+        }else {
+            return "http://img.youtube.com/vi/"+vid+"/0.jpg";
+        }
     }
 }
 

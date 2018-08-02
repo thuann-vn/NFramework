@@ -4,6 +4,7 @@ const eProduct = {
         this.initVariant();
         this.initRelatedProducts();
         this.initCartForm();
+        this.initVideos();
     },
     initSlider: function(){
         $('.product-vertical-slider').slick({
@@ -50,6 +51,17 @@ const eProduct = {
                 var modal = $(response.data);
                 $('body').append(modal);
                 modal.show();
+            })
+        })
+    },
+    initVideos: function(){
+        $('.product-videos').find('.video').each(function(){
+            var image = eApp.getYoutubeThumbnail($(this).data('url'));
+            $(this).css({'backgroundImage': 'url('+image+')'});
+
+            $(this).click(function(){
+                $('#videoModal').show().find('.modal-body').html('<div id="player" data-plyr-provider="youtube" data-plyr-embed-id="'+ $(this).data('url') +'"></div>');
+                new Plyr('#player');
             })
         })
     }
