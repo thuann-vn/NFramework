@@ -32,4 +32,9 @@ class PostController extends Controller
         ];
         return view('post.index')->with($data);
     }
+
+    public function show($slug){
+        $post = Post::where('slug', $slug)->first();
+        return view('post.show')->with(['post' => $post]);
+    }
 }
