@@ -75,14 +75,14 @@
                                 <input type="radio" name="payment_method" id="pay-cash" value="cash" {{old('payment_method')=='cash'?'checked':''}}/>
                                 {{__('frontend.checkout.payment.cash')}}
                                 <div>
-                                    {!! setting('payment-methods.cash_description') !!}
+                                    {!! isVietnamese()?setting('payment-methods.cash_description_vi'): setting('payment-methods.cash_description') !!}
                                 </div>
                             </label>
 
                             <label class="payment-method pay-bank" for="pay-bank">
                                 <input type="radio" name="payment_method" id="pay-bank" value="bank" {{old('payment_method')=='bank'?'checked':''}}/>   {{__('frontend.checkout.payment.transfer')}}
                                 <div>
-                                    {!! setting('payment-methods.transfer_description') !!}
+                                    {!! isVietnamese()?setting('payment-methods.transfer_description_vi'): setting('payment-methods.transfer_description') !!}
                                 </div>
                             </label>
                         </div>

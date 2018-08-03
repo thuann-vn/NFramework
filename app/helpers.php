@@ -54,3 +54,7 @@ function getNumbers()
 function getRelatedProducts($slug){
     return \App\Product::where('slug', '!=', $slug)->relatedProduct()->get();
 }
+
+function isVietnamese(){
+    return Session::get('applocale')=='vi';
+}

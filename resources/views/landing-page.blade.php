@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', setting('home.home_title'))
+@section('title', isVietnamese()?setting('site.description_vi'):setting('site.description'))
 
 @section('extra-css')
     <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
@@ -79,14 +79,14 @@
             </div>
 
             <a class="brand-banner" href="{{setting('home.banner_4_link')}}">
-                <img src="{{Voyager::image(setting('home.banner_4'))}}" alt="Home Banner">
+                <img src="{{Voyager::image(setting('home.banner_4'))}}" alt="{{$brand->name}}">
             </a>
         </div> <!-- end container -->
     </div> <!-- end brand-section -->
 
     <div class="footer-section">
         <div class="container">
-            {!! setting('home.footer_content') !!}
+            {!! isVietnamese()?setting('home.footer_content_vi'): setting('home.footer_content') !!}
         </div> <!-- end container -->
     </div> <!-- end blog-section -->
 @endsection

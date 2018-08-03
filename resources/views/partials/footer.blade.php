@@ -39,7 +39,7 @@
         <div class="container">
             <div class="footer-content-row">
                 <div class="footer-description">
-                    {!! setting('footer.description') !!}
+                    {!! isVietnamese()?setting('footer.description_vi'): setting('footer.description') !!}
                 </div>
 
                 <div class="footer-subscribe-form">
