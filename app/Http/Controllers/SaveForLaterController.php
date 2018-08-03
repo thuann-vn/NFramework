@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class SaveForLaterController extends Controller
 {
-    public function index(){
-        $items= Cart::instance('saveForLater')->content();
-        return view('favorites')->with(['items'=> $items]);
+    public function index()
+    {
+        return view('favorites')->with(['items' => Cart::instance('saveForLater')->content()]);
     }
 
     /**
@@ -31,8 +32,10 @@ class SaveForLaterController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
+        $product = Product::findOrFail($id);
+
         $duplicates = Cart::instance('saveForLater')->search(function ($cartItem) use ($request) {
             return $cartItem->id === $request->id;
         });
@@ -41,7 +44,7 @@ class SaveForLaterController extends Controller
             return redirect()->route('saveForLater.index')->with('success_message', 'Item is already in your wish list!');
         }
 
-        Cart::instance('saveForLater')->add($request->id, $request->name, 1, $request->price)
+        Cart::instance('saveForLater')->add($product->id, $product->name, 1, $product->price)
             ->associate('App\Product');
 
         return redirect()->route('saveForLater.index')->with('success_message', 'Item was added to your wish list!');

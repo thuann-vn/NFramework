@@ -158,7 +158,7 @@
         <div class="fb-comments" data-href="{{request()->fullUrl()}}" data-width="100%" data-numposts="40"></div>
     </div>
 
-    @include('partials.products.video_player')
+    @include('partials.video_player')
 @endsection
 
 @section('extra-js')

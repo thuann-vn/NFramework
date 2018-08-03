@@ -36,7 +36,7 @@
                 <span class="cart-icon heart"></span>
             </span>
         @else
-            <a href="javascript:;" class="wishlist-button add-to-wishlist">
+            <a href="{{route('saveForLater.store', ['id'=>$product->id])}}" class="wishlist-button add-to-wishlist">
                 <span class="cart-icon heart empty"></span>
             </a>
         @endif

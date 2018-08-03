@@ -49,6 +49,8 @@ const eApp = {
                 $('body').append(modal);
                 modal.show();
             })
+
+            $(thiss).removeClass('not-added').find('.cart-icon').removeClass('empty');
         });
 
         $(document).on('click', '.modal-remove', function(e){
