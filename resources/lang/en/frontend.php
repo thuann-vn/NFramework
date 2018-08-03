@@ -10,6 +10,7 @@ return [
     | The following language lines are used by front end
     |
     */
+    'back' => 'Back',
     'header' => [
         'search_placeholder' => 'Search anything for travel',
         'hello_sign_in' => 'Hello, Sign In',
@@ -82,6 +83,7 @@ return [
         'filters' => 'YOUR REFINEMENTS',
         'clear_filters' => 'Clear all filters',
         'sort' => 'Sort by',
+        'filter' => 'Filter',
         'sorts' => [
             'best_sellers' => 'Best Sellers',
             'featured' => 'Featured',

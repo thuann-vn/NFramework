@@ -1,4 +1,8 @@
-<div class="sidebar">
+<div class="sidebar filter-sidebar department-sidebar">
+    <header class="mobile-slide-panel-header">
+        <button class="button mobile-slide-panel-close"><i class="fas fa-chevron-left"></i> {{__('frontend.back')}}</button>
+    </header>
+
     <h3>{{__('frontend.department.featured')}}</h3>
     <ul>
         @foreach ($featuredCategories as $category)

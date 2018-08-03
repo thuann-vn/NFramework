@@ -299,13 +299,21 @@ class ShopController extends Controller
             $query->where('department_id', $department->id);
         });
 
-        if (request()->sort == 'low_high') {
-            $products = $products->orderBy('price')->paginate($pagination);
-        } elseif (request()->sort == 'high_low') {
-            $products = $products->orderBy('price', 'desc')->paginate($pagination);
-        } else {
-            $products = $products->paginate($pagination);
+        //Sort
+        switch (request()->sort){
+            case 'featured':
+                $products = $products->orderBy('featured', 'desc'); break;
+            case 'best_seller':
+                $products = $products->withCount('orders')->orderBy('orders_count', 'desc'); break;
+            case 'newest':
+                $products = $products->orderBy('created_at', 'desc'); break;
+            case 'low_high':
+                $products = $products->orderBy('price'); break;
+            case 'high_low':
+                $products = $products->orderBy('price', 'desc'); break;
         }
+
+        $products = $products->paginate($pagination);
 
         return view('shop.department')->with([
             'department' => $department,
@@ -313,6 +321,7 @@ class ShopController extends Controller
             'categories' => $categories,
             'featuredCategories' => $featured_categories,
             'brands' => $brands,
+            'sort' => request()->sort,
             'attributes' => $attributes
         ]);
     }

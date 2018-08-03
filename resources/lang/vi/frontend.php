@@ -10,6 +10,7 @@ return [
     | The following language lines are used by front end
     |
     */
+    'back' => 'Quay lại',
     'header' => [
         'search_placeholder' => 'Tìm kiếm sản phẩm',
         'hello_sign_in' => 'Đăng nhập',
@@ -82,6 +83,7 @@ return [
         'filters' => 'BỘ LỌC',
         'clear_filters' => 'Xóa bộ lọc',
         'sort' => 'Sắp xếp',
+        'filter' => 'Lọc sản phẩm',
         'sorts' => [
             'best_sellers' => 'Bán chạy nhất',
             'featured' => 'Hot nhất',

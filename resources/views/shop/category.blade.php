@@ -27,6 +27,7 @@
                     </div>
                 </div>
             </div> <!-- end breadcrumbs -->
+
             @if(!empty($category->content))
                 <div class="department-content">
                     {!! $category->content !!}
@@ -35,6 +36,7 @@
             <div class="products-header">
                 <h1 class="stylish-heading">{{ !empty($childCategory)? $childCategory->getTranslatedAttribute('name') :$category->getTranslatedAttribute('name') }}</h1>
                 <form action="{{request()->fullUrl()}}" method="get" class="sort-form">
+                    <button type="button" class="button mobile-filter-toggle" id="mobileSidebarToggle">{{__('frontend.category.filter')}}</button>
                     <strong>{{__('frontend.category.sort')}}: </strong>
                     <select name="sort" id="searchSortDropdown" class="form-control">
                         <option value="featured" {{$sort=='featured'?'selected':''}}>{{__('frontend.category.sorts.featured')}}</option>
@@ -60,7 +62,6 @@
                 @endforelse
             </div> <!-- end products -->
 
-            <div class="spacer"></div>
             <div class="shop-pagination">
                 {{ $products->appends(request()->input())->links('partials.shop.pagination')}}
             </div>

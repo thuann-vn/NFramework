@@ -1,4 +1,8 @@
 <div class="sidebar filter-sidebar">
+    <header class="mobile-slide-panel-header">
+        <button class="button mobile-slide-panel-close"><i class="fas fa-chevron-left"></i> {{__('frontend.back')}}</button>
+    </header>
+
     <form type="hidden" method="get" id="filter-form">
         @foreach($filters as $key => $filter)
             <input type="hidden" name="{{$key}}" value=""/>

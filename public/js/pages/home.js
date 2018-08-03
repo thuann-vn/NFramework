@@ -17,6 +17,13 @@ $(document).ready(function () {
         mobileFirst: true,
         responsive: [
             {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 8,
+                    slidesToScroll: 8
+                }
+            },
+            {
                 breakpoint: 767,
                 settings: {
                     slidesToShow: 3,

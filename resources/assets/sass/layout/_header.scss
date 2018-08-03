@@ -574,7 +574,7 @@ header {
     .burger{
         margin: 0;
         vertical-align: middle;
-        display: inline-block;
+        display: none;
         float: none;
         width: 28px;
         transition: 200ms;
@@ -630,6 +630,10 @@ header {
                     transform-origin: 2px 50%
                 }
             }
+        }
+
+        @include sm{
+            display: inline-block;
         }
     }
 }
