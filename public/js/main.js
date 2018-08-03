@@ -3,6 +3,7 @@ const eApp = {
         this.initStickyNav();
         this.initScrollToAchor();
         this.initCartButton();
+        this.initMobileMenu();
     },
     initStickyNav: function(){
         // grab the initial top offset of the navigation
@@ -90,6 +91,17 @@ const eApp = {
         }else {
             return "http://img.youtube.com/vi/"+vid+"/0.jpg";
         }
+    },
+    initMobileMenu:function(){
+        $('#mobileBurgerMenu').click(function(){
+            $('.main-menu').find('.main-menu-wrap').toggleClass('open');
+
+            $('.main-menu').find('a > span').click(function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                $(this).parent().parent().toggleClass('open');
+            })
+        })
     }
 }
 

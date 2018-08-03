@@ -3,7 +3,6 @@
     .container {
         max-width: 960px;
     }
-
 }
 
 /* Medium Devices, Desktops */
@@ -14,11 +13,6 @@
 
             .logo {
                 margin: auto;
-            }
-
-            ul {
-                margin: 20px auto 0;
-                // width: 80%;
             }
         }
 
@@ -64,19 +58,6 @@
         }
 
       }
-    }
-
-    .footer-content {
-        flex-direction: column;
-
-        .made-with {
-            margin: auto;
-        }
-
-        ul {
-            margin: 20px auto;
-            width: 60%;
-        }
     }
 
     .breadcrumbs {

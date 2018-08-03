@@ -24,3 +24,15 @@ $price_color: #900;
 
 $text-gray-color: #999;
 $text-black-color: #000;
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-max: 767px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;

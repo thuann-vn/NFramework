@@ -1,5 +1,5 @@
 <div class="language-bar">
-    @if(session('applocale') == 'vi')
+    @if(isVietnamese())
         <a class="language-toggle" href="{{route('lang.switch', ['lang'=> 'en'])}}">
             <img src="/img/languages/US.gif" height="20"/> English
         </a>
@@ -9,7 +9,14 @@
         </a>
     @endif
 </div>
-@if(!empty(setting('site.site_top_message')))
+
+@if(isVietnamese() && !empty(setting('site.site_top_message_vi')))
+    <div class="top-information">
+        <div class="container">
+            {!!  setting('site.site_top_message_vi') !!}
+        </div>
+    </div>
+@elseif(!isVietnamese() && !empty(setting('site.site_top_message')))
     <div class="top-information">
         <div class="container">
             {!!  setting('site.site_top_message') !!}

@@ -50,11 +50,19 @@ footer {
                 }
             }
         }
+
+        @include sm{
+            display: none;
+        }
     }
 
     .footer-content-row {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
+
+        @include sm{
+            grid-template-columns: 1fr;
+        }
     }
 
     .footer-description {

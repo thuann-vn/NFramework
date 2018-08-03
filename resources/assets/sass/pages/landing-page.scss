@@ -10,6 +10,11 @@
     font-weight: bold;
     margin-bottom: 20px;
     text-align: left;
+
+    @include sm{
+        font-size: 20px;
+        text-align: center;
+    }
 }
 
 
@@ -36,14 +41,27 @@
         line-height: 20px;
         cursor: pointer;
     }
+
+    @include sm{
+        font-size: 12px;
+    }
 }
 .categories-section {
     padding: 50px 0;
+
+    @include sm{
+        padding: 20px 0;
+    }
 
     .categories {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-gap: 60px $gutter;
+
+        @include sm{
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px $gutter;
+        }
     }
 }
 
@@ -56,6 +74,11 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 0px $gutter*2;
+
+        @include sm{
+            grid-template-columns: 1fr;
+            grid-gap: 5px;
+        }
     }
 
     a{
@@ -78,6 +101,11 @@
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         grid-gap: 0px;
+
+        @include sm{
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 5px;
+        }
     }
 
     .brand-banner{
@@ -117,4 +145,11 @@
         }
     }
 
+}
+
+.footer-section{
+    text-align: center;
+    @include  sm{
+        text-align: left;
+    }
 }

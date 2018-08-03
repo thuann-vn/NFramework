@@ -4,11 +4,18 @@
     <div class="sticky-header">
         <div class="top-nav container">
             <div class="top-nav-wrap">
+                <div id="mobileBurgerMenu" class="burger burger-small burger-loaded">
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                    <span class="burger-line"></span>
+                </div>
+
                 <div class="logo">
                     <a href="/">
                         <img src="{{Voyager::image(setting('site.logo'))}}" height="50"/>
                     </a>
                 </div>
+
                 <div class="search-form">
                     <form>
                         <input type="text" id="aa-search-input" name="keyword" class="input-lg" placeholder="{{__('frontend.header.search_placeholder')}}">
