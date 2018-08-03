@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
     $('.slider.fade').slick({
         dots: true,
         infinite: true,
@@ -17,23 +17,14 @@ $(document).ready(function(){
         mobileFirst: true,
         responsive: [
             {
-                breakpoint: 1024,
+                breakpoint: 767,
                 settings: {
                     slidesToShow: 3,
-                    slidesToScroll: 3,
-                    infinite: true,
-                    dots: true
+                    slidesToScroll: 3
                 }
             },
             {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
-                }
-            },
-            {
-                breakpoint: 480,
+                breakpoint: 200,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2
@@ -41,4 +32,4 @@ $(document).ready(function(){
             }
         ]
     });
-})
+});

@@ -13,8 +13,10 @@ header {
         display: block;
         line-height: 0;
 
-        img{
-            @include sm{
+        @include sm{
+            padding-left: 10px;
+            padding-right: 10px;
+            img {
                 height: 29px;
             }
         }
