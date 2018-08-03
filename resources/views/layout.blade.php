@@ -12,7 +12,7 @@
         <meta name="description" content="@yield('description', '')">
         <meta name="keywords" content="@yield('keywords', '')">
 
-        <link href="/img/favicon.ico" rel="SHORTCUT ICON" />
+        <link href="{{ !empty(setting('site.favicon'))?productImage(setting('site.favicon')):'/img/favicon.ico' }}" rel="SHORTCUT ICON" />
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat%7CRoboto:300,400,500,700" rel="stylesheet">
