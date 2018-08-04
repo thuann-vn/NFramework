@@ -18,7 +18,7 @@
                                 <img src="${window.location.origin}/storage/${suggestion.image}" alt="img" class="algolia-thumb">
                                 ${suggestion._highlightResult.name.value}
                             </span>
-                            <span>$${(suggestion.price / 100).toFixed(2)}</span>
+                            <span>${(suggestion.price).toFixed(2)}₫</span>
                         </div>
                     `;
 
@@ -29,7 +29,7 @@
                 }
             }
         }).on('autocomplete:selected', function (event, suggestion, dataset) {
-            window.location.href = window.location.origin + '/shop/' + suggestion.slug;
+            window.location.href = window.location.origin + '/product/' + suggestion.slug;
             enterPressed = true;
         }).on('keyup', function(event) {
             if (event.keyCode == 13 && !enterPressed) {

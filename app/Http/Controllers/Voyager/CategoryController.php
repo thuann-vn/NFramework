@@ -34,8 +34,7 @@ class CategoryController extends VoyagerBaseController
         // Next Get or Paginate the actual content from the MODEL that corresponds to the slug DataType
         if (strlen($dataType->model_name) != 0) {
             $model = app($dataType->model_name);
-            $query = $model::select('*');
-
+            $query = $model::select('*')->whereNull('parent_id');
             $relationships = $this->getRelationships($dataType);
 
             // If a column has a relationship associated with it, we do not want to show that field

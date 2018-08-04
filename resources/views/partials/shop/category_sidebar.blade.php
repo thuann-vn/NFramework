@@ -31,7 +31,7 @@
     <div class="sidebar_toggleable">
         <h3>{{__('frontend.category.children')}}</h3>
         <ul>
-            @foreach ($category->children as $child)
+            @foreach ($category->children->sortBy('name') as $child)
                 <li>
                     <a href="{{route('shop.category', [$category->slug, $child->slug])}}" class="filter-item {{!empty($childCategory) && $child->slug== $childCategory->slug? 'active':''}}" for="cat_{{$child->id}}">
                         {{ $child->getTranslatedAttribute('name') }}

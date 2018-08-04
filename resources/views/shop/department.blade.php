@@ -17,7 +17,7 @@
             @if(!empty($featuredCategories))
                 <div class="featured-categories">
                     @foreach ($featuredCategories as $category)
-                        <a href="{{route('shop.category', ['category'=>$category->slug,'parent'=>$category->parent->slug])}}">
+                        <a href="{{ route('shop.category', ['category' => $category->slug, 'parent'=>!empty($category->parent)?$category->parent->slug:'']) }}">
                             <img src="{{productImage($category->image)}}"/>
 
                             <h3>{{$category->getTranslatedAttribute('name')}}</h3>

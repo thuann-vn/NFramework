@@ -190,7 +190,7 @@ class ShopController extends Controller
 
         $categories = Category::whereHas('products', function ($products) use ($brand) {
             return $products->where('brand_id', $brand->id);
-        })->get();
+        })->orderBy('name')->get();
         $attributes = Attribute::has('values')->get();
 
         //Get product by category
@@ -290,8 +290,8 @@ class ShopController extends Controller
         $pagination = config('shop.pagination');
 
         $department = Department::where('slug', $slug)->first();
-        $categories = Category::where('department_id', $department->id)->whereNull('parent_id')->get();
-        $featured_categories = Category::where('department_id', $department->id)->where('featured', true)->get();
+        $categories = Category::where('department_id', $department->id)->whereNull('parent_id')->orderBy('name')->get();
+        $featured_categories = Category::where('department_id', $department->id)->where('featured', true)->orderBy('name')->get();
         $brands = Brand::where('featured', 1)->paginate(10);
         $attributes = Attribute::all();
 

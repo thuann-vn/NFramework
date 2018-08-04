@@ -31,6 +31,9 @@
                 @foreach ($featuredCategories as $category)
                     <div class="category">
                         <a href="{{ route('shop.category', ['category'=>$category->slug, 'parent'=>!empty($category->parent)?$category->parent->slug:'']) }}"><img src="{{ productImage($category->image) }}" alt="category"></a>
+                        <a class="category-name" href="{{ route('shop.brand', $category->slug) }}">
+                            {{$category->getTranslatedAttribute('name')}}
+                        </a>
                     </div>
                 @endforeach
             </div> <!-- end categories -->
@@ -73,7 +76,9 @@
             <div class="brand-grid">
                 @foreach ($brands as $brand)
                     <div class="brand">
-                        <a href="{{ route('shop.brand', $brand->slug) }}"><img src="{{ Voyager::image($brand->logo) }}" alt="brand"></a>
+                        <a href="{{ route('shop.brand', $brand->slug) }}">
+                            <img src="{{ Voyager::image($brand->logo) }}" alt="brand">
+                        </a>
                     </div>
                 @endforeach
             </div>

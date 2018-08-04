@@ -30,8 +30,8 @@ Route::get('/guestCheckout', 'CheckoutController@index')->name('guestCheckout.in
 
 Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.index');
 
-Route::get('/travel-center', 'postController@index')->name('travel_center.index');
-Route::get('/travel-center/{post}', 'postController@show')->name('travel_center.show');
+Route::get('/travel-center', 'PostController@index')->name('travel_center.index');
+Route::get('/travel-center/{post}', 'PostController@show')->name('travel_center.show');
 
 Route::get('/page/{page}', 'pageController@show')->name('page.show');
 //ADMIN ROUTES

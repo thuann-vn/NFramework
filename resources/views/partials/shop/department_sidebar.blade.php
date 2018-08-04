@@ -6,7 +6,9 @@
     <h3>{{__('frontend.department.featured')}}</h3>
     <ul>
         @foreach ($featuredCategories as $category)
-            <li class="{{ setActiveCategory($category->slug) }}"><a href="{{ route('shop.category', ['category' => $category->slug,'parent'=>$category->parent->slug]) }}">{{ $category->getTranslatedAttribute('name') }}</a></li>
+            <li class="{{ setActiveCategory($category->slug) }}">
+                <a href="{{ route('shop.category', ['category' => !empty($category->parent)?$category->slug:'', 'parent'=>!empty($category->parent)?$category->parent->slug:$category->slug]) }}">{{ $category->getTranslatedAttribute('name') }}</a>
+            </li>
         @endforeach
     </ul>
 

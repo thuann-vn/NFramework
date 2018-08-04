@@ -4,7 +4,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @include('voyager::compass.includes.styles')
 
-
 @section('css')
     <style>
         .sort-icons {

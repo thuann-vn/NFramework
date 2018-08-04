@@ -58,6 +58,12 @@
         grid-template-columns: 1fr 1fr 1fr 1fr;
         grid-gap: 60px $gutter;
 
+        .category-name{
+            font-weight: 500;
+            color: #555;
+            font-size: 18px;
+        }
+
         @include sm{
             grid-template-columns: 1fr 1fr;
             grid-gap: 20px $gutter;

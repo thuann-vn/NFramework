@@ -13,20 +13,20 @@
                 empty: 'No results',
                 item: function(item) {
                     return `
-                        <a href="${window.location.origin}/shop/${item.slug}">
+                        <a href="${window.location.origin}/product/${item.slug}">
                             <div class="instantsearch-result">
                                 <div>
                                     <img src="${window.location.origin}/storage/${item.image}" alt="img" class="algolia-thumb-result">
                                 </div>
                                 <div>
                                     <div class="result-title">
-                                        ${item._highlightResult.name.value}
+                                        {item._highlightResult.name.value}₫
                                     </div>
                                     <div class="result-details">
-                                        ${item._highlightResult.details.value}
+                                        {item._highlightResult.details.value}₫
                                     </div>
                                     <div class="result-price">
-                                        ${(item.price).toFixed(0)}
+                                        {(item.price).toFixed(0)}₫
                                     </div>
                                 </div>
                             </div>
