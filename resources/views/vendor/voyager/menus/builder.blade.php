@@ -103,7 +103,11 @@
                             <option value="_self" selected="selected">{{ __('voyager::menu_builder.open_same') }}</option>
                             <option value="_blank">{{ __('voyager::menu_builder.open_new') }}</option>
                         </select><br>
-                        <label for="mega_options">{{ __('voyager::menu_builder.mega_options') }}</label>
+
+                        <label for="mega_options"><input type="checkbox" value="1" name="is_mega" id="m_is_mega"/> {{ __('voyager.menu_builder.is_mega') }}</label>
+
+                        <br/>
+                        <label for="mega_options">{{ __('voyager.menu_builder.mega_options') }}</label>
                         <textarea rows="6" class="form-control" id="m_mega_option" name="mega_option" placeholder="{{ json_encode(['key' => 'value'], JSON_PRETTY_PRINT) }}"></textarea>
                         <input type="hidden" name="menu_id" value="{{ $menu->id }}">
                         <input type="hidden" name="id" id="m_id" value="">
@@ -165,6 +169,7 @@
                 $m_route_type  = $('#m_route_type'),
                 $m_route       = $('#m_route'),
                 $m_parameters  = $('#m_parameters'),
+                $m_is_mega  = $('#m_is_mega'),
                 $m_mega_options  = $('#m_mega_option'),
                 $m_icon_class  = $('#m_icon_class'),
                 $m_color       = $('#m_color'),
@@ -230,6 +235,7 @@
                     $m_link_type.val('url').change();
                     $m_url.val('');
                     $m_icon_class.val('');
+                    $m_is_mega.prop('checked',false);
                     $m_form.find('#parent_id').remove();
 
                     setTimeout(function(){
@@ -249,6 +255,7 @@
                     $m_route.val(_src.data('route'));
                     $m_parameters.val(JSON.stringify(rhtmlspecialchars(_src.data('parameters'))));
 
+                    $m_is_mega.prop('checked',_src.data('is-mega')==1);
                     var megaOptions = rhtmlspecialchars(_src.data('mega-option'));
                     var megaOptionJson = null;
 

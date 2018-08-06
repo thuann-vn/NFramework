@@ -331,6 +331,47 @@ header {
                     }
                 }
 
+                &.has-child{
+                    > ul{
+                        width: 250px;
+                        background: #fff;
+                        position: absolute;
+                        flex-direction: column;
+                        border: 1px solid #eee;
+                        border-bottom: none;
+                        box-shadow: 0 4px 8px -2px rgba(0, 0, 0, .3);
+                        margin-left: -1px;
+                        z-index: 10;
+                        display: none;
+
+                        > li{
+                            text-align: left;
+                            border-bottom: 1px solid #ccc;
+                            border-top: 1px solid #efefef;
+
+                            &:first-child{
+                                border-top: 0;
+                            }
+                            > a{
+                                font-weight: normal;
+                                color: #333;
+                            }
+
+                            &:hover{
+                                background-color: #efefef;
+                                > a{
+                                    color: #000;
+                                }
+                            }
+                        }
+                    }
+                    &:hover{
+                        > ul{
+                            display: flex;
+                        }
+                    }
+                }
+
                 @include sm{
                     text-align: left;
 
@@ -387,8 +428,6 @@ header {
             border-bottom: none;
             text-align: left;
             white-space: normal;
-            -webkit-box-shadow: 0 4px 8px -2px rgba(0, 0, 0, .3);
-            -moz-box-shadow: 0 4px 8px -2px rgba(0, 0, 0, .3);
             box-shadow: 0 4px 8px -2px rgba(0, 0, 0, .3);
 
             .mega-menu-wrap {
