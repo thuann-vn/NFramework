@@ -81,7 +81,8 @@ return [
         'total_pending_orders' => 'Pending orders',
         'total_completed_orders' => 'Completed orders',
         'update' => 'Update my information',
-        'update_successfully' => 'Your account was updated successfully'
+        'update_successfully' => 'Your account was updated successfully',
+        'address_book_description' =>'It\'s easy to manage your address book. Simply click the links below in order to edit, delete, or add more people to your address book. Every address that you add will be available to you in the cart during the order process.'
     ],
     'home' => [
         'categories' => 'Shop by Category',
@@ -180,5 +181,18 @@ return [
         'guides_and_lists_heading' => 'Travel<h3>Guides + Lists</h3>',
         'featured_categories_heading' => 'Featured<h3>Categories</h3>',
         'featured_brands_heading' => 'Featured<h3>Brands</h3>'
-    ]
+    ],
+    'address' => [
+        'name' => 'Name',
+        'email' => 'Your email',
+        'phone' => 'Phone number',
+        'address' => 'Address',
+        'city' => 'City',
+        'province' => 'Province',
+        'update' => 'Update',
+        'create' => 'Create an address',
+        'delete' => 'Delete',
+        'update_address_successfully' => 'Updated address book successfully',
+        'address_not_existed' => 'Address does not existed!'
+    ],
 ];

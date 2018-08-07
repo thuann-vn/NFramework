@@ -42,8 +42,14 @@ Route::group(['prefix' => 'my-account'], function () {
     Route::get('/edit-account', 'AccountController@edit')->name('edit-account');
     Route::post('/update-account', 'AccountController@update')->name('update-account');
 
+    Route::get('/address-book', 'AccountController@addressBook')->name('my-address-book');
+    Route::get('/address-book/add', 'AccountController@addressBookAdd')->name('add-address');
+    Route::post('/address-book/store', 'AccountController@addressBookStore')->name('store-address');
+    Route::get('/address-book/edit/{id}', 'AccountController@addressBookUpdate')->name('edit-address');
+    Route::post('/address-book/update', 'AccountController@updateAddress')->name('update-address');
+    Route::post('/address-book/delete', 'AccountController@deleteAddress')->name('delete-address');
+
     Route::get('/orders', 'AccountController@index')->name('my-orders');
-    Route::get('/address-book', 'AccountController@index')->name('my-address-book');
     Route::match(['get','post'],'/change-password', 'AccountController@index')->name('change-password');
 });
 

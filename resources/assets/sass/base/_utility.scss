@@ -1,9 +1,9 @@
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .spacer {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .sticky-footer {
@@ -20,30 +20,42 @@ strong {
   font-weight: bold;
 }
 
-.gray{
-    color: $text-gray-color;
+.gray {
+  color: $text-gray-color;
 }
 
-.black{
-    color: $text-black-color
+.black {
+  color: $text-black-color
 }
 
-.small{
-    font-size: 13px;
+.small {
+  font-size: 13px;
 }
 
-.buffer-bottom{
-    margin-bottom: 8px;
+.buffer-bottom {
+  margin-bottom: 8px;
 }
 
-.buffer-bottom-medium{
-    margin-bottom: 20px;
+.buffer-bottom-medium {
+  margin-bottom: 20px;
 }
 
-.bold{
-    font-weight: bold;
+.bold {
+  font-weight: bold;
 }
 
-.text-left{
-    text-align: left;
+.text-left {
+  text-align: left;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-30 {
+  margin-top: 30px;
 }

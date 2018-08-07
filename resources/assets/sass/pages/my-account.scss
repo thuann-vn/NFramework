@@ -114,8 +114,17 @@
   .edit-form{
     width: 400px;
     max-width: 100%;
-    margin: 40px auto;
+    margin: 20px 0;
     display: block;
+
+    &.collapable{
+      max-height: 0;
+      overflow: hidden;
+
+      &.open{
+        max-height: 1000px;
+      }
+    }
 
     input{
       display: block;
@@ -124,6 +133,19 @@
 
     .button{
       padding: 5px 38px;;
+    }
+  }
+
+  .address-book{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    margin: 20px 0;
+
+    .address{
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
     }
   }
 }
