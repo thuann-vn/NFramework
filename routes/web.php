@@ -39,9 +39,11 @@ Route::get('/page/{page}', 'pageController@show')->name('page.show');
 //ACCOUNT ROUTES
 Route::group(['prefix' => 'my-account'], function () {
     Route::get('/', 'AccountController@index')->name('my-account');
+    Route::get('/edit-account', 'AccountController@edit')->name('edit-account');
+    Route::post('/update-account', 'AccountController@update')->name('update-account');
+
     Route::get('/orders', 'AccountController@index')->name('my-orders');
     Route::get('/address-book', 'AccountController@index')->name('my-address-book');
-    Route::get('/edit-account', 'AccountController@index')->name('edit-account');
     Route::match(['get','post'],'/change-password', 'AccountController@index')->name('change-password');
 });
 

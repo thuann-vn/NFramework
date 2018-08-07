@@ -14,7 +14,7 @@
             <table class="summary-table">
                 <tr>
                     <td rowspan="3" class="total-money">
-                        {{priceFormat($user->orders->sum('total'))}}
+                        {{priceFormat($user->orders->sum('billing_total'))}}
                     </td>
                     <td class="total-orders">
                         {{__('frontend.account.total_orders')}} <span class="total-float">{{$user->orders->count()}}</span>

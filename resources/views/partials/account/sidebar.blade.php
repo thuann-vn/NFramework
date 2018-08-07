@@ -2,19 +2,19 @@
     <h2>{{__('frontend.account.title')}}</h2>
 
     <ul>
-        <li class="has-child active">
+        <li class="has-child {{in_array(Route::currentRouteName(), ['my-account', 'edit-account', 'my-address-book', 'change-password']) ? 'active': ''}}">
             <a href="{{route('my-account')}}">
                 <span class="manage-your-account-icon"></span> {{__('frontend.account.my_account')}}
             </a>
 
             <ul>
-                <li>
+                <li class="{{Route::currentRouteName()=='edit-account'?'active':''}}">
                     <a href="{{route('edit-account')}}">{{__('frontend.account.edit_my_account')}}</a>
                 </li>
-                <li>
+                <li class="{{Route::currentRouteName()=='my-address-book'?'active':''}}">
                     <a href="{{route('my-address-book')}}">{{__('frontend.account.my_address_book')}}</a>
                 </li>
-                <li>
+                <li class="{{Route::currentRouteName()=='change-password'?'active':''}}">
                     <a href="{{route('change-password')}}">{{__('frontend.account.change_password')}}</a>
                 </li>
             </ul>

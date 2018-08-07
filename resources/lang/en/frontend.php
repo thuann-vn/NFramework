@@ -76,7 +76,12 @@ return [
         'place_order' => 'Place order',
         'my_favorites' => 'My favorites',
         'contact_customer_care' => 'Contact customer care',
-        'welcome_message' => 'Welcome :name, member since :join_date'
+        'welcome_message' => 'Welcome :name, member since :join_date',
+        'total_orders' => 'Total orders',
+        'total_pending_orders' => 'Pending orders',
+        'total_completed_orders' => 'Completed orders',
+        'update' => 'Update my information',
+        'update_successfully' => 'Your account was updated successfully'
     ],
     'home' => [
         'categories' => 'Shop by Category',
