@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use TCG\Voyager\Models\Page;
 
-class PostController extends Controller
+class PageController extends Controller
 {
     /**
      * Create a new controller instance.

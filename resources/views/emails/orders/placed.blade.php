@@ -9,13 +9,13 @@ Thank you for your order.
 
 **Order Name:** {{ $order->billing_name }}
 
-**Order Total:** ${{ round($order->billing_total / 100, 2) }}
+**Order Total:** ${{ priceFormat($order->billing_total) }}
 
 **Items Ordered**
 
 @foreach ($order->products as $product)
 Name: {{ $product->name }} <br>
-Price: ${{ round($product->price / 100, 2)}} <br>
+Price: ${{ priceFormat($product->price)}} <br>
 Quantity: {{ $product->pivot->quantity }} <br>
 @endforeach
 

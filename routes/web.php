@@ -35,6 +35,16 @@ Route::get('/travel-center', 'PostController@index')->name('travel_center.index'
 Route::get('/travel-center/{post}', 'PostController@show')->name('travel_center.show');
 
 Route::get('/page/{page}', 'pageController@show')->name('page.show');
+
+//ACCOUNT ROUTES
+Route::group(['prefix' => 'my-account'], function () {
+    Route::get('/', 'AccountController@index')->name('my-account');
+    Route::get('/orders', 'AccountController@index')->name('my-orders');
+    Route::get('/address-book', 'AccountController@index')->name('my-address-book');
+    Route::get('/edit-account', 'AccountController@index')->name('edit-account');
+    Route::match(['get','post'],'/change-password', 'AccountController@index')->name('change-password');
+});
+
 //ADMIN ROUTES
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
