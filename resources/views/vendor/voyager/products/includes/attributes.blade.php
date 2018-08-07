@@ -133,7 +133,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label">{{ __('voyager.product.variants.price')}}</label>
-                            <input type="number" class="form-control" name="price" value="{{$sku->price}}" placeholder="{{ __('voyager.product.variants.price_placeholder')}}">
+                            <input type="number" class="form-control price-format-input" name="price" value="{{$sku->price}}" placeholder="{{ __('voyager.product.variants.price_placeholder')}}">
                         </div>
                         <button type="submit" class="btn btn-primary">{{ __('voyager.product.variants.update')}}</button>
                     </form>

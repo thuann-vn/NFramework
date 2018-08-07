@@ -27,6 +27,40 @@ const eProductManager = {
 
         //Select2
         $('select').select2();
+
+        //Init price input
+        $('.price-format-input').each(function () {
+            var oldElement = $(this);
+            var newElement = $(oldElement[0].outerHTML).attr('name',oldElement.attr('name') + '_priceinput').attr('id',oldElement.attr('id') + '_priceinput');
+            oldElement.after(newElement);
+            oldElement.hide();
+            // When user select text in the document, also abort.
+            var selection = window.getSelection().toString();
+            if (selection !== '') {
+                return;
+            }
+
+            newElement.on('keyup',function(event){
+                // When the arrow keys are pressed, abort.
+                if ($.inArray(event.keyCode, [38, 40, 37, 39]) !== -1) {
+                    return;
+                }
+
+                var $this = $(this);
+
+                // Get the value.
+                var value = $this.val();
+
+                value = value.replace(/[\D\s\._\-]+/g, "");
+                value = value ? parseInt(value, 10) : 0;
+
+                $this.val(function () {
+                    return ( value === 0 ) ? "" : value.toLocaleString("en-US");
+                });
+
+                $this.prev().val(value);
+            }).trigger('keyup');
+        });
     },
     initPropertyForm: function(){
         $(".property_select_new").select2({
