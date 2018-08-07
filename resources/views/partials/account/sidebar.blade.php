@@ -19,7 +19,7 @@
                 </li>
             </ul>
         </li>
-        <li><a><span class="your-orders-icon"></span> {{__('frontend.account.your_orders')}}</a></li>
+        <li class="{{Route::currentRouteName()=='my-orders'?'active':''}}"><a href="{{route('my-orders')}}"><span class="your-orders-icon"></span> {{__('frontend.account.your_orders')}}</a></li>
         <li>
             <a href="{{route('cart.index')}}">
                 <span class="placing-an-order-icon"></span> {{__('frontend.account.place_order')}}

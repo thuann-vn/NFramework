@@ -49,8 +49,10 @@ Route::group(['prefix' => 'my-account'], function () {
     Route::post('/address-book/update', 'AccountController@updateAddress')->name('update-address');
     Route::post('/address-book/delete', 'AccountController@deleteAddress')->name('delete-address');
 
-    Route::get('/orders', 'AccountController@index')->name('my-orders');
-    Route::match(['get','post'],'/change-password', 'AccountController@index')->name('change-password');
+    Route::get('/change-password', 'AccountController@changePassword')->name('change-password');
+    Route::post('/update-password', 'AccountController@updatePassword')->name('update-password');
+
+    Route::get('/orders', 'AccountController@myOrders')->name('my-orders');
 });
 
 //ADMIN ROUTES

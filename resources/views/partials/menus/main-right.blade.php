@@ -1,7 +1,7 @@
 <ul>
     @guest
         <li class="my-account dropdown">
-            <a class="dropdown-toggle" href="/my-account">
+            <a class="dropdown-toggle" href="{{route('login')}}">
                 <span class="my-account-message">
                     {{__('frontend.header.hello_sign_in')}}
                 </span>
@@ -21,7 +21,7 @@
         </li>
     @else
         <li class="my-account dropdown">
-            <a class="dropdown-toggle" href="/my-account">
+            <a class="dropdown-toggle" href="{{route('my-account')}}">
                 <span class="my-account-message">
                     {{__('frontend.header.hello', ['name'=>auth()->user()->name])}}
                 </span>
@@ -31,10 +31,10 @@
             </a>
             <div class="dropdown-menu my-account-wrap">
                 <ul>
-                    <li><a href="{{route('voyager.profile')}}">{{__('frontend.account.my')}}</a></li>
-                    <li><a href="#">{{__('frontend.account.track_order')}}</a></li>
-                    <li><a href="#">{{__('frontend.account.favorites')}}</a></li>
-                    <li><a href="#">{{__('frontend.account.address_book')}}</a></li>
+                    <li><a href="{{route('my-account')}}">{{__('frontend.account.my')}}</a></li>
+                    <li><a href="{{route('my-orders')}}">{{__('frontend.account.track_order')}}</a></li>
+                    <li><a href="{{route('saveForLater.index')}}">{{__('frontend.account.favorites')}}</a></li>
+                    <li><a href="{{route('my-address-book')}}">{{__('frontend.account.address_book')}}</a></li>
                     <li class="divider"></li>
                     <li>
                         <a href="{{ route('logout') }}"

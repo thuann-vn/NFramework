@@ -82,7 +82,28 @@ return [
         'total_completed_orders' => 'Completed orders',
         'update' => 'Update my information',
         'update_successfully' => 'Your account was updated successfully',
-        'address_book_description' =>'It\'s easy to manage your address book. Simply click the links below in order to edit, delete, or add more people to your address book. Every address that you add will be available to you in the cart during the order process.'
+        'address_book_description' =>'It\'s easy to manage your address book. Simply click the links below in order to edit, delete, or add more people to your address book. Every address that you add will be available to you in the cart during the order process.',
+        'old_password' => 'Current password',
+        'new_password' => 'New password',
+        'new_password_confirmation' => 'Confirm new password',
+        'change_password_successfully' => 'Your password changed, please use new password for next login time!',
+        'change_password_failed' => 'Please enter correct your current password!',
+        'current_password_not_matched' => 'Your current password does not matches with the password you provided. Please try again.',
+        'same_password' => 'New Password cannot be same as your current password. Please choose a different password.',
+        'change_password_title' => 'Change my password',
+        'change_password' => 'Change password',
+        'orders' => [
+            'shipping_address' => 'Shipping address',
+            'details' => 'Products',
+            'total' => 'Total',
+            'status' => 'Status',
+            'ship_to' => 'Ship to',
+            'phone' => 'Phone',
+            'email' => 'Email',
+            'address' => 'Address',
+            'shipped' => 'Shipped',
+            'pending' => 'Pending'
+        ]
     ],
     'home' => [
         'categories' => 'Shop by Category',

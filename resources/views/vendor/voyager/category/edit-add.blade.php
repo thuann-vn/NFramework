@@ -77,7 +77,9 @@
                                                     <option value="">{{__('voyager::generic.none')}}</option>
 
                                                     @foreach($query as $relationshipData)
+                                                        @if( $relationshipData->{$options->key} != $dataTypeContent->id)
                                                         <option value="{{ $relationshipData->{$options->key} }}" @if($dataTypeContent->{$options->column} == $relationshipData->{$options->key}){{ 'selected="selected"' }}@endif>{{ $relationshipData->{$options->label} }}</option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
                                             @elseif($options->model == 'App\Department')

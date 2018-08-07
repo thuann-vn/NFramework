@@ -40,7 +40,7 @@
                     </div>
 
                     <div class="login-container">
-                        <button type="submit" class="button button-green">{{__('frontend.account.update')}}</button>
+                        <button type="submit" class="button button-green button-small">{{__('frontend.account.update')}}</button>
                     </div>
 
                 </form>
