@@ -67,7 +67,43 @@ return [
         'password' => 'Mật khẩu',
         'confirm_password' => 'Xác nhận mật khẩu',
         'register_description' => '<p><strong>Tiết kiệm thời gian.</strong></p><p>Tạo tài khoản để đặt hàng nhanh hơn, quản lý địa chỉ giao hàng, theo dõi đơn hàng và lịch sử đặt hàng.</p>',
-
+        'my_account' => 'Tài khoản của bạn',
+        'title' => 'Quản lý tài khoản',
+        'edit_my_account' => 'Thông tin của tôi',
+        'my_address_book' => 'Địa chỉ',
+        'change_password' => 'Đổi mật khẩu',
+        'your_orders' => 'Đơn hàng của bạn',
+        'place_order' => 'Đặt hàng',
+        'my_favorites' => 'Danh sách yêu thích',
+        'contact_customer_care' => 'Hỗ trợ',
+        'welcome_message' => 'Xin chào :name, thành viên từ ngày :join_date',
+        'total_orders' => 'Tổng đơn hàng',
+        'total_pending_orders' => 'Đơn hàng chờ giao',
+        'total_completed_orders' => 'Đơn hàng hoàn thành',
+        'update' => 'Cập nhật thông tin',
+        'update_successfully' => 'Thông tin tài khoản của bạn đã cập nhật thành công',
+        'address_book_description' =>'Quản lý địa chỉ giao hàng của bạn. Dễ dàng chỉnh sửa, xóa và thêm mới người nhận vào danh sách địa chỉ. Tất cả địa chỉ bạn thêm ở đây sẽ hiển thị ở màn hình Đặt hàng để lựa chọn nhanh chóng.',
+        'old_password' => 'Mật khẩu hiện tại',
+        'new_password' => 'Mật khẩu mới',
+        'new_password_confirmation' => 'Xác nhận mật khẩu mới',
+        'change_password_successfully' => 'Mật khẩu đã được đổi thành công, vui lòng sử dụng mật khẩu mới trong lần đăng nhập kế tiếp!',
+        'change_password_failed' => 'Vui lòng nhập đúng mật khẩu hiện tại!',
+        'current_password_not_matched' => 'Mật khẩu hiện tại không khớp với dữ liệu, vui lòng kiểm tra và thử lại.',
+        'same_password' => 'Mật khẩu mới phải khác với mật khẩu hiện tại, vui lòng chọn mật khẩu khác.',
+        'change_password_title' => 'Đổi mật khẩu',
+        'change_password' => 'Đổi mật khẩu',
+        'orders' => [
+            'shipping_address' => 'Địa chỉ',
+            'details' => 'Sản phẩm',
+            'total' => 'Tổng tiền',
+            'status' => 'Trạng thái',
+            'ship_to' => 'Giao hàng đến',
+            'phone' => 'Điện thoại',
+            'email' => 'Email',
+            'address' => 'Địa chỉ',
+            'shipped' => 'Đã giao',
+            'pending' => 'Chờ xử lý'
+        ]
     ],
     'home' => [
         'categories' => 'Danh mục cho bạn',
@@ -142,14 +178,24 @@ return [
             'phone' => 'Số điện thoại',
             'address' => 'Địa chỉ',
             'city' => 'Tỉnh/Thành phố',
-            'province' => 'Quận/Huyện'
+            'province' => 'Quận/Huyện',
+            'new_address' => 'Thêm địa chỉ khác'
         ],
         'payment' => [
             'title' => 'Phương thức thanh toán',
             'cash' => 'Tiền mặt khi nhận hàng',
             'transfer' => 'Chuyển khoản qua ngân hàng'
         ],
-        'complete' => 'Đặt Hàng'
+        'complete' => 'Đặt Hàng',
+        'validate' => [
+        'name' => 'Vui lòng nhập Họ tên',
+        'address' => 'Vui lòng nhập Địa chỉ',
+        'phone' => 'Vui lòng nhập Số điện thoại',
+        'city' => 'Vui lòng nhập Tỉnh/Thành phố',
+        'province' => 'Vui lòng nhập Quận/Huyện',
+        'payment_method' => 'Vui lòng chọn hình thức thanh toán'
+
+        ]
     ],
     'wishlist' => [
         'items_in_wishlist' => ':total Sản phẩm yêu thích',
@@ -157,5 +203,26 @@ return [
         'you_may_also_like' => 'Có thể bạn quan tâm...',
         'remove' => 'Xóa khỏi danh sách',
         'move_to_cart' => 'Chuyển vào giỏ hàng'
-    ]
+    ],
+    'travel_center' => [
+        'guides_and_lists' => 'Hướng dẫn và Tin tức',
+        'featured_categories' => 'Danh mục yêu thích',
+        'featured_brands' => 'Thương hiệu nổi bật',
+        'guides_and_lists_heading' => 'Bài viết<h3>Hướng dẫn + Tin tức</h3>',
+        'featured_categories_heading' => 'Yêu thích<h3>Danh mục</h3>',
+        'featured_brands_heading' => 'Nổi bật<h3>Thương hiệu</h3>'
+    ],
+    'address' => [
+        'name' => 'Name',
+        'email' => 'Your email',
+        'phone' => 'Phone number',
+        'address' => 'Address',
+        'city' => 'City',
+        'province' => 'Province',
+        'update' => 'Update',
+        'create' => 'Create an address',
+        'delete' => 'Delete',
+        'update_address_successfully' => 'Updated address book successfully',
+        'address_not_existed' => 'Address does not existed!'
+    ],
 ];
