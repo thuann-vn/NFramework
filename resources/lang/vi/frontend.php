@@ -11,6 +11,7 @@ return [
     |
     */
     'back' => 'Quay lại',
+    'sale' => 'Sản phẩm giảm giá',
     'header' => [
         'search_placeholder' => 'Tìm kiếm sản phẩm',
         'hello_sign_in' => 'Đăng nhập',

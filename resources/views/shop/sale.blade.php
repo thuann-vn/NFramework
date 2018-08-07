@@ -1,14 +1,13 @@
 @extends('layout')
 
-@section('title', $brand->getTranslatedAttribute('name'))
-@section('description',!empty($brand->getTranslatedAttribute('meta_description'))?$brand->getTranslatedAttribute('meta_description'):$brand->getTranslatedAttribute('description'))
-@section('keywords',!empty($brand->getTranslatedAttribute('meta_keywords'))?$brand->getTranslatedAttribute('meta_keywords'):'')
+@section('title', !empty($childCategory)?$childCategory->getTranslatedAttribute('name'): __('frontend.sale'))
 
-@section('title', 'Products')
+@section('description',!empty($childCategory) && !empty($childCategory->getTranslatedAttribute('meta_description'))?$childCategory->getTranslatedAttribute('meta_description'):'')
+@section('keywords',!empty($childCategory) && !empty($childCategory->getTranslatedAttribute('meta_keywords'))?$childCategory->getTranslatedAttribute('meta_keywords'):'')
 
 @section('content')
     <div class="products-section container">
-        @include('partials.shop.brand_sidebar')
+        @include('partials.shop.sale_sidebar')
         <div class="shop-products">
             <div class="breadcrumbs">
                 <div class="breadcrumbs-container container">
@@ -17,9 +16,9 @@
                         <i class="fa fa-chevron-right breadcrumb-separator"></i>
 
                         @if(empty($childCategory))
-                            <span>{{$brand->getTranslatedAttribute('name')}}</span>
+                            <span>{{__('frontend.sale')}}</span>
                         @else
-                            <a href="{{route('shop.category', $brand->slug)}}">{{$brand->getTranslatedAttribute('name')}}</a>
+                            <a href="{{route('shop.sale')}}">{{__('frontend.sale')}}</a>
                         @endif
 
                         @if(!empty($childCategory))
@@ -31,7 +30,7 @@
             </div> <!-- end breadcrumbs -->
             <div class="products-header">
                 <h1 class="stylish-heading">
-                    {{ !empty($childCategory)? $childCategory->getTranslatedAttribute('name') .' ('.$brand->getTranslatedAttribute('name').')' :$brand->getTranslatedAttribute('name') }}
+                    {{ !empty($childCategory)? $childCategory->getTranslatedAttribute('name') .' ('.__('frontend.sale').')' :__('frontend.sale')}}
                 </h1>
                 @include('partials.shop.sorts')
             </div>

@@ -11,6 +11,7 @@ return [
     |
     */
     'back' => 'Back',
+    'sale' => 'Sale Products',
     'header' => [
         'search_placeholder' => 'Search anything for travel',
         'hello_sign_in' => 'Hello, Sign In',

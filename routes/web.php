@@ -7,6 +7,7 @@ Route::get('/product/{product}', 'ShopController@show')->name('shop.show');
 Route::get('/category/{parent}/{category?}', 'ShopController@category')->name('shop.category');
 Route::get('/department/{department}', 'ShopController@department')->name('shop.department');
 Route::get('/brand/{brand}/{category?}', 'ShopController@brand')->name('shop.brand');
+Route::get('/sale/{category?}', 'ShopController@sale')->name('shop.sale');
 
 Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::post('/cart', 'CartController@store')->name('cart.store');

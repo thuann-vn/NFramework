@@ -172,8 +172,8 @@
                                                     @endif
                                                 @else
                                                     @include('voyager::multilingual.input-hidden-bread-browse')
-                                                    @if ($row->display_name == 'price')
-                                                        <span>${{ $data->{$row->field} /100 }}</span>
+                                                    @if ($row->field == 'price' || $row->field == 'regular_price')
+                                                        <div style="text-align: right">{{ $data->{$row->field}<=0?'-':priceFormat($data->{$row->field} )}}</div>
                                                     @else
                                                         <span>{{ $data->{$row->field} }}</span>
                                                     @endif

@@ -106,60 +106,10 @@ class ShopController extends Controller
         }
 
         //Filters
-        $filters= [
-            'category' => $request->input('category'),
-            'brand' => []
-        ];
-        $brandFilters = $request->has('brand')? explode('~',$request->input('brand')): [];
-
-        $currentFilters = [];
-        if(!empty($brandFilters)){
-            $filters['brand'] = $brandFilters;
-
-            $products = $products->whereHas('brand', function($query) use ($brandFilters){
-                return $query->whereIn('slug', $brandFilters);
-            });
-
-            //Add to current filters
-            $currentFilters['brand'] = Brand::whereIn('slug', $brandFilters)->get(['name', 'slug', 'id'])->toArray();
-        }
-
-        foreach ($attributes as $attribute){
-            if(!empty($request->input($attribute->slug))){
-                $filterSlugs = explode('~',$request->input($attribute->slug));
-                $filters[$attribute->slug] = $filterSlugs;
-
-                //Add to filters
-                $products = $products->whereHas('attributes', function($attributes) use ($filterSlugs){
-                    return $attributes -> whereHas('details', function ($details) use ($filterSlugs){
-                        return $details->whereHas('attributeValue', function($values) use ($filterSlugs){
-                            return $values->whereIn('slug', $filterSlugs);
-                        });
-                    });
-                });
-
-                //Add to current filters
-                $currentFilters[$attribute->slug] = AttributeValue::whereIn('slug', $filterSlugs)->get(['value', 'slug', 'id'])->toArray();
-            }else{
-                $filters[$attribute->slug] = [];
-            }
-        }
+        $filter = $this->getFilters($request, $products, $attributes);
 
         //Sort
-        switch (request()->sort){
-            case 'featured':
-                $products = $products->orderBy('featured', 'desc'); break;
-            case 'best_seller':
-                $products = $products->withCount('orders')->orderBy('orders_count', 'desc'); break;
-            case 'newest':
-                $products = $products->orderBy('created_at', 'desc'); break;
-            case 'low_high':
-                $products = $products->orderBy('price'); break;
-            case 'high_low':
-                $products = $products->orderBy('price', 'desc'); break;
-        }
-
-        $products = $products->paginate($pagination);
+        $products = $this->sortProducts($products, request()->sort)->paginate($pagination);
 
         return view('shop.category')->with([
             'products' => $products,
@@ -168,14 +118,12 @@ class ShopController extends Controller
             'categoryName' => $category->name,
             'brands' => $brands,
             'attributes' => $attributes,
-            'filters' =>$filters,
+            'filters' =>$filter[0],
+            'currentFilters'=>$filter[1],
             'sort' => $request->input('sort'),
-            'currentFilters'=>$currentFilters,
             'childCategory' => $childCategory
         ]);
     }
-
-
 
     /**
      * Display the specified resource.
@@ -211,6 +159,148 @@ class ShopController extends Controller
         }
 
         //Filters
+        $filter = $this->getFilters($request, $products, $attributes);
+
+        //Sort
+        $products = $this->sortProducts($products, request()->sort)->paginate($pagination);
+
+        return view('shop.brand')->with([
+            'products' => $products,
+            'categories'=>$categories,
+            'brand' => $brand,
+            'brandName' => $brand->name,
+            'attributes' => $attributes,
+            'filters' =>$filter[0],
+            'sort' => $request->input('sort'),
+            'currentFilters'=> $filter[1],
+            'childCategory' => $childCategory
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  string $slug
+     * @return \Illuminate\Http\Response
+     */
+    public function department($slug)
+    {
+        $pagination = config('shop.pagination');
+
+        $department = Department::where('slug', $slug)->first();
+        $categories = Category::where('department_id', $department->id)->whereNull('parent_id')->orderBy('name')->get();
+        $featured_categories = Category::where('department_id', $department->id)->where('featured', true)->orderBy('name')->get();
+        $brands = Brand::where('featured', 1)->paginate(10);
+        $attributes = Attribute::all();
+
+        $products = Product::with('categories')->whereHas('categories', function ($query) use ($department) {
+            $query->where('department_id', $department->id);
+        });
+
+        //Sort
+        $products = $this->sortProducts($products, request()->sort)->paginate($pagination);
+
+        return view('shop.department')->with([
+            'department' => $department,
+            'products' => $products,
+            'categories' => $categories,
+            'featuredCategories' => $featured_categories,
+            'brands' => $brands,
+            'sort' => request()->sort,
+            'attributes' => $attributes
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  string $slug
+     * @return \Illuminate\Http\Response
+     */
+    public function sale(Request $request, $categorySlug = null)
+    {
+        $pagination = config('shop.pagination');
+
+        $categories = Category::whereHas('products', function ($products) {
+            return $products->where('regular_price', '>',0);
+        })->orderBy('name')->get();
+
+        $attributes = Attribute::has('values')->get();
+
+        //Get product by category
+        $products = null;
+        if(!empty($categorySlug)){
+            $childCategory = Category::with('children')->where('slug', $categorySlug)->first();
+
+            $products = Product::with(['attributes'])->where('regular_price', '>',0)->whereHas('categories', function ($query) use ($categorySlug) {
+                return $query->where('slug', $categorySlug)->orWhere(function($query) use ($categorySlug){
+                    return $query->whereHas('parent', function($child) use ($categorySlug){
+                        return $child->where('slug', $categorySlug);
+                    });
+                });
+            });
+        }else{
+            $childCategory = null;
+            $products = Product::with(['categories','attributes'])->where('regular_price', '>',0);
+        }
+
+        //Filters
+        $filter = $this->getFilters($request, $products, $attributes);
+
+        //Sort
+        $products = $this->sortProducts($products, request()->sort)->paginate($pagination);
+
+        return view('shop.sale')->with([
+            'products' => $products,
+            'categories'=>$categories,
+            'attributes' => $attributes,
+            'filters' =>$filter[0],
+            'sort' => $request->input('sort'),
+            'currentFilters'=>$filter[1],
+            'childCategory' => $childCategory
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        $request->validate([
+            'query' => 'required|min:3',
+        ]);
+
+        $query = $request->input('query');
+
+        // $products = Product::where('name', 'like', "%$query%")
+        //                    ->orWhere('details', 'like', "%$query%")
+        //                    ->orWhere('description', 'like', "%$query%")
+        //                    ->paginate(10);
+
+        $products = Product::search($query)->paginate(10);
+
+        return view('search-results')->with('products', $products);
+    }
+
+    public function searchAlgolia(Request $request)
+    {
+        return view('search-results-algolia');
+    }
+
+    private function sortProducts($query, $sort){
+        switch ($sort){
+            case 'featured':
+                $query = $query->orderBy('featured', 'desc'); break;
+            case 'best_seller':
+                $query = $query->withCount('orders')->orderBy('orders_count', 'desc'); break;
+            case 'newest':
+                $query = $query->orderBy('created_at', 'desc'); break;
+            case 'low_high':
+                $query = $query->orderBy('price'); break;
+            case 'high_low':
+                $query = $query->orderBy('price', 'desc'); break;
+        }
+        return $query;
+    }
+
+    private function getFilters($request, $products, $attributes){
         $filters= [
             'category' => $request->input('category'),
             'brand' => []
@@ -250,102 +340,6 @@ class ShopController extends Controller
             }
         }
 
-        //Sort
-        switch (request()->sort){
-            case 'featured':
-                $products = $products->orderBy('featured', 'desc'); break;
-            case 'best_seller':
-                $products = $products->withCount('orders')->orderBy('orders_count', 'desc'); break;
-            case 'newest':
-                $products = $products->orderBy('created_at', 'desc'); break;
-            case 'low_high':
-                $products = $products->orderBy('price'); break;
-            case 'high_low':
-                $products = $products->orderBy('price', 'desc'); break;
-        }
-
-        $products = $products->paginate($pagination);
-
-        return view('shop.brand')->with([
-            'products' => $products,
-            'categories'=>$categories,
-            'brand' => $brand,
-            'brandName' => $brand->name,
-            'attributes' => $attributes,
-            'filters' =>$filters,
-            'sort' => $request->input('sort'),
-            'currentFilters'=>$currentFilters,
-            'childCategory' => $childCategory
-        ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  string $slug
-     * @return \Illuminate\Http\Response
-     */
-    public function department($slug)
-    {
-        $pagination = config('shop.pagination');
-
-        $department = Department::where('slug', $slug)->first();
-        $categories = Category::where('department_id', $department->id)->whereNull('parent_id')->orderBy('name')->get();
-        $featured_categories = Category::where('department_id', $department->id)->where('featured', true)->orderBy('name')->get();
-        $brands = Brand::where('featured', 1)->paginate(10);
-        $attributes = Attribute::all();
-
-        $products = Product::with('categories')->whereHas('categories', function ($query) use ($department) {
-            $query->where('department_id', $department->id);
-        });
-
-        //Sort
-        switch (request()->sort){
-            case 'featured':
-                $products = $products->orderBy('featured', 'desc'); break;
-            case 'best_seller':
-                $products = $products->withCount('orders')->orderBy('orders_count', 'desc'); break;
-            case 'newest':
-                $products = $products->orderBy('created_at', 'desc'); break;
-            case 'low_high':
-                $products = $products->orderBy('price'); break;
-            case 'high_low':
-                $products = $products->orderBy('price', 'desc'); break;
-        }
-
-        $products = $products->paginate($pagination);
-
-        return view('shop.department')->with([
-            'department' => $department,
-            'products' => $products,
-            'categories' => $categories,
-            'featuredCategories' => $featured_categories,
-            'brands' => $brands,
-            'sort' => request()->sort,
-            'attributes' => $attributes
-        ]);
-    }
-
-    public function search(Request $request)
-    {
-        $request->validate([
-            'query' => 'required|min:3',
-        ]);
-
-        $query = $request->input('query');
-
-        // $products = Product::where('name', 'like', "%$query%")
-        //                    ->orWhere('details', 'like', "%$query%")
-        //                    ->orWhere('description', 'like', "%$query%")
-        //                    ->paginate(10);
-
-        $products = Product::search($query)->paginate(10);
-
-        return view('search-results')->with('products', $products);
-    }
-
-    public function searchAlgolia(Request $request)
-    {
-        return view('search-results-algolia');
+        return [$filters, $currentFilters];
     }
 }
