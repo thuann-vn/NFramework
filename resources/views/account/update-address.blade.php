@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', __('frontend.account.address_book'))
+@section('title', __('frontend.address.address_book'))
 
 @section('content')
     <div class="my-account-section container">
@@ -8,9 +8,9 @@
 
         <div class="my-account-content">
             <div class="my-account-title">
-                <span class="manage-your-account-icon"></span> {{__('frontend.account.address_update')}}
+                <span class="manage-your-account-icon"></span> {{__('frontend.address.address_update')}}
             </div>
-            <p>{{__('frontend.account.address_update_description')}}</p>
+            <p>{{__('frontend.address.address_update_description')}}</p>
             @if (session()->has('success_message'))
                 <div class="alert alert-success">
                     {{ session()->get('success_message') }}

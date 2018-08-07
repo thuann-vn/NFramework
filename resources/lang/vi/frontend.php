@@ -223,6 +223,10 @@ return [
         'create' => 'Thêm địa chỉ',
         'delete' => 'Xóa',
         'update_address_successfully' => 'Cập nhật danh sách địa chỉ thành công!',
-        'address_not_existed' => 'Địa chỉ không tồn tại!'
+        'address_not_existed' => 'Địa chỉ không tồn tại!',
+        'address_update' => 'Cập nhật địa chỉ',
+        'address_update_description' => 'Chỉnh sửa thông tin địa chỉ giao hàng bằng cách nhập các thông tin về họ tên, số điện thoại, địa chỉ vào bên dưới:',
+        'address_add' => 'Thêm địa chỉ mới',
+        'address_add_description' => 'Vui lòng nhập các thông tin địa chỉ giao hàng vào bên dưới:',
     ],
 ];

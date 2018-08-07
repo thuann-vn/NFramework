@@ -224,6 +224,10 @@ return [
         'create' => 'Create an address',
         'delete' => 'Delete',
         'update_address_successfully' => 'Updated address book successfully',
-        'address_not_existed' => 'Address does not existed!'
+        'address_not_existed' => 'Address does not existed!',
+        'address_update' => 'Update address',
+        'address_update_description' => 'Update address by change name, email, phone,... in below input fields:',
+        'address_add' => 'Add address',
+        'address_add_description' => 'Add address by enter name, email, phone,... in below input fields:',
     ],
 ];
