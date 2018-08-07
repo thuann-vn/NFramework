@@ -213,16 +213,16 @@ return [
         'featured_brands_heading' => 'Nổi bật<h3>Thương hiệu</h3>'
     ],
     'address' => [
-        'name' => 'Name',
-        'email' => 'Your email',
-        'phone' => 'Phone number',
-        'address' => 'Address',
-        'city' => 'City',
-        'province' => 'Province',
-        'update' => 'Update',
-        'create' => 'Create an address',
-        'delete' => 'Delete',
-        'update_address_successfully' => 'Updated address book successfully',
-        'address_not_existed' => 'Address does not existed!'
+        'name' => 'Họ tên',
+        'email' => 'Email',
+        'phone' => 'Số điện thoại',
+        'address' => 'Địa chỉ',
+        'city' => 'Tỉnh/Thành phố',
+        'province' => 'Quận/Huyện',
+        'update' => 'Sửa',
+        'create' => 'Thêm địa chỉ',
+        'delete' => 'Xóa',
+        'update_address_successfully' => 'Cập nhật danh sách địa chỉ thành công!',
+        'address_not_existed' => 'Địa chỉ không tồn tại!'
     ],
 ];
