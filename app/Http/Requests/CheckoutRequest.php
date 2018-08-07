@@ -23,23 +23,26 @@ class CheckoutRequest extends FormRequest
      */
     public function rules()
     {
-        $emailValidation = auth()->user() ? 'required|email' : 'required|email|unique:users';
-
         return [
-            'email' => $emailValidation,
-            'name' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'province' => 'required',
+            'email' => 'email',
+            'name' => 'required_if:address_id,==,0',
+            'address' => 'required_if:address_id,==,0',
+            'city' => 'required_if:address_id,==,0',
+            'province' => 'required_if:address_id,==,0',
+            'phone' => 'required_if:address_id,==,0',
             'payment_method' => 'required',
-            'phone' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'email.unique' => 'You already have an account with this email address. Please <a href="/login">login</a> to continue.',
+            'name.required_if' => __('frontend.checkout.validate.name'),
+            'address.required_if' => __('frontend.checkout.validate.address'),
+            'city.required_if' => __('frontend.checkout.validate.city'),
+            'province.required_if' => __('frontend.checkout.validate.province'),
+            'phone.required_if' => __('frontend.checkout.validate.phone'),
+            'payment_method.required' => __('frontend.checkout.validate.payment_method'),
         ];
     }
 }

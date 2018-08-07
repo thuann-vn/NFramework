@@ -41,7 +41,8 @@ const eApp = {
     },
     initCartButton: function(){
         var addToCartButton = $('.add-to-cart.not-added');
-        addToCartButton.click(function(e){
+
+        $(document).on('click', '.add-to-cart.not-added',function (e) {
             e.preventDefault();
 
             axios.post(ROUTES.cart.add_to_cart, {
@@ -52,8 +53,8 @@ const eApp = {
                 modal.show();
             })
 
-            $(thiss).removeClass('not-added').find('.cart-icon').removeClass('empty');
-        });
+            $(this).removeClass('not-added').find('.cart-icon').removeClass('empty');
+        })
 
         $(document).on('click', '.modal-remove', function(e){
             e.preventDefault();

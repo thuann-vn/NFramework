@@ -179,14 +179,24 @@ return [
             'phone' => 'Phone number',
             'address' => 'Address',
             'city' => 'City',
-            'province' => 'Province'
+            'province' => 'Province',
+            'new_address' => 'Enter new address'
         ],
         'payment' => [
             'title' => 'Payment method',
             'cash' => 'Cash on delivery',
             'transfer' => 'Bank transfer'
         ],
-        'complete' => 'Complete Order'
+        'complete' => 'Complete Order',
+        'validate' => [
+            'name' => 'Please enter your name',
+            'address' => 'Please enter your address',
+            'phone' => 'Please enter your phone',
+            'city' => 'Please enter city name',
+            'province' => 'Please enter province name',
+            'payment_method' => 'Please choose a payment method'
+
+        ]
     ],
     'wishlist' => [
         'items_in_wishlist' => ':total Items in your cart',

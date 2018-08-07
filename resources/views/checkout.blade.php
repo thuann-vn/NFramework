@@ -30,41 +30,59 @@
             <div class="checkout-section">
                 <div>
                     <h1 class="checkout-heading"><i class="nc-icon nc-lock"></i> {{__('frontend.checkout.title')}}</h1>
-                    <form action="{{ route('checkout.store') }}" method="POST" id="payment-form">
+                    <form action="{{ route('checkout.store') }}" method="POST" id="payment-form" novalidate>
                         {{ csrf_field() }}
                         <h2 class="checkout-title"><span>1</span>{{__('frontend.checkout.delivery.title')}}</h2>
 
-                        <div class="form-group">
-                            <label for="email">{{__('frontend.checkout.delivery.email')}}</label>
-                            @if (auth()->user())
-                                <input type="email" class="form-control" id="email" name="email" value="{{ auth()->user()->email }}" readonly>
-                            @else
-                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label for="name">{{__('frontend.checkout.delivery.name')}}</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">{{__('frontend.checkout.delivery.phone')}}</label>
-                            <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="address">{{__('frontend.checkout.delivery.address')}}</label>
-                            <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}" required>
+                        <div class="shipping-address">
+                        @if(auth()->user()->addressBook->count()>0)
+                            @foreach(auth()->user()->addressBook as $address)
+                                <label class="address" for="address_{{$address->id}}">
+                                    <input type="radio" name="address_id" id="address_{{$address->id}}" value="{{$address->id}}" {{old('address_id')==$address->id?'checked':''}}/>
+                                    <strong>{{$address->name}}</strong> ({{$address->phone}})
+                                    <br/> {{$address->address}}, {{$address->province}}, {{$address->city}}
+                                </label>
+                            @endforeach
+                        @endif
+                            <label class="address" for="new_address">
+                                <input type="radio" name="address_id" id="new_address" value="0" {{old('address_id')==0?'checked':''}}/>
+                                <strong>{{__('frontend.checkout.delivery.new_address')}}</strong>
+                            </label>
                         </div>
 
-                        <div class="half-form">
+                        <div class="new-address {{old('address_id')==0?'active':''}}">
                             <div class="form-group">
-                                <label for="city">{{__('frontend.checkout.delivery.city')}}</label>
-                                <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}" required>
+                                <label for="email">{{__('frontend.checkout.delivery.email')}}</label>
+                                @if (auth()->user())
+                                    <input type="email" class="form-control" id="email" name="email" value="{{ auth()->user()->email }}" readonly>
+                                @else
+                                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}">
+                                @endif
                             </div>
                             <div class="form-group">
-                                <label for="province">{{__('frontend.checkout.delivery.province')}}</label>
-                                <input type="text" class="form-control" id="province" name="province" value="{{ old('province') }}" required>
+                                <label for="name">{{__('frontend.checkout.delivery.name')}}</label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
                             </div>
-                        </div> <!-- end half-form -->
+                            <div class="form-group">
+                                <label for="phone">{{__('frontend.checkout.delivery.phone')}}</label>
+                                <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="address">{{__('frontend.checkout.delivery.address')}}</label>
+                                <input type="text" class="form-control" id="address" name="address" value="{{ old('address') }}">
+                            </div>
+
+                            <div class="half-form">
+                                <div class="form-group">
+                                    <label for="city">{{__('frontend.checkout.delivery.city')}}</label>
+                                    <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="province">{{__('frontend.checkout.delivery.province')}}</label>
+                                    <input type="text" class="form-control" id="province" name="province" value="{{ old('province') }}">
+                                </div>
+                            </div> <!-- end half-form -->
+                        </div>
 
                         <div class="spacer"></div>
 
@@ -149,5 +167,14 @@
 
 @section('extra-js')
     <script>
+        $(document).ready(function(){
+            $('[name="address_id"]').on('click change', function(e){
+                if($(this).val()==0){
+                    $('.new-address').addClass('active');
+                }else{
+                    $('.new-address').removeClass('active');
+                }
+            });
+        })
     </script>
 @endsection

@@ -27,15 +27,15 @@
                             <strong>{{__('frontend.account.orders.address')}}: </strong> {{$order->billing_address}}, {{$order->billing_province}}, {{$order->billing_city}} <br/>
                         </td>
                         <td>
-                            <div class="order-detail">
                                 @foreach($order->products as $product)
+                                <div class="order-detail">
                                     <img src="{{productImage($product->image)}}" width="32" height="32"/>
                                     <a href="{{route('shop.show', $product->slug)}}" target="_blank">
                                         {{$product->name}}
                                     </a>
                                     <span>{{priceFormat($product->price)}} x {{$product->pivot->quantity}}</span>
+                                </div>
                                 @endforeach
-                            </div>
                         </td>
                         <td><strong>{{priceFormat($order->billing_total)}}</strong></td>
                         <td style="text-align: center">

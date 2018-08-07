@@ -22,12 +22,12 @@
                 </tr>
                 <tr>
                     <td class="total-pending-order">
-                        {{__('frontend.account.total_pending_orders')}}   <span class="total-float">{{$user->orders->where('status',0)->count()}}</span>
+                        {{__('frontend.account.total_pending_orders')}}   <span class="total-float">{{$user->orders->where('shipped',0)->count()}}</span>
                     </td>
                 </tr>
                 <tr>
                     <td class="total-completed-orders">
-                        {{__('frontend.account.total_completed_orders')}}  <span class="total-float">{{$user->orders->where('status',1)->count()}}</span>
+                        {{__('frontend.account.total_completed_orders')}}  <span class="total-float">{{$user->orders->where('shipped',1)->count()}}</span>
                     </td>
                 </tr>
             </table>

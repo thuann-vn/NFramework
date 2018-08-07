@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\OrderProduct;
 use App\Mail\OrderPlaced;
+use App\UserAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\CheckoutRequest;
@@ -46,25 +47,22 @@ class CheckoutController extends Controller
      */
     public function store(CheckoutRequest $request)
     {
+        //Check if address is valid
+        $address = null;
+        if($request->input('address_id')>0){
+            $address = UserAddress::find($request->input('address_id'));
+
+            if(empty($address) || $address->user_id != auth()->user()->id){
+                return back()->withErrors('Error! ' . [__('frontend.address.address_not_existed')]);
+            }
+        }
+
         $contents = Cart::content()->map(function ($item) {
             return $item->model->slug.', '.$item->qty;
         })->values()->toJson();
 
         try {
-//            $charge = Stripe::charges()->create([
-//                'amount' => getNumbers()->get('newTotal') / 100,
-//                'currency' => 'CAD',
-//                'source' => $request->stripeToken,
-//                'description' => 'Order',
-//                'receipt_email' => $request->email,
-//                'metadata' => [
-//                    'contents' => $contents,
-//                    'quantity' => Cart::instance('default')->count(),
-//                    'discount' => collect(session()->get('coupon'))->toJson(),
-//                ],
-//            ]);
-
-            $order = $this->addToOrdersTables($request, null);
+            $order = $this->addToOrdersTables($request, $address, null);
             Mail::send(new OrderPlaced($order));
 
             Cart::instance('default')->destroy();
@@ -77,18 +75,18 @@ class CheckoutController extends Controller
         }
     }
 
-    protected function addToOrdersTables($request, $error)
+    protected function addToOrdersTables($request, $address, $error)
     {
         // Insert into orders table
         $order = Order::create([
             'user_id' => auth()->user() ? auth()->user()->id : null,
-            'billing_email' => $request->email,
-            'billing_name' => $request->name,
-            'billing_address' => $request->address,
-            'billing_city' => $request->city,
-            'billing_province' => $request->province,
+            'billing_email' => !empty($address) ? $address->email : $request->email,
+            'billing_name' => !empty($address) ? $address->name : $request->name,
+            'billing_address' => !empty($address) ? $address->address : $request->address,
+            'billing_city' => !empty($address) ? $address->city : $request->city,
+            'billing_province' => !empty($address) ? $address->province : $request->province,
+            'billing_phone' => !empty($address) ? $address->phone : $request->phone,
             'billing_postalcode' => $request->postalcode,
-            'billing_phone' => $request->phone,
             'billing_name_on_card' => $request->name_on_card,
             'billing_discount' => getNumbers()->get('discount'),
             'billing_discount_code' => getNumbers()->get('code'),

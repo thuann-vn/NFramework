@@ -123,6 +123,7 @@ class AccountController extends Controller
         if(empty($address) || $address->user_id != auth()->user()->id){
             return redirect(route('my-address-book'))->with('error_message', __('frontend.address.address_not_existed'));
         }
+
         $address->delete();
 
         return redirect(route('my-address-book'))->with('success_message', __('frontend.address.update_address_successfully'));
