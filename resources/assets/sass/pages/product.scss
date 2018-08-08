@@ -13,6 +13,10 @@
     grid-gap: 40px;
     padding: 100px 0 120px;
 
+    @include sm{
+        padding-bottom: 10px;
+    }
+
     .selected {
         border: 1px solid #979797;
     }
@@ -87,6 +91,9 @@
 }
 
 .product-section-information {
+    @include sm{
+        padding: 10px;
+    }
     p {
         margin-bottom: 16px;
     }
@@ -132,6 +139,10 @@
 
     .quantity-input{
         width: 70px;
+
+        @include sm{
+            width: 100%;
+        }
     }
 
     .button-cart{
@@ -171,10 +182,19 @@
         display: grid;
         grid-template-columns: 120px 1fr;
 
+        @include sm{
+            grid-template-columns: 100%;
+        }
+
         label{
             font-weight: bold;
             font-size: 12px;
             color: #333;
+
+            @include sm{
+                font-size: 14px;
+                margin-bottom: 5px;
+            }
         }
     }
 }
@@ -195,6 +215,7 @@
         color: #0a50ba;
         font-weight: bold;
         font-size: 14px;
+        height: 100%;
 
         &:hover{
             background: #08439c;
@@ -211,6 +232,10 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 40px;
     margin-bottom: 40px;
+
+    @include sm{
+        grid-template-columns: 1fr;
+    }
 
     h3{
         font-size: 30px;

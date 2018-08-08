@@ -15,6 +15,30 @@ const eProduct = {
             slidesToScroll: 1,
             infinite: false,
             draggable: false,
+            mobileFirst: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 7,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 5,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 200,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
         });
     },
     initVariant: function(){
@@ -32,6 +56,30 @@ const eProduct = {
             autoplay: true,
             autoplaySpeed: 3000,
             dots: true,
+            mobileFirst: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 8,
+                        slidesToScroll: 8
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 200,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                }
+            ]
         });
         $('.similar-products') .slick({
             infinite: true,
@@ -41,6 +89,30 @@ const eProduct = {
             autoplaySpeed: 3000,
             dots: true,
             centerMode: false,
+            mobileFirst: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 8,
+                        slidesToScroll: 8
+                    }
+                },
+                {
+                    breakpoint: 767,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 200,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                }
+            ]
         });
     },
     initCartForm: function () {
