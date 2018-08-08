@@ -59,6 +59,8 @@ namespace App{
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
  * @property string|null $deleted_at
+ * @property string|null $meta_description
+ * @property string|null $meta_keywords
  * @property-read null $translated
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Product[] $products
  * @property-read \Illuminate\Database\Eloquent\Collection|\TCG\Voyager\Models\Translation[] $translations
@@ -68,6 +70,8 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Brand whereFeatured($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Brand whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Brand whereLogo($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Brand whereMetaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Brand whereMetaKeywords($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Brand whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Brand whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Brand whereUpdatedAt($value)
@@ -90,6 +94,7 @@ namespace App{
  * @property bool $featured
  * @property int|null $parent_id
  * @property int $department_id
+ * @property bool|null $home_featured
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Category[] $children
  * @property-read \App\Department $department
  * @property-read null $translated
@@ -99,6 +104,7 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereDepartmentId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereFeatured($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereHomeFeatured($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereImage($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereName($value)
@@ -163,6 +169,8 @@ namespace App{
  * @property \Carbon\Carbon|null $updated_at
  * @property string|null $deleted_at
  * @property string|null $content
+ * @property string|null $meta_description
+ * @property string|null $meta_keywords
  * @property-read null $translated
  * @property-read \Illuminate\Database\Eloquent\Collection|\TCG\Voyager\Models\Translation[] $translations
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Department whereContent($value)
@@ -170,6 +178,8 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Department whereDeletedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Department whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Department whereImage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Department whereMetaDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Department whereMetaKeywords($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Department whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Department whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Department whereUpdatedAt($value)
@@ -190,19 +200,20 @@ namespace App{
  * @property string $billing_address
  * @property string $billing_city
  * @property string $billing_province
- * @property string $billing_postalcode
+ * @property string|null $billing_postalcode
  * @property string $billing_phone
- * @property string $billing_name_on_card
+ * @property string|null $billing_name_on_card
  * @property int $billing_discount
  * @property string|null $billing_discount_code
  * @property int $billing_subtotal
  * @property int $billing_tax
  * @property int $billing_total
- * @property string $payment_gateway
+ * @property string|null $payment_gateway
  * @property bool $shipped
  * @property string|null $error
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
+ * @property string|null $payment_method
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Product[] $products
  * @property-read \App\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereBillingAddress($value)
@@ -222,6 +233,7 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereError($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order wherePaymentGateway($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Order wherePaymentMethod($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereShipped($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Order whereUserId($value)
@@ -239,9 +251,11 @@ namespace App{
  * @property int $quantity
  * @property \Carbon\Carbon|null $created_at
  * @property \Carbon\Carbon|null $updated_at
+ * @property int|null $price
  * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderProduct whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderProduct whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderProduct whereOrderId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderProduct wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderProduct whereProductId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderProduct whereQuantity($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\OrderProduct whereUpdatedAt($value)
@@ -269,11 +283,17 @@ namespace App{
  * @property string|null $meta_description
  * @property string|null $meta_keywords
  * @property int|null $variant_alert_flg
+ * @property string|null $videos
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\ProductAttribute[] $attributes
  * @property-read \App\Brand|null $brand
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Category[] $categories
  * @property-read null $translated
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\OrderProduct[] $orders
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\ProductProperty[] $properties
  * @property-read \Illuminate\Database\Eloquent\Collection|\TCG\Voyager\Models\Translation[] $translations
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\ProductSKU[] $variants
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product mightAlsoLike()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product relatedProduct()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product search($search, $threshold = null, $entireText = false, $entireTextOnly = false)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product searchRestricted($search, $restriction, $threshold = null, $entireText = false, $entireTextOnly = false)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereBrandId($value)
@@ -292,6 +312,7 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereVariantAlertFlg($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Product whereVideos($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product withTranslation($locale = null, $fallback = true)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Product withTranslations($locales = null, $fallback = true)
  */
@@ -487,6 +508,7 @@ namespace App{
  * @property \Carbon\Carbon|null $updated_at
  * @property string|null $avatar
  * @property int|null $role_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\UserAddress[] $addressBook
  * @property mixed $locale
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Order[] $orders
@@ -503,5 +525,35 @@ namespace App{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\User whereUpdatedAt($value)
  */
 	class User extends \Eloquent {}
+}
+
+namespace App{
+/**
+ * App\UserAddress
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $name
+ * @property string|null $email
+ * @property string|null $address
+ * @property string|null $phone
+ * @property string|null $city
+ * @property string|null $province
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property string|null $deleted_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\UserAddress whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\UserAddress whereCity($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\UserAddress whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\UserAddress whereDeletedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\UserAddress whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\UserAddress whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\UserAddress whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\UserAddress wherePhone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\UserAddress whereProvince($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\UserAddress whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\UserAddress whereUserId($value)
+ */
+	class UserAddress extends \Eloquent {}
 }
 

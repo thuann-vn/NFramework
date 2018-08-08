@@ -19,9 +19,6 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-        $bot = new FbBot();
-        $bot->sendMessage('+84972705273', 'Aloha');
-
         $data = Cache::remember('landing_page_data', config('cache.cache_time'), function(){
             $products = Product::where('featured', true)->take(16)->inRandomOrder()->get();
             $homeSlider = Slider::where('name', 'Home Slider')->first();

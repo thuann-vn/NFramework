@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendOrderNotify;
 use App\Order;
 use App\OrderProduct;
 use App\Mail\OrderPlaced;
+use App\Services\FbBot;
 use App\UserAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -57,13 +59,17 @@ class CheckoutController extends Controller
             }
         }
 
-        $contents = Cart::content()->map(function ($item) {
+        Cart::content()->map(function ($item) {
             return $item->model->slug.', '.$item->qty;
         })->values()->toJson();
 
         try {
+            //Send email
             $order = $this->addToOrdersTables($request, $address, null);
             Mail::queue(new OrderPlaced($order));
+
+            //Send notify
+            $this->dispatch(new SendOrderNotify($order->id));
 
             Cart::instance('default')->destroy();
             session()->forget('coupon');
@@ -93,6 +99,7 @@ class CheckoutController extends Controller
             'billing_subtotal' => getNumbers()->get('newSubtotal'),
             'billing_tax' => getNumbers()->get('newTax'),
             'billing_total' => getNumbers()->get('newTotal'),
+            'payment_method' => $request->input('payment_method'),
             'error' => $error,
         ]);
 

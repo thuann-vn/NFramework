@@ -95,7 +95,9 @@ return [
         'viewing'                => 'Viewing',
         'yes'                    => 'Yes',
         'yes_please'             => 'Yes, Please',
-        'add_child'             => 'Add child'
+        'add_child'             => 'Add child',
+        'receive_notification' => 'Receive Notification',
+         'phone' => 'Phone number'
     ],
 
     'login' => [

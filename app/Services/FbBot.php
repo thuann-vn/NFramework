@@ -2,6 +2,10 @@
 
 namespace App\Services;
 
+use App\Order;
+use App\User;
+use Illuminate\Support\Facades\Log;
+
 class FbBot
 {
     private $accessToken = null;
@@ -14,28 +18,94 @@ class FbBot
         }
     }
 
-    public function sendMessage($receivePhoneNumber, $message)
+    public function sendMessage($message)
     {
         try
         {
+            $message['access_token'] =  $this->accessToken;
+
             $client = new \GuzzleHttp\Client();
             $url = "https://graph.facebook.com/v2.6/me/messages";
-
-            $params = ['recipient' => ['phone_number' => $receivePhoneNumber], 'message' => ['text' => $message], 'access_token' => $this->accessToken];
-
             $header = array(
                 'content-type' => 'application/json'
             );
 
-            $response = $client->post($url, ['query' => $params, 'headers' => $header]);
-            // file_put_contents("payytorrrr.json", json_encode($response));
-            return true;
+            $client->post($url, ['query' => $message, 'headers' => $header]);
         }
         catch(\GuzzleHttp\Exception\RequestException $e)
         {
-            $response = json_decode($e->getResponse()->getBody(true)->getContents());
-            return $response;
+            dd($e);
+            Log::alert('Send messenger error', $e);
+        }
+    }
+
+    /**
+     * @param $receivePhoneNumber
+     * @param $order Order
+     */
+    public function sendOrderNotifyMessage($orderId){
+        $order = Order::findOrFail($orderId);
+        $payload = [
+            'template_type' => 'receipt',
+            'sharable' => true,
+            'recipient_name' => $order->billing_name,
+            'order_number' => $order->id,
+            'currency' => 'VND',
+            'order_url' => route('voyager.orders.show', $order->id),
+            "payment_method"=>$order->payment_method=='cash'?__('frontend.checkout.payment.cash'):__('frontend.checkout.payment.transfer'),
+            'timestamp' => $order->created_at->timestamp,
+            'address' => [
+                "street_1" => $order->billing_address,
+                "street_2" => "ABC",
+                "city" => $order->billing_city,
+                "postal_code" => "70000",
+                "state" => $order->billing_province,
+                "country"=>"Viet Nam"
+            ],
+            "summary" => [
+                "subtotal" => $order->billing_subtotal,
+                "total_cost" => $order->billing_subtotal
+            ],
+        ];
+
+        if(!empty($order->billing_discount_code)){
+            $payload['adjustments']=[
+                [
+                    "name"=>$order->billing_discount_code,
+                    "amount"=>$order->billing_discount
+                ]
+            ];
+        }
+
+        $elements = [];
+        foreach ($order->products as $product)
+        {
+            $elements[]=[
+                "title" => $product->name,
+                "subtitle" => $product->details,
+                "quantity" => $product->pivot->quantity,
+                "price" => $product->price,
+                "currency" => "VND",
+                "image_url" => productImage($product->image)
+            ];
+        }
+
+        $payload['elements'] = $elements;
+
+        $receiveList = User::where('send_notify',1)->whereNotNull('phone_number')->get();
+        foreach ($receiveList as $admin){
+            $message= [
+                'messaging_type' => 'MESSAGE_TAG',
+                'tag' => 'PERSONAL_FINANCE_UPDATE',
+                'recipient' => ['phone_number' => $admin->phone_number],
+                'message' => [
+                    'attachment' => [
+                        'type' => 'template',
+                        'payload' => $payload
+                    ]
+                ]
+            ];
+            $this->sendMessage($message);
         }
     }
 }
-?>
