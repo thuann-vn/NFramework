@@ -343,6 +343,16 @@ header {
                         margin-left: -1px;
                         z-index: 10;
                         display: none;
+                        transition: 300ms ease all;
+
+                        @include sm{
+                            position: relative;
+                            max-height: 0;
+                            overflow: hidden;
+                            width: 100%;
+                            box-shadow: none;
+                            border: none;
+                        }
 
                         > li{
                             text-align: left;
@@ -368,6 +378,12 @@ header {
                     &:hover{
                         > ul{
                             display: flex;
+                        }
+                    }
+
+                    &.open{
+                        > ul{
+                            max-height: 500px;
                         }
                     }
                 }
