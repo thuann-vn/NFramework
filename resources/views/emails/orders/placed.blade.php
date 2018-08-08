@@ -9,13 +9,17 @@ Thank you for your order.
 
 **Order Name:** {{ $order->billing_name }}
 
-**Order Total:** ${{ priceFormat($order->billing_total) }}
+**Order Subtotal:** {{ priceFormat($order->billing_subtotal) }}
+
+**Discount:** {{ priceFormat($order->billing_discount) }}
+
+**Order Total:** {{ priceFormat($order->billing_total) }}
 
 **Items Ordered**
 
 @foreach ($order->products as $product)
 Name: {{ $product->name }} <br>
-Price: ${{ priceFormat($product->price)}} <br>
+Price: {{ priceFormat($product->price)}} <br>
 Quantity: {{ $product->pivot->quantity }} <br>
 @endforeach
 
