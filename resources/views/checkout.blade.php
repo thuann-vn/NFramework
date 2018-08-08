@@ -35,15 +35,15 @@
                         <h2 class="checkout-title"><span>1</span>{{__('frontend.checkout.delivery.title')}}</h2>
 
                         <div class="shipping-address">
-                        @if(auth()->user()->addressBook->count()>0)
-                            @foreach(auth()->user()->addressBook as $address)
-                                <label class="address" for="address_{{$address->id}}">
-                                    <input type="radio" name="address_id" id="address_{{$address->id}}" value="{{$address->id}}" {{old('address_id')==$address->id?'checked':''}}/>
-                                    <strong>{{$address->name}}</strong> ({{$address->phone}})
-                                    <br/> {{$address->address}}, {{$address->province}}, {{$address->city}}
-                                </label>
-                            @endforeach
-                        @endif
+                            @if(auth()->check())
+                                @foreach(auth()->user()->addressBook as $address)
+                                    <label class="address" for="address_{{$address->id}}">
+                                        <input type="radio" name="address_id" id="address_{{$address->id}}" value="{{$address->id}}" {{old('address_id')==$address->id?'checked':''}}/>
+                                        <strong>{{$address->name}}</strong> ({{$address->phone}})
+                                        <br/> {{$address->address}}, {{$address->province}}, {{$address->city}}
+                                    </label>
+                                @endforeach
+                            @endif
                             <label class="address" for="new_address">
                                 <input type="radio" name="address_id" id="new_address" value="0" {{old('address_id')==0?'checked':''}}/>
                                 <strong>{{__('frontend.checkout.delivery.new_address')}}</strong>
