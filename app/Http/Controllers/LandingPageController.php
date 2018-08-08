@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Brand;
 use App\Category;
 use App\Product;
+use App\Services\FbBot;
 use App\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -18,6 +19,9 @@ class LandingPageController extends Controller
      */
     public function index()
     {
+        $bot = new FbBot();
+        $bot->sendMessage('+84972705273', 'Aloha');
+
         $data = Cache::remember('landing_page_data', config('cache.cache_time'), function(){
             $products = Product::where('featured', true)->take(16)->inRandomOrder()->get();
             $homeSlider = Slider::where('name', 'Home Slider')->first();
