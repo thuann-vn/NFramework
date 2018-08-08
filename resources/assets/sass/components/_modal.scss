@@ -56,6 +56,11 @@
     width: 800px;
     margin: 30px auto;
     z-index: 1050;
+    max-width: 90%;
+
+    @include sm{
+        max-width: 90%;
+    }
 }
 
 .modal-content {

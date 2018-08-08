@@ -87,51 +87,6 @@
         grid-template-columns: 1fr;
     }
 
-    .cart-section {
-
-        grid-template-columns: 1fr;
-
-        .cart-buttons {
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .cart-table-row {
-
-            .cart-table-row-left {
-                width: 30%;
-            }
-
-            .cart-table-row-right {
-                width: 55%;
-            }
-
-            img {
-                display: none;
-            }
-
-        }
-
-        .have-code-container {
-            width: 100%;
-        }
-
-        .cart-totals {
-            flex-direction: column;
-
-            .cart-totals-left {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-
-            .cart-totals-right {
-                width: 100%;
-            }
-        }
-
-    }
-
-
     .checkout-section {
         grid-template-columns: 1fr;
 
