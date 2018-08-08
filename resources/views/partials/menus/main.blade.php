@@ -1,7 +1,7 @@
 <ul class="main-menu-wrap">
     @foreach($items as $menu_item)
         <li class="{{$menu_item->children->count()>0?'has-child':''}}">
-            <a href="{{ $menu_item->link() }}">
+            <a href="{{ $menu_item->link() }}" {{!empty($menu_item->color)?'style=color:'. $menu_item->color :''}}>
                 {{ $menu_item->getTranslatedAttribute('title') }}
                 <span></span>
             </a>
