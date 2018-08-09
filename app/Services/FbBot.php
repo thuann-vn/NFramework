@@ -137,7 +137,8 @@ class FbBot
                 'content-type' => 'application/json'
             );
 
-            return $client->get($url, ['headers' => $header]);
+            $response =  $client->get($url, ['headers' => $header]);
+            return json_decode($response->getBody()->getContents());
         }
     }
 }

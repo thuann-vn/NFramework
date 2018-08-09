@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Services\FbBot;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -76,6 +77,11 @@ class LoginController extends Controller
     public function linkFbMessenger(Request $request){
         $fbBot = new FbBot();
         $result = $fbBot->sendGraphAPI('me',['fields'=>'recipient', 'account_linking_token'=> $request->input('account_linking_token')],'GET');
-        dd($result->getBody()->getContents());
+
+        $user = User::findOrFail(auth()->user()->id);
+        $user->messenger_id = $result->id;
+        $user->save();
+
+        return redirect(route('voyager.dashboard'))->with('linked_success', 'Linked account success');
     }
 }

@@ -5,8 +5,12 @@
         @include('voyager::alerts')
         @include('voyager::dimmers')
 
-        <div class="receive-notifications-alert">
-
+        <div class="container-fluid">
+            @if(!empty(session()->has('linked_success')))
+                <div class="alert alert-success receive-notifications-alert">
+                    {{session()->get('linked_success')}}
+                </div>
+            @endif
         </div>
 
         <div class="analytics-container">
