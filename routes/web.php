@@ -81,3 +81,6 @@ Route::get('/search', 'ShopController@search')->name('search');
 Route::get('/search-algolia', 'ShopController@searchAlgolia')->name('search-algolia');
 
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@changeLocale']);
+
+Route::get('/webhook', 'WebhookController@getWebhook')->name('get-webhook');
+Route::post('/webhook', 'WebhookController@postWebhook')->name('post-webhook');

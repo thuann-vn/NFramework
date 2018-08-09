@@ -67,7 +67,7 @@ class FbBot
             "summary" => [
                 "subtotal" => $order->billing_subtotal,
                 "total_cost" => $order->billing_subtotal
-            ],
+            ]
         ];
 
         if(!empty($order->billing_discount_code)){
