@@ -22,7 +22,7 @@ class FbBot
     {
         try
         {
-            Log::error('SENDING MESSENGER:',  ['url'=> env('APP_URL'), 'receiver'=> $message['recipient']]);
+            Log::info('SENDING MESSENGER:',  ['url'=> env('APP_URL'), 'receiver'=> $message['recipient']]);
             
             $message['access_token'] =  $this->accessToken;
 
@@ -33,6 +33,7 @@ class FbBot
             );
 
             $result = $client->post($url, ['query' => $message, 'headers' => $header]);
+            Log::info('SENDING MESSENGER DONE:',  ['url'=> env('APP_URL'), 'result'=> $result]);
         }
         catch(\GuzzleHttp\Exception\RequestException $e)
         {
