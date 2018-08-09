@@ -84,3 +84,5 @@ Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@chan
 
 Route::get('/webhook', 'WebhookController@getWebhook')->name('get-webhook');
 Route::post('/webhook', 'WebhookController@postWebhook')->name('post-webhook');
+
+Route::middleware('auth')->get('/link-fb-messenger', 'Auth\LoginController@linkFbMessenger')->name('link-fb-messenger');

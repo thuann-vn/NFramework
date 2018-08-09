@@ -23,7 +23,7 @@ class FbBot
         try
         {
             Log::info('SENDING MESSENGER:',  ['url'=> env('APP_URL'), 'receiver'=> $message['recipient']]);
-            
+
             $message['access_token'] =  $this->accessToken;
 
             $client = new \GuzzleHttp\Client();
@@ -108,6 +108,36 @@ class FbBot
                 ]
             ];
             $this->sendMessage($message);
+        }
+    }
+
+    /**
+     * @param $url
+     * @param $params
+     * @param $method
+     */
+
+    public function sendGraphAPI($url, $params, $method = 'POST'){
+        $params['access_token'] =  $this->accessToken;
+        if($method=='POST'){
+            $url = config('shop.fb_graph') .  $url . '?access_token='.config('shop.fb_token');
+
+            $data = ['json' => $params];
+
+            $client = new \GuzzleHttp\Client;
+            return $client->request($method , $url,  $data);
+        }else{
+            $url = config('shop.fb_graph') .  $url . '?access_token='.config('shop.fb_token');
+            foreach ($params as $key=> $param){
+                $url. '&'.$key . '=' . $param;
+            }
+
+            $client = new \GuzzleHttp\Client();
+            $header = array(
+                'content-type' => 'application/json'
+            );
+
+            return $client->get($url, ['headers' => $header]);
         }
     }
 }

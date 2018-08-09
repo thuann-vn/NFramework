@@ -64,7 +64,7 @@ class WebhookController extends Controller
                         "url"=>"https://www.messenger.com",
                         "title"=>"Visit Messenger"
                       ],
-                        ["type"=> "account_link","url"=> "https://balo153.allinoneservices.vn/"]
+                        ["type"=> "account_link","url"=> route('link-fb-messenger')]
                     ]
                   ]
                 ]
@@ -86,7 +86,7 @@ class WebhookController extends Controller
             ]
         ];
         $client = new \GuzzleHttp\Client;
-        $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messages?access_token='.env('FB_TOKEN'),  $data);
+        $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messages?access_token='.config('shop.fb_token'),  $data);
         return $res->getBody();
     }
 
@@ -100,7 +100,7 @@ class WebhookController extends Controller
             ]
         ];
         $client = new \GuzzleHttp\Client;
-        $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='.env('FB_TOKEN'),  $data);
+        $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='.config('shop.fb_token'),  $data);
         Log::error('received messenger_profile', [$res->getBody()]);
         return $res->getBody();
     }
@@ -118,7 +118,7 @@ class WebhookController extends Controller
             ]
         ];
         $client = new \GuzzleHttp\Client;
-        $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messages?access_token='.env('FB_TOKEN'),  $data);
+        $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messages?access_token='.config('shop.fb_token'),  $data);
         return $res->getBody();
     }
 }

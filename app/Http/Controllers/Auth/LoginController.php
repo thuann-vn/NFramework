@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Services\FbBot;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -35,7 +36,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except(['logout','linkFbMessenger']);
     }
 
     /**
@@ -70,5 +71,11 @@ class LoginController extends Controller
     public function redirectTo()
     {
         return str_replace(url('/'), '', session()->get('previousUrl', '/'));
+    }
+
+    public function linkFbMessenger(Request $request){
+        $fbBot = new FbBot();
+        $result = $fbBot->sendGraphAPI('me',['fields'=>'recipient', 'account_linking_token'=> $request->input('account_linking_token')],'GET');
+        dd($result->getBody()->getContents());
     }
 }
