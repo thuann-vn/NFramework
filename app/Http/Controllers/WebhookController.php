@@ -50,7 +50,27 @@ class WebhookController extends Controller
         if ($has_message && !$is_echo) {
             //for now, we will just reply back the same thing as user send
             $reply = $postArray[0]['message']['text'];
-            $response = $this->sendToFbMessenger($sender, $reply);
+            $response = $this->sendToFbMessenger($sender,$reply);
+
+            $params = [
+                'attachment' => [
+                    "type"=>"template",
+                    "payload"=>[
+                    "template_type"=>"button",
+                    "text"=>"What do you want to do next?",
+                    "buttons"=>[
+                      [
+                          "type"=>"web_url",
+                        "url"=>"https://www.messenger.com",
+                        "title"=>"Visit Messenger"
+                      ],
+                        ["type"=> "account_link","url"=> "https://balo153.allinoneservices.vn/"]
+                    ]
+                  ]
+                ]
+            ];
+
+            $response = $this->sendAMessage($sender, $params );
         }
         return response($response, 200);
     }
@@ -63,6 +83,38 @@ class WebhookController extends Controller
             [
                 'recipient' => ['id' => $sender],
                 'message' => ['text' => $message],
+            ]
+        ];
+        $client = new \GuzzleHttp\Client;
+        $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messages?access_token='.env('FB_TOKEN'),  $data);
+        return $res->getBody();
+    }
+
+
+    protected function sendAccountLink($sender){
+        //message
+        $data = ['json' =>
+            [
+                'recipient' => ['id' => $sender],
+                'account_linking_url' => 'https://balo153.allinoneservices.vn/',
+            ]
+        ];
+        $client = new \GuzzleHttp\Client;
+        $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='.env('FB_TOKEN'),  $data);
+        Log::error('received messenger_profile', [$res->getBody()]);
+        return $res->getBody();
+    }
+
+
+    //after we process the message on above, let send message to the user
+    //back in Facebook Messenger
+    protected function sendAMessage($sender, $message)
+    {
+        //message
+        $data = ['json' =>
+            [
+                'recipient' => ['id' => $sender],
+                'message' => $message,
             ]
         ];
         $client = new \GuzzleHttp\Client;
