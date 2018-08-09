@@ -32,7 +32,9 @@ class SendOrderNotify implements ShouldQueue
      */
     public function handle()
     {
-        $bot = new FbBot();
-        $bot->sendOrderNotifyMessage($this->orderId);
+        if ($this->attempts() <= config('queue.max_tries')) {
+            $bot = new FbBot();
+            $bot->sendOrderNotifyMessage($this->orderId);
+        }
     }
 }

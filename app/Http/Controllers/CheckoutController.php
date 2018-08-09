@@ -66,13 +66,15 @@ class CheckoutController extends Controller
         try {
             //Send email
             $order = $this->addToOrdersTables($request, $address, null);
-            Mail::queue(new OrderPlaced($order));
+
+            Cart::instance('default')->destroy();
+            session()->forget('coupon');
 
             //Send notify
             $this->dispatch(new SendOrderNotify($order->id));
 
-            Cart::instance('default')->destroy();
-            session()->forget('coupon');
+            //Send email
+            Mail::queue(new OrderPlaced($order));
 
             return redirect()->route('confirmation.index')->with('success_message', 'Thank you! Your payment has been successfully accepted!');
         } catch (CardErrorException $e) {

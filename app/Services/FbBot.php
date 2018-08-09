@@ -22,6 +22,8 @@ class FbBot
     {
         try
         {
+            Log::error('SENDING MESSENGER:',  ['url'=> env('APP_URL'), 'receiver'=> $message['recipient']]);
+            
             $message['access_token'] =  $this->accessToken;
 
             $client = new \GuzzleHttp\Client();
@@ -30,12 +32,11 @@ class FbBot
                 'content-type' => 'application/json'
             );
 
-            $client->post($url, ['query' => $message, 'headers' => $header]);
+            $result = $client->post($url, ['query' => $message, 'headers' => $header]);
         }
         catch(\GuzzleHttp\Exception\RequestException $e)
         {
-            dd($e);
-            Log::alert('Send messenger error', $e);
+            Log::alert('Send messenger error', ['code' => $e->getCode(),'message' => $e->getMessage()]);
         }
     }
 
@@ -86,7 +87,7 @@ class FbBot
                 "quantity" => $product->pivot->quantity,
                 "price" => $product->price,
                 "currency" => "VND",
-                "image_url" => productImage($product->image)
+                "image_url" => asset('storage/'.$product->image)
             ];
         }
 

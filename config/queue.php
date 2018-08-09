@@ -82,4 +82,5 @@ return [
         'table' => 'failed_jobs',
     ],
 
+    'max_tries' => 1
 ];
