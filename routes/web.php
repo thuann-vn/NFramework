@@ -69,6 +69,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::delete('delete-variant/{id}', ['uses' => 'Voyager\ProductVariantsController@deleteProductAttribute', 'as' => 'admin.deleteProductAttribute']);
     Route::delete('delete-variant-value/{id}', ['uses' => 'Voyager\ProductVariantsController@deleteProductAttributeValue', 'as' => 'admin.deleteProductAttributeValue']);
+
+    Route::get('/link-with-messenger', 'Auth\LoginController@sendLinkFbMessengerRequest')->name('admin.linkWithMessenger');
 });
 
 Auth::routes();

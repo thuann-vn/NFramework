@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\FbBot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -34,91 +35,36 @@ class WebhookController extends Controller
     //Facebook Messenger will send to our Laravel project here
     public function postWebhook(Request $request)
     {
+        Log::info('received event', $request->all());
         $content = json_decode($request->getContent() , true);
         //check if the content of the request contain messaging property, if not exist set it as null
         $postArray = isset($content['entry'][0]['messaging']) ? $content['entry'][0]['messaging'] : null;
         $response = [];
-        $has_message = false;
-        $is_echo = true;
 
+        //Check if get started
         if (!is_null($postArray)) {
             $sender = $postArray[0]['sender']['id'];
-            $has_message = isset($postArray[0]['message']['text']);
-            //if the message contain is_echo, it means it doesnt contain user message
-            $is_echo = isset($postArray[0]['message']['is_echo']);
-        }
-        if ($has_message && !$is_echo) {
-            //for now, we will just reply back the same thing as user send
-            $reply = $postArray[0]['message']['text'];
-            $response = $this->sendToFbMessenger($sender,$reply);
-
-            $params = [
-                'attachment' => [
-                    "type"=>"template",
-                    "payload"=>[
-                    "template_type"=>"button",
-                    "text"=>"What do you want to do next?",
-                    "buttons"=>[
-                      [
-                          "type"=>"web_url",
-                        "url"=>"https://www.messenger.com",
-                        "title"=>"Visit Messenger"
-                      ],
-                        ["type"=> "account_link","url"=> route('link-fb-messenger')]
+            $postback = isset($postArray[0]['postback']['payload'])?json_decode($postArray[0]['postback']['payload']):null;
+            if(!empty($postback) && $postback->type == 'ACCOUNT_LINK'){
+                $params = [
+                    'recipient' => ['id' => $sender],
+                    'message' => [
+                        'attachment' => [
+                            "type"=>"template",
+                            "payload"=>[
+                                "template_type"=>"button",
+                                "text"=>"CONNECT YOUR ACCOUNT WITH ". config('app.name'),
+                                "buttons"=>[
+                                    ["type"=> "account_link","url"=> route('link-fb-messenger')]
+                                ]
+                            ]
+                        ]
                     ]
-                  ]
-                ]
-            ];
-
-            $response = $this->sendAMessage($sender, $params );
+                ];
+                $fbBot = new FbBot();
+                $response = $fbBot->sendGraphAPI('me/messages',$params);
+            }
         }
         return response($response, 200);
-    }
-    //after we process the message on above, let send message to the user
-    //back in Facebook Messenger
-    protected function sendToFbMessenger($sender, $message)
-    {
-        //message
-        $data = ['json' =>
-            [
-                'recipient' => ['id' => $sender],
-                'message' => ['text' => $message],
-            ]
-        ];
-        $client = new \GuzzleHttp\Client;
-        $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messages?access_token='.config('shop.fb_token'),  $data);
-        return $res->getBody();
-    }
-
-
-    protected function sendAccountLink($sender){
-        //message
-        $data = ['json' =>
-            [
-                'recipient' => ['id' => $sender],
-                'account_linking_url' => 'https://balo153.allinoneservices.vn/',
-            ]
-        ];
-        $client = new \GuzzleHttp\Client;
-        $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messenger_profile?access_token='.config('shop.fb_token'),  $data);
-        Log::error('received messenger_profile', [$res->getBody()]);
-        return $res->getBody();
-    }
-
-
-    //after we process the message on above, let send message to the user
-    //back in Facebook Messenger
-    protected function sendAMessage($sender, $message)
-    {
-        //message
-        $data = ['json' =>
-            [
-                'recipient' => ['id' => $sender],
-                'message' => $message,
-            ]
-        ];
-        $client = new \GuzzleHttp\Client;
-        $res = $client->request('POST', 'https://graph.facebook.com/v2.6/me/messages?access_token='.config('shop.fb_token'),  $data);
-        return $res->getBody();
     }
 }

@@ -150,15 +150,19 @@ return [
     'dashboard' => [
         // Add custom list items to navbar's dropdown
         'navbar_items' => [
+            'Home' => [
+                'route'        => '/',
+                'icon_class'   => 'voyager-home',
+                'target_blank' => true,
+            ],
             'Profile' => [
                 'route'      => 'voyager.profile',
                 'classes'    => 'class-full-of-rum',
                 'icon_class' => 'voyager-person',
             ],
-            'Home' => [
-                'route'        => '/',
-                'icon_class'   => 'voyager-home',
-                'target_blank' => true,
+            'Connect with messenger' => [
+                'route'        => 'admin.linkWithMessenger',
+                'icon_class'   => 'voyager-bubble-hear',
             ],
             'Logout' => [
                 'route'      => 'voyager.logout',

@@ -5,14 +5,6 @@
         @include('voyager::alerts')
         @include('voyager::dimmers')
 
-        <div class="container-fluid">
-            @if(!empty(session()->has('linked_success')))
-                <div class="alert alert-success receive-notifications-alert">
-                    {{session()->get('linked_success')}}
-                </div>
-            @endif
-        </div>
-
         <div class="analytics-container">
             <?php $google_analytics_client_id = Voyager::setting("admin.google_analytics_client_id"); ?>
             @if (isset($google_analytics_client_id) && !empty($google_analytics_client_id))

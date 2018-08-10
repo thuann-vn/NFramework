@@ -37,7 +37,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except(['logout','linkFbMessenger']);
+        $this->middleware('guest')->except(['logout','linkFbMessenger', 'sendLinkFbMessengerRequest']);
     }
 
     /**
@@ -74,14 +74,60 @@ class LoginController extends Controller
         return str_replace(url('/'), '', session()->get('previousUrl', '/'));
     }
 
-    public function linkFbMessenger(Request $request){
+    public function sendLinkFbMessengerRequest(Request $request){
         $fbBot = new FbBot();
-        $result = $fbBot->sendGraphAPI('me',['fields'=>'recipient', 'account_linking_token'=> $request->input('account_linking_token')],'GET');
 
-        $user = User::findOrFail(auth()->user()->id);
-        $user->messenger_id = $result->id;
-        $user->save();
+        $startThreadParams = [
+            'account_linking_url' => route('link-fb-messenger'),
+            'setting_type' => 'CALL_TO_ACTIONS',
+            'thread_state' => 'NEW_THREAD',
+            'call_to_actions' => [
+                [
+                    'payload' => json_encode([
+                        'type' => 'ACCOUNT_LINK',
+                    ]) ,
+                ],
+            ],
+        ];
 
-        return redirect(route('voyager.dashboard'))->with('linked_success', 'Linked account success');
+        $result = $fbBot->sendGraphAPI('me/thread_settings',$startThreadParams);
+        return redirect('https://m.me/botEbalo');
+    }
+
+    public function linkFbMessenger(Request $request){
+        try{
+            $fbBot = new FbBot();
+            $result = $fbBot->sendGraphAPI('me',['fields'=>'recipient', 'account_linking_token'=> $request->input('account_linking_token')],'GET');
+            $user = User::findOrFail(auth()->user()->id);
+            $user->messenger_id = $result->recipient;
+            $user->save();
+
+            //Send complete message
+            $params = [
+                'recipient' => ['id' => $result->recipient],
+                'message' => [
+                    'attachment' => [
+                        'type' => "template",
+                        'payload' => [
+                            'template_type' => 'button',
+                            'text' => "Connected your messenger account with " . config('app.name') . ' successfully!',
+                            'buttons' => [
+                                [
+                                    'type' => "web_url",
+                                    'url' => route('voyager.dashboard'),
+                                    'title' => "Visit Messenger",
+                                    'webview_height_ratio'=> "full"
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ];
+
+            $result = $fbBot->sendGraphAPI('me/messages',$params);
+            return redirect(route('voyager.dashboard'))->with('linked_success', 'Linked account successfully!');
+        }catch (\Exception $exception){
+            return redirect(route('voyager.dashboard'))->with('linked_failed', 'Linked account failed!');
+        }
     }
 }
