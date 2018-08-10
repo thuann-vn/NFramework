@@ -77,8 +77,26 @@ class LoginController extends Controller
     public function sendLinkFbMessengerRequest(Request $request){
         $fbBot = new FbBot();
 
+        //Set persistent menu
+        $persistentMenu = [
+            'persistent_menu'=>[
+                [
+                    'locale'=>'default',
+                    'composer_input_disabled'=> true,
+                    'call_to_actions'=>[
+                        [
+                            'title'=>'Connect with '. config('app.name'),
+                            'type'=>'postback',
+                            'payload'=>json_encode(['type'=>'ACCOUNT_LINK'])
+                        ]
+                    ]
+                ]
+            ]
+        ];
+        $fbBot->sendGraphAPI('me/messenger_profile', $persistentMenu);
+
+        //Set start thread
         $startThreadParams = [
-            'account_linking_url' => route('link-fb-messenger'),
             'setting_type' => 'CALL_TO_ACTIONS',
             'thread_state' => 'NEW_THREAD',
             'call_to_actions' => [
@@ -90,7 +108,9 @@ class LoginController extends Controller
             ],
         ];
 
-        $result = $fbBot->sendGraphAPI('me/thread_settings',$startThreadParams);
+        $fbBot->sendGraphAPI('me/thread_settings',$startThreadParams);
+
+
         return redirect('https://m.me/botEbalo');
     }
 
@@ -115,7 +135,7 @@ class LoginController extends Controller
                                 [
                                     'type' => "web_url",
                                     'url' => route('voyager.dashboard'),
-                                    'title' => "Visit Messenger",
+                                    'title' => "Back to Admin",
                                     'webview_height_ratio'=> "full"
                                 ]
                             ]

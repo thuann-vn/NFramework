@@ -44,6 +44,7 @@ class FbBot
                 return json_decode($response->getBody()->getContents());
             }
         }catch (\Exception $exception){
+            dd($exception);
             Log::error('SEND MESSAGE FAILED', [$params, $exception->getCode(), $exception->getMessage()]);
             return null;
         }
