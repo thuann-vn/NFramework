@@ -79,10 +79,12 @@ class LoginController extends Controller
 
         //Set persistent menu
         $persistentMenu = [
+            'account_linking_url'=> route('link-fb-messenger'),
+            'get_started' => ['payload' => 'ACCOUNT_LINK'],
             'persistent_menu'=>[
                 [
                     'locale'=>'default',
-                    'composer_input_disabled'=> true,
+                    'composer_input_disabled'=> false,
                     'call_to_actions'=>[
                         [
                             'title'=>'Connect with '. config('app.name'),
