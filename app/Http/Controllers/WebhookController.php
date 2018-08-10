@@ -25,7 +25,7 @@ class WebhookController extends Controller
     public function getWebhook(Request $request)
     {
         Log::error('received get', $request->all());
-        if ($request->get('hub_mode') == 'subscribe' and $request->get('hub_verify_token') === env('HUB_VERIFY_TOKEN')) {
+        if ($request->get('hub_mode') == 'subscribe' and $request->get('hub_verify_token') === config('shop.hub_verify_token')) {
             return response($request->input('hub_challenge'));
         }
         return response('Error, verify token doesn\'t match', 400);
@@ -65,6 +65,6 @@ class WebhookController extends Controller
                 $response = $fbBot->sendGraphAPI('me/messages',$params);
             }
         }
-        return response($response, 200);
+        return response('success', 200);
     }
 }
