@@ -9,13 +9,6 @@
 @endsection
 
 @section('content')
-
-    @component('components.breadcrumbs')
-        <a href="/">Home</a>
-        <i class="fa fa-chevron-right breadcrumb-separator"></i>
-        <span>Search</span>
-    @endcomponent
-
     <div class="container">
         @if (session()->has('success_message'))
             <div class="alert alert-success">
@@ -37,22 +30,9 @@
     <div class="container">
         <div class="search-results-container-algolia">
             <div>
-                <h2>Search</h2>
-                <div id="search-box">
-                    <!-- SearchBox widget will appear here -->
-                </div>
-
+                <h1>Search Results</h1>
                 <div id="stats-container"></div>
-
-                <div class="spacer"></div>
-                <h2>Categories</h2>
-                <div id="refinement-list">
-                    <!-- RefinementList widget will appear here -->
-                </div>
-            </div>
-
-            <div>
-                <div id="hits">
+                <div id="hits" class="products">
                     <!-- Hits widget will appear here -->
                 </div>
 

@@ -18,7 +18,7 @@
                                 <img src="${window.location.origin}/storage/${suggestion.image}" alt="img" class="algolia-thumb">
                                 ${suggestion._highlightResult.name.value}
                             </span>
-                            <span>${(suggestion.price).toFixed(2)}₫</span>
+                            <span>${parseInt(suggestion.price).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₫</span>
                         </div>
                     `;
 

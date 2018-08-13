@@ -1,7 +1,7 @@
 (function() {
     const search = instantsearch({
-        appId: 'P53SZUIML8',
-        apiKey: '19f54cccab5efbeb0d351b307326a864',
+        appId: '5R1L0G38JG',
+        apiKey: '547ce5d98108c2b5b19e37e91073fb75',
         indexName: 'products',
         urlSync: true
     });
@@ -12,39 +12,30 @@
             templates: {
                 empty: 'No results',
                 item: function(item) {
-                    return `
-                        <a href="${window.location.origin}/product/${item.slug}">
-                            <div class="instantsearch-result">
-                                <div>
-                                    <img src="${window.location.origin}/storage/${item.image}" alt="img" class="algolia-thumb-result">
+                    return  `<div class="product">
+                                <a href="${window.location.origin}/product/${item.slug}">
+                                   <img src="${window.location.origin}/storage/${item.image}" alt="img" class="algolia-thumb-result">
+                                </a>
+                                <div class="product-info">
+                                    <a href="${window.location.origin}/product/${item.slug}">
+                                        <div class="product-name">${item.name}</div>
+                                    </a>`
+                                    +((item.regular_price)?`<div class="product-regular-price">${ parseInt(item.regular_price).toFixed(0).toString().replace(/\\\\\\\\\\\\\\\\B(?=(\\\\\\\\\\\\\\\\d{3})+(?!\\\\\\\\\\\\\\\\d))/g, ",")}₫</div>`:``)+
+                                    `<div class="product-price">${ parseInt(item.price).toFixed(0).toString().replace(/\\\\B(?=(\\\\d{3})+(?!\\\\d))/g, ",")}₫</div>
                                 </div>
-                                <div>
-                                    <div class="result-title">
-                                        {item._highlightResult.name.value}₫
-                                    </div>
-                                    <div class="result-details">
-                                        {item._highlightResult.details.value}₫
-                                    </div>
-                                    <div class="result-price">
-                                        {(item.price).toFixed(0)}₫
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <hr>
-                    `;
+                            </div>`;
                 }
             }
         })
     );
 
     // initialize SearchBox
-    search.addWidget(
-        instantsearch.widgets.searchBox({
-            container: '#search-box',
-            placeholder: 'Search for products'
-        })
-    );
+    // search.addWidget(
+    //     instantsearch.widgets.searchBox({
+    //         container: '#search-box',
+    //         placeholder: 'Search for products'
+    //     })
+    // );
 
     // initialize pagination
     search.addWidget(
@@ -63,13 +54,13 @@
     );
 
     // initialize RefinementList
-    search.addWidget(
-        instantsearch.widgets.refinementList({
-            container: '#refinement-list',
-            attributeName: 'categories',
-            sortBy: ['name:asc']
-        })
-    );
+    // search.addWidget(
+    //     instantsearch.widgets.refinementList({
+    //         container: '#refinement-list',
+    //         attributeName: 'categories',
+    //         sortBy: ['name:asc']
+    //     })
+    // );
 
     search.start();
 })();
