@@ -62,7 +62,7 @@ class ShopController extends Controller
         $categories = $product->categories->pluck('id')->toArray();
         $similar = Product::whereHas('categories', function($query) use ($categories){
            return $query ->whereIn('category_id', $categories);
-        })->get();
+        })->limit(16)->get();
 
         return view('shop.product')->with([
             'product' => $product,

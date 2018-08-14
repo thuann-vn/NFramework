@@ -82,7 +82,7 @@ class Product extends Model
 
     public function scopeMightAlsoLike($query)
     {
-        return $query->inRandomOrder()->take(24);
+        return $query->inRandomOrder()->take(16);
     }
 
 
