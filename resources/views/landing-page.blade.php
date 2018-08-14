@@ -32,7 +32,7 @@
                     <div class="category">
                         <a href="{{ route('shop.category', ['category'=>!empty($category->parent)?$category->slug:'', 'parent'=>!empty($category->parent)?$category->parent->slug:$category->slug]) }}"><img src="{{ productImage($category->image) }}" alt="category"></a>
                         <a class="category-name" href="{{ route('shop.brand', $category->slug) }}">
-                            {{$category->getTranslatedAttribute('name')}}
+                            {{$category->name}}
                         </a>
                     </div>
                 @endforeach

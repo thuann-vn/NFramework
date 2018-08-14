@@ -1,8 +1,8 @@
 @extends('layout')
 
-@section('title', $category->getTranslatedAttribute('name'))
-@section('description',!empty($category->getTranslatedAttribute('meta_description'))?$category->getTranslatedAttribute('meta_description'):$category->getTranslatedAttribute('description'))
-@section('keywords',!empty($category->getTranslatedAttribute('meta_keywords'))?$category->getTranslatedAttribute('meta_keywords'):'')
+@section('title', $category->name)
+@section('description',!empty($category->meta_description)?$category->meta_description:$category->description)
+@section('keywords',!empty($category->meta_keywords)?$category->meta_keywords:'')
 
 @section('content')
     <div class="products-section container">
@@ -15,14 +15,14 @@
                         <i class="fa fa-chevron-right breadcrumb-separator"></i>
 
                         @if(empty($childCategory))
-                            <span>{{$category->getTranslatedAttribute('name')}}</span>
+                            <span>{{$category->name}}</span>
                         @else
-                            <a href="{{route('shop.category', $category->slug)}}">{{$category->getTranslatedAttribute('name')}}</a>
+                            <a href="{{route('shop.category', $category->slug)}}">{{$category->name}}</a>
                         @endif
 
                         @if(!empty($childCategory))
                             <i class="fa fa-chevron-right breadcrumb-separator"></i>
-                            <span>{{$childCategory->getTranslatedAttribute('name')}}</span>
+                            <span>{{$childCategory->name}}</span>
                         @endif
                     </div>
                 </div>
@@ -34,7 +34,7 @@
                 </div>
             @endif
             <div class="products-header">
-                <h1 class="stylish-heading">{{ !empty($childCategory)? $childCategory->getTranslatedAttribute('name') :$category->getTranslatedAttribute('name') }}</h1>
+                <h1 class="stylish-heading">{{ !empty($childCategory)? $childCategory->name :$category->name }}</h1>
 
                 @include('partials.shop.sorts')
             </div>

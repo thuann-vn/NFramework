@@ -69,7 +69,7 @@
             </div>
 
             <div class="footer-content-row">
-                {{ menu('footer', 'partials.menus.footer') }}
+                @include('partials.menus.footer', ['items'=>getMenuData('footer')])
 
                 <div class="gift-card">
                     <h4>{!! __('frontend.footer.gift_cards.title') !!}</h4>

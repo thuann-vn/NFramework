@@ -34,7 +34,7 @@
             @foreach ($category->children->sortBy('name') as $child)
                 <li>
                     <a href="{{route('shop.category', [$category->slug, $child->slug])}}" class="filter-item {{!empty($childCategory) && $child->slug== $childCategory->slug? 'active':''}}" for="cat_{{$child->id}}">
-                        {{ $child->getTranslatedAttribute('name') }}
+                        {{ $child->name }}
                     </a>
                 </li>
             @endforeach
@@ -48,7 +48,7 @@
                 <li>
                     <label class="filter-item" for="brand_{{$brand->id}}">
                         <span class="filter-checkbox {{in_array($brand->slug, $filters['brand'])?'checked':''}}"></span>
-                        {{ $brand->getTranslatedAttribute('name') }}
+                        {{ $brand->name }}
                         <input type="checkbox" value="{{$brand->slug}}" {{in_array($brand->slug, $filters['brand'])?'checked':''}} name="filter_brand"
                                id="brand_{{$brand->id}}">
                     </label>

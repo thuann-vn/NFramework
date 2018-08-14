@@ -55,11 +55,28 @@ function getRelatedProducts($slug){
     return \App\Product::where('slug', '!=', $slug)->relatedProduct()->get();
 }
 
+function getCurrentLocale(){
+    return Session::get('applocale');
+}
+
 function isVietnamese(){
-    return Session::get('applocale')=='vi';
+    return getCurrentLocale()=='vi';
 }
 
 function getMenuData($menuName)
 {
-    return TCG\Voyager\Facades\Voyager::model('Menu')->with('translations')->where('name', $menuName)->get();
+    $items = Cache::rememberForever('menu_'.$menuName. '_'.getCurrentLocale(), function() use ($menuName) {
+        return TCG\Voyager\Facades\Voyager::model('MenuItem')->whereHas('menu', function($query) use ($menuName){
+            return $query->where('name', $menuName);
+        })->whereNull('parent_id')->orderBy('order')->get()->translate();
+    });
+    return $items;
+}
+
+function getChildMenuItems($menuId)
+{
+    $items = Cache::rememberForever('child_menus' . $menuId. '_'.getCurrentLocale(), function() use ($menuId) {
+        return TCG\Voyager\Facades\Voyager::model('MenuItem')->where('parent_id', $menuId)->orderBy('order')->get()->translate();
+    });
+    return $items;
 }

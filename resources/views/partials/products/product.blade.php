@@ -1,13 +1,13 @@
 <div class="product">
     <a href="{{ route('shop.show', $product->slug) }}">
-        <img src="{{Voyager::image($product->thumbnail('small', 'image'))}}" alt="product">
+        <img src="{{Voyager::image($product->image)}}" alt="product">
     </a>
     <div class="product-info">
         @if(!empty($product->brand))
-            <a class="product-brand" href="{{ route('shop.show', $product->slug) }}">{{$product->brand->getTranslatedAttribute('name')}}</a>
+            <a class="product-brand" href="{{ route('shop.show', $product->slug) }}">{{$product->brand->name}}</a>
         @endif
         <a href="{{ route('shop.show', $product->slug) }}">
-            <div class="product-name">{{ $product->getTranslatedAttribute('name') }}</div>
+            <div class="product-name">{{ $product->name }}</div>
         </a>
         @if(!empty($product->regular_price))
             <div class="product-regular-price">{{ priceFormat($product->regular_price)}}</div>
@@ -20,7 +20,7 @@
             <span class="cart-icon"></span>
         </span>
     @else
-        @if($product->variants->count()>0)
+        @if(count($product->variants)>0)
             <a href="{{route('shop.show', $product->slug)}}" class="cart-button add-to-cart" data-id="{{$product->id}}">
                 <span class="cart-icon empty"></span>
             </a>

@@ -19,20 +19,20 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-        $data = Cache::remember('landing_page_data', config('cache.cache_time'), function(){
-            $products = Product::withTranslations()->with([])->where('featured', true)->take(16)->inRandomOrder()->get();
+        $data = Cache::remember('landing_page_data_' .getCurrentLocale(), config('cache.cache_time'), function(){
+            $products = Product::with('variants')->where('featured', true)->take(16)->inRandomOrder()->get(['id','name', 'price','slug', 'image'])->translate();
             $homeSlider = Slider::with('slides')->where('name', 'Home Slider')->first();
-            $featuredCategories = Category::with([])->withTranslations()->where('home_featured',1)->get();
-            $fearuedBrands = Brand::with([])->withTranslations()->where('featured',1)->get();
+            $featuredCategories = Category::where('home_featured',1)->get()->translate();
+            $featuredBrands = Brand::with([])->where('featured',1)->get();
 
             return [
                 'featuredCategories' => $featuredCategories,
-                'brands' => $fearuedBrands,
+                'brands' => $featuredBrands,
                 'products' => $products,
-                'slider' => $homeSlider
+                'slider' => $homeSlider,
+                'cache_time' => now()
             ];
         });
-
         return view('landing-page', $data);
     }
 }

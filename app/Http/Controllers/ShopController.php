@@ -56,13 +56,13 @@ class ShopController extends Controller
      */
     public function show($slug)
     {
-        $product = Product::with('categories')->where('slug', $slug)->firstOrFail();
-        $mightAlsoLike = Product::where('slug', '!=', $slug)->mightAlsoLike()->get();
+        $product = Product::with(['categories', 'properties', 'properties.property', 'variants', 'brand'])->where('slug', $slug)->firstOrFail()->translate();
+        $mightAlsoLike = Product::with('variants')->where('slug', '!=', $slug)->mightAlsoLike()->withTranslations()->get(['id','name', 'price','slug', 'image']);
 
         $categories = $product->categories->pluck('id')->toArray();
-        $similar = Product::whereHas('categories', function($query) use ($categories){
+        $similar = Product::with('variants')->whereHas('categories', function($query) use ($categories){
            return $query ->whereIn('category_id', $categories);
-        })->limit(16)->get();
+        })->limit(16)->withTranslations()->get(['id','name', 'price','slug', 'image']);
 
         return view('shop.product')->with([
             'product' => $product,
@@ -80,18 +80,18 @@ class ShopController extends Controller
     public function category(Request $request, $parentSlug , $slug = null)
     {
         $pagination = config('shop.pagination');
-        $category = Category::with('children')->where('slug', $parentSlug)->first();
+        $category = Category::with('children')->where('slug', $parentSlug)->withTranslations()->first();
 
-        $brands = Brand::where('featured', 1)->paginate(10);
-        $attributes = Attribute::has('values')->get();
+        $brands = Brand::where('featured', 1)->withTranslations()->get(['slug','name']);
+        $attributes = Attribute::has('values')->with('values')->get();
         $department = Department::find($category->id);
 
         //Get product by category
-        $products = null;
+        $products = Product::with(['categories','brand','variants']);
         if(!empty($slug)){
             $childCategory = Category::with('children')->where('slug', $slug)->first();
 
-            $products = Product::with(['categories','attributes'])->whereHas('categories', function ($query) use ($slug) {
+            $products = $products->whereHas('categories', function ($query) use ($slug) {
                 return $query->where('slug', $slug)->orWhere(function($query) use ($slug){
                     return $query->whereHas('parent', function($child) use ($slug){
                         return $child->where('slug', $slug);
@@ -100,7 +100,7 @@ class ShopController extends Controller
             });
         }else{
             $childCategory = null;
-            $products = Product::with(['categories','attributes'])->whereHas('categories', function ($query) use ($parentSlug) {
+            $products = $products->whereHas('categories', function ($query) use ($parentSlug) {
                 return $query->where('slug', $parentSlug);
             });
         }
@@ -187,13 +187,14 @@ class ShopController extends Controller
     {
         $pagination = config('shop.pagination');
 
-        $department = Department::where('slug', $slug)->first();
-        $categories = Category::where('department_id', $department->id)->whereNull('parent_id')->orderBy('name')->get();
-        $featured_categories = Category::where('department_id', $department->id)->where('featured', true)->orderBy('name')->get();
-        $brands = Brand::where('featured', 1)->paginate(10);
-        $attributes = Attribute::all();
+        $department = Department::where('slug', $slug)->withTranslations()->first();
+        $categories = Category::where('department_id', $department->id)->whereNull('parent_id')->orderBy('name')->withTranslations()->get();
+        $featured_categories = Category::where('department_id', $department->id)->where('featured', true)->orderBy('name')->withTranslations()->get();
 
-        $products = Product::with('categories')->whereHas('categories', function ($query) use ($department) {
+        $brands = Brand::where('featured', 1)->withTranslations()->get(['slug','name']);
+        $attributes = Attribute::has('values')->with('values')->get();
+
+        $products = Product::with(['categories','brand','variants'])->whereHas('categories', function ($query) use ($department) {
             $query->where('department_id', $department->id);
         });
 

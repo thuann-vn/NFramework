@@ -1,8 +1,8 @@
 @extends('layout')
 
-@section('title', $product->getTranslatedAttribute('name'))
-@section('description',!empty($product->getTranslatedAttribute('meta_description'))?$product->getTranslatedAttribute('meta_description'):$product->getTranslatedAttribute('details'))
-@section('keywords',!empty($product->getTranslatedAttribute('meta_keywords'))?$product->getTranslatedAttribute('meta_keywords'):'')
+@section('title', $product->name)
+@section('description',!empty($product->meta_description)?$product->meta_description:$product->details)
+@section('keywords',!empty($product->meta_keywords)?$product->meta_keywords:'')
 
 @section('extra-css')
     <link rel="stylesheet" href="https://cdn.plyr.io/3.3.23/plyr.css">
@@ -19,7 +19,7 @@
                 <i class="fa fa-chevron-right breadcrumb-separator"></i>
                 <span><a href="{{ route('shop.index') }}">Shop</a></span>
                 <i class="fa fa-chevron-right breadcrumb-separator"></i>
-                <span>{{ $product->getTranslatedAttribute('name') }}</span>
+                <span>{{ $product->name }}</span>
             </div>
         </div>
     </div> <!-- end breadcrumbs -->
@@ -59,8 +59,8 @@
             </div>
         </div>
         <div class="product-section-information">
-            <h2 class="product-brand"><a href="{{route('shop.brand', $product->brand->slug)}}">{{$product->brand->getTranslatedAttribute('name')}}</a></h2>
-            <h1 class="product-name">{{ $product->getTranslatedAttribute('name') }}</h1>
+            <h2 class="product-brand"><a href="{{route('shop.brand', $product->brand->slug)}}">{{$product->brand->name}}</a></h2>
+            <h1 class="product-name">{{ $product->name }}</h1>
             <div class="price">
                 @if(!empty($product->regular_price))
                     <span class="product-regular-price">{{ priceFormat($product->regular_price) }}</span>
@@ -91,7 +91,7 @@
                     <input class="quantity-input" name="quantity" value="1"/>
                 </div>
                 <input type="hidden" name="id" value="{{ $product->id }}">
-                <input type="hidden" name="name" value="{{ $product->getTranslatedAttribute('name') }}">
+                <input type="hidden" name="name" value="{{ $product->name }}">
                 <input type="hidden" name="price" value="{{ $product->price }}">
                 <button type="submit" class="button button-green button-cart">{{__('frontend.product.add_to_cart')}}</button>
             </form>
@@ -128,10 +128,10 @@
         <div class="product-details">
             <div>
                 <h3 id="productFeatures">{{__('frontend.product.features')}} </h3>
-                <div class="product-features">{!! $product->getTranslatedAttribute('description') !!}</div>
+                <div class="product-features">{!! $product->description !!}</div>
 
                 <h3 id="productDescr">{{__('frontend.product.description')}} </h3>
-                <div class="product-features">{!! $product->getTranslatedAttribute('details') !!}</div>
+                <div class="product-features">{!! $product->details !!}</div>
             </div>
             <div>
                 @if(!empty($product->videos))

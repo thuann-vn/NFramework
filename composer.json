@@ -22,6 +22,7 @@
         "laravel/tinker": "~1.0",
         "mariuzzo/laravel-js-localization": "^1.4",
         "nicolaslopezj/searchable": "^1.9",
+        "predis/predis": "^1.1",
         "tcg/voyager": "1.1.*",
         "zaloplatform/zalo-php-sdk": "^1.0"
     },

@@ -65,6 +65,10 @@ class Product extends Model
         return $this->hasMany(ProductSKU::class,'product_id', 'id');
     }
 
+    public function variantCount(){
+        return $this->variants->count();
+    }
+
     public  function properties(){
         return $this->hasMany(ProductProperty::class,'product_id', 'id');
     }
