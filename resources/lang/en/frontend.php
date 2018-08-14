@@ -143,7 +143,7 @@ return [
         'view_features' => 'View Product Features<span class="hidden-xs hidden-sm hidden-md"> and Specifications</span>',
         'see_description' => 'See Product Description',
         'read_reviews' => 'Read Customer Rating + Reviews',
-        'videos' => 'Videos'
+        'videos' => 'Videos',
     ],
     'cart' => [
         'empty' => 'Your shopping cart is empty.',

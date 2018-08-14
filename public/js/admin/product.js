@@ -55,10 +55,10 @@ const eProductManager = {
                 value = value ? parseInt(value, 10) : 0;
 
                 $this.val(function () {
-                    return ( value === 0 ) ? "" : value.toLocaleString("en-US");
+                    return ( value === 0 ) ? 0 : value.toLocaleString("en-US");
                 });
 
-                $this.prev().val(value);
+                $this.prev().val(value).trigger('change');
             }).trigger('keyup');
         });
     },

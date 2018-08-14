@@ -182,8 +182,8 @@
                     <div class="form-group">
                         <label for="status">{{ __('voyager.product.status') }}</label>
                         <select class="form-control" name="status">
-                            <option value="ACTIVE"@if(isset($dataTypeContent->status) && $dataTypeContent->status == 'ACTIVE') selected="selected"@endif>{{ __('voyager::product.status_active') }}</option>
-                            <option value="DEACTIVE"@if(isset($dataTypeContent->status) && $dataTypeContent->status == 'DEACTIVE') selected="selected"@endif>{{ __('voyager::product.status_deactive') }}</option>
+                            <option value="ACTIVE"@if(isset($dataTypeContent->status) && $dataTypeContent->status == 'ACTIVE') selected="selected"@endif>{{ __('voyager.product.status_active') }}</option>
+                            <option value="DEACTIVE"@if(isset($dataTypeContent->status) && $dataTypeContent->status == 'DEACTIVE') selected="selected"@endif>{{ __('voyager.product.status_deactive') }}</option>
                         </select>
                     </div>
                 </div>

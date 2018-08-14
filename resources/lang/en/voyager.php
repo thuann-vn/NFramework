@@ -259,8 +259,8 @@ return [
         'status_draft'     => 'Draft',
         'status_pending'   => 'Pending',
         'status_published' => 'Published',
-        'status_active' => 'Active',
-        'status_deactive' => 'DeActive',
+        'status_active' => 'Activated',
+        'status_deactive' => 'De-Activated',
         'title'            => 'Product Title',
         'title_sub'        => 'The title for your product',
         'update'           => 'Update Product',
@@ -271,6 +271,7 @@ return [
         'categories' => 'Categories',
         'videos' => 'Videos',
         'videos_placeholder' => 'One video per line',
+        'images' => 'Product Images',
         'properties'        =>[
             'title' => 'Properties',
             'name' => 'Property name',

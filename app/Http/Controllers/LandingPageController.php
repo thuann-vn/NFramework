@@ -20,10 +20,10 @@ class LandingPageController extends Controller
     public function index()
     {
         $data = Cache::remember('landing_page_data', config('cache.cache_time'), function(){
-            $products = Product::where('featured', true)->take(16)->inRandomOrder()->get();
-            $homeSlider = Slider::where('name', 'Home Slider')->first();
-            $featuredCategories = Category::where('home_featured',1)->get();
-            $fearuedBrands = Brand::where('featured',1)->get();
+            $products = Product::with([])->where('featured', true)->take(16)->inRandomOrder()->get();
+            $homeSlider = Slider::with('slides')->where('name', 'Home Slider')->first();
+            $featuredCategories = Category::with([])->where('home_featured',1)->get();
+            $fearuedBrands = Brand::with([])->where('featured',1)->get();
 
             return [
                 'featuredCategories' => $featuredCategories,
