@@ -58,3 +58,8 @@ function getRelatedProducts($slug){
 function isVietnamese(){
     return Session::get('applocale')=='vi';
 }
+
+function getMenuData($menuName)
+{
+    return TCG\Voyager\Facades\Voyager::model('Menu')->with('translations')->where('name', $menuName)->get();
+}

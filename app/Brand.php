@@ -2,13 +2,15 @@
 
 namespace App;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Translatable;
 
 
 class Brand extends Model
 {
-    use Translatable;
+    use Translatable,
+        Cachable;
 
     protected $translatable = ['name', 'slug'];
 

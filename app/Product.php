@@ -2,6 +2,7 @@
 
 namespace App;
 
+use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Nicolaslopezj\Searchable\SearchableTrait;
@@ -15,7 +16,8 @@ class Product extends Model
         Searchable,
         Translatable,
         Resizable,
-        HasRelationships;
+        HasRelationships,
+        Cachable;
 
     const NO_CHANGED_FLG = 0;
     const ATTRIBUTE_CHANGED_FLG = 1;

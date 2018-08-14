@@ -39,6 +39,7 @@
         <div class="main-menu">
             <div class="container">
                 @if (! (request()->is('checkout') || request()->is('guestCheckout')))
+                    @include('partials.menus.main', ['items'=>getMenuData('main')])
                     {{ menu('main', 'partials.menus.main') }}
                 @endif
             </div>
