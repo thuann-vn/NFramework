@@ -291,6 +291,7 @@ return [
             'description' => 'Variants based on attributes.',
             'generate' => 'Generate',
             'delete_all' => 'Delete all',
+            'delete' => 'Delete',
             'empty' => 'To generate variants list, click the <b>Generate</b> to process.',
             'details' => 'Attributes',
             'name' => 'Name',

@@ -20,8 +20,8 @@
                                     <a href="${window.location.origin}/product/${item.slug}">
                                         <div class="product-name">${item.name}</div>
                                     </a>`
-                                    +((item.regular_price)?`<div class="product-regular-price">${ parseInt(item.regular_price).toFixed(0).toString().replace(/\\\\\\\\\\\\\\\\B(?=(\\\\\\\\\\\\\\\\d{3})+(?!\\\\\\\\\\\\\\\\d))/g, ",")}₫</div>`:``)+
-                                    `<div class="product-price">${ parseInt(item.price).toFixed(0).toString().replace(/\\\\B(?=(\\\\d{3})+(?!\\\\d))/g, ",")}₫</div>
+                                    +((item.regular_price)?`<div class="product-regular-price">${ parseInt(item.regular_price).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₫</div>`:``)+
+                                    `<div class="product-price">${ parseInt(item.price).toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}₫</div>
                                 </div>
                             </div>`;
                 }

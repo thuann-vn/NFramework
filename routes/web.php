@@ -66,6 +66,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('get-attribute-value/{attribute_name}', ['uses' => 'Voyager\ProductVariantsController@getAttributeValue', 'as' => 'admin.getAttributeValue']);
     Route::get('generate-product-variants/{id}', ['uses' => 'Voyager\ProductVariantsController@generateSkus', 'as' => 'admin.generateProductVariants']);
     Route::post('update-product-variant/{id}', ['uses' => 'Voyager\ProductVariantsController@updateSku', 'as' => 'admin.updateProductVariant']);
+    Route::delete('delete-product-variant/{id}', ['uses' => 'Voyager\ProductVariantsController@deleteSku', 'as' => 'admin.deleteProductVariant']);
 
     Route::delete('delete-variant/{id}', ['uses' => 'Voyager\ProductVariantsController@deleteProductAttribute', 'as' => 'admin.deleteProductAttribute']);
     Route::delete('delete-variant-value/{id}', ['uses' => 'Voyager\ProductVariantsController@deleteProductAttributeValue', 'as' => 'admin.deleteProductAttributeValue']);

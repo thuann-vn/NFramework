@@ -20,4 +20,12 @@ class ProductSKU extends Model
     public function details(){
         return $this->hasMany(ProductSKUDetail::class,'product_sku_id', 'id');
     }
+
+    protected static function boot() {
+        parent::boot();
+
+        static::deleting(function($productSku) {
+            $productSku->details()->delete();
+        });
+    }
 }

@@ -67,7 +67,7 @@
                     <div style="clear:both"></div>
                     <div class="col-lg-12">
                         <button type="submit" class="btn btn-primary pull-right new-setting-btn">
-                            <i class="voyager-plus"></i> {{ __('voyager.products.properties.add_new') }}
+                            <i class="voyager-plus"></i> {{ __('voyager.product.properties.add_new') }}
                         </button>
                     </div>
                     <div style="clear:both"></div>
@@ -135,7 +135,17 @@
                             <label class="control-label">{{ __('voyager.product.variants.price')}}</label>
                             <input type="number" class="form-control price-format-input" name="price" value="{{$sku->price}}" placeholder="{{ __('voyager.product.variants.price_placeholder')}}">
                         </div>
+                        <a href="#delete-sku-{{$sku->id}}" class="btn btn-danger delete-sku">
+                            {{ __('voyager.product.variants.delete')}}
+                        </a>
                         <button type="submit" class="btn btn-primary">{{ __('voyager.product.variants.update')}}</button>
+
+                    </form>
+                    <form id="delete-sku-{{$sku->id}}" action="{{route('admin.deleteProductVariant', $sku->id)}}" method="POST" enctype="multipart/form-data" class="hidden">
+                        {{csrf_field()}}
+                        {{method_field('delete')}}
+
+                        <input type="hidden" name="product_id" value="{{$sku->product_id}}">
                     </form>
                 </div>
             @empty

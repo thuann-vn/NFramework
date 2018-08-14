@@ -157,6 +157,27 @@ const eProductManager = {
                         deleteHref.next('form').submit();
                     }
                 });
+        });
+
+
+        $('.delete-sku').click(function(e){
+            e.preventDefault();
+
+            var deleteTarget= $(this).attr('href');
+
+            swal({
+                title: Lang.get('voyager.generic.are_you_sure'),
+                text: Lang.get('voyager.generic.are_you_sure_delete'),
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        eCMS.block();
+                        $(deleteTarget).submit();
+                    }
+                });
         })
     }
 }

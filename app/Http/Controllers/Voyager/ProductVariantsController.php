@@ -281,4 +281,16 @@ class ProductVariantsController extends VoyagerBaseController
                 'alert-type' => 'success'
             ]);
     }
+
+    public function deleteSku(Request $request, $id){
+        $productSKU= ProductSKU::findOrFail($id);
+        //Delete details
+        $productSKU->delete();
+        return redirect()
+            ->route("voyager.products.edit", ['id' => $request->input('product_id'), 'active_tab' => 'attributes'])
+            ->with([
+                'message' => __('voyager.generic.successfully_updated'),
+                'alert-type' => 'success'
+            ]);
+    }
 }
