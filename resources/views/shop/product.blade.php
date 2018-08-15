@@ -165,26 +165,4 @@
     <script src="https://cdn.plyr.io/3.3.23/plyr.polyfilled.js"></script>
     <script src="{{ asset('vendor/slick/slick.min.js') }}"></script>
     <script src="{{ asset('js/pages/product.js') }}"></script>
-    <script>
-        (function(){
-            const currentImage = document.querySelector('#currentImage');
-            const images = document.querySelectorAll('.product-section-thumbnail');
-
-            images.forEach((element) => element.addEventListener('click', thumbnailClick));
-
-            function thumbnailClick(e) {
-                currentImage.classList.remove('active');
-
-                currentImage.addEventListener('transitionend', () => {
-                    currentImage.src = this.querySelector('img').src;
-                    currentImage.classList.add('active');
-                })
-
-                images.forEach((element) => element.classList.remove('selected'));
-                this.classList.add('selected');
-            }
-
-        })();
-    </script>
-
 @endsection
