@@ -6,8 +6,8 @@
 
 @section('extra-css')
     <link rel="stylesheet" href="https://cdn.plyr.io/3.3.23/plyr.css">
-    <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/slick/slick.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/slick/slick-theme.min.css') }}">
 @endsection
 
 @section('content')
@@ -163,7 +163,7 @@
 
 @section('extra-js')
     <script src="https://cdn.plyr.io/3.3.23/plyr.polyfilled.js"></script>
-    <script src="{{ asset('vendor/slick/slick.js') }}"></script>
+    <script src="{{ asset('vendor/slick/slick.min.js') }}"></script>
     <script src="{{ asset('js/pages/product.js') }}"></script>
     <script>
         (function(){

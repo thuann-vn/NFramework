@@ -1,6 +1,6 @@
 <div class="product">
     <a href="{{ route('shop.show', $product->slug) }}">
-        <img src="{{Voyager::image($product->thumbnail('medium', 'image'))}}" alt="product">
+        <img src="{{productImage($product->image, 'medium')}}" alt="product">
     </a>
     <div class="product-info">
         @if(!empty($product->brand))

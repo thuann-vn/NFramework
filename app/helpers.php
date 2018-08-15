@@ -10,9 +10,21 @@ function setActiveCategory($category, $output = 'active')
     return request()->category == $category ? $output : '';
 }
 
-function productImage($path)
+function productImage($path, $size='')
 {
-    return $path && file_exists('storage/'.$path) ? asset('storage/'.$path) : asset('img/not-found.jpg');
+    if(!empty($size)){
+        $newPath = pathinfo($path, PATHINFO_DIRNAME).'/'. pathinfo($path, PATHINFO_FILENAME) . '-'.$size.'.'.pathinfo($path, PATHINFO_EXTENSION);
+        if(file_exists('storage/'.$newPath)){
+            $newPath = str_replace(' ', '%20',$newPath);
+            return asset('storage/'.$newPath);
+        }
+    }
+
+    if($path && file_exists('storage/'.$path)){
+        return asset('storage/'.str_replace(' ', '%20',$path));
+    }
+
+    return asset('img/not-found.jpg');
 }
 
 function isInCart($id){

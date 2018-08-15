@@ -3,8 +3,8 @@
 @section('title', isVietnamese()?setting('site.description_vi'):setting('site.description'))
 
 @section('extra-css')
-    <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/slick/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/slick/slick.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/slick/slick-theme.min.css') }}">
 @endsection
 
 @section('content')
@@ -30,7 +30,7 @@
             <div class="categories text-center">
                 @foreach ($featuredCategories as $category)
                     <div class="category">
-                        <a href="{{ route('shop.category', ['category'=>!empty($category->parent)?$category->slug:'', 'parent'=>!empty($category->parent)?$category->parent->slug:$category->slug]) }}"><img src="{{ productImage($category->image) }}" alt="category"></a>
+                        <a href="{{ route('shop.category', ['category'=>!empty($category->parent)?$category->slug:'', 'parent'=>!empty($category->parent)?$category->parent->slug:$category->slug]) }}"><img src="{{ productImage($category->image, 'medium') }}" alt="category"></a>
                         <a class="category-name" href="{{ route('shop.brand', $category->slug) }}">
                             {{$category->name}}
                         </a>
@@ -77,7 +77,7 @@
                 @foreach ($brands as $brand)
                     <div class="brand">
                         <a href="{{ route('shop.brand', $brand->slug) }}">
-                            <img src="{{ Voyager::image($brand->logo) }}" alt="brand">
+                            <img src="{{ productImage($brand->logo, 'medium') }}" alt="brand">
                         </a>
                     </div>
                 @endforeach
@@ -97,6 +97,6 @@
 @endsection
 
 @section('extra-js')
-    <script src="{{ asset('vendor/slick/slick.js') }}"></script>
+    <script src="{{ asset('vendor/slick/slick.min.js') }}"></script>
     <script src="{{ asset('js/pages/home.js') }}"></script>
 @endsection
