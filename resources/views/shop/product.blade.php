@@ -155,7 +155,7 @@
         </div>
         <hr/>
         <h3 id="ratings-and-reviews">{{__('frontend.product.rating_and_reviews')}} </h3>
-        <div class="fb-comments" data-href="{{request()->fullUrl()}}" data-width="100%" data-numposts="40"></div>
+        <div class="fb-comments" data-width="100%" data-numposts="40"></div>
     </div>
 
     @include('partials.video_player')

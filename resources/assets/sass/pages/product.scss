@@ -254,10 +254,13 @@
 }
 
 .product-features{
-    > *{
-        font-size: 14px !important;
+    *{
         font-family: 'Roboto', Arial, sans-serif !important;
         line-height: 24px;
+    }
+
+    p, span, strong{
+        font-size: 14px !important;
     }
 }
 #ratings-and-reviews{
