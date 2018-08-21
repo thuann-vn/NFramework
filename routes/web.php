@@ -93,9 +93,3 @@ Route::middleware('auth')->get('/link-fb-messenger', 'Auth\LoginController@linkF
 Route::get('/vue/{vue_capture?}', function () {
     return view('vue.index');
 })->where('vue_capture', '[\/\w\.-]*');
-
-//ADMIN ROUTES
-Route::group(['prefix' => 'api'], function () {
-    Route::get('slider/get/{name}', ['uses' => 'Api\SliderApiController@getSlider', 'as' => 'api.getSlider']);
-    Route::get('menu/get/{name}', ['uses' => 'Api\MenuApiController@getMenu', 'as' => 'api.getMenu']);
-});

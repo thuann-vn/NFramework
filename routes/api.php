@@ -12,3 +12,5 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('/slider/get/{name}', ['uses' => 'Api\SliderApiController@getSlider', 'as' => 'api.getSlider']);
+Route::get('/menu/get/{name}', ['uses' => 'Api\MenuApiController@getMenu', 'as' => 'api.getMenu']);
