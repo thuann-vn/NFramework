@@ -1,12 +1,12 @@
 <template>
     <ul class="main-menu-wrap">
-        <li v-for="(item, index) in items">
+        <li v-for="(item, index) in items" v-bind:class="{'has-child':item.children.length>0}">
             <a :href="item.link">
                 {{ item.title }}
                 <span></span>
             </a>
 
-            <div class="mega-menu" v-if="item.is_mega">
+            <div class="mega-menu" v-if="item.is_mega==true">
                 <div class="mega-menu-title">{{item.title}}</div>
                 <div class="mega-menu-wrap">
                     <div class="mega-menu-col" v-for="(column, columnIndex) in item.children">
@@ -24,6 +24,11 @@
                     </div>
                 </div>
             </div>
+            <ul v-else-if="!item.is_mega">
+                <li v-for="child in item.children">
+                    <a :href="child.link" :title="child.title">{{child.title}}</a>
+                </li>
+            </ul>
         </li>
     </ul>
 </template>

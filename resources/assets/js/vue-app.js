@@ -19,8 +19,7 @@ import {routes} from './routes';
 Vue.use(VueRouter);
 
 //Components
-Vue.component('menu', require('./components/Menu.vue'));
-Vue.component('menu-item', require('./components/Menu-Item.vue'));
+Vue.component('main-nav', require('./components/Nav.vue'));
 Vue.component('slider', require('./components/Slider.vue'));
 
 //Filters
