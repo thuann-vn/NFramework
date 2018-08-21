@@ -1,8 +1,8 @@
 {
+    "/js/vue-app.js": "/js/vue-app.js",
     "/js/app.js": "/js/app.js",
     "/css/voyager.css": "/css/voyager.css",
     "/css/app.css": "/css/app.css",
     "/css/responsive.css": "/css/responsive.css",
-    "/js/vue-app.js": "/js/vue-app.js",
     "/js/admin/plugin.js": "/js/admin/plugin.js"
 }

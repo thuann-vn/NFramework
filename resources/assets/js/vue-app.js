@@ -15,8 +15,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router';
 import {routes} from './routes';
 
-Vue.component('slider', require('./components/slider.vue'));
+//Set update vue to use vue router
 Vue.use(VueRouter);
+
+//Components
+Vue.component('menu', require('./components/Menu.vue'));
+Vue.component('menu-item', require('./components/Menu-Item.vue'));
+Vue.component('slider', require('./components/Slider.vue'));
 
 //Filters
 Vue.filter('image', function (image, size) {
