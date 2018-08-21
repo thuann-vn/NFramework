@@ -225,20 +225,9 @@
             });
 
             $('#confirm_delete').on('click', function () {
-                $.post('{{ route('voyager.media.remove') }}', params, function (response) {
-                    if (response
-                        && response.data
-                        && response.data.status
-                        && response.data.status == 200) {
-
-                        toastr.success(response.data.message);
-                        $image.parent().fadeOut(300, function () {
-                            $(this).remove();
-                        })
-                    } else {
-                        toastr.error("Error removing image.");
-                    }
-                });
+                $image.parent().fadeOut(300, function () {
+                    $(this).remove();
+                })
 
                 $('#confirm_delete_modal').modal('hide');
             });
