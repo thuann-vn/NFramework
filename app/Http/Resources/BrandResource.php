@@ -16,8 +16,11 @@ class BrandResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'logo' => $this->logo,
             'name' => $this->getTranslatedAttribute('name'),
             'slug' => $this->getTranslatedAttribute('slug'),
+            'link' => route('shop.brand', $this->slug),
+            'featured' => $this->featured,
         ];
     }
 }

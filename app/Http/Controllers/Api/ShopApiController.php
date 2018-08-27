@@ -7,6 +7,7 @@ use App\AttributeValue;
 use App\Brand;
 use App\Department;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\BrandResource;
 use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductsResource;
 use App\Product;
@@ -76,6 +77,22 @@ class ShopApiController extends Controller
             }
 
             return CategoryResource::collection($categories->get())->response();
+        });
+
+        return $data;
+    }
+
+    public function getBrandList(Request $request){
+        $url = request()->fullUrl();
+        $data =  Cache::rememberForever($url, function () use ($request){
+            $isFeaturedOnly = $request->input('featured_only', false);
+            $brands = Brand::withTranslation(getCurrentLocale());
+
+            if ($isFeaturedOnly) {
+                $brands = $brands->where('featured', true);
+            }
+
+            return BrandResource::collection($brands->get())->response();
         });
 
         return $data;

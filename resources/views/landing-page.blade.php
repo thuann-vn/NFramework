@@ -17,16 +17,7 @@
         <div class="container">
             <h2 class="section-title">{{__('frontend.home.categories')}}</h2>
 
-            <div class="categories text-center">
-                @foreach ($featuredCategories as $category)
-                    <div class="category">
-                        <a href="{{ route('shop.category', ['category'=>!empty($category->parent)?$category->slug:'', 'parent'=>!empty($category->parent)?$category->parent->slug:$category->slug]) }}"><img src="{{ productImage($category->image, 'medium') }}" alt="category"></a>
-                        <a class="category-name" href="{{ route('shop.brand', $category->slug) }}">
-                            {{$category->name}}
-                        </a>
-                    </div>
-                @endforeach
-            </div> <!-- end categories -->
+            <home-categories></home-categories>
         </div> <!-- end container -->
     </div> <!-- end categories-section -->
 
@@ -59,18 +50,10 @@
         <div class="container">
             <h2 class="section-title">{{__('frontend.home.brands')}}</h2>
 
-            <div class="brand-grid">
-                @foreach ($brands as $brand)
-                    <div class="brand">
-                        <a href="{{ route('shop.brand', $brand->slug) }}">
-                            <img src="{{ productImage($brand->logo, 'medium') }}" alt="brand">
-                        </a>
-                    </div>
-                @endforeach
-            </div>
+            <home-brands></home-brands>
 
             <a class="brand-banner" href="{{setting('home.banner_4_link')}}">
-                <img src="{{Voyager::image(setting('home.banner_4'))}}" alt="{{$brand->name}}">
+                <img src="{{Voyager::image(setting('home.banner_4'))}}">
             </a>
         </div> <!-- end container -->
     </div> <!-- end brand-section -->
@@ -84,5 +67,4 @@
 
 @section('extra-js')
     <script src="{{ asset('vendor/slick/slick.min.js') }}"></script>
-    <script src="{{ asset('js/pages/home.js') }}"></script>
 @endsection

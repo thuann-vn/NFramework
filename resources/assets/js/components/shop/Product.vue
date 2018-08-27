@@ -1,11 +1,11 @@
 <template>
     <div class="product">
-        <a :href="data.slug|route('product')">
+        <a :href="data.link">
             <img :src="data.image|image" alt="product">
         </a>
         <div class="product-info">
-            <a class="product-brand" :href="data.slug|route('product')" v-if="data.brand">{{data.brand.name}}</a>
-            <a :href="data.slug|route('product')">
+            <a class="product-brand" :href="data.link" v-if="data.brand">{{data.brand.name}}</a>
+            <a :href="data.link">
                 <div class="product-name">{{ data.name }}</div>
             </a>
             <div class="product-regular-price" v-if="data.regular_price">{{data.regular_price|price}}</div>
@@ -21,7 +21,7 @@
         <span v-if="data.in_cart" class="cart-button">
             <span class="cart-icon"></span>
         </span>
-        <a v-else-if="data.variant_count>0" :href="data.slug|route('product')" class="cart-button add-to-cart" :data-id="data.id">
+        <a v-else-if="data.variant_count>0" :href="data.link" class="cart-button add-to-cart" :data-id="data.id">
             <span class="cart-icon empty"></span>
         </a>
         <a v-else href="javascript:;" class="cart-button add-to-cart not-added" :data-id="data.id">

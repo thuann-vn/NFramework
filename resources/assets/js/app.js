@@ -18,6 +18,8 @@ Vue.component('main-nav', require('./components/Nav.vue'));
 Vue.component('slider', require('./components/Slider.vue'));
 Vue.component('home-products', require('./components/HomeProducts.vue'));
 Vue.component('product', require('./components/shop/Product.vue'));
+Vue.component('home-categories', require('./components/HomeCategories.vue'));
+Vue.component('home-brands', require('./components/HomeBrands.vue'));
 
 //Filters
 Vue.filter('image', function (image, size) {
@@ -30,15 +32,6 @@ Vue.filter('price', function (value) {
     value = value ? parseInt(value, 10) : 0;
 
     return value;
-})
-
-Vue.filter('route', function (slug, type) {
-    switch(type){
-        case 'department': return '/department/' + slug;  break;
-        case 'category': return '/category/' + slug;  break;
-        case 'product': return '/product/' + slug;  break;
-        default: return slug;
-    }
 })
 
 const app = new Vue({

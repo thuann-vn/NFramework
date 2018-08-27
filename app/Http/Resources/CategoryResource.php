@@ -18,6 +18,7 @@ class CategoryResource extends Resource
     {
         return [
             'id' => $this->id,
+            'image' => $this->image,
             'name' => $this->getTranslatedAttribute('name'),
             'slug' => $this->getTranslatedAttribute('slug'),
             'link' => route('shop.category',  ['category'=>!empty($this->parent)?$this->slug:'', 'parent'=>!empty($this->parent)?$this->parent->slug:$this->slug]),

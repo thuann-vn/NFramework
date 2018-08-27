@@ -18,4 +18,5 @@ Route::group(['prefix' => '/{lang?}', 'where' => ['lang' => 'en|vi'], 'middlewar
     Route::get('/menu/get/{name}', ['uses' => 'Api\MenuApiController@getMenu', 'as' => 'api.getMenu']);
     Route::get('/product/list', ['uses' => 'Api\ShopApiController@getProductList', 'as' => 'api.getProductList']);
     Route::get('/category/list', ['uses' => 'Api\ShopApiController@getCategoryList', 'as' => 'api.getCategoryList']);
+    Route::get('/brand/list', ['uses' => 'Api\ShopApiController@getBrandList', 'as' => 'api.getBrandList']);
 });

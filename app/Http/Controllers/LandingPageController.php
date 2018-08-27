@@ -19,16 +19,6 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-        $data = Cache::remember('landing_page_data_' .getCurrentLocale(), config('cache.cache_time'), function(){
-            $featuredCategories = Category::where('home_featured',1)->get()->translate();
-            $featuredBrands = Brand::with([])->where('featured',1)->get();
-
-            return [
-                'featuredCategories' => $featuredCategories,
-                'brands' => $featuredBrands,
-                'cache_time' => now()
-            ];
-        });
-        return view('landing-page', $data);
+        return view('landing-page', []);
     }
 }
