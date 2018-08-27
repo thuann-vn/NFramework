@@ -7,6 +7,7 @@ use App\AttributeValue;
 use App\Brand;
 use App\Department;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CategoryResource;
 use App\Http\Resources\ProductsResource;
 use App\Product;
 use App\Category;
@@ -37,7 +38,7 @@ class ShopApiController extends Controller
             }])->withTranslation(getCurrentLocale());
 
             if ($isFeaturedOnly) {
-                $products = $products->where('is_featured', true);
+                $products = $products->where('featured', true);
             }
 
             if(!empty($brands)){
@@ -54,6 +55,27 @@ class ShopApiController extends Controller
             $products = $this->sortProducts($products, request()->sort);
 
             return ProductsResource::collection($products->paginate($pageSize))->response();
+        });
+
+        return $data;
+    }
+
+    public function getCategoryList(Request $request){
+        $url = request()->fullUrl();
+        $data =  Cache::rememberForever($url, function () use ($request){
+            $isFeaturedOnly = $request->input('featured_only', false);
+            $isHomeFeatured = $request->input('home_featured', false);
+            $categories = Category::withTranslation(getCurrentLocale());
+
+            if ($isFeaturedOnly) {
+                $categories = $categories->where('featured', true);
+            }
+
+            if ($isHomeFeatured) {
+                $categories = $categories->where('home_featured', true);
+            }
+
+            return CategoryResource::collection($categories->get())->response();
         });
 
         return $data;

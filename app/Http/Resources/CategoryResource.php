@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\Resource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Collection;
 
-class CategoriesResource extends Resource
+class CategoryResource extends Resource
 {
     /**
      * Transform the resource collection into an array.
@@ -20,6 +20,8 @@ class CategoriesResource extends Resource
             'id' => $this->id,
             'name' => $this->getTranslatedAttribute('name'),
             'slug' => $this->getTranslatedAttribute('slug'),
+            'link' => route('shop.category',  ['category'=>!empty($this->parent)?$this->slug:'', 'parent'=>!empty($this->parent)?$this->parent->slug:$this->slug]),
+            'featured' => $this->featured,
         ];
     }
 }

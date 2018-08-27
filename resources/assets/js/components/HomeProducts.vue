@@ -25,12 +25,10 @@
 
                 this.error = this.products = null;
                 this.loading = true;
-                axios.get('/api/product/list?')
-                .then((response) => {
+                axios.get('/api/'+ LANG +'/product/list?featured_only=true&page_size=16').then((response) => {
                     vm.products = response.data.data;
-                    console.log(vm.products);
                     this.loading = false
-                })
+                });
             }
         },
         updated() {

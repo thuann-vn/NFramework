@@ -26,7 +26,7 @@
 
                 this.error = this.slider = null;
                 this.loading = true;
-                axios.get('/api/slider/get/home-slider')
+                axios.get('/api/'+ LANG +'/slider/get/home-slider')
                 .then((response) => {
                     vm.slider = response.data;
                     this.loading = false

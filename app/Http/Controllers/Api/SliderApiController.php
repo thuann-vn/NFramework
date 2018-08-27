@@ -14,7 +14,7 @@ class SliderApiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getSlider(Request $request, $name)
+    public function getSlider(Request $request, $lang, $name)
     {
         switch ($name) {
             case 'home-slider':
