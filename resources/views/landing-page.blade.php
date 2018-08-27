@@ -10,17 +10,7 @@
 @section('content')
     @include('partials.promo-information')
     <div class="container">
-        <div class="slider fade">
-            @if(!empty($slider))
-                @foreach($slider->slides as $slide)
-                    <div>
-                        <div class="image">
-                            <img src="{{Voyager::image($slide->image)}}" alt="hero image">
-                        </div>
-                    </div>
-                @endforeach
-            @endif
-        </div>
+        <slider></slider>
     </div> <!-- end hero -->
 
     <div class="categories-section">

@@ -24,13 +24,13 @@
 
 <body class="@yield('body-class', '')">
     @include('partials.nav')
+    <div id="app">
+        <div class="page-content">
+            @yield('content')
+        </div>
 
-    <div class="page-content">
-        @yield('content')
+        @include('partials.footer')
     </div>
-
-    @include('partials.footer')
-
     <!-- Scripts -->
     <script>
         const ROUTES={

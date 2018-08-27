@@ -1,3 +1,4 @@
+import Vue from 'vue'
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -13,8 +14,14 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// Vue.component('example', require('./components/Example.vue'));
+Vue.component('main-nav', require('./components/Nav.vue'));
+Vue.component('slider', require('./components/Slider.vue'));
 
-// const app = new Vue({
-//     el: '#app'
-// });
+//Filters
+Vue.filter('image', function (image, size) {
+    return '/storage/' + image;
+})
+
+const app = new Vue({
+    el: '#app'
+});

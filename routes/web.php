@@ -89,7 +89,3 @@ Route::get('/webhook', 'WebhookController@getWebhook')->name('get-webhook');
 Route::post('/webhook', 'WebhookController@postWebhook')->name('post-webhook');
 
 Route::middleware('auth')->get('/link-fb-messenger', 'Auth\LoginController@linkFbMessenger')->name('link-fb-messenger');
-
-Route::get('/vue/{vue_capture?}', function () {
-    return view('vue.index');
-})->where('vue_capture', '[\/\w\.-]*');
