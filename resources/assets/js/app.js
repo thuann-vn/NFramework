@@ -32,6 +32,15 @@ Vue.filter('price', function (value) {
     return value;
 })
 
+Vue.filter('route', function (slug, type) {
+    switch(type){
+        case 'department': return '/department/' + slug;  break;
+        case 'category': return '/category/' + slug;  break;
+        case 'product': return '/product/' + slug;  break;
+        default: return slug;
+    }
+})
+
 const app = new Vue({
     el: '#app'
 });
