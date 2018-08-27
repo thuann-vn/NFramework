@@ -34,11 +34,7 @@
         <div class="container">
             <h2 class="section-title">{{__('frontend.home.recommendations')}}</h2>
 
-            <div class="products text-center">
-                @foreach ($products as $product)
-                    @include('partials.products.product')
-                @endforeach
-            </div> <!-- end products -->
+            <home-products></home-products>
         </div> <!-- end container -->
     </div> <!-- end featured-section -->
 

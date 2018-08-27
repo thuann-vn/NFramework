@@ -27,7 +27,9 @@ class ProductsResource extends Resource
             'images' => $this->images,
             'brand' => new BrandResource($this->brand),
             'categories' => CategoriesResource::collection($this->categories),
-            'variant_count' => $this->variants->count()
+            'variant_count' => $this->variants->count(),
+            'in_cart' => isInCart($this->id),
+            'in_wishlist' => isInWishlist($this->id)
         ];
     }
 }
