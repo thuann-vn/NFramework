@@ -29,7 +29,7 @@ Vue.component('similar-products', require('./components/product/SimilarProducts.
 
 //Filters
 Vue.filter('image', function (image, size) {
-    if(size){
+    if(image && size){
         var ext = /^.+\.([^.]+)$/.exec(image);
         ext = ext == null ? "" : ext[1];
         image = image.replace('.'+ext, '').replace(' ','%20');
@@ -39,11 +39,11 @@ Vue.filter('image', function (image, size) {
 })
 
 Vue.filter('price', function (value) {
-    value = value.toString();
-    value = value.replace(/[\D\s\._\-]+/g, "");
-    value = value ? parseInt(value, 10) : 0;
-
-    return value;
+    if(value){
+        value = value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        return value + ' ₫';
+    }
+    return 0;
 })
 
 const app = new Vue({

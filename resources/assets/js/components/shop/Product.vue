@@ -9,7 +9,6 @@
                 <div class="product-name">{{ data.name }}</div>
             </a>
             <div class="product-regular-price" v-if="data.regular_price">{{data.regular_price|price}}</div>
-
             <div class="product-price">{{data.price|price}}</div>
         </div>
 

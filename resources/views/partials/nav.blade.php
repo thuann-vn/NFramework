@@ -39,7 +39,7 @@
         <div class="main-menu">
             <div class="container">
                 @if (! (request()->is('checkout') || request()->is('guestCheckout')))
-                    <main-nav></main-nav>
+                    @include('partials.menus.main', ['items'=>getMenuData('main')])
                 @endif
             </div>
         </div>
