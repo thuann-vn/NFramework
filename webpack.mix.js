@@ -18,4 +18,3 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/responsive.scss', 'public/css')
     .sourceMaps()
     .browserSync('new-framework.com');
-

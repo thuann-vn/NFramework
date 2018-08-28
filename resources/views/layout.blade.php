@@ -19,26 +19,28 @@
         <link rel="stylesheet" href="{{ asset('css/algolia.css') }}">
 
         @yield('extra-css')
+
+        <!-- Scripts -->
+        <script>
+            const LANG = '{{app()->getLocale()}}';
+            const ROUTES = {
+                'cart' : {
+                    'add_to_cart': '{{route('cart.store')}}'
+                }
+            };
+        </script>
     </head>
 
 
 <body class="@yield('body-class', '')">
     @include('partials.nav')
+    <div id="app">
+        <div class="page-content">
+            @yield('content')
+        </div>
 
-    <div class="page-content">
-        @yield('content')
+        @include('partials.footer')
     </div>
-
-    @include('partials.footer')
-
-    <!-- Scripts -->
-    <script>
-        const ROUTES={
-            'cart' : {
-                'add_to_cart': '{{route('cart.store')}}'
-            }
-        };
-    </script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/main.min.js') }}"></script>
     <div id="fb-root"></div>
