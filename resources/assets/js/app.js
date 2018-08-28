@@ -16,10 +16,16 @@ require('./bootstrap');
 
 Vue.component('main-nav', require('./components/Nav.vue'));
 Vue.component('slider', require('./components/Slider.vue'));
-Vue.component('home-products', require('./components/HomeProducts.vue'));
 Vue.component('product', require('./components/shop/Product.vue'));
-Vue.component('home-categories', require('./components/HomeCategories.vue'));
-Vue.component('home-brands', require('./components/HomeBrands.vue'));
+
+//Home components
+Vue.component('home-products', require('./components/home/HomeProducts.vue'));
+Vue.component('home-categories', require('./components/home/HomeCategories.vue'));
+Vue.component('home-brands', require('./components/home/HomeBrands.vue'));
+
+//Product detail
+Vue.component('related-products', require('./components/product/RelatedProducts.vue'));
+Vue.component('similar-products', require('./components/product/SimilarProducts.vue'));
 
 //Filters
 Vue.filter('image', function (image, size) {

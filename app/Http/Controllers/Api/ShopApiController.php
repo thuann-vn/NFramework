@@ -98,8 +98,36 @@ class ShopApiController extends Controller
         return $data;
     }
 
-    public function show(){
+    public function getRelatedProducts(Request $request, $lang, $productId){
+        $url = request()->fullUrl();
 
+        //Cache for 60 minutes
+        $data =  Cache::remember($url, 60, function () use ($request, $lang, $productId){
+            $limit = $request->input('limit', 16);
+            $products  = Product::with('variants')->where('id', '!=', $productId)->mightAlsoLike()->withTranslation($lang)->limit($limit);
+
+            return ProductsResource::collection($products->get())->response();
+        });
+        return $data;
+    }
+
+
+    public function getSimilarProducts(Request $request, $lang, $productId){
+        $url = request()->fullUrl();
+
+        //Cache for 60 minutes
+        $data =  Cache::remember($url, 60, function () use ($request, $lang, $productId){
+            $limit = $request->input('limit', 20);
+            $product = Product::with(['categories'])->where('id', $productId)->firstOrFail();
+            $categories = $product->categories->pluck('id')->toArray();
+
+            $products = Product::with('variants')->whereHas('categories', function($query) use ($categories){
+                return $query ->whereIn('category_id', $categories);
+            })->withTranslation($lang)->limit($limit);
+
+            return ProductsResource::collection($products->get())->response();
+        });
+        return $data;
     }
 
     /**

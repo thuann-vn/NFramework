@@ -2,7 +2,6 @@ const eProduct = {
     init: function(){
         this.initSlider();
         this.initVariant();
-        this.initRelatedProducts();
         this.initCartForm();
         this.initVideos();
     },
@@ -14,7 +13,7 @@ const eProduct = {
             slidesToShow: 7,
             slidesToScroll: 1,
             infinite: false,
-            draggable: false,
+            draggable: true,
             mobileFirst: true,
             responsive: [
                 {
@@ -64,73 +63,6 @@ const eProduct = {
             $('[name="price"]').val($(this).data('price'));
             $('.product-section-image > img').attr('src', $(this).find('img').attr('src'));
         })
-    },
-    initRelatedProducts: function(){
-        $('.related-products') .slick({
-            infinite: true,
-            slidesToShow: 8,
-            slidesToScroll: 8,
-            autoplay: true,
-            autoplaySpeed: 3000,
-            dots: true,
-            mobileFirst: true,
-            responsive: [
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 8,
-                        slidesToScroll: 8
-                    }
-                },
-                {
-                    breakpoint: 767,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3
-                    }
-                },
-                {
-                    breakpoint: 200,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2
-                    }
-                }
-            ]
-        });
-        $('.similar-products') .slick({
-            infinite: true,
-            slidesToShow: 8,
-            slidesToScroll: 8,
-            autoplay: true,
-            autoplaySpeed: 3000,
-            dots: true,
-            centerMode: false,
-            mobileFirst: true,
-            responsive: [
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 8,
-                        slidesToScroll: 8
-                    }
-                },
-                {
-                    breakpoint: 767,
-                    settings: {
-                        slidesToShow: 3,
-                        slidesToScroll: 3
-                    }
-                },
-                {
-                    breakpoint: 200,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2
-                    }
-                }
-            ]
-        });
     },
     initCartForm: function () {
         $('.cart-form').submit(function(e){

@@ -57,17 +57,8 @@ class ShopController extends Controller
     public function show($slug)
     {
         $product = Product::with(['categories', 'properties', 'properties.property', 'variants', 'brand'])->where('slug', $slug)->firstOrFail()->translate();
-        $mightAlsoLike = Product::with('variants')->where('slug', '!=', $slug)->mightAlsoLike()->withTranslations()->get(['id','name', 'price','slug', 'image']);
-
-        $categories = $product->categories->pluck('id')->toArray();
-        $similar = Product::with('variants')->whereHas('categories', function($query) use ($categories){
-           return $query ->whereIn('category_id', $categories);
-        })->limit(16)->withTranslations()->get(['id','name', 'price','slug', 'image']);
-
         return view('shop.product')->with([
-            'product' => $product,
-            'mightAlsoLike' => $mightAlsoLike,
-            'similar' => $similar
+            'product' => $product
         ]);
     }
 

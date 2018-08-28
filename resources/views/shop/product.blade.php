@@ -114,14 +114,8 @@
         </ul>
     </div>
 
-    @if(!empty($mightAlsoLike))
-        @include('partials.shop.might-like')
-    @endif
-
-
-    @if(!empty($similar))
-        @include('partials.shop.similar')
-    @endif
+    @include('partials.shop.might-like')
+    @include('partials.shop.similar')
 
     <div class="container">
         <hr/>
