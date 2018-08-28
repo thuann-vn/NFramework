@@ -40,6 +40,7 @@
                 </a>
             </div>
 
+
             <a class="wide-banner" href="{{setting('home.banner_3_link')}}">
                 <img src="{{Voyager::image(setting('home.banner_3'))}}" alt="Home Banner">
             </a>
