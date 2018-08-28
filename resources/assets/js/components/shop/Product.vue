@@ -1,7 +1,7 @@
 <template>
     <div class="product">
         <a :href="data.link">
-            <img :src="data.image|image" alt="product">
+            <img :src="data.image|image('small')" alt="product">
         </a>
         <div class="product-info">
             <a class="product-brand" :href="data.link" v-if="data.brand">{{data.brand.name}}</a>
@@ -32,11 +32,10 @@
         <span v-if="data.in_wishlist" class="wishlist-button" :data-id="data.id">
             <span class="cart-icon heart"></span>
         </span>
-        <a v-else class="wishlist-button add-to-wishlist">
+        <a :href="'/wish-list/add/' + data.id" v-else class="wishlist-button add-to-wishlist">
             <span class="cart-icon heart empty"></span>
         </a>
     </div>
-
 </template>
 
 <script>

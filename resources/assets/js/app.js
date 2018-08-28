@@ -29,6 +29,12 @@ Vue.component('similar-products', require('./components/product/SimilarProducts.
 
 //Filters
 Vue.filter('image', function (image, size) {
+    if(size){
+        var ext = /^.+\.([^.]+)$/.exec(image);
+        ext = ext == null ? "" : ext[1];
+        image = image.replace('.'+ext, '').replace(' ','%20');
+        return '/storage/' + image + '-' + size + '.' + ext;
+    }
     return '/storage/' + image;
 })
 
