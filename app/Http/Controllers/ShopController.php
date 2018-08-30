@@ -73,7 +73,7 @@ class ShopController extends Controller
         $pagination = config('shop.pagination');
         $category = Category::with('children')->where('slug', $parentSlug)->withTranslations()->first();
 
-        $brands = Brand::where('featured', 1)->withTranslations()->get(['slug','name']);
+        $brands = Brand::where('featured', 1)->withTranslations()->get(['id', 'slug','name']);
         $attributes = Attribute::has('values')->with('values')->get();
         $department = Department::find($category->id);
 
@@ -182,7 +182,7 @@ class ShopController extends Controller
         $categories = Category::where('department_id', $department->id)->whereNull('parent_id')->orderBy('name')->withTranslations()->get();
         $featured_categories = Category::where('department_id', $department->id)->where('featured', true)->orderBy('name')->withTranslations()->get();
 
-        $brands = Brand::where('featured', 1)->withTranslations()->get(['slug','name']);
+        $brands = Brand::where('featured', 1)->withTranslations()->get(['id', 'slug','name']);
         $attributes = Attribute::has('values')->with('values')->get();
 
         $products = Product::with(['categories','brand','variants'])->whereHas('categories', function ($query) use ($department) {
@@ -298,6 +298,7 @@ class ShopController extends Controller
             'brand' => []
         ];
         $brandFilters = $request->has('brand')? explode('~',$request->input('brand')): [];
+
 
         $currentFilters = [];
         if(!empty($brandFilters)){
