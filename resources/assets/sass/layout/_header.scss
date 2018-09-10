@@ -13,11 +13,17 @@ header {
         display: block;
         line-height: 0;
 
+        img{
+            width: 125px;
+            height: 125px;
+        }
         @include sm{
             padding-left: 10px;
             padding-right: 10px;
+
             img {
                 height: 29px;
+                width: auto;
             }
         }
     }
@@ -483,9 +489,12 @@ header {
                         }
 
                         a {
-                            font-size: 13px;
                             font-weight: normal;
                             padding: 0;
+                            color: #333;
+                            display: block;
+                            line-height: 1.7em;
+                            font-size: 14px;
                         }
                     }
                 }
@@ -519,7 +528,16 @@ header {
                     display: none;
                 }
             }
+            .mega-menu-title{
+                text-transform: none;
 
+                a{
+                    color: #000;
+                    padding: 0;
+                    font-size: 18px;
+                    line-height: 30px;
+                }
+            }
             @include sm{
                 position: relative;
                 display: block;
@@ -617,7 +635,8 @@ header {
         }
 
         .logo img {
-            height: 40px;
+            height: 80px;
+            width: auto;
         }
 
         &.active {

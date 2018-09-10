@@ -11,19 +11,19 @@
 
             @if(count($childs)>0)
                 @php
-                    if(!empty($menu_item->mega_option)){
+                    if($menu_item->mega_option != ''){
                         $megaOption = json_decode($menu_item->mega_option);
                     }
                 @endphp
                 @if($menu_item->is_mega)
                     <div class="mega-menu">
-                        <div class="mega-menu-title">{{!empty($menu_item->title)?$menu_item->title:$menu_item->title}}</div>
+                        <div class="mega-menu-title"><a href="{{$menu_item->link()}}">{{!empty($menu_item->title)?$menu_item->title:$menu_item->title}}</a></div>
                         <div class="mega-menu-wrap">
                             @foreach(getChildMenuItems($menu_item->id) as $column)
                                 <div class="mega-menu-col">
                                     @foreach(getChildMenuItems($column->id) as $columSection)
                                         @php
-                                            if(!empty($columSection->mega_option)){
+                                            if($columSection->mega_option!=''){
                                                 $columnOption = json_decode($columSection->mega_option);
                                             }
                                         @endphp
