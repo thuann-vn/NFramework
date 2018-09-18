@@ -1,26 +1,10 @@
+/*
+ * Sidebar
+ */
 .sidebar {
-    h3 {
-        font-weight: bold;
-        margin-bottom: 0px;
-        text-transform: uppercase;
+  ul.vertical.menu {
+    li {
+      border-bottom: 1px solid $light-gray;
     }
-
-    ul {
-        line-height: 2;
-        margin-bottom: 30px;
-
-        li{
-            line-height: 24px;
-
-            a{
-                font-size: 14px;
-                color: #444;
-                font-weight: normal;
-
-                &:hover{
-                    text-decoration: underline;
-                }
-            }
-        }
-    }
+  }
 }

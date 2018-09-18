@@ -23,6 +23,7 @@
         "mariuzzo/laravel-js-localization": "^1.4",
         "nicolaslopezj/searchable": "^1.9",
         "predis/predis": "^1.1",
+        "pvtl/voyager-page-blocks": "^0.8.2",
         "renatomarinho/laravel-page-speed": "^1.8",
         "tcg/voyager": "1.1.*"
     },
