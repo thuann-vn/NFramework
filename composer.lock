@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "72e8b25b111eff68bbbeb549c4b59cfd",
+    "content-hash": "695c51b0c993a0d6a747750b7d567d49",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -5310,6 +5310,34 @@
                 "minifier"
             ],
             "time": "2014-11-11T03:54:14+00:00"
+        },
+        {
+            "name": "test-hook",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/larapack/test-hook.git",
+                "reference": "v1.0.0"
+            },
+            "require": {
+                "larapack/hooks": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "hook": {
+                    "providers": [
+                        "TestHook\\TestHookServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TestHook\\": "src/"
+                }
+            },
+            "notification-url": "https://larapack.io/downloads",
+            "description": "This is my first hook.",
+            "time": "2018-09-27T22:09:16+00:00"
         },
         {
             "name": "tightenco/collect",

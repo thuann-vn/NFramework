@@ -27,6 +27,7 @@
         "pvtl/voyager-page-blocks": "^0.8.2",
         "renatomarinho/laravel-page-speed": "^1.8",
         "tcg/voyager": "1.1.*",
+        "test-hook": "^1.0",
         "voyager-themes": "^0.14.0"
     },
     "require-dev": {
