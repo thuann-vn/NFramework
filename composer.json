@@ -17,6 +17,7 @@
         "genealabs/laravel-model-caching": "^0.2.64",
         "gloudemans/shoppingcart": "^2.5",
         "guzzlehttp/guzzle": "^6.3",
+        "larapack/voyager-hooks": "^1.0",
         "laravel/framework": "5.6.*",
         "laravel/scout": "^4.0",
         "laravel/tinker": "~1.0",
