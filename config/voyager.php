@@ -9,6 +9,7 @@ return [
     | Here you can specify voyager user configs
     |
     */
+    'prefix' => 'admin',
 
     'user' => [
         'add_default_role_on_register' => true,
