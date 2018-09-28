@@ -1,6 +1,30 @@
-/*
- * Foundation's Breadcrumbs
- */
 .breadcrumbs {
-    margin-bottom: 0;
+    font-size: 11px;
+    font-weight: 500;
+
+    .breadcrumb-separator {
+        font-size: 8px;
+        display: inline-block;
+        color: #666;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .breadcrumbs-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include sm{
+            padding: 0;
+        }
+    }
+
+    a, span{
+        color: #666;
+
+        &:hover{
+            text-decoration: underline
+        }
+    }
 }

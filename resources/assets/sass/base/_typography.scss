@@ -1,0 +1,26 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+h1, h2, .product-section-subtitle, .product-section-price {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 38px;
+    line-height: 1.2;
+}
+
+h1.stylish-heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+h2 {
+    font-size: 22px;
+}

@@ -1,0 +1,130 @@
+.travel-center {
+  .travel-center-heading{
+    line-height: 0;
+    margin-top: -10px;
+  }
+
+  .travel-center-header-con{
+    margin: 60px 0;
+    text-align: center;
+    border-top: 1px solid #ddd;
+
+    > div{
+      padding: 0 45px;
+      background: #fff;
+      font-size: 21px;
+      font-weight: 400;
+      display: inline-block;
+      position: relative;
+      margin-top: -30px;
+
+      h3{
+        color: #000;
+        font-size: 30px;
+        line-height: 30px;
+        margin: 0 0 15px 0;
+        font-weight: 500;
+      }
+    }
+  }
+  .travel-center-nav {
+    background-color: #223136;
+    height: 57px;
+    text-align: center;
+    ul{
+      li{
+        list-style: none;
+        display: inline-block;
+        padding: 10px 0;
+        a{
+          color: #fff;
+          font-size: 16px;
+          text-decoration: none;
+          display: inline-block;
+          padding: 5px 20px;
+          font-weight: 500;
+          border-right: 1px solid #fff;
+
+          &:hover{
+            color: darken(#fff, 10%);
+          }
+        }
+
+        &:last-child{
+          a{
+            border-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .travel-posts{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+
+    .post{
+      text-align: center;
+
+      .post-title{
+        text-transform: uppercase;
+        color: #000;
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 15px;
+        margin-bottom: 10px;
+      }
+
+      .post-excerpt{
+        font-weight: 100;
+        max-width: 92%;
+        margin: 0 auto 20px;
+        color: #171717;
+      }
+    }
+  }
+
+  .travel-center-categories{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+
+    .featured-category{
+      text-align: center;
+
+      .featured-category-image{
+        display: block;
+      }
+
+      .featured-category-name{
+        color: #000;
+        font-size: 18px;
+      }
+    }
+  }
+
+  .travel-center-brands{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 20px;
+  }
+}
+
+.travel-center-post{
+  .stylish-heading{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 0px;
+  }
+  .post-meta{
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 40px;
+  }
+
+  .post-content{
+    margin-bottom: 40px;
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,267 @@
+.my-account-section {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-gap: 15px;
+    .button-small{
+        padding: 5px 14px;
+        font-size: 14px;
+    }
+
+    .help-nav-panel {
+        margin: 20px 0;
+
+        h2 {
+            background: none repeat scroll 0 0 #c5c5c5;
+            color: #000;
+            font-size: 16px;
+            margin: 0;
+            padding: 4px 9px;
+            font-weight: bold;
+        }
+
+        ul {
+            li {
+                display: block;
+
+                &.active {
+                    > a {
+                        color: #2192ce;
+                        background-color: #fff;
+                        font-weight: bold;
+                    }
+                }
+
+                a {
+                    color: #000;
+                    display: block;
+                    font-weight: normal;
+                    padding: 10px 5px 10px 40px;
+                    border-bottom: 1px solid #ccc;
+                    position: relative;
+                    line-height: 18px;
+                    background-color: #f5f5f5;
+                }
+
+                ul {
+                    li {
+                        a {
+                            padding: 8px 5px 8px 25px;
+                            font-size: 11px;
+                            font-weight: normal;
+                            text-decoration: none;
+                            position: relative;
+                            background: #fff;
+                            border-bottom: 0;
+                        }
+                        &:hover, &.active {
+                            a {
+                                background: #ddd;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .my-account-content {
+        padding: 15px 0;
+    }
+    .welcome-panel {
+        h1 {
+            color: #213951;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+    }
+
+    .summary-table {
+        table-layout: fixed;
+        border: 1px #d0d0d0 solid;
+        width: 100%;
+
+        td {
+            border: 1px #d0d0d0 solid;
+            padding: 30px 40px;
+            vertical-align: middle;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .total-money {
+            font-size: 42px;
+            font-weight: 600;
+            color: #d3b875;
+            text-align: center;
+            width: 33.33%;
+
+            span {
+                font-size: 17px;
+                color: #333;
+                display: block;
+            }
+        }
+        .total-float {
+            font-size: 14px;
+            float: right;
+            background-color: #eaeaea;
+            padding: 6px 15px 6px 55px;
+            width: 122px;
+            border-radius: 13px;
+        }
+    }
+
+    .my-account-title {
+        font-weight: bold;
+    }
+
+    .edit-form {
+        width: 400px;
+        max-width: 100%;
+        margin: 20px 0;
+        display: block;
+
+        &.collapable {
+            max-height: 0;
+            overflow: hidden;
+
+            &.open {
+                max-height: 1000px;
+            }
+        }
+
+        input {
+            display: block;
+            width: 100%;
+        }
+
+        .button {
+            padding: 5px 14px;
+        }
+    }
+
+    .address-book {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+        margin: 20px 0;
+
+        .address {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+    }
+
+    input[type="password"]{
+        background: #fff;
+        border: 1px solid #ddd !important;
+        border-radius: 4px;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        -webkit-transition: none;
+        height: 34px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-appearance: none !important;
+        padding: 6px 40px 6px 12px;
+        text-overflow: ellipsis;
+    }
+
+    .my-orders {
+        table-layout: fixed;
+        border: 1px #d0d0d0 solid;
+        width: 100%;
+        margin-top: 20px;
+
+        th{
+            font-weight: bold;
+        }
+        td {
+            border: 1px #d0d0d0 solid;
+            vertical-align: middle;
+            padding: 8px;
+        }
+
+        .order-detail{
+            position: relative;
+            padding-left: 60px;
+            a{
+                display: block;
+            }
+
+            img{
+                position: absolute;
+                left: 0;
+            }
+        }
+    }
+}
+
+.help-nav-panel .your-orders-icon, .help-nav-panel .placing-an-order-icon, .help-nav-panel .shipping-icon, .help-nav-panel .returns-icon, .help-nav-panel .pricing-and-discounts-icon, .help-nav-panel .product-information-icon, .help-nav-panel .warranties-and-repairs-icon, .help-nav-panel .my-favorites-icon, .help-nav-panel .manage-your-account-icon, .help-nav-panel .contact-customer-care-icon, .help-nav-panel .ebags-rewards-icon, .help-nav-panel .electronic-gift-certificates-icon, .help-nav-panel .privacy-and-security-icon, .help-nav-panel .suggestions-for-our-website-icon {
+    width: 24px;
+    height: 24px;
+    background-size: 120px 72px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    position: absolute;
+    top: 50%;
+    margin-top: -12px;
+    left: 10px;
+}
+
+.help-nav-panel .your-orders-icon {
+    background-position: 0 0
+}
+
+.help-nav-panel .placing-an-order-icon {
+    background-position: -24px 0
+}
+
+.help-nav-panel .shipping-icon {
+    background-position: -48px 0
+}
+
+.help-nav-panel .returns-icon {
+    background-position: -72px 0
+}
+
+.help-nav-panel .pricing-and-discounts-icon {
+    background-position: -96px 0
+}
+
+.help-nav-panel .product-information-icon {
+    background-position: 0 -24px
+}
+
+.help-nav-panel .warranties-and-repairs-icon {
+    background-position: -24px -24px
+}
+
+.help-nav-panel .my-favorites-icon {
+    background-position: -48px -24px
+}
+
+.help-nav-panel .manage-your-account-icon {
+    background-position: -72px -24px
+}
+
+.help-nav-panel .contact-customer-care-icon {
+    background-position: -96px -24px
+}
+
+.help-nav-panel .ebags-rewards-icon {
+    background-position: 0 -48px
+}
+
+.help-nav-panel .electronic-gift-certificates-icon {
+    background-position: -24px -48px
+}
+
+.help-nav-panel .privacy-and-security-icon {
+    background-position: -48px -48px
+}
+
+.help-nav-panel .suggestions-for-our-website-icon {
+    background-position: -72px -48px
+}
