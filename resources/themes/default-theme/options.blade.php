@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Voyager Themes - Sample Theme
+ * Voyager Themes - Default Theme
  * Created by Tony Lea and the DevDojo
  *
  * Use the theme_field() function to display fields in
@@ -65,10 +65,27 @@
  */
 
 ?>
+<div class="page-content settings container-fluid">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-toggle="tab" href="#general" aria-expanded="true">General</a>
+        </li>
+        <li>
+            <a data-toggle="tab" href="#home">Home Page</a>
+        </li>
+        <li>
+            <a data-toggle="tab" href="#travel-center">Travel Center</a>
+        </li>
+    </ul>
 
-{!! theme_field('text', 'home_title', 'Home Title', '', '{}', 'Add the SEO title for your homepage') !!}
-{!! theme_field('image', 'logo', 'Site Logo') !!}
-{!! theme_field('rich_text_box', 'about', 'About', '', '{}') !!}
+    <div class="tab-content">
+        <div id="general" class="tab-pane fade active">
+            {!! theme_field('text', 'home_title', 'Home Title', '', '{}', 'Default SEO title for your site') !!}
+            {!! theme_field('image', 'logo', 'Site Logo') !!}
+            {!! theme_field('image', 'favicon', 'Site Favicon') !!}
+        </div>
+    </div>
+</div>
 
 
 

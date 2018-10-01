@@ -1,7 +1,7 @@
 <template>
     <div class="product">
         <a :href="data.link">
-            <img :src="data.image|image('small')" alt="product">
+            <img class="lazyload" :data-src="data.image|image('small')" alt="product">
         </a>
         <div class="product-info">
             <a class="product-brand" :href="data.link" v-if="data.brand">{{data.brand.name}}</a>

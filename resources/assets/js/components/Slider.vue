@@ -2,7 +2,7 @@
     <div class="slider fade" v-if="slider">
         <div v-for="(item, index) in slider.slides">
             <div class="image">
-                <img :src="item.image | image" alt="hero image">
+                <img class="lazyload" :data-src="item.image | image" alt="hero image">
             </div>
         </div>
     </div>

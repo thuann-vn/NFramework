@@ -2,7 +2,7 @@
     <div class="brand-grid" v-if="brands">
         <div class="brand" v-for="(brand, index) in brands">
             <a :href="brand.link" :title="brand.name">
-                <img :src="brand.logo|image('medium')" alt="brand">
+                <img class="lazyload" :data-src="brand.logo|image('medium')" alt="brand">
             </a>
         </div>
     </div>
