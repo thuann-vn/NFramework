@@ -57,6 +57,8 @@
     <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
     <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
     <script src="{{ asset('js/algolia.js') }}"></script>
+    <script src="{{ asset('/vendor/lazysizes/lazysizes.min.js') }}"></script>
+
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat%7CRoboto:300,400,500,700" rel="stylesheet">

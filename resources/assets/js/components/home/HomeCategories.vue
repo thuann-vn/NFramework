@@ -1,7 +1,7 @@
 <template>
     <div class="categories text-center" v-if="categories">
         <div class="category" v-for="(category, index) in categories">
-            <a :href="category.link"><img :src="category.image|image('medium')" alt="category"></a>
+            <a :href="category.link"><img class="lazyload" :data-src="category.image|image('medium')" alt="category"></a>
             <a class="category-name" :href="category.link">
                 {{category.name}}
             </a>
