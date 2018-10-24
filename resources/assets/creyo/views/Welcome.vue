@@ -1,5 +1,9 @@
 <template>
     <div>
+        <passport-clients></passport-clients>
+        <passport-authorized-clients></passport-authorized-clients>
+        <passport-personal-access-tokens></passport-personal-access-tokens>
+
         <!-- Search overlay -->
         <div class="search-overlay"></div>
 
@@ -152,5 +156,15 @@
     </div>
 </template>
 <script>
-    export default {}
+    import { APP_CONFIG } from "../config"
+    export default {
+        getCafes: function(){
+            return axios.get( APP_CONFIG.API_URL + 'products' );
+        },
+        mounted:function () {
+            axios.get(APP_CONFIG.API_URL + 'products' ).then(function (response) {
+                console.log(response);
+            });
+        }
+    }
 </script>

@@ -1,5 +1,8 @@
+require('./bootstrap');
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { APP_CONFIG } from './config.js';
 
 Vue.use(VueRouter)
 
