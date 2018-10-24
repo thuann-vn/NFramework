@@ -14,3 +14,9 @@ let mix = require('laravel-mix');
 mix.js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
     .copyDirectory('resources/assets/images', 'public/images');
+
+//Creyo app
+mix.js('resources/assets/creyo/app.js', 'public/creyo')
+    .sass('resources/assets/creyo/css/bulma.sass', 'public/creyo/css')
+    .sass('resources/assets/creyo/css/core.scss', 'public/creyo/css')
+    .copyDirectory('resources/assets/creyo/js', 'public/creyo/js');

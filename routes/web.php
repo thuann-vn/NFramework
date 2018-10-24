@@ -1,6 +1,7 @@
 <?php
-
 Route::get('/', 'LandingPageController@index')->name('landing-page');
+
+Route::get('/creyo', 'HomeController@creyo')->name('creyo-page');
 
 Route::get('/shop', 'ShopController@index')->name('shop.index');
 Route::get('/product/{product}', 'ShopController@show')->name('shop.show');

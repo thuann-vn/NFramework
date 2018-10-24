@@ -29,6 +29,7 @@
     "node-sass": "^4.9.2",
     "select2": "^4.0.6-rc.1",
     "sweetalert": "^2.1.0",
-    "vue-route-laravel": "^1.0.4"
+    "vue-route-laravel": "^1.0.4",
+    "vue-router": "^3.0.1"
   }
 }

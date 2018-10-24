@@ -22,3 +22,7 @@ Route::group(['prefix' => '/{lang?}', 'where' => ['lang' => 'en|vi'], 'middlewar
     Route::get('/category/list', ['uses' => 'Api\ShopApiController@getCategoryList', 'as' => 'api.getCategoryList']);
     Route::get('/brand/list', ['uses' => 'Api\ShopApiController@getBrandList', 'as' => 'api.getBrandList']);
 });
+
+Route::apiResources([
+    'products' => 'Api\ProductController',
+]);
