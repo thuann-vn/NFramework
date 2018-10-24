@@ -20,6 +20,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "larapack/voyager-hooks": "^1.0",
         "laravel/framework": "5.6.*",
+        "laravel/horizon": "^1.4",
         "laravel/scout": "^4.0",
         "laravel/tinker": "~1.0",
         "mariuzzo/laravel-js-localization": "^1.4",
