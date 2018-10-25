@@ -54,11 +54,11 @@
                                         </span>
 
                                         <span class="action">
-                                            <span class="action-link is-like has-simple-popover" data-content="Add to Wishlist" data-placement="top">
-                                                <a href="#"><i class="feather-icons" data-feather="heart"></i></a>
+                                            <span class="action-link is-like has-simple-popover" data-content="Add to Wishlist" data-placement="top" v-simple-popover>
+                                                <a href="#"><i class="feather-icons" data-feather="heart" v-feather></i></a>
                                             </span>
-                                            <span class="action-link is-remove has-simple-popover" data-content="Remove from Cart" data-placement="top">
-                                                <a href="#"><i class="feather-icons" data-feather="x"></i></a>
+                                            <span class="action-link is-remove has-simple-popover" data-content="Remove from Cart" data-placement="top" v-simple-popover>
+                                                <a href="#"><i class="feather-icons" data-feather="x" v-feather></i></a>
                                             </span>
                                         </span>
                                     </li>

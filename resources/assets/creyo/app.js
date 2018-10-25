@@ -77,6 +77,36 @@ Vue.filter('price', function (value) {
     return 0;
 })
 
+
+//Directives
+Vue.directive('popover', {
+    inserted: function (el) {
+        // Focus the element
+        $(el)["webuiPopover"]({
+            trigger: "hover",
+            placement: "top",
+            width: 280,
+            animation: "pop"
+        })
+    }
+})
+
+Vue.directive('simple-popover', {
+    inserted: function (el) {
+        // Focus the element
+        $(el)["webuiPopover"]({
+            trigger: "hover",
+            animation: "pop"
+        })
+    }
+})
+
+Vue.directive('feather', {
+    inserted: function (el) {
+        // Focus the element
+        feather["replace"]();
+    }
+})
 //Init app
 const app = new Vue({
     el: '#app',
