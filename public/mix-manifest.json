@@ -1,7 +1,7 @@
 {
+    "/creyo/app.js": "/creyo/app.js",
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/creyo/css/bulma.css": "/creyo/css/bulma.css",
-    "/creyo/css/core.css": "/creyo/css/core.css",
-    "/creyo/app.js": "/creyo/app.js"
+    "/creyo/css/core.css": "/creyo/css/core.css"
 }

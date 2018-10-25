@@ -76,7 +76,8 @@ Route::group(['prefix' => 'admin'], function () {
 });
 Auth::routes();
 
-Route::middleware('auth')->get('/home/{slug?}', 'HomeController@index')->name('home');
+Route::middleware('auth')->get('/home/{any}', 'HomeController@index')->where('any', '.*')->name('home');
+
 Route::get('/contact', 'HomeController@index')->name('contact');
 
 Route::get('/search', 'ShopController@search')->name('search');

@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="/creyo/js/jpcard/card.css">
     <link rel="stylesheet" href="/creyo/css/chosen/chosen.css">
     <link rel="stylesheet" href="/creyo/css/icons.min.css">
-
+    <script src='https://devpreview.tiny.cloud/demo/tinymce.min.js'></script>
 </head>
 <body>
 <div id="app">

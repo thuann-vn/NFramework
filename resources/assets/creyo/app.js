@@ -5,39 +5,21 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import store from './store/store';
 
+import VueMce from 'vue-mce';
+
 //Use
 Vue.use(VueRouter)
+Vue.use(VueMce);
 
 //Vue configs
 Vue.config.productionTip = false
+//Components
+Vue.component('pagination', require('./components/general/Pagination.vue'));
 
 //Views
 import Welcome from './views/Welcome.vue'
 import Products from './views/product/List.vue'
-
-//Components
-Vue.component('pagination', require('./components/general/Pagination.vue'));
-
-//File pond
-// Import Vue FilePond
-import vueFilePond from 'vue-filepond';
-
-// Import FilePond styles
-import 'filepond/dist/filepond.min.css';
-
-// Import FilePond plugins
-// Please note that you need to install these plugins separately
-
-// Import image preview plugin styles
-import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
-
-// Import image preview and file type validation plugins
-import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
-import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
-
-
-// Create component
-const FilePond = vueFilePond(FilePondPluginFileValidateType, FilePondPluginImagePreview);
+import ProductDetail from './views/product/Detail.vue'
 
 //Routers
 const router = new VueRouter({
@@ -50,9 +32,14 @@ const router = new VueRouter({
             component: Welcome
         },
         {
-            path: '/products',
+            path: '/product',
             name: 'products',
             component: Products
+        },
+        {
+            path: '/product/detail',
+            name: 'productDetail',
+            component: ProductDetail
         },
     ],
 });
@@ -74,7 +61,7 @@ Vue.filter('price', function (value) {
         value = value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
         return value + ' ₫';
     }
-    return 0;
+    return '0';
 })
 
 
@@ -111,7 +98,6 @@ Vue.directive('feather', {
 const app = new Vue({
     el: '#app',
     components: {
-        FilePond,
     },
     store,
     router,

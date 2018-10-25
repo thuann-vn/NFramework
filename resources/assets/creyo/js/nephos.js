@@ -426,5 +426,7 @@ $(document)["ready"](function () {
         var variable_0a = $(this)["attr"]("data-order");
         $(".order-list-card")["addClass"]("is-hidden");
         $("#" + variable_0a)["removeClass"]("is-hidden")
-    })
+    });
+
+    feather["replace"]();
 })

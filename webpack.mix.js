@@ -20,3 +20,23 @@ mix.js('resources/assets/creyo/app.js', 'public/creyo')
     .sass('resources/assets/creyo/css/bulma.sass', 'public/creyo/css')
     .sass('resources/assets/creyo/css/core.scss', 'public/creyo/css')
     .copyDirectory('resources/assets/creyo/js', 'public/creyo/js');
+
+mix.webpackConfig({
+    module: {
+        loaders: [
+            {
+                test: require.resolve('tinymce/tinymce'),
+                loaders: [
+                    'imports?this=>window',
+                    'exports?window.tinymce'
+                ]
+            },
+            {
+                test: /tinymce\/(themes|plugins)\//,
+                loaders: [
+                    'imports?this=>window'
+                ]
+            }
+        ]
+    }
+});
