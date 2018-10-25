@@ -22,6 +22,7 @@ class ProductsResource extends Resource
             'details' => $this->getTranslatedAttribute('details'),
             'slug' => $this->getTranslatedAttribute('slug'),
             'price' => $this->price,
+            'stock' => $this->stock,
             'regular_price' => $this->regular_price,
             'image' => $this->image,
             'brand' => new BrandResource($this->brand),

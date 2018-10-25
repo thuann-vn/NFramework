@@ -23,10 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('creyo');
-    }
-
-    public function creyo(){
-        return view('creyo');
+        return view('backend.index');
     }
 }

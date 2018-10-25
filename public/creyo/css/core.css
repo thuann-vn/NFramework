@@ -2941,13 +2941,6 @@ TABLE OF CONTENTS
   font-weight: 500;
 }
 
-.cart-summary .cart-total:before {
-  content: '$';
-  font-size: 60%;
-  position: relative;
-  left: 8px;
-}
-
 .cart-summary .cart-total small {
   display: block;
   font-size: .8rem;
@@ -3026,11 +3019,6 @@ TABLE OF CONTENTS
   font-weight: 500;
   color: #0023ff;
   width: 100px;
-}
-
-.cart-card .cart-content li .product-price span:nth-child(2):before {
-  content: '$';
-  font-size: 70%;
 }
 
 .cart-card .cart-content li .product-quantity {

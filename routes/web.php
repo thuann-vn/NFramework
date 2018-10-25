@@ -1,8 +1,6 @@
 <?php
 Route::get('/', 'LandingPageController@index')->name('landing-page');
 
-Route::get('/creyo', 'HomeController@creyo')->name('creyo-page');
-
 Route::get('/shop', 'ShopController@index')->name('shop.index');
 Route::get('/product/{product}', 'ShopController@show')->name('shop.show');
 Route::get('/category/{parent}/{category?}', 'ShopController@category')->name('shop.category');
@@ -78,7 +76,7 @@ Route::group(['prefix' => 'admin'], function () {
 });
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('auth')->get('/home/{slug?}', 'HomeController@index')->name('home');
 Route::get('/contact', 'HomeController@index')->name('contact');
 
 Route::get('/search', 'ShopController@search')->name('search');

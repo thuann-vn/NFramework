@@ -33,11 +33,12 @@
 </head>
 <body>
 <div id="app">
-    <app></app>
+    @yield('content')
 </div>
+
 <!-- Concatenated plugins -->
 <script src="{{ mix('/creyo/app.js') }}"></script>
 <script src="/creyo/js/app.js"></script>
 <!-- Helios js -->
-<script src="/creyo/js/nephos.js"></script>    </body>
+<script src="/creyo/js/nephos.js"></script></body>
 </html>

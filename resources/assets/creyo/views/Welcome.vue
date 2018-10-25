@@ -1,27 +1,9 @@
 <template>
     <div>
-        <passport-clients></passport-clients>
-        <passport-authorized-clients></passport-authorized-clients>
-        <passport-personal-access-tokens></passport-personal-access-tokens>
-
-        <!-- Search overlay -->
-        <div class="search-overlay"></div>
-
-        <!-- Search input -->
-        <div class="search-input-wrapper is-desktop is-hidden">
-            <div class="field">
-                <div class="control">
-                    <input type="text" name="search" autofocus required>
-                    <span id="clear-search" role="button"><i data-feather="x"></i></span>
-                    <span class="search-help">Type the name of the product you are looking for</span>
-                </div>
-            </div>
-        </div>
         <!-- Main section -->
         <div class="section">
             <!-- Container -->
             <div class="container">
-
                 <!-- Product Categories Grid -->
                 <div class="columns category-header">
                     <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
@@ -143,12 +125,9 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
                 <!-- /House products -->
-
             </div>
             <!-- /Container -->
         </div>
@@ -158,8 +137,8 @@
 <script>
     import { APP_CONFIG } from "../config"
     export default {
-        getCafes: function(){
-            return axios.get( APP_CONFIG.API_URL + 'products' );
+        getProducts: function(page=1){
+            return axios.get( APP_CONFIG.API_URL + 'products?page=' + page);
         },
         mounted:function () {
             axios.get(APP_CONFIG.API_URL + 'products' ).then(function (response) {
