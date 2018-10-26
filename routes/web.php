@@ -92,4 +92,4 @@ Route::middleware('auth')->get('/link-fb-messenger', 'Auth\LoginController@linkF
 
 //Creyo
 Route::middleware('auth')->get('/home/{any?}', 'HomeController@index')->where('any', '.*')->name('home');
-Route::middleware('auth')->post('/upload', 'HomeController@upload');
+Route::middleware('auth')->post('/upload', 'Backend\FileController@upload');
