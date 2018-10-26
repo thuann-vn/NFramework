@@ -120,15 +120,15 @@
     <!-- FAB -->
     <div id="quickview-trigger" class="menu-fab is-hidden-mobile">
         <a class="hamburger-btn" href="javascript:void(0);">
-                <span class="menu-toggle">
-                    <span class="icon-box-toggle">
-                        <span class="rotate">
-                            <i class="icon-line-top"></i>
-                            <i class="icon-line-center"></i>
-                            <i class="icon-line-bottom"></i>
-                        </span>
+            <span class="menu-toggle">
+                <span class="icon-box-toggle">
+                    <span class="rotate">
+                        <i class="icon-line-top"></i>
+                        <i class="icon-line-center"></i>
+                        <i class="icon-line-bottom"></i>
                     </span>
                 </span>
+            </span>
         </a>
     </div><!-- /FAB -->
 
@@ -734,13 +734,13 @@
             <!-- Shop menu -->
             <ul class="shop-menu">
                 <li>
-                    <router-link to="/products">
+                    <router-link to="/product">
                         <span>Products</span>
                         <i data-feather="grid"></i>
                     </router-link>
                 </li>
                 <li>
-                    <router-link to="/categories">
+                    <router-link to="/category">
                         <span>Categories</span>
                         <i data-feather="folder"></i>
                     </router-link>

@@ -15,6 +15,7 @@ Vue.use(VueMce);
 Vue.config.productionTip = false
 //Components
 Vue.component('pagination', require('./components/general/Pagination.vue'));
+Vue.component('page-title', require('./components/general/PageTitle.vue'));
 
 //Views
 import Welcome from './views/Welcome.vue'

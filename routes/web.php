@@ -76,7 +76,6 @@ Route::group(['prefix' => 'admin'], function () {
 });
 Auth::routes();
 
-Route::middleware('auth')->get('/home/{any}', 'HomeController@index')->where('any', '.*')->name('home');
 
 Route::get('/contact', 'HomeController@index')->name('contact');
 
@@ -90,3 +89,7 @@ Route::get('/webhook', 'WebhookController@getWebhook')->name('get-webhook');
 Route::post('/webhook', 'WebhookController@postWebhook')->name('post-webhook');
 
 Route::middleware('auth')->get('/link-fb-messenger', 'Auth\LoginController@linkFbMessenger')->name('link-fb-messenger');
+
+//Creyo
+Route::middleware('auth')->get('/home/{any?}', 'HomeController@index')->where('any', '.*')->name('home');
+Route::middleware('auth')->post('/upload', 'HomeController@upload');

@@ -20,6 +20,10 @@ try {
  */
 
 window.axios = require('axios');
+import { loadProgressBar } from 'axios-progress-bar';
+
+loadProgressBar();
+import 'axios-progress-bar/dist/nprogress.css'
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

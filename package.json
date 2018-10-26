@@ -25,6 +25,7 @@
     "vue": "^2.5.13"
   },
   "dependencies": {
+    "axios-progress-bar": "^1.2.0",
     "bootstrap-sass": "^3.3.7",
     "browser-sync": "^2.23.6",
     "browser-sync-webpack-plugin": "^1.2.0",

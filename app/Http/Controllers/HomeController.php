@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -24,5 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         return view('backend.index');
+    }
+
+    public function upload(Request $request){
+        $file = $request->file('images');
+        return Storage::put('library', $file);
     }
 }
