@@ -73779,13 +73779,13 @@ var render = function() {
                             _vm._l(_vm.images, function(image) {
                               return _c("div", { staticClass: "column" }, [
                                 _c(
-                                  "figure",
+                                  "div",
                                   {
                                     staticClass: "image is-128x128",
                                     class: { active: image.selected },
                                     on: {
                                       click: function($event) {
-                                        _vm.selectImage(image)
+                                        image.selected = !image.selected
                                       }
                                     }
                                   },

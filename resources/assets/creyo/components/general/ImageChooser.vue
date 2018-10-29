@@ -14,10 +14,10 @@
                         <b-tab-item label="Gallery" icon="google-photos">
                             <div class="columns is-multiline is-mobile">
                                 <div class="column" v-for="image in images">
-                                    <figure class="image is-128x128" v-bind:class="{ active: image.selected}" v-on:click="selectImage(image)">
+                                    <div class="image is-128x128" :class="{ 'active': image.selected}" @click="image.selected=!image.selected">
                                         <img :src="image.file_path"/>
                                         <b-checkbox v-model="image.selected"></b-checkbox>
-                                    </figure>
+                                    </div>
                                 </div>
                             </div><!--Pagination-->
                             <pagination v-if="meta.last_page>1" :totalPages="meta.last_page" :total="meta.total" :perPage="meta.per_page" :currentPage="meta.current_page" @pagechanged="getData"></pagination>
