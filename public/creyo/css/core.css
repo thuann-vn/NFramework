@@ -8546,6 +8546,33 @@ TABLE OF CONTENTS
   margin-bottom: 0;
 }
 
+.image-chooser .image {
+  margin: 0;
+}
+
+.image-chooser .image img {
+  max-width: 100%;
+  margin: 0;
+  height: 100% !important;
+  border-radius: 2px;
+  border: 1px solid #ddd;
+}
+
+.image-chooser .image .checkbox {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 0;
+}
+
+.image-chooser .image.active img {
+  outline: 2px solid #0023ff;
+}
+
+.image-chooser .image.active .checkbox {
+  display: block;
+}
+
 /* ==========================================================================
 1. Resets and base setup
 ========================================================================== */

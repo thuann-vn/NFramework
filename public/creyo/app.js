@@ -73638,12 +73638,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 // Import Vue FilePond
 
@@ -73668,6 +73662,8 @@ var FilePond = __WEBPACK_IMPORTED_MODULE_0_vue_filepond___default()(__WEBPACK_IM
     name: 'image-chooser',
     data: function data() {
         return {
+            loading: false,
+            meta: {},
             images: [],
             myFiles: [],
             serverOptions: {
@@ -73687,6 +73683,9 @@ var FilePond = __WEBPACK_IMPORTED_MODULE_0_vue_filepond___default()(__WEBPACK_IM
     },
 
     methods: {
+        selectImage: function selectImage(image) {
+            image.selected = true;
+        },
         getData: function getData() {
             var _this = this;
 
@@ -73702,6 +73701,9 @@ var FilePond = __WEBPACK_IMPORTED_MODULE_0_vue_filepond___default()(__WEBPACK_IM
                 return _this.loading = false;
             });
         }
+    },
+    mounted: function mounted() {
+        this.getData();
     }
 });
 
@@ -73715,6 +73717,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
+    { staticClass: "image-chooser" },
     [
       _c(
         "button",
@@ -73768,46 +73771,64 @@ var render = function() {
                     [
                       _c(
                         "b-tab-item",
+                        { attrs: { label: "Gallery", icon: "google-photos" } },
                         [
-                          _c("template", { slot: "header" }, [
-                            _c("span", {
-                              directives: [
-                                { name: "feather", rawName: "v-feather" }
-                              ],
-                              attrs: { "data-feather": "image" }
-                            }),
-                            _vm._v(" "),
-                            _c("span", [_vm._v(" Gallery")])
-                          ]),
+                          _c(
+                            "div",
+                            { staticClass: "columns is-multiline is-mobile" },
+                            _vm._l(_vm.images, function(image) {
+                              return _c("div", { staticClass: "column" }, [
+                                _c(
+                                  "figure",
+                                  {
+                                    staticClass: "image is-128x128",
+                                    class: { active: image.selected },
+                                    on: {
+                                      click: function($event) {
+                                        _vm.selectImage(image)
+                                      }
+                                    }
+                                  },
+                                  [
+                                    _c("img", {
+                                      attrs: { src: image.file_path }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("b-checkbox", {
+                                      model: {
+                                        value: image.selected,
+                                        callback: function($$v) {
+                                          _vm.$set(image, "selected", $$v)
+                                        },
+                                        expression: "image.selected"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ])
+                            })
+                          ),
                           _vm._v(" "),
-                          _c("vue-select-image", {
-                            attrs: {
-                              dataImages: _vm.dataImages,
-                              "is-multiple": true,
-                              selectedImages: _vm.initialSelected
-                            },
-                            on: {
-                              onselectmultipleimage: _vm.onSelectMultipleImage
-                            }
-                          })
+                          _vm.meta.last_page > 1
+                            ? _c("pagination", {
+                                attrs: {
+                                  totalPages: _vm.meta.last_page,
+                                  total: _vm.meta.total,
+                                  perPage: _vm.meta.per_page,
+                                  currentPage: _vm.meta.current_page
+                                },
+                                on: { pagechanged: _vm.getData }
+                              })
+                            : _vm._e()
                         ],
-                        2
+                        1
                       ),
                       _vm._v(" "),
                       _c(
                         "b-tab-item",
+                        { attrs: { label: "Upload", icon: "cloud-upload" } },
                         [
-                          _c("template", { slot: "header" }, [
-                            _c("span", {
-                              directives: [
-                                { name: "feather", rawName: "v-feather" }
-                              ],
-                              attrs: { "data-feather": "upload-cloud" }
-                            }),
-                            _vm._v(" "),
-                            _c("span", [_vm._v(" Upload")])
-                          ]),
-                          _vm._v(" "),
                           _c(
                             "div",
                             { staticClass: "image-upload" },
@@ -73823,14 +73844,12 @@ var render = function() {
                                     "image/jpeg, image/png, image/gif",
                                   server: _vm.serverOptions,
                                   files: _vm.myFiles
-                                },
-                                on: { init: _vm.handleFilePondInit }
+                                }
                               })
                             ],
                             1
                           )
-                        ],
-                        2
+                        ]
                       )
                     ],
                     1

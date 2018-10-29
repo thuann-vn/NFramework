@@ -22,8 +22,7 @@ class FileController extends Controller
 
     public function upload(Request $request){
         $uploadFile = $request->file('images');
-        $savedFile = Storage::put('library', $uploadFile);
-
+        $savedFile = Storage::put('public/library', $uploadFile);
         $file = new File();
         return $file::create([
             'name' => $uploadFile->getClientOriginalName(),

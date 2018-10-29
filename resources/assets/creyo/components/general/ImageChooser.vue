@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="image-chooser">
         <button class="button is-primary is-medium"
                 @click="isCardModalActive = true">
             Launch image modal
@@ -11,23 +11,18 @@
                 </header>
                 <section class="modal-card-body no-padding">
                     <b-tabs v-model="activeTab">
-                        <b-tab-item>
-                            <template slot="header">
-                                <span v-feather data-feather="image"></span>
-                                <span> Gallery</span>
-                            </template>
-                            <vue-select-image :dataImages="dataImages"
-                                              :is-multiple="true"
-                                              :selectedImages="initialSelected"
-                                              @onselectmultipleimage="onSelectMultipleImage">
-                            </vue-select-image>
+                        <b-tab-item label="Gallery" icon="google-photos">
+                            <div class="columns is-multiline is-mobile">
+                                <div class="column" v-for="image in images">
+                                    <figure class="image is-128x128" v-bind:class="{ active: image.selected}" v-on:click="selectImage(image)">
+                                        <img :src="image.file_path"/>
+                                        <b-checkbox v-model="image.selected"></b-checkbox>
+                                    </figure>
+                                </div>
+                            </div><!--Pagination-->
+                            <pagination v-if="meta.last_page>1" :totalPages="meta.last_page" :total="meta.total" :perPage="meta.per_page" :currentPage="meta.current_page" @pagechanged="getData"></pagination>
                         </b-tab-item>
-                        <b-tab-item>
-                            <template slot="header">
-                                <span v-feather data-feather="upload-cloud"></span>
-                                <span> Upload</span>
-                            </template>
-
+                        <b-tab-item label="Upload" icon="cloud-upload">
                             <div class="image-upload">
                                 <file-pond
                                         name="images"
@@ -37,8 +32,7 @@
                                         accepted-file-types="image/jpeg, image/png, image/gif"
                                         :server="serverOptions"
                                         class="no-margin"
-                                        v-bind:files="myFiles"
-                                        v-on:init="handleFilePondInit"/>
+                                        v-bind:files="myFiles"/>
                             </div>
                         </b-tab-item>
                     </b-tabs>
@@ -75,6 +69,8 @@
         name: 'image-chooser',
         data() {
             return {
+                loading: false,
+                meta: {},
                 images: [],
                 myFiles: [],
                 serverOptions: {
@@ -93,6 +89,9 @@
             }
         },
         methods: {
+            selectImage: function(image){
+                image.selected= true;
+            },
             getData(page=1){
                 this.meta.current_page = page;
                 axios.get(this.$store.state.API_URL + 'images?page='+page)
@@ -103,6 +102,9 @@
                     this.errored = true
                 }).finally(() => this.loading = false);
             }
+        },
+        mounted: function(){
+            this.getData();
         }
     };
 </script>

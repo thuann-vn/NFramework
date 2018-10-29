@@ -66,7 +66,6 @@ Vue.filter('image', function (image, size) {
     return '/storage/' + image;
 })
 
-
 Vue.filter('price', function (value) {
     if(value){
         value = value.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
