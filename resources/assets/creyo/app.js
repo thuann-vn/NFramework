@@ -2,20 +2,30 @@ require('./bootstrap');
 
 //Import module
 import Vue from 'vue'
+import Buefy from 'buefy'
+import 'buefy/dist/buefy.css'
+
 import VueRouter from 'vue-router'
 import store from './store/store';
 
 import VueMce from 'vue-mce';
+import VueSelectImage from 'vue-select-image';
+
+// add stylesheet
+require('vue-select-image/dist/vue-select-image.css')
 
 //Use
-Vue.use(VueRouter)
+Vue.use(Buefy);
+Vue.use(VueRouter);
 Vue.use(VueMce);
+Vue.use(VueSelectImage);
 
 //Vue configs
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 //Components
 Vue.component('pagination', require('./components/general/Pagination.vue'));
 Vue.component('page-title', require('./components/general/PageTitle.vue'));
+Vue.component('image-chooser', require('./components/general/ImageChooser.vue'));
 
 //Views
 import Welcome from './views/Welcome.vue'

@@ -27,22 +27,16 @@
                                 </div>
                             </div>
                             <!-- Gold Customer card -->
-                            <div class="flat-card profile-info-card is-auto">
+                            <div class="flat-card profile-info-card is-auto empty-cart-card"><!-- Title -->
+                                <div class="card-title">
+                                    <h3>Product images</h3>
+                                </div>
                                 <div class="card-body">
-                                    <div class="columns">
-                                        <div class="column">
-                                            <div class="image-upload">
-                                                <file-pond
-                                                        name="images"
-                                                        ref="pond"
-                                                        allow-multiple="true"
-                                                        accepted-file-types="image/jpeg, image/png, image/gif"
-                                                        :server="serverOptions"
-                                                        class="no-margin"
-                                                        v-bind:files="myFiles"
-                                                        v-on:init="handleFilePondInit"/>
-                                            </div>
-                                        </div>
+                                    <image-chooser></image-chooser>
+                                    <div class="empty-cart has-text-centered">
+                                        <img src="/images/icons/new-cart.svg" alt="">
+                                        <a href="categories.html" class="button big-button rounded">Add product images</a>
+                                        <small>Not added images to product yet!</small>
                                     </div>
                                 </div>
                             </div>
@@ -161,25 +155,7 @@
 </template>
 
 <script>
-    // Import Vue FilePond
-    import vueFilePond from 'vue-filepond';
-
-    // Import FilePond styles
-    import 'filepond/dist/filepond.min.css';
-
-    // Import FilePond plugins
-    // Please note that you need to install these plugins separately
-
-    // Import image preview plugin styles
-    import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
-
-    // Import image preview and file type validation plugins
-    import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
-    import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
     import PageTitle from "../../components/general/PageTitle.vue";
-
-    // Create component
-    const FilePond = vueFilePond(FilePondPluginFileValidateType, FilePondPluginImagePreview);
 
     export default {
         data: function() {
@@ -220,8 +196,7 @@
             }
         },
         components: {
-            PageTitle,
-            FilePond
+            PageTitle
         }
     };
 </script>
