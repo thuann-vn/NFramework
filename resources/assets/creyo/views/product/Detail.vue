@@ -45,27 +45,24 @@
 
                                     <div class="product-images">
                                         <draggable v-model="product.images">
-                                            <transition-group>
-                                                <div class="product-image" :class="{'is-6':index==0, 'is-3':index!=0}" v-for="(image, index) in product.images">
-                                                    <div class="image" :class="{'is-256x256':index==0, 'is-128x128':index!=0}">
-                                                        <img :src="image.file_path"/>
+                                            <div class="product-image" :class="{'is-6':index==0, 'is-3':index!=0}" v-for="(image, index) in product.images">
+                                                <div class="image" :class="{'is-256x256':index==0, 'is-128x128':index!=0}">
+                                                    <img :src="image.file_path"/>
 
-                                                        <div class="overlay">
-                                                            <b-tooltip label="Remove">
-                                                                <a @click="removeImage(index)">
-                                                                    <b-icon icon="delete" type="is-white"></b-icon>
-                                                                </a>
-                                                            </b-tooltip>
-                                                        </div>
+                                                    <div class="overlay">
+                                                        <b-tooltip label="Remove">
+                                                            <a @click="removeImage(index)">
+                                                                <b-icon icon="delete" type="is-white"></b-icon>
+                                                            </a>
+                                                        </b-tooltip>
                                                     </div>
                                                 </div>
-                                            </transition-group>
+                                            </div>
                                         </draggable>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                         <!-- Details -->
                         <div class="column is-4">
                             <div class="flat-card profile-info-card is-auto">
@@ -170,6 +167,7 @@
 </template>
 
 <script>
+    import draggable from 'vuedraggable';
     export default {
         data: function() {
             return {
@@ -224,6 +222,9 @@
             if(localStorage.getItem('images')){
                 this.product.images = JSON.parse(localStorage.getItem('images'));
             }
+        },
+        components:{
+            draggable
         }
     };
 </script>
