@@ -13,6 +13,7 @@ import VueMce from 'vue-mce';
 import VueSelectImage from 'vue-select-image';
 import VueFeatherIcon from 'vue-feather-icon';
 import axios from 'axios';
+import draggable from 'vuedraggable'
 
 // add stylesheet
 require('vue-select-image/dist/vue-select-image.css');
@@ -39,6 +40,7 @@ Vue.component('image-chooser', require('./components/general/ImageChooser.vue'))
 const app = new Vue({
     el: '#app',
     components: {
+        draggable
     },
     store,
     router,

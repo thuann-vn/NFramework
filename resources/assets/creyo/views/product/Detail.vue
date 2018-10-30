@@ -44,11 +44,23 @@
                                     </div>
 
                                     <div class="product-images">
-                                        <div class="product-image" :class="{'is-6':index==0, 'is-3':index!=0}" v-for="(image, index) in product.images">
-                                            <div class="image" :class="{'is-256x256':index==0, 'is-128x128':index!=0}">
-                                                <img :src="image.file_path"/>
-                                            </div>
-                                        </div>
+                                        <draggable v-model="product.images">
+                                            <transition-group>
+                                                <div class="product-image" :class="{'is-6':index==0, 'is-3':index!=0}" v-for="(image, index) in product.images">
+                                                    <div class="image" :class="{'is-256x256':index==0, 'is-128x128':index!=0}">
+                                                        <img :src="image.file_path"/>
+
+                                                        <div class="overlay">
+                                                            <b-tooltip label="Remove">
+                                                                <a @click="removeImage(index)">
+                                                                    <b-icon icon="delete" type="is-white"></b-icon>
+                                                                </a>
+                                                            </b-tooltip>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </transition-group>
+                                        </draggable>
                                     </div>
                                 </div>
                             </div>
@@ -203,6 +215,9 @@
                     _this.product.images = images;
                 }
                 localStorage.setItem('images', JSON.stringify(images));
+            },
+            removeImage: function(index){
+                this.product.images.splice(index,1);
             }
         },
         mounted: function(){
@@ -215,19 +230,51 @@
 
 <style>
     .product-images{
+        margin: -10px;
+    }
 
+    .product-images:before, .product-images:after{
+        content: '';
+        display: table;
+        clear: both;
     }
 
     .product-images .product-image{
         width: 25%;
+        float: left;
+        padding: 10px;
+    }
+
+    .product-images .product-image:first-child{
+        width: 50%;
+    }
+
+    .product-images .product-image:nth-child(6){
+        clear: left;
     }
 
     .product-images .image{
+        width: 100%;
+        padding-top: 100%; /* 1:1 Aspect Ratio */
+        position: relative; /* If you want text inside of it */
         margin: 0;
     }
 
     .product-images .image img{
         margin: 0;
         max-width: 1000px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    .product-images .overlay{
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        background: linear-gradient(transparent, #000);
+        padding: 10px 0 0px;
     }
 </style>
