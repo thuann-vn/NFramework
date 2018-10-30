@@ -1,7 +1,7 @@
+window.Vue = require('vue');
 require('./bootstrap');
 
 //Import module
-import Vue from 'vue'
 import Buefy from 'buefy'
 import 'buefy/dist/buefy.css'
 
@@ -10,18 +10,21 @@ import store from './store/store';
 
 import VueMce from 'vue-mce';
 import VueSelectImage from 'vue-select-image';
+import VueFeatherIcon from 'vue-feather-icon'
 
 // add stylesheet
-require('vue-select-image/dist/vue-select-image.css')
+require('vue-select-image/dist/vue-select-image.css');
 
 //Use
 Vue.use(Buefy);
 Vue.use(VueRouter);
 Vue.use(VueMce);
 Vue.use(VueSelectImage);
+Vue.use(VueFeatherIcon);
 
 //Vue configs
 Vue.config.productionTip = false;
+
 //Components
 Vue.component('pagination', require('./components/general/Pagination.vue'));
 Vue.component('page-title', require('./components/general/PageTitle.vue'));
@@ -98,12 +101,6 @@ Vue.directive('simple-popover', {
     }
 })
 
-Vue.directive('feather', {
-    inserted: function (el) {
-        // Focus the element
-        feather["replace"]();
-    }
-})
 //Init app
 const app = new Vue({
     el: '#app',

@@ -37,6 +37,7 @@
     "select2": "^4.0.6-rc.1",
     "sweetalert": "^2.1.0",
     "tinymce": "^4.8.4",
+    "vue-feather-icon": "^1.2.0",
     "vue-filepond": "^4.0.0",
     "vue-mce": "^1.5.0",
     "vue-route-laravel": "^1.0.4",

@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title> Nephos :: Modern Bulma Ecommerce App and Dashboard</title>
+    <title>NFramework-Dashboard</title>
     <link rel="icon" type="image/png" href="/images/favicon.png" />
 
     <!--Core CSS -->
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="/creyo/js/zoom/zoom.css">
     <link rel="stylesheet" href="/creyo/js/jpcard/card.css">
     <link rel="stylesheet" href="/creyo/css/chosen/chosen.css">
-    <link rel="stylesheet" href="/creyo/css/icons.min.css">
+
     <script src='https://devpreview.tiny.cloud/demo/tinymce.min.js'></script>
     <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
@@ -38,9 +38,12 @@
     @yield('content')
 </div>
 
-<!-- Concatenated plugins -->
-<script src="{{ mix('/creyo/app.js') }}"></script>
-<script src="/creyo/js/app.js"></script>
 <!-- Helios js -->
+<script src="/creyo/js/app.js"></script></body>
 <script src="/creyo/js/nephos.js"></script></body>
+
+<!-- Concatenated plugins -->
+<script src="{{ mix('/creyo/manifest.js') }}"></script>
+<script src="{{ mix('/creyo/vendor.js') }}"></script>
+<script src="{{ mix('/creyo/app.js') }}"></script>
 </html>

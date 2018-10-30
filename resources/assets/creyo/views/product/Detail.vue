@@ -27,26 +27,28 @@
                                 </div>
                             </div>
                             <!-- Gold Customer card -->
-                            <div class="flat-card profile-info-card is-auto empty-cart-card"><!-- Title -->
+                            <div class="flat-card profile-info-card is-auto"><!-- Title -->
                                 <div class="card-title">
                                     <h3>Product images</h3>
-                                </div>
-                                <div class="card-body">
-                                    <image-chooser></image-chooser>
-                                    <div class="empty-cart has-text-centered">
-                                        <img src="/images/icons/new-cart.svg" alt="">
-                                        <a href="categories.html" class="button big-button rounded">Add product images</a>
-                                        <small>Not added images to product yet!</small>
+                                    <div class="edit-account has-simple-popover popover-hidden-mobile" data-content="Edit Account" data-placement="top">
+                                        <a  @click="openImageChooser"> <feather-upload-cloud></feather-upload-cloud></a>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Referal card -->
-                            <div class="flat-card profile-info-card is-auto is-dark is-achievement">
                                 <div class="card-body">
-                                    <img src="assets/images/logo/nephos-referral.svg" alt="">
-                                    <div class="achievement-name">
-                                        <span class="is-green">Nephos Referer</span>
-                                        <span>You have referred <b>30+</b> customers. You get a 2.5% discount on all your purchases.</span>
+                                    <div class="empty-cart-card" v-if="!product.images.length">
+                                        <div class="empty-cart has-text-centered">
+                                            <img src="/images/icons/new-cart.svg" alt="">
+                                            <a @click="openImageChooser" class="button big-button rounded">Add product images</a>
+                                            <small>Not added images to product yet!</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="columns is-multiline is-mobile">
+                                        <div class="column" v-for="(image, index) in product.images">
+                                            <div class="image is-128x128">
+                                                <img :src="image.file_path"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -151,25 +153,19 @@
                 </div>
             </div>
         </div>
+        <image-chooser @onDone="onSelectedImage" ref="imageChooser"></image-chooser>
     </div>
 </template>
 
 <script>
-    import PageTitle from "../../components/general/PageTitle.vue";
-
     export default {
         data: function() {
             return {
-                myFiles: [],
-                serverOptions: {
-                    url: '/upload',
-                    method: 'POST',
-                    process: {
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
-                    }
+                product: {
+                    images: [],
                 },
+                myFiles: [],
+                isImageChooserShow: true,
                 config: {
                     themes: 'oxide',
                     branding: false,
@@ -193,10 +189,20 @@
                 console.log('FilePond has initialized');
 
                 // FilePond instance methods are available on `this.$refs.pond`
+            },
+            openImageChooser : function(){
+                this.$refs.imageChooser.open();
+            },
+            onSelectedImage: function(images){
+                if(this.product.images){
+                    this.product.images.concat(images);
+                }else{
+                    this.product.images = images;
+                }
+
             }
         },
         components: {
-            PageTitle
         }
     };
 </script>

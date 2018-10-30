@@ -8570,7 +8570,9 @@ TABLE OF CONTENTS
 }
 
 .image-chooser .image.active .checkbox {
-  display: block;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 /* ==========================================================================
