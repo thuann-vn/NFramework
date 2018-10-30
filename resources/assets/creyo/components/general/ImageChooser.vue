@@ -46,6 +46,8 @@
     </div>
 </template>
 <script>
+    import ImagesApi from '@/services/api/images';
+
     // Import Vue FilePond
     import vueFilePond from 'vue-filepond';
 
@@ -93,10 +95,9 @@
             getData(page = 1) {
                 this.loading = true;
                 this.meta.current_page = page;
-                axios.get(this.$store.state.API_URL + 'images?page=' + page)
-                    .then(response => {
-                        this.images = response.data.data;
-                        this.meta = response.data.meta;
+                ImagesApi.getImages(page).then(response => {
+                        this.images = response.data;
+                        this.meta = response.meta;
                     }).catch(error => {
                     this.errored = true
                 }).finally(() => this.loading = false);

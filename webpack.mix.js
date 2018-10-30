@@ -22,6 +22,12 @@ mix.js('resources/assets/creyo/app.js', 'public/creyo').extract(['vue', 'vuex','
     .copyDirectory('resources/assets/creyo/js', 'public/creyo/js');
 
 mix.webpackConfig({
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+            '@': __dirname + '/resources/assets/creyo/'
+        },
+    },
     module: {
         loaders: [
             {

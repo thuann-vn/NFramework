@@ -43,9 +43,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="columns is-multiline is-mobile">
-                                        <div class="column" v-for="(image, index) in product.images">
-                                            <div class="image is-128x128">
+                                    <div class="product-images">
+                                        <div class="product-image" :class="{'is-6':index==0, 'is-3':index!=0}" v-for="(image, index) in product.images">
+                                            <div class="image" :class="{'is-256x256':index==0, 'is-128x128':index!=0}">
                                                 <img :src="image.file_path"/>
                                             </div>
                                         </div>
@@ -194,15 +194,40 @@
                 this.$refs.imageChooser.open();
             },
             onSelectedImage: function(images){
+                var _this = this;
                 if(this.product.images){
-                    this.product.images.concat(images);
+                    images.forEach(function(image){
+                        _this.product.images.push(image);
+                    })
                 }else{
-                    this.product.images = images;
+                    _this.product.images = images;
                 }
-
+                localStorage.setItem('images', JSON.stringify(images));
             }
         },
-        components: {
+        mounted: function(){
+            if(localStorage.getItem('images')){
+                this.product.images = JSON.parse(localStorage.getItem('images'));
+            }
         }
     };
 </script>
+
+<style>
+    .product-images{
+
+    }
+
+    .product-images .product-image{
+        width: 25%;
+    }
+
+    .product-images .image{
+        margin: 0;
+    }
+
+    .product-images .image img{
+        margin: 0;
+        max-width: 1000px;
+    }
+</style>
