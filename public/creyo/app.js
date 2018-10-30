@@ -129,11 +129,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_buefy_dist_buefy_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_buefy_dist_buefy_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router__ = __webpack_require__(327);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_store__ = __webpack_require__(341);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_mce__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_mce__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_mce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_mce__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_select_image__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_select_image__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_select_image___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue_select_image__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_feather_icon__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_feather_icon__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vue_feather_icon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_vue_feather_icon__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_axios__);
@@ -1966,7 +1966,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n.product-images{\n    margin: -10px;\n}\n.product-images:before, .product-images:after{\n    content: '';\n    display: table;\n    clear: both;\n}\n.product-images .product-image{\n    width: 25%;\n    float: left;\n    padding: 10px;\n}\n.product-images .product-image:first-child{\n    width: 50%;\n}\n.product-images .product-image:nth-child(6){\n    clear: left;\n}\n.product-images .image{\n    width: 100%;\n    padding-top: 100%; /* 1:1 Aspect Ratio */\n    position: relative; /* If you want text inside of it */\n    margin: 0;\n}\n.product-images .image img{\n    margin: 0;\n    max-width: 1000px;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n}\n.product-images .overlay{\n    position: absolute;\n    width: 100%;\n    bottom: 0;\n    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#000));\n    background: linear-gradient(transparent, #000);\n    padding: 10px 0 0px;\n}\n", ""]);
+exports.push([module.i, "\n.product-images{\n    margin: -5px;\n}\n.product-images:before, .product-images:after{\n    content: '';\n    display: table;\n    clear: both;\n}\n.product-images .product-image{\n    width: 25%;\n    float: left;\n    padding: 5px;\n}\n.product-images .product-image:first-child{\n    width: 50%;\n}\n.product-images .product-image:nth-child(6){\n    clear: left;\n}\n.product-images .image{\n    width: 100%;\n    padding-top: 100%; /* 1:1 Aspect Ratio */\n    position: relative; /* If you want text inside of it */\n    margin: 0;\n    border-radius: 4px;\n    overflow: hidden;\n    cursor: move;\n}\n.product-images .image:hover{\n    opacity: 0.9;\n}\n.product-images .image img{\n    margin: 0;\n    max-width: 100%;\n    position: absolute;\n    top: 0;\n    left: 0;\n    bottom: 0;\n    right: 0;\n    height: 100%;\n}\n.product-images .overlay{\n    position: absolute;\n    width: 100%;\n    bottom: 0;\n    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#000));\n    background: linear-gradient(transparent, #000);\n    padding: 10px 0 0px;\n}\n", ""]);
 
 // exports
 
@@ -2241,7 +2241,7 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable__ = __webpack_require__(264);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuedraggable__);
 //
 //
@@ -2413,6 +2413,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
@@ -2435,6 +2436,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         };
     },
+    computed: {
+        title: function title() {
+            return this.product.id ? 'EDIT PRODUCT ' + this.product.name : 'ADD PRODUCT';
+        }
+    },
     methods: {
         handleFilePondInit: function handleFilePondInit() {
             console.log('FilePond has initialized');
@@ -2456,7 +2462,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             localStorage.setItem('images', JSON.stringify(images));
         },
         removeImage: function removeImage(index) {
-            this.product.images.splice(index, 1);
+            var _this2 = this;
+
+            this.$dialog.confirm({
+                title: 'Deleting image',
+                message: 'Are you sure you want to <b>delete</b> this image?',
+                confirmText: 'Delete image',
+                type: 'is-danger',
+                hasIcon: true,
+                onConfirm: function onConfirm() {
+                    _this2.product.images.splice(index, 1);
+                }
+            });
         }
     },
     mounted: function mounted() {
@@ -2490,7 +2507,7 @@ var render = function() {
               staticClass: "column is-10 is-offset-1 is-tablet-landscape-padded"
             },
             [
-              _c("page-title", { attrs: { title: "PRODUCT DETAIL" } }),
+              _c("page-title", { attrs: { title: _vm.title } }),
               _vm._v(" "),
               _c(
                 "div",
@@ -2510,7 +2527,22 @@ var render = function() {
                         _vm._m(0),
                         _vm._v(" "),
                         _c("div", { staticClass: "card-body" }, [
-                          _vm._m(1),
+                          _c("div", { staticClass: "control" }, [
+                            _c("label", [_vm._v("Title")]),
+                            _vm._v(" "),
+                            _c(
+                              "input",
+                              _vm._b(
+                                {
+                                  staticClass: "input is-default",
+                                  attrs: { type: "text", placeholder: "" }
+                                },
+                                "input",
+                                _vm.product.name,
+                                false
+                              )
+                            )
+                          ]),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -2685,7 +2717,7 @@ var render = function() {
                       { staticClass: "flat-card profile-info-card is-auto" },
                       [
                         _c("div", { staticClass: "card-title" }, [
-                          _c("h3", [_vm._v("Account details")]),
+                          _c("h3", [_vm._v("Product availability")]),
                           _vm._v(" "),
                           _c(
                             "div",
@@ -2737,7 +2769,7 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
-                        _vm._m(2),
+                        _vm._m(1),
                         _vm._v(" "),
                         _c("img", {
                           staticClass: "card-bg",
@@ -2799,7 +2831,7 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
-                        _vm._m(3)
+                        _vm._m(2)
                       ]
                     )
                   ])
@@ -2825,20 +2857,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "card-title" }, [
-      _c("h3", [_vm._v("Product details")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "control" }, [
-      _c("label", [_vm._v("Title")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "input is-default",
-        attrs: { type: "text", placeholder: "" }
-      })
+      _c("h3", [_vm._v("Product information")])
     ])
   },
   function() {
@@ -2951,7 +2970,7 @@ if (false) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(19);
 
 

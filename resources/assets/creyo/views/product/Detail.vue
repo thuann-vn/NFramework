@@ -4,7 +4,7 @@
             <div class="columns account-header">
                 <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
                     <!-- Title -->
-                   <page-title title="PRODUCT DETAIL"></page-title>
+                   <page-title :title="title"></page-title>
 
                     <!-- Account layout -->
                     <div class="columns is-account-grid is-multiline is-element-details">
@@ -13,12 +13,12 @@
                             <div class="flat-card is-component profile-info-card is-auto">
                                 <!-- Title -->
                                 <div class="card-title">
-                                    <h3>Product details</h3>
+                                    <h3>Product information</h3>
                                 </div>
                                 <div class="card-body">
                                     <div class="control">
                                         <label>Title</label>
-                                        <input class="input is-default" type="text" placeholder="">
+                                        <input class="input is-default" type="text" placeholder="" v-bind="product.name">
                                     </div>
                                     <div class="control">
                                         <label>Description</label>
@@ -68,7 +68,7 @@
                             <div class="flat-card profile-info-card is-auto">
                                 <!-- Title -->
                                 <div class="card-title">
-                                    <h3>Account details</h3>
+                                    <h3>Product availability</h3>
 
                                     <div class="edit-account has-simple-popover popover-hidden-mobile" data-content="Edit Account" data-placement="top">
                                         <a href="account-edit.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings feather-icons"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></a>
@@ -168,6 +168,7 @@
 
 <script>
     import draggable from 'vuedraggable';
+
     export default {
         data: function() {
             return {
@@ -194,6 +195,11 @@
             };
 
         },
+        computed: {
+            title:function () {
+                return this.product.id?'EDIT PRODUCT ' + this.product.name:'ADD PRODUCT';
+            }
+        },
         methods: {
             handleFilePondInit: function() {
                 console.log('FilePond has initialized');
@@ -215,7 +221,16 @@
                 localStorage.setItem('images', JSON.stringify(images));
             },
             removeImage: function(index){
-                this.product.images.splice(index,1);
+                this.$dialog.confirm({
+                    title: 'Deleting image',
+                    message: 'Are you sure you want to <b>delete</b> this image?',
+                    confirmText: 'Delete image',
+                    type: 'is-danger',
+                    hasIcon: true,
+                    onConfirm: () => {
+                        this.product.images.splice(index,1);
+                    }
+                })
             }
         },
         mounted: function(){
@@ -231,7 +246,7 @@
 
 <style>
     .product-images{
-        margin: -10px;
+        margin: -5px;
     }
 
     .product-images:before, .product-images:after{
@@ -243,7 +258,7 @@
     .product-images .product-image{
         width: 25%;
         float: left;
-        padding: 10px;
+        padding: 5px;
     }
 
     .product-images .product-image:first-child{
@@ -259,16 +274,24 @@
         padding-top: 100%; /* 1:1 Aspect Ratio */
         position: relative; /* If you want text inside of it */
         margin: 0;
+        border-radius: 4px;
+        overflow: hidden;
+        cursor: move;
+    }
+
+    .product-images .image:hover{
+        opacity: 0.9;
     }
 
     .product-images .image img{
         margin: 0;
-        max-width: 1000px;
+        max-width: 100%;
         position: absolute;
         top: 0;
         left: 0;
         bottom: 0;
         right: 0;
+        height: 100%;
     }
 
     .product-images .overlay{
