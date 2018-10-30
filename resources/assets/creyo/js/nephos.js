@@ -427,6 +427,4 @@ $(document)["ready"](function () {
         $(".order-list-card")["addClass"]("is-hidden");
         $("#" + variable_0a)["removeClass"]("is-hidden")
     });
-
-    feather["replace"]();
 })

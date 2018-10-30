@@ -2,88 +2,19 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -93,18 +24,8 @@ video {
 }
 
 /* HTML5 display-role reset for older browsers */
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
@@ -112,20 +33,16 @@ body {
   line-height: 1;
 }
 
-ol,
-ul {
+ol, ul {
   list-style: none;
 }
 
-blockquote,
-q {
+blockquote, q {
   quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+blockquote:before, blockquote:after,
+q:before, q:after {
   content: '';
   content: none;
 }
@@ -140,14 +57,11 @@ html {
           box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
   overflow-x: hidden;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
 }
@@ -220,10 +134,7 @@ body {
   line-height: 1.6;
 }
 
-h1,
-h2,
-.product-section-subtitle,
-.product-section-price {
+h1, h2, .product-section-subtitle, .product-section-price {
   font-family: 'Montserrat', Arial, sans-serif;
   font-weight: bold;
 }
@@ -341,13 +252,11 @@ strong {
   }
 }
 
-.breadcrumbs a,
-.breadcrumbs span {
+.breadcrumbs a, .breadcrumbs span {
   color: #666;
 }
 
-.breadcrumbs a:hover,
-.breadcrumbs span:hover {
+.breadcrumbs a:hover, .breadcrumbs span:hover {
   text-decoration: underline;
 }
 
@@ -474,8 +383,7 @@ strong {
   color: #919191;
 }
 
-input[type="text"],
-input[type="email"] {
+input[type="text"], input[type="email"] {
   background: #fff;
   border: 1px solid #ddd !important;
   border-radius: 4px;
@@ -555,17 +463,14 @@ form button[type="submit"] {
   background-color: #fff;
 }
 
-.control input[disabled] ~ .control-indicator,
-.control.disabled input ~ .control-indicator {
+.control input[disabled] ~ .control-indicator, .control.disabled input ~ .control-indicator {
   color: silver;
   background-color: #f0f0f0;
   border: 1px solid silver;
   cursor: default;
 }
 
-.checkbox.disabled label,
-.control.disabled,
-.radio.disabled label {
+.checkbox.disabled label, .control.disabled, .radio.disabled label {
   color: silver;
   cursor: default;
 }
@@ -620,8 +525,7 @@ form button[type="submit"] {
   text-align: left;
 }
 
-.shop-pagination:before,
-.shop-pagination:after {
+.shop-pagination:before, .shop-pagination:after {
   content: '';
   display: table;
   clear: both;
@@ -662,12 +566,7 @@ form button[type="submit"] {
   display: inline;
 }
 
-.pagination > .active > a,
-.pagination > .active > span,
-.pagination > .active > a:hover,
-.pagination > .active > span:hover,
-.pagination > .active > a:focus,
-.pagination > .active > span:focus {
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
   background-color: #f4f4f4;
   border-color: #DDDDDD;
   color: inherit;
@@ -675,15 +574,13 @@ form button[type="submit"] {
   z-index: 2;
 }
 
-.pagination > li:first-child > a,
-.pagination > li:first-child > span {
+.pagination > li:first-child > a, .pagination > li:first-child > span {
   margin-left: 0;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
 
-.pagination > li > a,
-.pagination > li > span {
+.pagination > li > a, .pagination > li > span {
   background-color: #FFFFFF;
   border: 1px solid #DDDDDD;
   color: inherit;
@@ -695,10 +592,7 @@ form button[type="submit"] {
   text-decoration: none;
 }
 
-.pagination > li > a:focus,
-.pagination > li > a:hover,
-.pagination > li > span:focus,
-.pagination > li > span:hover {
+.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
   z-index: 2;
   color: #23527c;
   background-color: #eee;
@@ -955,7 +849,6 @@ form button[type="submit"] {
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
   }
-
   .table-responsive-sm > .table-bordered {
     border: 0;
   }
@@ -969,7 +862,6 @@ form button[type="submit"] {
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
   }
-
   .table-responsive-md > .table-bordered {
     border: 0;
   }
@@ -983,7 +875,6 @@ form button[type="submit"] {
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
   }
-
   .table-responsive-lg > .table-bordered {
     border: 0;
   }
@@ -997,7 +888,6 @@ form button[type="submit"] {
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar;
   }
-
   .table-responsive-xl > .table-bordered {
     border: 0;
   }
@@ -1078,20 +968,7 @@ form button[type="submit"] {
   background-position: -82px 0;
 }
 
-.your-orders-icon,
-.placing-an-order-icon,
-.shipping-icon,
-.returns-icon,
-.pricing-and-discounts-icon,
-.product-information-icon,
-.warranties-and-repairs-icon,
-.my-favorites-icon,
-.manage-your-account-icon,
-.contact-customer-care-icon,
-.ebags-rewards-icon,
-.electronic-gift-certificates-icon,
-.privacy-and-security-icon,
-.suggestions-for-our-website-icon {
+.your-orders-icon, .placing-an-order-icon, .shipping-icon, .returns-icon, .pricing-and-discounts-icon, .product-information-icon, .warranties-and-repairs-icon, .my-favorites-icon, .manage-your-account-icon, .contact-customer-care-icon, .ebags-rewards-icon, .electronic-gift-certificates-icon, .privacy-and-security-icon, .suggestions-for-our-website-icon {
   background-image: url("/img/help-center-icon.png");
   display: inline-block;
   width: 39px;
@@ -1218,8 +1095,7 @@ form button[type="submit"] {
   outline: 0;
 }
 
-.modal-remove,
-.modal-close {
+.modal-remove, .modal-close {
   position: absolute;
   right: 20px;
   top: 20px;
@@ -1244,8 +1120,7 @@ form button[type="submit"] {
   border-bottom: 1px solid #e5e5e5;
 }
 
-.modal-header:before,
-.modal-header:after {
+.modal-header:before, .modal-header:after {
   content: '';
   display: table;
   clear: both;
@@ -1271,8 +1146,7 @@ form button[type="submit"] {
   border-top: 1px solid #e5e5e5;
 }
 
-.modal-footer:before,
-.modal-footer:after {
+.modal-footer:before, .modal-footer:after {
   content: '';
   display: table;
   clear: both;
@@ -1326,7 +1200,6 @@ header .logo img {
     padding-left: 10px;
     padding-right: 10px;
   }
-
   header .logo img {
     height: 29px;
     width: auto;
@@ -1643,7 +1516,6 @@ header .main-menu {
     overflow: hidden;
     text-align: left;
   }
-
   header .main-menu .main-menu-wrap.open {
     max-height: none;
   }
@@ -1770,11 +1642,9 @@ header .main-menu ul li.has-child.open > ul {
   header .main-menu ul li {
     text-align: left;
   }
-
   header .main-menu ul li a {
     border-bottom: 1px solid #eee;
   }
-
   header .main-menu ul li.has-child a > span:after {
     content: '\F107';
     font-family: 'Font Awesome 5 Free';
@@ -1783,7 +1653,6 @@ header .main-menu ul li.has-child.open > ul {
     right: 6px;
     top: 10px;
   }
-
   header .main-menu ul li.has-child.open .mega-menu {
     max-height: 10000px;
     border-top: 1px solid #eee;
@@ -1826,8 +1695,7 @@ header .main-menu .mega-menu .mega-menu-wrap {
   position: relative;
 }
 
-header .main-menu .mega-menu .mega-menu-wrap:before,
-header .main-menu .mega-menu .mega-menu-wrap:after {
+header .main-menu .mega-menu .mega-menu-wrap:before, header .main-menu .mega-menu .mega-menu-wrap:after {
   content: '';
   display: table;
   clear: both;
@@ -1932,15 +1800,12 @@ header .main-menu .mega-menu .mega-menu-title a {
     border: none;
     padding: 0;
   }
-
   header .main-menu .mega-menu .mega-menu-title {
     display: none;
   }
-
   header .main-menu .mega-menu .mega-menu-wrap {
     padding: 10px;
   }
-
   header .main-menu .mega-menu .mega-menu-wrap .mega-menu-col:first-child > ul:first-child {
     margin-top: 0;
   }
@@ -1997,13 +1862,11 @@ header.sticky + .page-content {
   padding-top: 140px;
 }
 
-header.sticky .top-nav,
-header.sticky .top-nav-wrap {
+header.sticky .top-nav, header.sticky .top-nav-wrap {
   padding: 0;
 }
 
-header.sticky .top-information,
-header.sticky .promo-information {
+header.sticky .top-information, header.sticky .promo-information {
   max-height: 0;
   padding: 0;
   margin: 0;
@@ -2289,16 +2152,14 @@ a {
   text-decoration: line-through;
 }
 
-.products .product .cart-button,
-.products .product .wishlist-button {
+.products .product .cart-button, .products .product .wishlist-button {
   outline: none;
   margin: 0 5px;
   display: inline-block;
   cursor: pointer;
 }
 
-.products .product .cart-button:hover,
-.products .product .wishlist-button:hover {
+.products .product .cart-button:hover, .products .product .wishlist-button:hover {
   opacity: .9;
 }
 
@@ -2498,8 +2359,7 @@ a {
   }
 }
 
-body.sidebar-active,
-html.sidebar-active {
+body.sidebar-active, html.sidebar-active {
   overflow: hidden;
 }
 
@@ -2539,25 +2399,20 @@ html.sidebar-active {
     border-bottom: 1px solid #ccc;
     border-top: 1px solid #ccc;
   }
-
   .products-section .products .product {
     border: 1px solid #ccc;
     border-bottom: 0;
     padding: 20px 10px;
   }
-
   .products-section .products .product:first-child {
     border-top: 0;
   }
-
   .products-section .products .product:nth-child(2) {
     border-top: 0;
   }
-
   .products-section .products .product:nth-child(2n+1) {
     border-left: 0;
   }
-
   .products-section .products .product:nth-child(2n) {
     border-left: 0;
     border-right: 0;
@@ -2629,7 +2484,6 @@ html.sidebar-active {
     display: -ms-flexbox;
     display: flex;
   }
-
   .products-header .sort-form select {
     width: 100%;
   }
@@ -2825,20 +2679,16 @@ html.sidebar-active {
     -webkit-transition: all 300ms ease;
     transition: all 300ms ease;
   }
-
   .sidebar.filter-sidebar.active {
     -webkit-transform: translateX(0);
             transform: translateX(0);
   }
-
   .sidebar.filter-sidebar.active .mobile-slide-panel-header {
     top: 0;
   }
-
   .sidebar.filter-sidebar .mobile-slide-panel-header {
     display: block;
   }
-
   .sidebar.filter-sidebar.department-sidebar {
     padding: 70px 10px 0 10px;
   }
@@ -2897,8 +2747,7 @@ html.sidebar-active {
   margin-left: -10px;
 }
 
-.product-section-images .product-vertical-slider .slick-prev:before,
-.product-section-images .product-vertical-slider .slick-next:before {
+.product-section-images .product-vertical-slider .slick-prev:before, .product-section-images .product-vertical-slider .slick-next:before {
   color: #08439c;
 }
 
@@ -3122,9 +2971,7 @@ html.sidebar-active {
   line-height: 24px;
 }
 
-.product-features p,
-.product-features span,
-.product-features strong {
+.product-features p, .product-features span, .product-features strong {
   font-size: 14px !important;
 }
 
@@ -3690,8 +3537,7 @@ html.sidebar-active {
   border-bottom: 1px solid #919191;
 }
 
-.checkout-section .checkout-table-row .checkout-table-row-left,
-.checkout-section .checkout-table-row .checkout-table-row-right {
+.checkout-section .checkout-table-row .checkout-table-row-left, .checkout-section .checkout-table-row .checkout-table-row-right {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3977,9 +3823,7 @@ h1 {
   min-height: 60vh;
 }
 
-.auth-pages input[type="text"],
-.auth-pages input[type="email"],
-.auth-pages input[type="password"] {
+.auth-pages input[type="text"], .auth-pages input[type="email"], .auth-pages input[type="password"] {
   border: 1px solid #ddd;
   padding: 16px 10px;
   border-radius: 5px;
@@ -4220,8 +4064,7 @@ h1 {
   border-bottom: 0;
 }
 
-.my-account-section .help-nav-panel ul li ul li:hover a,
-.my-account-section .help-nav-panel ul li ul li.active a {
+.my-account-section .help-nav-panel ul li ul li:hover a, .my-account-section .help-nav-panel ul li ul li.active a {
   background: #ddd;
 }
 
@@ -4360,20 +4203,7 @@ h1 {
   left: 0;
 }
 
-.help-nav-panel .your-orders-icon,
-.help-nav-panel .placing-an-order-icon,
-.help-nav-panel .shipping-icon,
-.help-nav-panel .returns-icon,
-.help-nav-panel .pricing-and-discounts-icon,
-.help-nav-panel .product-information-icon,
-.help-nav-panel .warranties-and-repairs-icon,
-.help-nav-panel .my-favorites-icon,
-.help-nav-panel .manage-your-account-icon,
-.help-nav-panel .contact-customer-care-icon,
-.help-nav-panel .ebags-rewards-icon,
-.help-nav-panel .electronic-gift-certificates-icon,
-.help-nav-panel .privacy-and-security-icon,
-.help-nav-panel .suggestions-for-our-website-icon {
+.help-nav-panel .your-orders-icon, .help-nav-panel .placing-an-order-icon, .help-nav-panel .shipping-icon, .help-nav-panel .returns-icon, .help-nav-panel .pricing-and-discounts-icon, .help-nav-panel .product-information-icon, .help-nav-panel .warranties-and-repairs-icon, .help-nav-panel .my-favorites-icon, .help-nav-panel .manage-your-account-icon, .help-nav-panel .contact-customer-care-icon, .help-nav-panel .ebags-rewards-icon, .help-nav-panel .electronic-gift-certificates-icon, .help-nav-panel .privacy-and-security-icon, .help-nav-panel .suggestions-for-our-website-icon {
   width: 24px;
   height: 24px;
   background-size: 120px 72px;
@@ -4440,4 +4270,3 @@ h1 {
 .help-nav-panel .suggestions-for-our-website-icon {
   background-position: -72px -48px;
 }
-

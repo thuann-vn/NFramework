@@ -16,10 +16,32 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .copyDirectory('resources/assets/images', 'public/images');
 
 //Creyo app
-mix.js('resources/assets/creyo/app.js', 'public/creyo').extract(['vue', 'vuex','lodash','jquery', 'axios', 'axios-progress-bar', 'buefy', 'vue-router', 'vue-mce', 'vue-select-image', 'vue-feather-icon', 'sortablejs', 'vuedraggable'])
+mix.js('resources/assets/creyo/app.js', 'public/creyo')
+    .extract(
+        [
+            'vue',
+            'vuex',
+            'lodash',
+            'jquery',
+            'axios',
+            'axios-progress-bar',
+            'buefy',
+            'vue-router',
+            'vue-mce',
+            'vue-feather-icon',
+            'sortablejs',
+            'vuedraggable',
+            'vee-validate',
+            'cleave.js'
+        ])
+
     .sass('resources/assets/creyo/css/bulma.sass', 'public/creyo/css')
     .sass('resources/assets/creyo/css/core.scss', 'public/creyo/css')
     .copyDirectory('resources/assets/creyo/js', 'public/creyo/js');
+
+mix.options({
+    processCssUrls: false // Process/optimize relative stylesheet url()'s. Set to false, if you don't want them touched.
+});
 
 mix.webpackConfig({
     resolve: {

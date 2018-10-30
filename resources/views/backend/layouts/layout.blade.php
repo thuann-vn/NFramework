@@ -21,12 +21,6 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet">
 
     <!-- plugins -->
-    <link rel="stylesheet" href="/creyo/js/slick/slick.css">
-    <link rel="stylesheet" href="/creyo/js/slick/slick-theme.css">
-    <link rel="stylesheet" href="/creyo/js/webuipopover/jquery.webui-popover.min.css">
-    <link rel="stylesheet" href="/creyo/js/izitoast/css/iziToast.min.css">
-    <link rel="stylesheet" href="/creyo/js/zoom/zoom.css">
-    <link rel="stylesheet" href="/creyo/js/jpcard/card.css">
     <link rel="stylesheet" href="/creyo/css/chosen/chosen.css">
 
     <script src='https://devpreview.tiny.cloud/demo/tinymce.min.js'></script>
@@ -38,12 +32,11 @@
     @yield('content')
 </div>
 
-<!-- Helios js -->
-<script src="/creyo/js/app.js"></script></body>
-<script src="/creyo/js/nephos.js"></script></body>
-
 <!-- Concatenated plugins -->
 <script src="{{ mix('/creyo/manifest.js') }}"></script>
 <script src="{{ mix('/creyo/vendor.js') }}"></script>
 <script src="{{ mix('/creyo/app.js') }}"></script>
+
+<!-- Helios js -->
+<script src="/creyo/js/nephos.js"></script></body>
 </html>

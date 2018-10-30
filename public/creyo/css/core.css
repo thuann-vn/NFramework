@@ -1,9 +1,7 @@
 /*! core.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Nephos core 
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -11,17 +9,13 @@ TABLE OF CONTENTS
 1. Resets and base setup
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. CSS Imports
 ========================================================================== */
-
 /*! _theme-default.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Default theme variables 
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -29,49 +23,38 @@ TABLE OF CONTENTS
 1. Shadow variables
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Color Variables
 ========================================================================== */
-
 /* ==========================================================================
 1. Shadow variables
 ========================================================================== */
-
 /*! _colors.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Nephos global colors 
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
 0. Variables
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Variables
 ========================================================================== */
-
 /*! _sidebar.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Main left sidebar
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
 0. Main Shop Sidebar
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Main Shop Sidebar
 ========================================================================== */
-
 .main-sidebar {
   position: fixed;
   top: 0;
@@ -119,8 +102,7 @@ TABLE OF CONTENTS
   position: relative;
 }
 
-.main-sidebar .sidebar-inner .icon-menu li,
-.main-sidebar .sidebar-inner .bottom-menu li {
+.main-sidebar .sidebar-inner .icon-menu li, .main-sidebar .sidebar-inner .bottom-menu li {
   width: 80px;
   height: 80px;
   display: -webkit-box;
@@ -134,8 +116,7 @@ TABLE OF CONTENTS
           justify-content: center;
 }
 
-.main-sidebar .sidebar-inner .icon-menu li a,
-.main-sidebar .sidebar-inner .bottom-menu li a {
+.main-sidebar .sidebar-inner .icon-menu li a, .main-sidebar .sidebar-inner .bottom-menu li a {
   display: block;
   position: relative;
   max-height: 20px;
@@ -146,22 +127,17 @@ TABLE OF CONTENTS
   transition: all .3s;
 }
 
-.main-sidebar .sidebar-inner .icon-menu li a svg,
-.main-sidebar .sidebar-inner .bottom-menu li a svg {
+.main-sidebar .sidebar-inner .icon-menu li a svg, .main-sidebar .sidebar-inner .bottom-menu li a svg {
   stroke: #A9ABAC;
   width: 20px;
   height: 20px;
 }
 
-.main-sidebar .sidebar-inner .icon-menu li a:hover svg,
-.main-sidebar .sidebar-inner .icon-menu li a.is-active svg,
-.main-sidebar .sidebar-inner .bottom-menu li a:hover svg,
-.main-sidebar .sidebar-inner .bottom-menu li a.is-active svg {
+.main-sidebar .sidebar-inner .icon-menu li a:hover svg, .main-sidebar .sidebar-inner .icon-menu li a.is-active svg, .main-sidebar .sidebar-inner .bottom-menu li a:hover svg, .main-sidebar .sidebar-inner .bottom-menu li a.is-active svg {
   stroke: #0023ff;
 }
 
-.main-sidebar .sidebar-inner .icon-menu li a .cart-items,
-.main-sidebar .sidebar-inner .bottom-menu li a .cart-items {
+.main-sidebar .sidebar-inner .icon-menu li a .cart-items, .main-sidebar .sidebar-inner .bottom-menu li a .cart-items {
   position: absolute;
   top: -6px;
   right: -9px;
@@ -182,30 +158,26 @@ TABLE OF CONTENTS
   font-weight: 700;
 }
 
-.main-sidebar .sidebar-inner .icon-menu li a.is-opened,
-.main-sidebar .sidebar-inner .bottom-menu li a.is-opened {
+.main-sidebar .sidebar-inner .icon-menu li a.is-opened, .main-sidebar .sidebar-inner .bottom-menu li a.is-opened {
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
   opacity: 0;
 }
 
-.main-sidebar .sidebar-inner .icon-menu li a.is-inactive,
-.main-sidebar .sidebar-inner .bottom-menu li a.is-inactive {
+.main-sidebar .sidebar-inner .icon-menu li a.is-inactive, .main-sidebar .sidebar-inner .bottom-menu li a.is-inactive {
   -webkit-transform: rotate(-360deg);
           transform: rotate(-360deg);
   opacity: 0;
 }
 
-.main-sidebar .sidebar-inner .icon-menu li #open-filters svg,
-.main-sidebar .sidebar-inner .bottom-menu li #open-filters svg {
+.main-sidebar .sidebar-inner .icon-menu li #open-filters svg, .main-sidebar .sidebar-inner .bottom-menu li #open-filters svg {
   -webkit-transform: rotate(0);
           transform: rotate(0);
   -webkit-transition: all .3s;
   transition: all .3s;
 }
 
-.main-sidebar .sidebar-inner .icon-menu li #open-filters:hover svg,
-.main-sidebar .sidebar-inner .bottom-menu li #open-filters:hover svg {
+.main-sidebar .sidebar-inner .icon-menu li #open-filters:hover svg, .main-sidebar .sidebar-inner .bottom-menu li #open-filters:hover svg {
   -webkit-transform: rotate(145deg);
           transform: rotate(145deg);
 }
@@ -217,11 +189,9 @@ TABLE OF CONTENTS
 }
 
 /*! _quickview.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Quickview styles
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -233,11 +203,9 @@ TABLE OF CONTENTS
 5. Sidebar Header
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Flying Action Button
 ========================================================================== */
-
 .menu-fab {
   position: fixed;
   right: 30px;
@@ -370,7 +338,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Categories right Sidebar
 ========================================================================== */
-
 .category-quickview {
   position: fixed;
   top: 0;
@@ -446,8 +413,7 @@ TABLE OF CONTENTS
   transition: color .4s;
 }
 
-.category-quickview .inner .category-menu li a img,
-.category-quickview .inner .category-menu li a svg {
+.category-quickview .inner .category-menu li a img, .category-quickview .inner .category-menu li a svg {
   max-height: 40px;
 }
 
@@ -491,7 +457,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 2. Shop Dark Sidebar
 ========================================================================== */
-
 .shop-quickview {
   position: fixed;
   top: 0;
@@ -565,8 +530,7 @@ TABLE OF CONTENTS
   stroke: #fff;
 }
 
-.shop-quickview .inner .shop-menu li,
-.shop-quickview .inner .user-profile li {
+.shop-quickview .inner .shop-menu li, .shop-quickview .inner .user-profile li {
   width: 100%;
   height: 80px;
   display: -webkit-box;
@@ -691,7 +655,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 3. Filters Sidebar
 ========================================================================== */
-
 .filters-quickview {
   position: fixed;
   top: 0;
@@ -816,7 +779,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 4. Cart Sidebar
 ========================================================================== */
-
 .cart-quickview {
   position: fixed;
   top: 0;
@@ -946,8 +908,7 @@ TABLE OF CONTENTS
   margin-right: 8px;
 }
 
-.cart-quickview .inner .cart-body .empty-cart h3,
-.cart-quickview .inner .cart-body .empty-cart img {
+.cart-quickview .inner .cart-body .empty-cart h3, .cart-quickview .inner .cart-body .empty-cart img {
   display: block;
 }
 
@@ -1108,7 +1069,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 5. Sidebar Header
 ========================================================================== */
-
 .quickview-header span:hover svg {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
@@ -1122,11 +1082,9 @@ TABLE OF CONTENTS
 }
 
 /*! _cards.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Shop cards
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -1134,11 +1092,9 @@ TABLE OF CONTENTS
 1. List Flat cards
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Basic Flat Card
 ========================================================================== */
-
 .flat-card {
   position: relative;
   background-color: #fff;
@@ -1260,15 +1216,13 @@ TABLE OF CONTENTS
   right: 15px;
 }
 
-.flat-card .actions div,
-.flat-card .actions span {
+.flat-card .actions div, .flat-card .actions span {
   display: inline-block;
   -webkit-transition: all .3s;
   transition: all .3s;
 }
 
-.flat-card .actions div svg,
-.flat-card .actions span svg {
+.flat-card .actions div svg, .flat-card .actions span svg {
   height: 18px;
   width: 18px;
   margin-left: 10px;
@@ -1277,45 +1231,38 @@ TABLE OF CONTENTS
   transition: all .3s;
 }
 
-.flat-card .actions div:hover,
-.flat-card .actions span:hover {
+.flat-card .actions div:hover, .flat-card .actions span:hover {
   cursor: pointer;
 }
 
-.flat-card .actions div.add,
-.flat-card .actions span.add {
+.flat-card .actions div.add, .flat-card .actions span.add {
   -webkit-transition-delay: .1s;
           transition-delay: .1s;
   -webkit-transform: translateX(250px);
           transform: translateX(250px);
 }
 
-.flat-card .actions div.add svg.is-active,
-.flat-card .actions span.add svg.is-active {
+.flat-card .actions div.add svg.is-active, .flat-card .actions span.add svg.is-active {
   stroke: #0023ff;
 }
 
-.flat-card .actions div.add:hover svg,
-.flat-card .actions span.add:hover svg {
+.flat-card .actions div.add:hover svg, .flat-card .actions span.add:hover svg {
   stroke: #0023ff;
 }
 
-.flat-card .actions div.like,
-.flat-card .actions span.like {
+.flat-card .actions div.like, .flat-card .actions span.like {
   -webkit-transition-delay: .2s;
           transition-delay: .2s;
   -webkit-transform: translateX(200px);
           transform: translateX(200px);
 }
 
-.flat-card .actions div.like svg.is-active,
-.flat-card .actions span.like svg.is-active {
+.flat-card .actions div.like svg.is-active, .flat-card .actions span.like svg.is-active {
   stroke: #FF7273;
   fill: #FF7273;
 }
 
-.flat-card .actions div.like:hover svg,
-.flat-card .actions span.like:hover svg {
+.flat-card .actions div.like:hover svg, .flat-card .actions span.like:hover svg {
   stroke: #FF7273;
   fill: #FF7273;
 }
@@ -1349,8 +1296,7 @@ TABLE OF CONTENTS
           transform: rotate(-135deg);
 }
 
-.flat-card:hover .add,
-.flat-card:hover .like {
+.flat-card:hover .add, .flat-card:hover .like {
   -webkit-transform: translateX(0) !important;
           transform: translateX(0) !important;
 }
@@ -1358,7 +1304,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. List Flat Card
 ========================================================================== */
-
 .flat-card.is-list-item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1476,11 +1421,9 @@ TABLE OF CONTENTS
 }
 
 /*! _layout.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Basic layout settings
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -1488,11 +1431,9 @@ TABLE OF CONTENTS
 1. Shop Wrapper
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Body
 ========================================================================== */
-
 body {
   height: 100%;
   width: 100%;
@@ -1504,7 +1445,6 @@ body {
 /* ==========================================================================
 1. Shop Wrapper
 ========================================================================== */
-
 .shop-wrapper {
   height: 100%;
   min-height: 100vh;
@@ -1544,8 +1484,7 @@ body {
   outline: none !important;
 }
 
-.shop-wrapper .slider-wrapper .fullscreen-slick:focus,
-.shop-wrapper .slider-wrapper .fullscreen-slick:active {
+.shop-wrapper .slider-wrapper .fullscreen-slick:focus, .shop-wrapper .slider-wrapper .fullscreen-slick:active {
   outline: none !important;
 }
 
@@ -1561,8 +1500,7 @@ body {
   outline: none !important;
 }
 
-.shop-wrapper .slider-wrapper .full-slide:focus,
-.shop-wrapper .slider-wrapper .full-slide:active {
+.shop-wrapper .slider-wrapper .full-slide:focus, .shop-wrapper .slider-wrapper .full-slide:active {
   outline: none !important;
 }
 
@@ -1631,11 +1569,9 @@ body {
 }
 
 /*! _categories.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Main products display Layout
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -1644,11 +1580,9 @@ TABLE OF CONTENTS
 2. Sorting Options
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Shop Tiles
 ========================================================================== */
-
 .is-categories-grid {
   margin-top: 20px;
 }
@@ -1670,9 +1604,7 @@ TABLE OF CONTENTS
   width: 100% !important;
 }
 
-.tile.has-background-image:hover .tile-content p,
-.tile.has-background-image:hover .tile-content .products,
-.tile.has-background-image:hover .tile-content .action {
+.tile.has-background-image:hover .tile-content p, .tile.has-background-image:hover .tile-content .products, .tile.has-background-image:hover .tile-content .action {
   opacity: 1;
   -webkit-transform: translateY(0);
           transform: translateY(0);
@@ -1696,8 +1628,7 @@ TABLE OF CONTENTS
   z-index: 2;
 }
 
-.tile.has-background-image .tile-content.is-small .divider,
-.tile.has-background-image .tile-content.is-small p {
+.tile.has-background-image .tile-content.is-small .divider, .tile.has-background-image .tile-content.is-small p {
   display: none;
 }
 
@@ -1826,7 +1757,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Category Header
 ========================================================================== */
-
 .category-header.low-padding {
   padding-top: 20px;
 }
@@ -1905,8 +1835,7 @@ TABLE OF CONTENTS
           justify-content: flex-end;
 }
 
-.category-header .category-title .category-icon img,
-.category-header .category-title .category-icon svg {
+.category-header .category-title .category-icon img, .category-header .category-title .category-icon svg {
   max-height: 40px;
   height: 40px;
   width: 40px;
@@ -1956,7 +1885,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 2. Sorting options
 ========================================================================== */
-
 .listing-controls {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2003,8 +1931,7 @@ TABLE OF CONTENTS
   max-width: 200px;
 }
 
-.sort-box label,
-.sort-box .sort-box-select {
+.sort-box label, .sort-box .sort-box-select {
   display: block;
 }
 
@@ -2037,9 +1964,7 @@ TABLE OF CONTENTS
   color: #0023ff !important;
 }
 
-.sort-box .chosen-container-active .chosen-choices,
-.sort-box .chosen-container-active.chosen-with-drop .chosen-single,
-.sort-box .chosen-single:hover {
+.sort-box .chosen-container-active .chosen-choices, .sort-box .chosen-container-active.chosen-with-drop .chosen-single, .sort-box .chosen-single:hover {
   background: #f3f3f3;
 }
 
@@ -2056,8 +1981,7 @@ TABLE OF CONTENTS
   z-index: 999;
 }
 
-.sort-box .chosen-container.chosen-with-drop .chosen-drop,
-.sort-box .chosen-container .chosen-drop {
+.sort-box .chosen-container.chosen-with-drop .chosen-drop, .sort-box .chosen-container .chosen-drop {
   left: auto;
   right: -1px;
 }
@@ -2094,11 +2018,9 @@ TABLE OF CONTENTS
 }
 
 /*! _account.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Account pages styles
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -2110,11 +2032,9 @@ TABLE OF CONTENTS
 5. Avatar Upload
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Account Header
 ========================================================================== */
-
 .account-header h2 {
   font-family: 'Raleway', sans-serif;
   font-size: 1.8rem;
@@ -2179,7 +2099,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Tabs
 ========================================================================== */
-
 .account-tabs {
   margin-top: 1.5rem;
 }
@@ -2207,7 +2126,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 2. Profile Card
 ========================================================================== */
-
 .profile-card {
   border: none;
   margin-bottom: 20px;
@@ -2229,8 +2147,7 @@ TABLE OF CONTENTS
   padding-top: 10px;
 }
 
-.profile-card .username span,
-.profile-card .username small {
+.profile-card .username span, .profile-card .username small {
   display: block;
 }
 
@@ -2266,15 +2183,12 @@ TABLE OF CONTENTS
 /* ==========================================================================
 3. Details Card
 ========================================================================== */
-
-.profile-info-card,
-.menu-card {
+.profile-info-card, .menu-card {
   margin-bottom: 20px;
   position: relative;
 }
 
-.profile-info-card .card-title,
-.menu-card .card-title {
+.profile-info-card .card-title, .menu-card .card-title {
   position: relative;
   padding: 15px 20px;
   display: -webkit-box;
@@ -2291,22 +2205,19 @@ TABLE OF CONTENTS
   z-index: 2;
 }
 
-.profile-info-card .card-title h3,
-.menu-card .card-title h3 {
+.profile-info-card .card-title h3, .menu-card .card-title h3 {
   font-weight: 500;
   color: #828282;
 }
 
-.profile-info-card .card-title .edit-account,
-.menu-card .card-title .edit-account {
+.profile-info-card .card-title .edit-account, .menu-card .card-title .edit-account {
   position: relative;
   height: 40px;
   width: 40px;
   max-height: 40px;
 }
 
-.profile-info-card .card-title .edit-account svg,
-.menu-card .card-title .edit-account svg {
+.profile-info-card .card-title .edit-account svg, .menu-card .card-title .edit-account svg {
   -webkit-transition: all .3s;
   transition: all .3s;
   -webkit-transform: rotate(0);
@@ -2314,8 +2225,7 @@ TABLE OF CONTENTS
   stroke-width: 1.2px;
 }
 
-.profile-info-card .card-title .edit-account a,
-.menu-card .card-title .edit-account a {
+.profile-info-card .card-title .edit-account a, .menu-card .card-title .edit-account a {
   color: grey;
   height: 40px;
   width: 40px;
@@ -2335,34 +2245,29 @@ TABLE OF CONTENTS
   transition: all .3s;
 }
 
-.profile-info-card .card-title .edit-account a span,
-.menu-card .card-title .edit-account a span {
+.profile-info-card .card-title .edit-account a span, .menu-card .card-title .edit-account a span {
   font-size: 90% !important;
   padding-left: 5px;
 }
 
-.profile-info-card .card-title .edit-account a:hover,
-.menu-card .card-title .edit-account a:hover {
+.profile-info-card .card-title .edit-account a:hover, .menu-card .card-title .edit-account a:hover {
   border: 1.8px solid #0023ff;
 }
 
-.profile-info-card .card-title .edit-account a:hover svg,
-.menu-card .card-title .edit-account a:hover svg {
+.profile-info-card .card-title .edit-account a:hover svg, .menu-card .card-title .edit-account a:hover svg {
   stroke: #0023ff;
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
 
-.profile-info-card .card-title .confirm-button,
-.menu-card .card-title .confirm-button {
+.profile-info-card .card-title .confirm-button, .menu-card .card-title .confirm-button {
   position: relative;
   height: 40px;
   width: 40px;
   max-height: 40px;
 }
 
-.profile-info-card .card-title .confirm-button svg,
-.menu-card .card-title .confirm-button svg {
+.profile-info-card .card-title .confirm-button svg, .menu-card .card-title .confirm-button svg {
   -webkit-transition: all .3s;
   transition: all .3s;
   -webkit-transform: rotate(0);
@@ -2370,8 +2275,7 @@ TABLE OF CONTENTS
   stroke-width: 1.2px;
 }
 
-.profile-info-card .card-title .confirm-button a,
-.menu-card .card-title .confirm-button a {
+.profile-info-card .card-title .confirm-button a, .menu-card .card-title .confirm-button a {
   color: grey;
   height: 40px;
   width: 40px;
@@ -2391,67 +2295,56 @@ TABLE OF CONTENTS
   transition: all .5s;
 }
 
-.profile-info-card .card-title .confirm-button a span,
-.menu-card .card-title .confirm-button a span {
+.profile-info-card .card-title .confirm-button a span, .menu-card .card-title .confirm-button a span {
   font-size: 90% !important;
   padding-left: 5px;
 }
 
-.profile-info-card .card-title .confirm-button a:hover,
-.menu-card .card-title .confirm-button a:hover {
+.profile-info-card .card-title .confirm-button a:hover, .menu-card .card-title .confirm-button a:hover {
   border: 1.8px solid #00b289;
 }
 
-.profile-info-card .card-title .confirm-button a:hover svg,
-.menu-card .card-title .confirm-button a:hover svg {
+.profile-info-card .card-title .confirm-button a:hover svg, .menu-card .card-title .confirm-button a:hover svg {
   stroke: #00b289;
   -webkit-transform: rotate(360deg);
           transform: rotate(360deg);
 }
 
-.profile-info-card .card-body,
-.menu-card .card-body {
+.profile-info-card .card-body, .menu-card .card-body {
   padding: 20px;
 }
 
-.profile-info-card .card-body .info-block,
-.menu-card .card-body .info-block {
+.profile-info-card .card-body .info-block, .menu-card .card-body .info-block {
   margin-bottom: 20px;
 }
 
-.profile-info-card .card-body .info-block span,
-.menu-card .card-body .info-block span {
+.profile-info-card .card-body .info-block span, .menu-card .card-body .info-block span {
   display: block;
 }
 
-.profile-info-card .card-body .info-block span.label-text,
-.menu-card .card-body .info-block span.label-text {
+.profile-info-card .card-body .info-block span.label-text, .menu-card .card-body .info-block span.label-text {
   color: #4a4a4a;
   font-weight: 500;
   font-size: 0.85rem;
 }
 
-.profile-info-card .card-body .info-block span.label-value,
-.menu-card .card-body .info-block span.label-value {
+.profile-info-card .card-body .info-block span.label-value, .menu-card .card-body .info-block span.label-value {
   color: #828282;
 }
 
-.profile-info-card .card-body .main-address,
-.menu-card .card-body .main-address {
+.profile-info-card .card-body .main-address, .menu-card .card-body .main-address {
   position: relative;
   top: 1px;
   font-size: 0.8rem;
   color: #828282;
 }
 
-.profile-info-card.is-dark,
-.menu-card.is-dark {
+.profile-info-card.is-dark, .menu-card.is-dark {
   background: #344258;
   color: #fff;
 }
 
-.profile-info-card.is-dark.is-achievement .card-body,
-.menu-card.is-dark.is-achievement .card-body {
+.profile-info-card.is-dark.is-achievement .card-body, .menu-card.is-dark.is-achievement .card-body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2463,57 +2356,47 @@ TABLE OF CONTENTS
           align-items: center;
 }
 
-.profile-info-card.is-dark.is-achievement .card-body img,
-.menu-card.is-dark.is-achievement .card-body img {
+.profile-info-card.is-dark.is-achievement .card-body img, .menu-card.is-dark.is-achievement .card-body img {
   height: 45px;
 }
 
-.profile-info-card.is-dark.is-achievement .card-body .achievement-name,
-.menu-card.is-dark.is-achievement .card-body .achievement-name {
+.profile-info-card.is-dark.is-achievement .card-body .achievement-name, .menu-card.is-dark.is-achievement .card-body .achievement-name {
   padding: 0 10px;
 }
 
-.profile-info-card.is-dark.is-achievement .card-body .achievement-name span,
-.menu-card.is-dark.is-achievement .card-body .achievement-name span {
+.profile-info-card.is-dark.is-achievement .card-body .achievement-name span, .menu-card.is-dark.is-achievement .card-body .achievement-name span {
   display: block;
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
 }
 
-.profile-info-card.is-dark.is-achievement .card-body .achievement-name span:first-child,
-.menu-card.is-dark.is-achievement .card-body .achievement-name span:first-child {
+.profile-info-card.is-dark.is-achievement .card-body .achievement-name span:first-child, .menu-card.is-dark.is-achievement .card-body .achievement-name span:first-child {
   text-transform: uppercase;
   font-size: 0.8rem;
   font-family: 'Raleway', sans-serif;
 }
 
-.profile-info-card.is-dark.is-achievement .card-body .achievement-name span.is-gold,
-.menu-card.is-dark.is-achievement .card-body .achievement-name span.is-gold {
+.profile-info-card.is-dark.is-achievement .card-body .achievement-name span.is-gold, .menu-card.is-dark.is-achievement .card-body .achievement-name span.is-gold {
   color: #ffd700;
 }
 
-.profile-info-card.is-dark.is-achievement .card-body .achievement-name span.is-green,
-.menu-card.is-dark.is-achievement .card-body .achievement-name span.is-green {
+.profile-info-card.is-dark.is-achievement .card-body .achievement-name span.is-green, .menu-card.is-dark.is-achievement .card-body .achievement-name span.is-green {
   color: #00b289;
 }
 
-.profile-info-card.is-dark.is-achievement .card-body .achievement-name span:nth-child(2),
-.menu-card.is-dark.is-achievement .card-body .achievement-name span:nth-child(2) {
+.profile-info-card.is-dark.is-achievement .card-body .achievement-name span:nth-child(2), .menu-card.is-dark.is-achievement .card-body .achievement-name span:nth-child(2) {
   font-size: .75rem;
 }
 
-.profile-info-card.has-overflow,
-.menu-card.has-overflow {
+.profile-info-card.has-overflow, .menu-card.has-overflow {
   overflow: visible !important;
 }
 
-.profile-info-card.has-overflow .chosen-single,
-.menu-card.has-overflow .chosen-single {
+.profile-info-card.has-overflow .chosen-single, .menu-card.has-overflow .chosen-single {
   max-height: 36px;
 }
 
-.profile-info-card.has-overflow .chosen-single span,
-.menu-card.has-overflow .chosen-single span {
+.profile-info-card.has-overflow .chosen-single span, .menu-card.has-overflow .chosen-single span {
   max-height: 36px;
   display: block;
   position: relative;
@@ -2521,8 +2404,7 @@ TABLE OF CONTENTS
   left: -8px;
 }
 
-.profile-info-card.has-overflow .switch-wrapper,
-.menu-card.has-overflow .switch-wrapper {
+.profile-info-card.has-overflow .switch-wrapper, .menu-card.has-overflow .switch-wrapper {
   height: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2535,8 +2417,7 @@ TABLE OF CONTENTS
           align-items: center;
 }
 
-.profile-info-card .card-bg,
-.menu-card .card-bg {
+.profile-info-card .card-bg, .menu-card .card-bg {
   position: absolute;
   right: -32px;
   bottom: 6px;
@@ -2547,7 +2428,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 4. Wishlists
 ========================================================================== */
-
 .menu-card .wishlists li {
   padding: 5px 20px;
   border-top: 1px solid #ededed;
@@ -2878,7 +2758,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 5. Avatar Upload
 ========================================================================== */
-
 .upload-card {
   padding: 40px 20px;
 }
@@ -2905,11 +2784,9 @@ TABLE OF CONTENTS
 }
 
 /*! _cart.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Cart page styles
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -2918,11 +2795,9 @@ TABLE OF CONTENTS
 2. Empty Cart Card
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Cart Summary
 ========================================================================== */
-
 .cart-summary {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2958,7 +2833,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Cart Card
 ========================================================================== */
-
 .cart-card {
   padding: 20px;
 }
@@ -3101,13 +2975,11 @@ TABLE OF CONTENTS
   stroke: #0023ff;
 }
 
-.cart-card .cart-content li .action .action-link.is-like:hover a,
-.cart-card .cart-content li .action .action-link.is-like.is-active a {
+.cart-card .cart-content li .action .action-link.is-like:hover a, .cart-card .cart-content li .action .action-link.is-like.is-active a {
   border: 1.8px solid #FF7273;
 }
 
-.cart-card .cart-content li .action .action-link.is-like:hover svg,
-.cart-card .cart-content li .action .action-link.is-like.is-active svg {
+.cart-card .cart-content li .action .action-link.is-like:hover svg, .cart-card .cart-content li .action .action-link.is-like.is-active svg {
   stroke: #FF7273;
   fill: #FF7273;
 }
@@ -3123,14 +2995,12 @@ TABLE OF CONTENTS
 /* ==========================================================================
 2. Empty Cart Card
 ========================================================================== */
-
 .empty-cart-card {
   padding: 40px;
   border-radius: 6px;
 }
 
-.empty-cart-card .empty-cart h3,
-.empty-cart-card .empty-cart img {
+.empty-cart-card .empty-cart h3, .empty-cart-card .empty-cart img {
   display: block;
 }
 
@@ -3169,11 +3039,9 @@ TABLE OF CONTENTS
 }
 
 /*! _orders.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Orders pages styles
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -3181,11 +3049,9 @@ TABLE OF CONTENTS
 1. Order List Cards
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Order Cards
 ========================================================================== */
-
 .order-card {
   position: relative;
   padding: 20px;
@@ -3294,7 +3160,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Order List Cards
 ========================================================================== */
-
 .list-card .list-card-header {
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
@@ -3459,50 +3324,32 @@ TABLE OF CONTENTS
   border-radius: 50%;
 }
 
-.order-list-card .order-block .handled-by,
-.order-list-card .order-block .status,
-.order-list-card .order-block .date,
-.order-list-card .order-block .total {
+.order-list-card .order-block .handled-by, .order-list-card .order-block .status, .order-list-card .order-block .date, .order-list-card .order-block .total {
   margin: 0 10px;
 }
 
-.order-list-card .order-block .handled-by div:first-child,
-.order-list-card .order-block .status div:first-child,
-.order-list-card .order-block .date div:first-child,
-.order-list-card .order-block .total div:first-child {
+.order-list-card .order-block .handled-by div:first-child, .order-list-card .order-block .status div:first-child, .order-list-card .order-block .date div:first-child, .order-list-card .order-block .total div:first-child {
   font-size: .65rem;
   text-transform: uppercase;
   font-weight: 600;
 }
 
-.order-list-card .order-block .handled-by div:nth-child(2),
-.order-list-card .order-block .status div:nth-child(2),
-.order-list-card .order-block .date div:nth-child(2),
-.order-list-card .order-block .total div:nth-child(2) {
+.order-list-card .order-block .handled-by div:nth-child(2), .order-list-card .order-block .status div:nth-child(2), .order-list-card .order-block .date div:nth-child(2), .order-list-card .order-block .total div:nth-child(2) {
   color: #828282;
 }
 
-.order-list-card .order-block .handled-by div:nth-child(2).is-date,
-.order-list-card .order-block .status div:nth-child(2).is-date,
-.order-list-card .order-block .date div:nth-child(2).is-date,
-.order-list-card .order-block .total div:nth-child(2).is-date {
+.order-list-card .order-block .handled-by div:nth-child(2).is-date, .order-list-card .order-block .status div:nth-child(2).is-date, .order-list-card .order-block .date div:nth-child(2).is-date, .order-list-card .order-block .total div:nth-child(2).is-date {
   font-size: .85rem;
   font-weight: 500;
 }
 
-.order-list-card .order-block .handled-by div:nth-child(2).is-price,
-.order-list-card .order-block .status div:nth-child(2).is-price,
-.order-list-card .order-block .date div:nth-child(2).is-price,
-.order-list-card .order-block .total div:nth-child(2).is-price {
+.order-list-card .order-block .handled-by div:nth-child(2).is-price, .order-list-card .order-block .status div:nth-child(2).is-price, .order-list-card .order-block .date div:nth-child(2).is-price, .order-list-card .order-block .total div:nth-child(2).is-price {
   font-size: 1rem;
   font-weight: 500;
   color: #0023ff;
 }
 
-.order-list-card .order-block .handled-by div:nth-child(2).is-price:before,
-.order-list-card .order-block .status div:nth-child(2).is-price:before,
-.order-list-card .order-block .date div:nth-child(2).is-price:before,
-.order-list-card .order-block .total div:nth-child(2).is-price:before {
+.order-list-card .order-block .handled-by div:nth-child(2).is-price:before, .order-list-card .order-block .status div:nth-child(2).is-price:before, .order-list-card .order-block .date div:nth-child(2).is-price:before, .order-list-card .order-block .total div:nth-child(2).is-price:before {
   content: '$';
   font-size: 80%;
   position: relative;
@@ -3602,11 +3449,9 @@ TABLE OF CONTENTS
   .order-list-card .table-block table {
     border: 0;
   }
-
   .order-list-card .table-block table caption {
     font-size: 1.3em;
   }
-
   .order-list-card .table-block table thead {
     border: none;
     clip: rect(0 0 0 0);
@@ -3617,27 +3462,23 @@ TABLE OF CONTENTS
     position: absolute;
     width: 1px;
   }
-
   .order-list-card .table-block table tr {
     border-bottom: 3px solid #ddd;
     display: block;
     margin-bottom: .625em;
   }
-
   .order-list-card .table-block table td {
     border-bottom: 1px solid #ddd;
     display: block;
     font-size: .8em;
     text-align: right;
   }
-
   .order-list-card .table-block table td:before {
     content: attr(data-label);
     float: left;
     font-weight: bold;
     text-transform: uppercase;
   }
-
   .order-list-card .table-block table td:last-child {
     border-bottom: 0;
   }
@@ -3648,11 +3489,9 @@ TABLE OF CONTENTS
 }
 
 /*! _product.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Product page styles
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -3662,11 +3501,9 @@ TABLE OF CONTENTS
 3. Carousel Modifier
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Product left panel
 ========================================================================== */
-
 .product-panel {
   overflow-x: hidden;
   position: absolute;
@@ -3997,7 +3834,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Product Right panel
 ========================================================================== */
-
 .product-info-panel {
   position: absolute;
   top: 0;
@@ -4203,7 +4039,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 2. Review Modal
 ========================================================================== */
-
 .review-modal .modal-content {
   max-width: 480px;
 }
@@ -4281,8 +4116,7 @@ TABLE OF CONTENTS
   color: #999;
 }
 
-.review-modal .modal-content fieldset,
-.review-modal .modal-content label {
+.review-modal .modal-content fieldset, .review-modal .modal-content label {
   margin: 0;
   padding: 0;
   position: relative;
@@ -4337,7 +4171,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 3. Carousel Modifier
 ========================================================================== */
-
 .is-carousel img {
   max-height: 350px !important;
 }
@@ -4350,17 +4183,14 @@ TABLE OF CONTENTS
   margin: 0 auto !important;
 }
 
-.is-carousel .slider:focus,
-.is-carousel .slick-slide:focus {
+.is-carousel .slider:focus, .is-carousel .slick-slide:focus {
   outline: none !important;
 }
 
 /*! _checkout.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Checkout pages styles
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -4370,11 +4200,9 @@ TABLE OF CONTENTS
 3. Spacing
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Steps indicator
 ========================================================================== */
-
 .steps-wrapper {
   width: 600px;
 }
@@ -4443,7 +4271,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Checkout Header
 ========================================================================== */
-
 .checkout-title {
   position: relative;
   display: -webkit-box;
@@ -4498,7 +4325,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 2. Checkout Cards
 ========================================================================== */
-
 .flat-card.is-checkout-form.has-overflow {
   overflow: visible !important;
 }
@@ -4748,21 +4574,18 @@ TABLE OF CONTENTS
   border-top: 1px solid #ededed;
 }
 
-.flat-card.is-checkout-form .items-column .order-item .item-description span,
-.flat-card.is-checkout-form .items-column .order-item .item-quantity span {
+.flat-card.is-checkout-form .items-column .order-item .item-description span, .flat-card.is-checkout-form .items-column .order-item .item-quantity span {
   display: block;
 }
 
-.flat-card.is-checkout-form .items-column .order-item .item-description span:first-child,
-.flat-card.is-checkout-form .items-column .order-item .item-quantity span:first-child {
+.flat-card.is-checkout-form .items-column .order-item .item-description span:first-child, .flat-card.is-checkout-form .items-column .order-item .item-quantity span:first-child {
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 80%;
 }
 
-.flat-card.is-checkout-form .items-column .order-item .item-description span:nth-child(2),
-.flat-card.is-checkout-form .items-column .order-item .item-quantity span:nth-child(2) {
+.flat-card.is-checkout-form .items-column .order-item .item-description span:nth-child(2), .flat-card.is-checkout-form .items-column .order-item .item-quantity span:nth-child(2) {
   font-size: 80%;
   color: #828282;
 }
@@ -4791,8 +4614,7 @@ TABLE OF CONTENTS
   padding: 5px 0;
 }
 
-.flat-card.is-checkout-form .payment-wrapper .subtotal .partial-value:before,
-.flat-card.is-checkout-form .payment-wrapper .subtotal .vat-value:before {
+.flat-card.is-checkout-form .payment-wrapper .subtotal .partial-value:before, .flat-card.is-checkout-form .payment-wrapper .subtotal .vat-value:before {
   content: '$';
   font-size: 60%;
   position: relative;
@@ -4809,8 +4631,7 @@ TABLE OF CONTENTS
   color: #0023ff;
 }
 
-.flat-card.is-checkout-form .payment-wrapper .subtotal .plus-operator,
-.flat-card.is-checkout-form .payment-wrapper .subtotal .equal-operator {
+.flat-card.is-checkout-form .payment-wrapper .subtotal .plus-operator, .flat-card.is-checkout-form .payment-wrapper .subtotal .equal-operator {
   font-weight: 600;
 }
 
@@ -4977,7 +4798,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 3. Spacing
 ========================================================================== */
-
 #payment-methods {
   padding: 10px 0;
 }
@@ -4996,11 +4816,9 @@ TABLE OF CONTENTS
 }
 
 /*! _auth.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Login / Register page styles
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -5008,11 +4826,9 @@ TABLE OF CONTENTS
 1. Authentication card
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Authentication header
 ========================================================================== */
-
 .auth-title {
   position: relative;
   display: -webkit-box;
@@ -5056,7 +4872,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Authentication card
 ========================================================================== */
-
 .flat-card.is-auth-form {
   min-height: 445px !important;
 }
@@ -5182,11 +4997,9 @@ TABLE OF CONTENTS
 }
 
 /*! _buttons.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Button styles
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -5194,11 +5007,9 @@ TABLE OF CONTENTS
 1. Colored buttons
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Basic buttons
 ========================================================================== */
-
 .button.big-button {
   padding: 22px 40px !important;
 }
@@ -5263,8 +5074,7 @@ TABLE OF CONTENTS
   border-width: 2px;
 }
 
-button[type=submit],
-.will-upload {
+button[type=submit], .will-upload {
   display: block !important;
   text-align: center !important;
 }
@@ -5272,7 +5082,6 @@ button[type=submit],
 /* ==========================================================================
 1. Colored Buttons
 ========================================================================== */
-
 .button.primary-button {
   outline: none;
   border-color: #0023ff;
@@ -5408,11 +5217,9 @@ button[type=submit],
 }
 
 /*! _search.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Global Search Styles
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -5420,11 +5227,9 @@ TABLE OF CONTENTS
 1. Search Input
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Search Overlay
 ========================================================================== */
-
 .search-overlay {
   position: fixed;
   top: -100px;
@@ -5448,7 +5253,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Search Input
 ========================================================================== */
-
 .search-input-wrapper {
   position: fixed;
   top: 0;
@@ -5535,11 +5339,9 @@ TABLE OF CONTENTS
 }
 
 /*! _filters.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Filters
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -5548,11 +5350,9 @@ TABLE OF CONTENTS
 2. Checkboxes
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Price range filter
 ========================================================================== */
-
 .price-range-wrapper .price-limit {
   position: relative;
   top: 3px;
@@ -5570,7 +5370,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Range Input
 ========================================================================== */
-
 .range-slider {
   position: relative;
   width: 220px;
@@ -5663,28 +5462,23 @@ TABLE OF CONTENTS
 /* ==========================================================================
 2. Checkboxes
 ========================================================================== */
-
 .columns.is-checkboxes .column .field {
   margin: 5px 0;
 }
 
 /*! _checkboxes.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Checkboxes
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
 0. Checkbox setup
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Checkbox setup
 ========================================================================== */
-
 .checkbox-wrap {
   position: relative;
   cursor: pointer;
@@ -5699,8 +5493,7 @@ TABLE OF CONTENTS
   background: transparent;
 }
 
-.checkbox-wrap input.d-checkbox + span,
-.checkbox-wrap input.b-radio + span {
+.checkbox-wrap input.d-checkbox + span, .checkbox-wrap input.b-radio + span {
   background: #fff;
   content: "";
   display: inline-block;
@@ -5712,8 +5505,7 @@ TABLE OF CONTENTS
   height: 2em;
 }
 
-.checkbox-wrap input.d-checkbox + span::after,
-.checkbox-wrap input.b-radio + span::after {
+.checkbox-wrap input.d-checkbox + span::after, .checkbox-wrap input.b-radio + span::after {
   content: "";
   display: block;
   -webkit-transform: scale(0);
@@ -5724,14 +5516,12 @@ TABLE OF CONTENTS
   transition: transform .2s, -webkit-transform .2s;
 }
 
-.checkbox-wrap input.d-checkbox:checked + span::after,
-.checkbox-wrap input.b-radio:checked + span::after {
+.checkbox-wrap input.d-checkbox:checked + span::after, .checkbox-wrap input.b-radio:checked + span::after {
   -webkit-transform: scale(1);
           transform: scale(1);
 }
 
-.checkbox-wrap input.d-checkbox,
-.checkbox-wrap input.b-radio {
+.checkbox-wrap input.d-checkbox, .checkbox-wrap input.b-radio {
   position: absolute;
   cursor: pointer;
   opacity: 0;
@@ -5783,11 +5573,9 @@ TABLE OF CONTENTS
 }
 
 /*! _forms.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Form controls styles
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -5796,11 +5584,9 @@ TABLE OF CONTENTS
 2. Inputs
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Textareas
 ========================================================================== */
-
 textarea.textarea {
   color: #999;
   -webkit-box-shadow: none;
@@ -5917,7 +5703,6 @@ textarea.textarea.is-button + .textarea-button button {
 /* ==========================================================================
 1. Form Controls
 ========================================================================== */
-
 .control.control-medium {
   padding: 20px;
 }
@@ -5930,7 +5715,6 @@ textarea.textarea.is-button + .textarea-button button {
 /* ==========================================================================
 2. Inputs
 ========================================================================== */
-
 .input {
   -webkit-transition: all .3s;
   transition: all .3s;
@@ -5958,11 +5742,9 @@ textarea.textarea.is-button + .textarea-button button {
 }
 
 /*! _invoice.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Invoice styles
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -5971,11 +5753,9 @@ TABLE OF CONTENTS
 2. Responsive Table
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Layout
 ========================================================================== */
-
 .invoice-wrap {
   padding: 20px 0;
 }
@@ -5996,7 +5776,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Invoice
 ========================================================================== */
-
 .invoice {
   background: #fff;
   width: 100%;
@@ -6021,8 +5800,7 @@ TABLE OF CONTENTS
   font-size: 0.85em;
 }
 
-.invoice .bottom-page .company,
-.invoice .bottom-page .url {
+.invoice .bottom-page .company, .invoice .bottom-page .url {
   font-weight: 500;
   font-family: 'Raleway', sans-serif;
 }
@@ -6031,23 +5809,20 @@ TABLE OF CONTENTS
   color: #0023ff;
 }
 
-.invoice .bottom-page .code,
-.invoice .bottom-page .id {
+.invoice .bottom-page .code, .invoice .bottom-page .id {
   color: #4a4a4a;
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
   font-size: 90%;
 }
 
-.invoice .seller,
-.invoice .buyer {
+.invoice .seller, .invoice .buyer {
   font-size: .85rem;
   color: #828282;
   font-weight: 400;
 }
 
-.invoice .seller span,
-.invoice .buyer span {
+.invoice .seller span, .invoice .buyer span {
   font-family: 'Raleway', sans-serif;
   font-size: 1.1rem;
   font-weight: 500;
@@ -6076,7 +5851,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 2. Responsive Table
 ========================================================================== */
-
 .responsive-table {
   width: 100%;
 }
@@ -6101,15 +5875,13 @@ TABLE OF CONTENTS
   color: #828282;
 }
 
-.responsive-table td .unit-price,
-.responsive-table td .total-price {
+.responsive-table td .unit-price, .responsive-table td .total-price {
   font-weight: 500;
   color: #4a4a4a;
   font-size: 85%;
 }
 
-.responsive-table td .unit-price:before,
-.responsive-table td .total-price:before {
+.responsive-table td .unit-price:before, .responsive-table td .total-price:before {
   content: '$';
   font-size: 80%;
 }
@@ -6122,25 +5894,17 @@ TABLE OF CONTENTS
 }
 
 @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
-  .responsive-table table,
-  .responsive-table thead,
-  .responsive-table tbody,
-  .responsive-table th,
-  .responsive-table td,
-  .responsive-table tr {
+  .responsive-table table, .responsive-table thead, .responsive-table tbody, .responsive-table th, .responsive-table td, .responsive-table tr {
     display: block;
   }
-
   .responsive-table thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
   }
-
   .responsive-table tr {
     border: 1px solid #ccc;
   }
-
   .responsive-table td {
     /* Behave  like a "row" */
     border: none;
@@ -6148,11 +5912,9 @@ TABLE OF CONTENTS
     position: relative;
     padding-left: 50%;
   }
-
   .responsive-table td.has-text-centered {
     text-align: left !important;
   }
-
   .responsive-table td:before {
     position: absolute;
     top: 12px;
@@ -6165,19 +5927,15 @@ TABLE OF CONTENTS
     font-size: .75rem;
     color: #828282 !important;
   }
-
   .responsive-table td:nth-of-type(1):before {
     content: "Product";
   }
-
   .responsive-table td:nth-of-type(2):before {
     content: "Quantity";
   }
-
   .responsive-table td:nth-of-type(3):before {
     content: "Price";
   }
-
   .responsive-table td:nth-of-type(4):before {
     content: "Total";
   }
@@ -6187,8 +5945,7 @@ TABLE OF CONTENTS
   width: 100% !important;
 }
 
-.sub-table .subtotal,
-.sub-table .vat {
+.sub-table .subtotal, .sub-table .vat {
   text-transform: uppercase;
   font-weight: 500 !important;
   font-size: .75rem;
@@ -6202,15 +5959,13 @@ TABLE OF CONTENTS
   color: #4a4a4a;
 }
 
-.sub-table .subtotal-value,
-.sub-table .vat-value {
+.sub-table .subtotal-value, .sub-table .vat-value {
   font-weight: 500;
   font-size: 80%;
   color: #4a4a4a;
 }
 
-.sub-table .subtotal-value:before,
-.sub-table .vat-value:before {
+.sub-table .subtotal-value:before, .sub-table .vat-value:before {
   content: '$';
   font-size: 80%;
 }
@@ -6226,11 +5981,9 @@ TABLE OF CONTENTS
 }
 
 /*! _pageloader.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Pageloader styles
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -6239,11 +5992,9 @@ TABLE OF CONTENTS
 2. Infraloader
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Pageloader
 ========================================================================== */
-
 .pageloader {
   position: fixed;
   top: 0;
@@ -6277,8 +6028,7 @@ TABLE OF CONTENTS
   background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%) !important;
 }
 
-.pageloader::after,
-.pageloader::before {
+.pageloader::after, .pageloader::before {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -6312,13 +6062,11 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Keyframes
 ========================================================================== */
-
 @-webkit-keyframes page-loader-inner {
   0%, 40% {
     -webkit-transform: scale(0);
     transform: scale(0);
   }
-
   100% {
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -6331,7 +6079,6 @@ TABLE OF CONTENTS
     -webkit-transform: scale(0);
     transform: scale(0);
   }
-
   100% {
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -6344,7 +6091,6 @@ TABLE OF CONTENTS
     -webkit-transform: scale(1);
     transform: scale(1);
   }
-
   100%, 40% {
     -webkit-transform: scale(0);
     transform: scale(0);
@@ -6357,7 +6103,6 @@ TABLE OF CONTENTS
     -webkit-transform: scale(1);
     transform: scale(1);
   }
-
   100%, 40% {
     -webkit-transform: scale(0);
     transform: scale(0);
@@ -6368,7 +6113,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 2. Infraloader
 ========================================================================== */
-
 .infraloader {
   position: fixed;
   top: 0;
@@ -6394,11 +6138,9 @@ TABLE OF CONTENTS
 }
 
 /*! _elements.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Nephos elements styles
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -6411,11 +6153,9 @@ TABLE OF CONTENTS
 6. Tabs
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Layout
 ========================================================================== */
-
 .is-element-card {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6463,8 +6203,7 @@ TABLE OF CONTENTS
   background: #344258;
 }
 
-.is-element-details .is-component .inner,
-.is-element-details .is-description .inner {
+.is-element-details .is-component .inner, .is-element-details .is-description .inner {
   padding: 40px;
 }
 
@@ -6514,7 +6253,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Inputs
 ========================================================================== */
-
 .control.required {
   position: relative;
 }
@@ -6567,8 +6305,7 @@ TABLE OF CONTENTS
   border-color: #00b289 !important;
 }
 
-.control.required.has-success .success-icon,
-.control.required.has-success .success-text {
+.control.required.has-success .success-icon, .control.required.has-success .success-text {
   display: block;
 }
 
@@ -6576,8 +6313,7 @@ TABLE OF CONTENTS
   border-color: #eda514 !important;
 }
 
-.control.required.has-warning .warning-icon,
-.control.required.has-warning .warning-text {
+.control.required.has-warning .warning-icon, .control.required.has-warning .warning-text {
   display: block;
 }
 
@@ -6585,8 +6321,7 @@ TABLE OF CONTENTS
   border-color: #FF7273 !important;
 }
 
-.control.required.has-error .error-icon,
-.control.required.has-error .error-text {
+.control.required.has-error .error-icon, .control.required.has-error .error-text {
   display: block;
 }
 
@@ -6667,7 +6402,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 2. Selects
 ========================================================================== */
-
 .control.has-select-icon {
   position: relative;
 }
@@ -6727,8 +6461,7 @@ TABLE OF CONTENTS
           align-items: center;
 }
 
-.styledSelect:active,
-.styledSelect.active {
+.styledSelect:active, .styledSelect.active {
   background-color: #fcfcfc;
 }
 
@@ -6762,7 +6495,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 3. Chosen Selects
 ========================================================================== */
-
 .control.is-loading.is-preloading:after {
   left: .625em !important;
   top: 0.8em !important;
@@ -6792,7 +6524,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 4. Autocomplete
 ========================================================================== */
-
 .easy-autocomplete {
   width: 100% !important;
 }
@@ -6846,7 +6577,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 5. Spinner
 ========================================================================== */
-
 .spinner-control {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -6867,8 +6597,7 @@ TABLE OF CONTENTS
   border-right: none !important;
 }
 
-.spinner-control input:focus,
-.spinner-control input:active {
+.spinner-control input:focus, .spinner-control input:active {
   border-top: 1px solid #fcfcfc !important;
   border-bottom: 1px solid #fcfcfc !important;
   outline: non !important;
@@ -6921,7 +6650,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 6. Tabs
 ========================================================================== */
-
 .tabs-wrapper.underline-tabs .tabs ul li a {
   color: #cecece;
 }
@@ -6938,13 +6666,10 @@ TABLE OF CONTENTS
 /* ==========================================================================
 7. Image Upload
 ========================================================================== */
-
 /*! _utils.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Utils and Miscellaneous styles
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -6963,11 +6688,9 @@ TABLE OF CONTENTS
 12. Levitate animation
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. Action Bar
 ========================================================================== */
-
 .action-bar {
   position: fixed;
   top: 0;
@@ -7001,7 +6724,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Mobile Navbar
 ========================================================================== */
-
 .mobile-navbar {
   position: fixed;
   top: 0;
@@ -7077,8 +6799,7 @@ TABLE OF CONTENTS
   background: #344258;
 }
 
-.mobile-navbar .navbar-menu .navbar-item,
-.mobile-navbar .navbar-menu .navbar-link {
+.mobile-navbar .navbar-menu .navbar-item, .mobile-navbar .navbar-menu .navbar-link {
   color: #fff;
 }
 
@@ -7124,15 +6845,13 @@ TABLE OF CONTENTS
   padding: .75rem 1.5rem !important;
 }
 
-.mobile-navbar .navbar-menu .navbar-dropdown .navbar-item.is-atcive,
-.mobile-navbar .navbar-menu .navbar-dropdown .navbar-item:hover {
+.mobile-navbar .navbar-menu .navbar-dropdown .navbar-item.is-atcive, .mobile-navbar .navbar-menu .navbar-dropdown .navbar-item:hover {
   background: #475a78;
 }
 
 /* ==========================================================================
 2. Tabs
 ========================================================================== */
-
 .tabs-wrapper .tabs {
   overflow: hidden;
 }
@@ -7164,7 +6883,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 3. Switch
 ========================================================================== */
-
 .form-switch {
   position: relative;
   display: inline-block;
@@ -7249,7 +6967,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 4. Popovers
 ========================================================================== */
-
 .webui-popover {
   -webkit-box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 10px 4px !important;
           box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 10px 4px !important;
@@ -7304,8 +7021,7 @@ TABLE OF CONTENTS
   margin-left: 10px;
 }
 
-.webui-popover .webui-popover-content .popover-flex-block .content-block label,
-.webui-popover .webui-popover-content .popover-flex-block .content-block span {
+.webui-popover .webui-popover-content .popover-flex-block .content-block label, .webui-popover .webui-popover-content .popover-flex-block .content-block span {
   display: block;
 }
 
@@ -7315,8 +7031,7 @@ TABLE OF CONTENTS
   font-size: 70%;
 }
 
-.webui-popover .webui-popover-content .popover-flex-block .fa.fa-star,
-.webui-popover .webui-popover-content .popover-flex-block .fa.fa-star-half {
+.webui-popover .webui-popover-content .popover-flex-block .fa.fa-star, .webui-popover .webui-popover-content .popover-flex-block .fa.fa-star-half {
   color: #FFD700;
 }
 
@@ -7349,7 +7064,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 5. Helpers
 ========================================================================== */
-
 .is-vhidden {
   visibility: hidden !important;
 }
@@ -7399,7 +7113,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 6. Fade in Up animation
 ========================================================================== */
-
 .animated {
   animation-duration: 0.5s;
   animation-fill-mode: both;
@@ -7412,7 +7125,6 @@ TABLE OF CONTENTS
     -webkit-transform: translate3d(0, 20px, 0);
     transform: translate3d(0, 20px, 0);
   }
-
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -7425,7 +7137,6 @@ TABLE OF CONTENTS
     -webkit-transform: translate3d(0, 20px, 0);
     transform: translate3d(0, 20px, 0);
   }
-
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -7446,13 +7157,11 @@ TABLE OF CONTENTS
 /* ==========================================================================
 7. Translate Left animation
 ========================================================================== */
-
 @-webkit-keyframes translateLeft {
   from {
     -webkit-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0);
   }
-
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -7464,7 +7173,6 @@ TABLE OF CONTENTS
     -webkit-transform: translate3d(100%, 0, 0);
     transform: translate3d(100%, 0, 0);
   }
-
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -7483,14 +7191,12 @@ TABLE OF CONTENTS
 /* ==========================================================================
 8. Fade In Left animation
 ========================================================================== */
-
 @-webkit-keyframes fadeInLeft {
   from {
     -webkit-transform: translate3d(20px, 0, 0);
     transform: translate3d(20px, 0, 0);
     opacity: 0;
   }
-
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -7504,7 +7210,6 @@ TABLE OF CONTENTS
     transform: translate3d(20px, 0, 0);
     opacity: 0;
   }
-
   to {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -7525,20 +7230,16 @@ TABLE OF CONTENTS
 /* ==========================================================================
 9. Gelatine animation
 ========================================================================== */
-
 @-webkit-keyframes gelatine {
   from, to {
     -webkit-transform: scale(1, 1);
   }
-
   25% {
     -webkit-transform: scale(0.9, 1.1);
   }
-
   50% {
     -webkit-transform: scale(1.1, 0.9);
   }
-
   75% {
     -webkit-transform: scale(0.95, 1.05);
   }
@@ -7549,17 +7250,14 @@ TABLE OF CONTENTS
     -webkit-transform: scale(1, 1);
             transform: scale(1, 1);
   }
-
   25% {
     -webkit-transform: scale(0.9, 1.1);
             transform: scale(0.9, 1.1);
   }
-
   50% {
     -webkit-transform: scale(1.1, 0.9);
             transform: scale(1.1, 0.9);
   }
-
   75% {
     -webkit-transform: scale(0.95, 1.05);
             transform: scale(0.95, 1.05);
@@ -7578,12 +7276,10 @@ TABLE OF CONTENTS
 /* ==========================================================================
 10. Scale in animation
 ========================================================================== */
-
 @-webkit-keyframes scaleIn {
   from {
     -webkit-transform: scale(0);
   }
-
   to {
     -webkit-transform: scale(1);
   }
@@ -7594,7 +7290,6 @@ TABLE OF CONTENTS
     -webkit-transform: scale(0);
             transform: scale(0);
   }
-
   to {
     -webkit-transform: scale(1);
             transform: scale(1);
@@ -7612,12 +7307,10 @@ TABLE OF CONTENTS
 /* ==========================================================================
 11. Scale out animation
 ========================================================================== */
-
 @-webkit-keyframes scaleOut {
   from {
     -webkit-transform: scale(1);
   }
-
   to {
     -webkit-transform: scale(0);
   }
@@ -7628,7 +7321,6 @@ TABLE OF CONTENTS
     -webkit-transform: scale(1);
             transform: scale(1);
   }
-
   to {
     -webkit-transform: scale(0);
             transform: scale(0);
@@ -7643,18 +7335,15 @@ TABLE OF CONTENTS
 /* ==========================================================================
 12. Levitate animation
 ========================================================================== */
-
 @-webkit-keyframes levitate {
   from {
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
   }
-
   50% {
     -webkit-transform: translate(0, 10px);
     transform: translate(0, 10px);
   }
-
   to {
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
@@ -7666,12 +7355,10 @@ TABLE OF CONTENTS
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
   }
-
   50% {
     -webkit-transform: translate(0, 10px);
     transform: translate(0, 10px);
   }
-
   to {
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
@@ -7690,11 +7377,9 @@ TABLE OF CONTENTS
 }
 
 /*! _responsive.scss | Nephos | CSS Ninja */
-
 /* ==========================================================================
 Nephos Global Media Queries
 ========================================================================== */
-
 /***
 TABLE OF CONTENTS
 =============================================================================
@@ -7704,22 +7389,18 @@ TABLE OF CONTENTS
 3. Mobile Only
 =============================================================================
 ***/
-
 /* ==========================================================================
 0. HD Tablet portrait only
 ========================================================================== */
-
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) {
   .fullscreen-slick .full-slide {
     background-position: bottom;
   }
-
   .fullscreen-slick .slick-dots {
     left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
   }
-
   .shop-wrapper .is-tablet-landscape-padded {
     margin-left: 5.33333% !important;
   }
@@ -7728,48 +7409,37 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Tablet Landscape
 ========================================================================== */
-
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
   .shop-wrapper .is-tablet-landscape-padded {
     width: 100% !important;
     margin: 0 !important;
   }
-
   .shop-wrapper .is-invoice-landscape-padded {
     width: 100% !important;
     margin: 0 !important;
   }
-
   .product-panel {
     width: 35%;
   }
-
   .product-panel .likes {
     margin: 0 30px !important;
   }
-
-  .product-panel .detailed-description,
-  .product-panel .product-ratings {
+  .product-panel .detailed-description, .product-panel .product-ratings {
     padding: 10px 20px !important;
     margin-top: 10px !important;
   }
-
   .product-panel .product-image {
     padding: 40% 0 !important;
   }
-
   .product-panel .product-image img {
     max-width: 220px;
   }
-
   .product-info-panel {
     width: 65%;
   }
-
   .product-info-panel .category-title {
     padding: 0 40px !important;
   }
-
   .product-info-panel .panel-body {
     padding: 60px 40px !important;
   }
@@ -7778,187 +7448,145 @@ TABLE OF CONTENTS
 /* ==========================================================================
 2. Tablet Portrait
 ========================================================================== */
-
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
   .fullscreen-slick .full-slide {
     background-position: bottom;
   }
-
   .fullscreen-slick .slick-dots {
     left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
   }
-
   .hero-caption {
     padding: 160px 0 !important;
   }
-
   .background-caption {
     padding: 90px 0 !important;
   }
-
   .main-sidebar.is-pushed-mobile {
     -webkit-transform: translateX(-81px) !important;
             transform: translateX(-81px) !important;
   }
-
   .shop-wrapper {
     margin-top: 20px !important;
   }
-
   .menu-fab {
     top: 80px !important;
   }
-
   .category-title .brand-filigrane {
     left: -26px !important;
   }
-
   .tile.has-background-image {
     min-height: 300px !important;
     padding: 1.25rem 1.5rem !important;
   }
-
   .tile.has-background-image .tile-content {
     height: 260px !important;
   }
-
-  .tile.has-background-image .tile-content.is-small .divider,
-  .tile.has-background-image .tile-content.is-small p {
+  .tile.has-background-image .tile-content.is-small .divider, .tile.has-background-image .tile-content.is-small p {
     display: block !important;
   }
-
   .tile.has-background-image .tile-content .products {
     position: absolute;
     bottom: 0;
     padding: 0;
     left: 0;
   }
-
   .flat-card.is-long {
     display: block;
   }
-
-  .flat-card.is-long .left-image,
-  .flat-card.is-long .left-image.is-md {
+  .flat-card.is-long .left-image, .flat-card.is-long .left-image.is-md {
     text-align: center !important;
     margin: 40px 0 !important;
     width: 100% !important;
   }
-
-  .flat-card.is-long .left-image img,
-  .flat-card.is-long .left-image.is-md img {
+  .flat-card.is-long .left-image img, .flat-card.is-long .left-image.is-md img {
     max-width: 100px;
     margin: 10px auto !important;
     display: block !important;
   }
-
   .flat-card.is-long .product-info {
     text-align: center !important;
   }
-
   .flat-card.is-long .product-info h3 {
     font-family: 'Raleway', sans-serif !important;
     text-transform: uppercase !important;
     font-size: .8rem !important;
     font-weight: 500 !important;
   }
-
   .product-panel {
     display: block;
     position: relative;
     width: 100%;
   }
-
   .product-panel .panel-header {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
   }
-
   .product-panel .panel-header .likes {
     margin: 0 40px !important;
   }
-
   .product-panel img {
     max-width: 360px !important;
   }
-
-  .product-panel .detailed-description,
-  .product-panel .product-ratings {
+  .product-panel .detailed-description, .product-panel .product-ratings {
     max-height: 75vh !important;
     padding: 20px 40px !important;
   }
-
   .product-panel .product-actions {
     padding: 0 10px !important;
     bottom: 40px !important;
   }
-
   .product-info-panel {
     display: block;
     position: relative;
     width: 100%;
   }
-
   .product-info-panel .inner-panel {
     padding-right: 0;
   }
-
   .product-info-panel .inner-panel .panel-header {
     padding-top: 40px !important;
   }
-
   .product-info-panel .inner-panel .panel-header .category-title {
     padding: 0 40px !important;
   }
-
   .product-info-panel .inner-panel .panel-header .category-title h2 {
     padding-left: 20px !important;
   }
-
   .product-info-panel .inner-panel .panel-header .category-icon {
     display: none !important;
   }
-
   .product-info-panel .inner-panel .panel-body {
     padding: 0 40px 40px 40px !important;
   }
-
   .product-info-panel .inner-panel .panel-body .product-name {
     padding-top: 20px !important;
     font-size: 1.8rem !important;
   }
-
   .product-info-panel .inner-panel .panel-body .product-controls {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-
   .product-info-panel .inner-panel .panel-body .product-controls .product-price {
     margin-bottom: 10px;
   }
-
   .product-info-panel .inner-panel .panel-body .product-controls .product-quantity {
     margin-left: 0 !important;
   }
-
   .product-info-panel .inner-panel .panel-body .product-controls .add-to-cart button {
     margin-left: 0 !important;
   }
-
   .product-info-panel .inner-panel .panel-footer {
     display: block;
     position: relative;
   }
-
   .product-info-panel .inner-panel .panel-footer .footer-inner {
     margin-top: 0;
     padding-bottom: 45px;
   }
-
   .product-info-panel .inner-panel .panel-footer .footer-inner .recommended {
     display: block;
     position: relative;
@@ -7967,23 +7595,19 @@ TABLE OF CONTENTS
     top: 12px;
     left: 40px;
   }
-
   .product-info-panel .inner-panel .panel-footer .footer-inner .product-info {
     padding: 0 40px;
     text-align: center !important;
   }
-
   .cart-card .action {
     display: -webkit-box !important;
     display: -ms-flexbox !important;
     display: flex !important;
   }
-
   .action-bar {
     width: 100% !important;
     margin-left: 0 !important;
   }
-
   .is-auth {
     padding: 100px 0 !important;
   }
@@ -7992,83 +7616,63 @@ TABLE OF CONTENTS
 /* ==========================================================================
 3. Mobile Only
 ========================================================================== */
-
 @media (max-width: 767px) {
   .fullscreen-slick .full-slide {
     background-position: bottom;
   }
-
   .fullscreen-slick .slick-dots {
     left: 50%;
     -webkit-transform: translateX(-50%);
             transform: translateX(-50%);
     bottom: 24px !important;
   }
-
   .main-sidebar {
     width: 60px;
   }
-
   .main-sidebar .sidebar-brand {
     width: 60px;
   }
-
-  .main-sidebar .icon-menu li,
-  .main-sidebar .bottom-menu li {
+  .main-sidebar .icon-menu li, .main-sidebar .bottom-menu li {
     width: 60px !important;
   }
-
   .navbar-link {
     padding: 0.5rem 1.5rem !important;
   }
-
   .menu-fab {
     top: 72px !important;
   }
-
   .shop-wrapper {
     width: calc(100% - 60px);
     margin-left: 60px;
   }
-
   .shop-wrapper.is-mobile-mode {
     margin-top: 10px;
   }
-
-  .pageloader,
-  .infraloader {
+  .pageloader, .infraloader {
     left: 60px;
     width: calc(100% - 60px);
   }
-
-  .pageloader.is-full,
-  .infraloader.is-full {
+  .pageloader.is-full, .infraloader.is-full {
     left: 0 !important;
     width: 100% !important;
   }
-
   .hero-caption {
     padding-top: 100px !important;
   }
-
   .hero-caption h1 {
     font-size: 4rem !important;
   }
-
   .hero-caption h2 {
     font-size: 1.3rem !important;
     margin-top: -20px !important;
   }
-
   .background-caption {
     top: 0 !important;
     padding-top: 76px !important;
   }
-
   .background-caption h1 {
     font-size: 6rem !important;
   }
-
   .search-input-wrapper.is-desktop {
     position: fixed;
     top: 0;
@@ -8076,249 +7680,198 @@ TABLE OF CONTENTS
     height: 100%;
     width: calc(100% - 60px);
   }
-
   .search-input-wrapper.is-desktop .field {
     padding: 0 5%;
     top: 22%;
   }
-
   .search-input-wrapper.is-desktop .search-help {
     font-size: 1rem !important;
   }
-
   .search-input-wrapper.is-desktop input {
     height: 60px !important;
     padding-right: 34px !important;
     font-size: 1.6rem !important;
   }
-
   .search-input-wrapper.is-desktop #clear-search {
     top: 10px !important;
     right: 1px !important;
   }
-
   .search-input-wrapper.is-desktop #clear-search svg {
     width: 32px !important;
     height: 32px !important;
   }
-
   .is-product-grid {
     padding-top: 20px;
   }
-
   .is-product-grid .column {
     padding: .15rem !important;
   }
-
   .category-title {
     border-bottom: none !important;
   }
-
   .category-title .category-icon {
     -webkit-box-pack: start !important;
         -ms-flex-pack: start !important;
             justify-content: flex-start !important;
   }
-
   .category-title .category-icon img {
     max-height: 30px !important;
     padding: 0 !important;
   }
-
   .category-title h2 {
     font-size: 1.4rem !important;
   }
-
   .category-title .brand-filigrane {
     top: -16px !important;
     left: -25px !important;
     height: 58px !important;
   }
-
   .flat-card.is-long {
     display: block;
   }
-
-  .flat-card.is-long .left-image,
-  .flat-card.is-long .left-image.is-md {
+  .flat-card.is-long .left-image, .flat-card.is-long .left-image.is-md {
     text-align: center !important;
     margin: 40px 0 !important;
     width: 100% !important;
   }
-
-  .flat-card.is-long .left-image img,
-  .flat-card.is-long .left-image.is-md img {
+  .flat-card.is-long .left-image img, .flat-card.is-long .left-image.is-md img {
     max-width: 100px;
     margin: 10px auto !important;
     display: block !important;
   }
-
   .flat-card.is-long .product-info h3 {
     font-family: 'Raleway', sans-serif !important;
     text-transform: uppercase !important;
     font-size: .8rem !important;
     font-weight: 500 !important;
   }
-
   .shop-quickview {
     left: 60px !important;
     width: 260px !important;
     -webkit-transform: translateX(-261px);
             transform: translateX(-261px);
   }
-
   .cart-quickview {
     left: 60px !important;
     width: calc(100% - 60px);
     -webkit-transform: translateX(calc(-100% - 60px));
             transform: translateX(calc(-100% - 60px));
   }
-
   .filters-quickview {
     left: 60px !important;
     width: calc(100% - 60px);
     -webkit-transform: translateX(calc(-100% - 60px));
             transform: translateX(calc(-100% - 60px));
   }
-
   .range-slider {
     width: 200px !important;
   }
-
   .range-slider .input-range {
     width: 200px !important;
   }
-
   .product-panel {
     display: block;
     position: relative;
     width: 100%;
   }
-
   .product-panel .panel-header {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
   }
-
   .product-panel .panel-header .likes {
     margin: 0 30px;
   }
-
-  .product-panel .detailed-description,
-  .product-panel .product-ratings {
+  .product-panel .detailed-description, .product-panel .product-ratings {
     margin-top: 0 !important;
     max-height: 70vh !important;
     padding: 10px 20px !important;
   }
-
   .product-panel .product-actions {
     bottom: 30px !important;
   }
-
   .product-info-panel {
     display: block;
     position: relative;
     width: 100%;
   }
-
   .product-info-panel .inner-panel {
     padding-right: 0;
   }
-
   .product-info-panel .inner-panel .panel-header {
     padding: 20px 0;
   }
-
   .product-info-panel .inner-panel .panel-header .category-title {
     padding: 0 20px !important;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
   }
-
   .product-info-panel .inner-panel .panel-header .category-title h2 {
     font-size: 1.1rem !important;
     padding: 0 10px !important;
   }
-
   .product-info-panel .inner-panel .panel-header .category-title svg {
     display: none !important;
   }
-
   .product-info-panel .inner-panel .panel-body {
     padding: 20px !important;
   }
-
   .product-info-panel .inner-panel .panel-body .product-name {
     text-align: center !important;
     font-size: 1.8rem !important;
   }
-
   .product-info-panel .inner-panel .panel-body .product-name span {
     display: block;
   }
-
   .product-info-panel .inner-panel .panel-body .product-description {
     text-align: center;
   }
-
   .product-info-panel .inner-panel .panel-body .product-controls {
     display: block;
   }
-
   .product-info-panel .inner-panel .panel-body .product-controls .product-price {
     margin-bottom: 10px;
     width: 100%;
     text-align: center;
   }
-
   .product-info-panel .inner-panel .panel-body .product-controls .product-price .value::after {
     display: none;
   }
-
   .product-info-panel .inner-panel .panel-body .product-controls .product-quantity {
     margin-left: 0 !important;
     width: 100%;
     text-align: center !important;
   }
-
   .product-info-panel .inner-panel .panel-body .product-controls .product-quantity .heading {
     margin-left: 0 !important;
     text-align: center;
   }
-
   .product-info-panel .inner-panel .panel-body .product-controls .product-quantity .control {
     height: auto;
     width: 100%;
     max-width: 100%;
   }
-
   .product-info-panel .inner-panel .panel-body .product-controls .add-to-cart {
     width: 100%;
     text-align: center;
     margin-top: 10px;
   }
-
   .product-info-panel .inner-panel .panel-body .product-controls .add-to-cart .heading {
     display: none;
   }
-
   .product-info-panel .inner-panel .panel-body .product-controls .add-to-cart button {
     margin-left: 0 !important;
     width: 100%;
   }
-
   .product-info-panel .inner-panel .panel-footer {
     display: block;
     position: relative;
   }
-
   .product-info-panel .inner-panel .panel-footer .footer-inner {
     margin-top: 20px;
     padding-bottom: 45px;
   }
-
   .product-info-panel .inner-panel .panel-footer .footer-inner .recommended {
     display: block;
     -webkit-transform: rotate(0);
@@ -8330,25 +7883,20 @@ TABLE OF CONTENTS
     margin: 0 auto;
     text-align: center;
   }
-
   .product-info-panel .inner-panel .panel-footer .footer-inner .product-info {
     text-align: center !important;
   }
-
   .is-account-grid .column {
     padding: .75rem .25rem !important;
   }
-
   .account-title .brand-filigrane {
     top: -8px !important;
     left: -25px !important;
     height: 60px !important;
   }
-
   .profile-info-card .card-title {
     padding: 15px 12px;
   }
-
   .wishlist-card .item-wrapper {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -8356,82 +7904,64 @@ TABLE OF CONTENTS
             flex-direction: column;
     padding: 40px !important;
   }
-
   .wishlist-card .item-wrapper img {
     margin-right: 0 !important;
   }
-
   .wishlist-card .item-wrapper .product-info {
     text-align: center;
   }
-
   .wishlist-card .item-wrapper .action {
     margin: 0 !important;
   }
-
   .wishlist-card .item-wrapper .action .dropdown-menu {
     left: 0 !important;
     -webkit-transform: translateX(-40%) !important;
             transform: translateX(-40%) !important;
   }
-
   .wishlist-item .action {
     padding: 10px 0;
   }
-
   .action-bar {
     width: calc(100% - 60px) !important;
     margin-left: 60px !important;
   }
-
   .invoice-wrapper {
     padding: .75rem 0 !important;
   }
-
   .invoice {
     padding: 20px !important;
   }
-
   .flat-card.is-auth-form .columns {
     -webkit-box-orient: vertical;
     -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
             flex-direction: column-reverse;
   }
-
   .tile.has-background-image {
     min-height: 300px !important;
     padding: 1.25rem 1.5rem !important;
   }
-
   .tile.has-background-image .tile-content {
     height: 260px !important;
   }
-
-  .tile.has-background-image .tile-content.is-small .divider,
-  .tile.has-background-image .tile-content.is-small p {
+  .tile.has-background-image .tile-content.is-small .divider, .tile.has-background-image .tile-content.is-small p {
     display: block !important;
   }
-
   .tile.has-background-image .tile-content .products {
     position: absolute;
     bottom: 0;
     padding: 0;
     left: 0;
   }
-
   .flat-card.is-list-item {
     padding: 20px !important;
   }
-
   .flat-card.is-list-item .product-info {
     padding: 20px !important;
   }
-
   .is-product-grid .product-info {
     text-align: center;
   }
-
   .cart-card li {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -8441,71 +7971,52 @@ TABLE OF CONTENTS
         -ms-flex-direction: column;
             flex-direction: column;
   }
-
-  .cart-card li .product-info,
-  .cart-card li .product-price,
-  .cart-card li .product-quantity,
-  .cart-card li .action {
+  .cart-card li .product-info, .cart-card li .product-price, .cart-card li .product-quantity, .cart-card li .action {
     text-align: center !important;
     padding: 5px !important;
   }
-
   .cart-card li .product-price span {
     margin-left: 0 !important;
   }
-
   .cart-card li .action {
     margin: 10px auto;
   }
-
   .cart-card li .action .action-link {
     margin: 0 2px !important;
   }
-
   .order-list-card {
     padding: 20px !important;
   }
-
   .checkout-title .brand-filigrane {
     left: -15px !important;
   }
-
   .action-bar.is-mobile {
     width: 100% !important;
     margin-left: 0 !important;
   }
-
-  .customer-wrapper,
-  .verification-wrapper {
+  .customer-wrapper, .verification-wrapper {
     padding: 0 !important;
   }
-
   .shipping-wrapper {
     padding: 20px 10px !important;
   }
-
   .payment-wrapper {
     padding: 20px 0 !important;
   }
-
   #payment-methods {
     padding: 20px 0 !important;
   }
-
   .jp-card {
     left: -18px !important;
   }
-
   .thanks-card p {
     padding: 10px 0 !important;
   }
-
   .auth-title .brand-filigrane {
     top: -10px !important;
     left: -16px !important;
     height: 58px !important;
   }
-
   .is-auth-form .column.is-mobile-padded {
     padding: 40px 20px !important;
   }
@@ -8533,8 +8044,7 @@ TABLE OF CONTENTS
           transform: scale(0.8);
 }
 
-.tox .tox-toolbar,
-.tox .tox-edit-area {
+.tox .tox-toolbar, .tox .tox-edit-area {
   border-color: #dbdbdb;
 }
 
@@ -8578,8 +8088,6 @@ TABLE OF CONTENTS
 /* ==========================================================================
 1. Resets and base setup
 ========================================================================== */
-
 a {
   color: #0023ff;
 }
-
