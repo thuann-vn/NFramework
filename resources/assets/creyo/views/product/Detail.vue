@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                             <!-- Gold Customer card -->
-                            <div class="flat-card profile-info-card is-auto"><!-- Title -->
+                            <div class="flat-card profile-info-card is-auto overflow-visible"><!-- Title -->
                                 <div class="card-title">
                                     <h3>Product images</h3>
                                     <div class="edit-account has-simple-popover popover-hidden-mobile" data-content="Edit Account" data-placement="top">
@@ -65,102 +65,60 @@
                         </div>
                         <!-- Details -->
                         <div class="column is-4">
-                            <div class="flat-card profile-info-card is-auto">
+                            <div class="flat-card profile-info-card is-auto overflow-visible">
                                 <!-- Title -->
                                 <div class="card-title">
                                     <h3>Product availability</h3>
-                                    <div class="edit-account has-simple-popover popover-hidden-mobile" data-content="Edit Account" data-placement="top">
-                                        <a href="account-edit.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings feather-icons"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></a>
-                                    </div>
                                 </div>
                                 <!-- Contact Info -->
                                 <div class="card-body">
-                                    <chosen-select v-model='options'>
-                                        <option value="Toronto">Toronto</option>
-                                        <option value="Orleans">Orleans</option>
-                                        <option value="Denver">Denver</option>
-                                    </chosen-select>
-
-                                    <div class="columns">
-                                        <div class="column is-6">
-                                            <div class="info-block">
-                                                <span class="label-text">First Name</span>
-                                                <span class="label-value">Elie</span>
-                                            </div>
-
-                                            <div class="info-block">
-                                                <span class="label-text">Email</span>
-                                                <span class="label-value">eliedaniels@gmail.com</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="column is-6">
-                                            <div class="info-block">
-                                                <span class="label-text">Last Name</span>
-                                                <span class="label-value">Daniels</span>
-                                            </div>
-
-                                            <div class="info-block">
-                                                <span class="label-text">Phone</span>
-                                                <span class="label-value">+1 555 623 568</span>
-                                            </div>
-                                        </div>
+                                    <div class="control">
+                                        <label>Status</label>
+                                        <chosen-select v-model='product.status'>
+                                            <option :value="st.code" v-for="st in status">{{st.name}}</option>
+                                        </chosen-select>
                                     </div>
                                 </div>
                                 <!-- Background Nephos Icon -->
                                 <img class="card-bg" src="assets/images/logo/nephos-greyscale.svg" alt="">
                             </div>
 
-                            <!-- Address Info -->
+                            <!-- Price Info -->
                             <div class="flat-card profile-info-card is-auto">
                                 <!-- Title -->
                                 <div class="card-title">
-                                    <h3>Billing address</h3>
-                                    <!-- Cog Button -->
-                                    <div class="edit-account is-vhidden">
-                                        <a href="account-edit.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-settings feather-icons"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg></a>
-                                    </div>
-
+                                    <h3>Prices</h3>
                                 </div>
                                 <!-- Billing Address -->
                                 <div class="card-body">
-                                    <div class="columns">
-                                        <div class="column is-6">
-                                            <div class="info-block">
-                                                <span class="label-text">Number</span>
-                                                <span class="label-value">23, Block C2</span>
-                                            </div>
-
-                                            <div class="info-block">
-                                                <span class="label-text">City</span>
-                                                <span class="label-value">Los Angeles</span>
-                                            </div>
-
-                                            <div class="info-block">
-                                                <span class="label-text">State</span>
-                                                <span class="label-value">CA</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="column is-6">
-                                            <div class="info-block">
-                                                <span class="label-text">Street</span>
-                                                <span class="label-value">Church Street</span>
-                                            </div>
-
-                                            <div class="info-block">
-                                                <span class="label-text">Postal Code</span>
-                                                <span class="label-value">100065</span>
-                                            </div>
-
-                                            <div class="info-block">
-                                                <span class="label-text">Country</span>
-                                                <span class="label-value">United States</span>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <b-field label="Price"
+                                             type="is-default">
+                                        <money-input v-model="product.price"></money-input>
+                                    </b-field>
+                                    <b-field label="Compare Price"
+                                             type="is-default">
+                                        <money-input v-model="product.comparePrice"></money-input>
+                                    </b-field>
                                 </div>
                                 <!-- /Address Form -->
+                            </div>
+
+                            <!-- Organization -->
+                            <div class="flat-card profile-info-card is-auto">
+                                <!-- Title -->
+                                <div class="card-title">
+                                    <h3>Organization</h3>
+                                </div>
+                                <!-- Brand -->
+                                <div class="card-body">
+                                    <div class="control">
+                                        <label>Brand</label>
+                                        <chosen-select v-model='product.status'>
+                                            <option :value="st.code" v-for="st in status">{{st.name}}</option>
+                                        </chosen-select>
+                                    </div>
+                                </div>
+                                <!-- /Brand -->
                             </div>
                         </div>
                     </div>
@@ -173,15 +131,17 @@
 
 <script>
     import draggable from 'vuedraggable';
+    import ProductApi from '@/services/api/products';
 
     export default {
         data: function() {
             return {
-                options: [  'foo',
-                    'bar',
-                    'baz'],
+                moneyInputConfig: this.$store.state.moneyInputConfig,
                 product: {
                     images: [],
+                    status: 'FEATURED',
+                    price: 0,
+                    comparePrice: 0
                 },
                 myFiles: [],
                 isImageChooserShow: true,
@@ -206,6 +166,9 @@
         computed: {
             title:function () {
                 return this.product.id?'EDIT PRODUCT ' + this.product.name:'ADD PRODUCT';
+            },
+            status: function(){
+                return ProductApi.status;
             }
         },
         methods: {

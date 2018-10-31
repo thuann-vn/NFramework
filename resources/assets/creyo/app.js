@@ -28,27 +28,8 @@ axios.defaults.baseURL = store.state.API_URL;
 Vue.component('pagination', require('./components/general/Pagination.vue'));
 Vue.component('page-title', require('./components/general/PageTitle.vue'));
 Vue.component('image-chooser', require('./components/general/ImageChooser.vue'));
-Vue.component("chosen-select",{
-    props:{
-        value: [String, Array],
-        multiple: Boolean
-    },
-    template:`<select :multiple="multiple"><slot></slot></select>`,
-    mounted(){
-        $(this.$el)
-            .val(this.value)
-            .chosen()
-            .on("change", e => this.$emit('input', $(this.$el).val()))
-    },
-    watch:{
-        value(val){
-            $(this.$el).val(val).trigger('chosen:updated');
-        }
-    },
-    destroyed() {
-        $(this.$el).Chosen('destroy');
-    }
-})
+Vue.component('money-input', require('./components/general/MoneyInput.vue'));
+Vue.component("chosen-select",require('./components/general/ChosenSelect.vue'));
 
 //Init app
 const app = new Vue({
