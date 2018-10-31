@@ -5741,6 +5741,14 @@ textarea.textarea.is-button + .textarea-button button {
   border: 1px solid #ededed;
 }
 
+/* ==========================================================================
+2. Labels
+========================================================================== */
+.flat-card .label {
+  font-weight: normal;
+  margin-bottom: 0 !important;
+}
+
 /*! _invoice.scss | Nephos | CSS Ninja */
 /* ==========================================================================
 Invoice styles
@@ -8054,6 +8062,10 @@ TABLE OF CONTENTS
 
 .is-element-details .is-component .control:last-child {
   margin-bottom: 0;
+}
+
+.overflow-visible {
+  overflow: visible !important;
 }
 
 .image-chooser .image {

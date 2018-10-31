@@ -9,7 +9,12 @@ webpackJsonp([1],{
     Defines the API route we are using.
 */
 var APP_CONFIG = {
-    API_URL: 'http://new-framework.com/api/'
+    API_URL: 'http://new-framework.com/api/',
+    moneyInputConfig: {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand',
+        prefix: ''
+    }
 };
 
 /***/ }),
@@ -165,29 +170,8 @@ __WEBPACK_IMPORTED_MODULE_6_axios___default.a.defaults.baseURL = __WEBPACK_IMPOR
 Vue.component('pagination', __webpack_require__(585));
 Vue.component('page-title', __webpack_require__(588));
 Vue.component('image-chooser', __webpack_require__(591));
-Vue.component("chosen-select", {
-    props: {
-        value: [String, Array],
-        multiple: Boolean
-    },
-    template: '<select :multiple="multiple"><slot></slot></select>',
-    mounted: function mounted() {
-        var _this = this;
-
-        $(this.$el).val(this.value).chosen().on("change", function (e) {
-            return _this.$emit('input', $(_this.$el).val());
-        });
-    },
-
-    watch: {
-        value: function value(val) {
-            $(this.$el).val(val).trigger('chosen:updated');
-        }
-    },
-    destroyed: function destroyed() {
-        $(this.$el).Chosen('destroy');
-    }
-});
+Vue.component('money-input', __webpack_require__(611));
+Vue.component("chosen-select", __webpack_require__(614));
 
 //Init app
 var app = new Vue({
@@ -235,7 +219,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0_axios_progress_bar__["loadProgressBar"])();
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-window.chosen = __webpack_require__(609);
+window.chosen = __webpack_require__(607);
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -321,6 +305,8 @@ exports.push([module.i, "/* Make clicks pass-through */\n#nprogress {\n  pointer
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_cleave_js__ = __webpack_require__(609);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_cleave_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_cleave_js__);
 
 
 //Filters
@@ -362,6 +348,25 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.directive('simple-popover', {
             trigger: "hover",
             animation: "pop"
         });
+    }
+});
+
+//Cleave directive
+
+
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.directive('cleave', {
+    bind: function bind(el, binding) {
+        var input = el.querySelector('input');
+        input._vCleave = new __WEBPACK_IMPORTED_MODULE_1_cleave_js___default.a(input, binding.value);
+    },
+    update: function update(el, binding) {
+        var input = el.querySelector('input');
+        input._vCleave.destroy();
+        input._vCleave = new __WEBPACK_IMPORTED_MODULE_1_cleave_js___default.a(input, binding.value);
+    },
+    unbind: function unbind(el) {
+        var input = el.querySelector('input');
+        input._vCleave.destroy();
     }
 });
 
@@ -2260,6 +2265,7 @@ module.exports = function listToStyles (parentId, list) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuedraggable__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_api_products__ = __webpack_require__(610);
 //
 //
 //
@@ -2391,57 +2397,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            options: ['foo', 'bar', 'baz'],
+            moneyInputConfig: this.$store.state.moneyInputConfig,
             product: {
-                images: []
+                images: [],
+                status: 'FEATURED',
+                price: 0,
+                comparePrice: 0
             },
             myFiles: [],
             isImageChooserShow: true,
@@ -2462,6 +2430,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         title: function title() {
             return this.product.id ? 'EDIT PRODUCT ' + this.product.name : 'ADD PRODUCT';
+        },
+        status: function status() {
+            return __WEBPACK_IMPORTED_MODULE_1__services_api_products__["a" /* default */].status;
         }
     },
     methods: {
@@ -2583,7 +2554,10 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "flat-card profile-info-card is-auto" },
+                      {
+                        staticClass:
+                          "flat-card profile-info-card is-auto overflow-visible"
+                      },
                       [
                         _c("div", { staticClass: "card-title" }, [
                           _c("h3", [_vm._v("Product images")]),
@@ -2737,95 +2711,43 @@ var render = function() {
                   _c("div", { staticClass: "column is-4" }, [
                     _c(
                       "div",
-                      { staticClass: "flat-card profile-info-card is-auto" },
+                      {
+                        staticClass:
+                          "flat-card profile-info-card is-auto overflow-visible"
+                      },
                       [
-                        _c("div", { staticClass: "card-title" }, [
-                          _c("h3", [_vm._v("Product availability")]),
-                          _vm._v(" "),
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-body" }, [
                           _c(
                             "div",
-                            {
-                              staticClass:
-                                "edit-account has-simple-popover popover-hidden-mobile",
-                              attrs: {
-                                "data-content": "Edit Account",
-                                "data-placement": "top"
-                              }
-                            },
+                            { staticClass: "control" },
                             [
+                              _c("label", [_vm._v("Status")]),
+                              _vm._v(" "),
                               _c(
-                                "a",
-                                { attrs: { href: "account-edit.html" } },
-                                [
-                                  _c(
-                                    "svg",
-                                    {
-                                      staticClass:
-                                        "feather feather-settings feather-icons",
-                                      attrs: {
-                                        xmlns: "http://www.w3.org/2000/svg",
-                                        width: "24",
-                                        height: "24",
-                                        viewBox: "0 0 24 24",
-                                        fill: "none",
-                                        stroke: "currentColor",
-                                        "stroke-width": "2",
-                                        "stroke-linecap": "round",
-                                        "stroke-linejoin": "round"
-                                      }
+                                "chosen-select",
+                                {
+                                  model: {
+                                    value: _vm.product.status,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.product, "status", $$v)
                                     },
-                                    [
-                                      _c("circle", {
-                                        attrs: { cx: "12", cy: "12", r: "3" }
-                                      }),
-                                      _c("path", {
-                                        attrs: {
-                                          d:
-                                            "M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
-                                        }
-                                      })
-                                    ]
+                                    expression: "product.status"
+                                  }
+                                },
+                                _vm._l(_vm.status, function(st) {
+                                  return _c(
+                                    "option",
+                                    { domProps: { value: st.code } },
+                                    [_vm._v(_vm._s(st.name))]
                                   )
-                                ]
+                                })
                               )
-                            ]
+                            ],
+                            1
                           )
                         ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "card-body" },
-                          [
-                            _c(
-                              "chosen-select",
-                              {
-                                model: {
-                                  value: _vm.options,
-                                  callback: function($$v) {
-                                    _vm.options = $$v
-                                  },
-                                  expression: "options"
-                                }
-                              },
-                              [
-                                _c("option", { attrs: { value: "Toronto" } }, [
-                                  _vm._v("Toronto")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "Orleans" } }, [
-                                  _vm._v("Orleans")
-                                ]),
-                                _vm._v(" "),
-                                _c("option", { attrs: { value: "Denver" } }, [
-                                  _vm._v("Denver")
-                                ])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _vm._m(1)
-                          ],
-                          1
-                        ),
                         _vm._v(" "),
                         _c("img", {
                           staticClass: "card-bg",
@@ -2841,53 +2763,92 @@ var render = function() {
                       "div",
                       { staticClass: "flat-card profile-info-card is-auto" },
                       [
-                        _c("div", { staticClass: "card-title" }, [
-                          _c("h3", [_vm._v("Billing address")]),
-                          _vm._v(" "),
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "card-body" },
+                          [
+                            _c(
+                              "b-field",
+                              { attrs: { label: "Price", type: "is-default" } },
+                              [
+                                _c("money-input", {
+                                  model: {
+                                    value: _vm.product.price,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.product, "price", $$v)
+                                    },
+                                    expression: "product.price"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "b-field",
+                              {
+                                attrs: {
+                                  label: "Compare Price",
+                                  type: "is-default"
+                                }
+                              },
+                              [
+                                _c("money-input", {
+                                  model: {
+                                    value: _vm.product.comparePrice,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.product, "comparePrice", $$v)
+                                    },
+                                    expression: "product.comparePrice"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "flat-card profile-info-card is-auto" },
+                      [
+                        _vm._m(3),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "card-body" }, [
                           _c(
                             "div",
-                            { staticClass: "edit-account is-vhidden" },
+                            { staticClass: "control" },
                             [
+                              _c("label", [_vm._v("Brand")]),
+                              _vm._v(" "),
                               _c(
-                                "a",
-                                { attrs: { href: "account-edit.html" } },
-                                [
-                                  _c(
-                                    "svg",
-                                    {
-                                      staticClass:
-                                        "feather feather-settings feather-icons",
-                                      attrs: {
-                                        xmlns: "http://www.w3.org/2000/svg",
-                                        width: "24",
-                                        height: "24",
-                                        viewBox: "0 0 24 24",
-                                        fill: "none",
-                                        stroke: "currentColor",
-                                        "stroke-width": "2",
-                                        "stroke-linecap": "round",
-                                        "stroke-linejoin": "round"
-                                      }
+                                "chosen-select",
+                                {
+                                  model: {
+                                    value: _vm.product.status,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.product, "status", $$v)
                                     },
-                                    [
-                                      _c("circle", {
-                                        attrs: { cx: "12", cy: "12", r: "3" }
-                                      }),
-                                      _c("path", {
-                                        attrs: {
-                                          d:
-                                            "M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
-                                        }
-                                      })
-                                    ]
+                                    expression: "product.status"
+                                  }
+                                },
+                                _vm._l(_vm.status, function(st) {
+                                  return _c(
+                                    "option",
+                                    { domProps: { value: st.code } },
+                                    [_vm._v(_vm._s(st.name))]
                                   )
-                                ]
+                                })
                               )
-                            ]
+                            ],
+                            1
                           )
-                        ]),
-                        _vm._v(" "),
-                        _vm._m(2)
+                        ])
                       ]
                     )
                   ])
@@ -2920,88 +2881,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "columns" }, [
-      _c("div", { staticClass: "column is-6" }, [
-        _c("div", { staticClass: "info-block" }, [
-          _c("span", { staticClass: "label-text" }, [_vm._v("First Name")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "label-value" }, [_vm._v("Elie")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "info-block" }, [
-          _c("span", { staticClass: "label-text" }, [_vm._v("Email")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "label-value" }, [
-            _vm._v("eliedaniels@gmail.com")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "column is-6" }, [
-        _c("div", { staticClass: "info-block" }, [
-          _c("span", { staticClass: "label-text" }, [_vm._v("Last Name")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "label-value" }, [_vm._v("Daniels")])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "info-block" }, [
-          _c("span", { staticClass: "label-text" }, [_vm._v("Phone")]),
-          _vm._v(" "),
-          _c("span", { staticClass: "label-value" }, [_vm._v("+1 555 623 568")])
-        ])
-      ])
+    return _c("div", { staticClass: "card-title" }, [
+      _c("h3", [_vm._v("Product availability")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "columns" }, [
-        _c("div", { staticClass: "column is-6" }, [
-          _c("div", { staticClass: "info-block" }, [
-            _c("span", { staticClass: "label-text" }, [_vm._v("Number")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "label-value" }, [_vm._v("23, Block C2")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "info-block" }, [
-            _c("span", { staticClass: "label-text" }, [_vm._v("City")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "label-value" }, [_vm._v("Los Angeles")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "info-block" }, [
-            _c("span", { staticClass: "label-text" }, [_vm._v("State")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "label-value" }, [_vm._v("CA")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "column is-6" }, [
-          _c("div", { staticClass: "info-block" }, [
-            _c("span", { staticClass: "label-text" }, [_vm._v("Street")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "label-value" }, [
-              _vm._v("Church Street")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "info-block" }, [
-            _c("span", { staticClass: "label-text" }, [_vm._v("Postal Code")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "label-value" }, [_vm._v("100065")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "info-block" }, [
-            _c("span", { staticClass: "label-text" }, [_vm._v("Country")]),
-            _vm._v(" "),
-            _c("span", { staticClass: "label-value" }, [
-              _vm._v("United States")
-            ])
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "card-title" }, [
+      _c("h3", [_vm._v("Prices")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-title" }, [
+      _c("h3", [_vm._v("Organization")])
     ])
   }
 ]
@@ -14995,7 +14892,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 609:
+/***/ 607:
 /***/ (function(module, exports) {
 
 (function() {
@@ -16346,6 +16243,257 @@ if (false) {
 
 }).call(this);
 
+
+/***/ }),
+
+/***/ 610:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    status: [{ code: 'FEATURED', name: 'Featured' }, { code: 'ACTIVE', name: 'Available', isDefault: true }, { code: 'DEACTIVE', name: 'Hidden' }],
+    getProducts: function getProducts(page) {
+        return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/products?page=' + page).then(function (response) {
+            return response.data;
+        });
+    }
+});
+
+/***/ }),
+
+/***/ 611:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(612)
+/* template */
+var __vue_template__ = __webpack_require__(613)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\creyo\\components\\general\\MoneyInput.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6d494b40", Component.options)
+  } else {
+    hotAPI.reload("data-v-6d494b40", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 612:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'money-input',
+    props: ['value'],
+    data: function data() {
+        return {
+            formatedValue: this.value,
+            masks: {
+                numeral: {
+                    numeral: true,
+                    numeralThousandsGroupStyle: 'thousand',
+                    suffix: 'vnd'
+                }
+            }
+        };
+    },
+    methods: {
+        getRawValue: function getRawValue(event) {
+            this.$emit('input', event.target._vCleave.getRawValue());
+        }
+    }
+});
+
+/***/ }),
+
+/***/ 613:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("b-input", {
+    directives: [
+      {
+        name: "cleave",
+        rawName: "v-cleave",
+        value: _vm.masks.numeral,
+        expression: "masks.numeral"
+      }
+    ],
+    attrs: { type: "is-default" },
+    nativeOn: {
+      input: function($event) {
+        return _vm.getRawValue($event)
+      }
+    },
+    model: {
+      value: _vm.formatedValue,
+      callback: function($$v) {
+        _vm.formatedValue = $$v
+      },
+      expression: "formatedValue"
+    }
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-6d494b40", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 614:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(615)
+/* template */
+var __vue_template__ = __webpack_require__(616)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\creyo\\components\\general\\ChosenSelect.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2ae49df8", Component.options)
+  } else {
+    hotAPI.reload("data-v-2ae49df8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 615:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: {
+        value: [String, Array],
+        multiple: Boolean
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        $(this.$el).val(this.value).chosen({ disable_search_threshold: 10 }).on("change", function (e) {
+            return _this.$emit('input', $(_this.$el).val());
+        });
+    },
+
+    watch: {
+        value: function value(val) {
+            $(this.$el).val(val).trigger('chosen:updated');
+        }
+    },
+    destroyed: function destroyed() {
+        $(this.$el).Chosen('destroy');
+    }
+});
+
+/***/ }),
+
+/***/ 616:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "select",
+    { attrs: { multiple: _vm.multiple } },
+    [_vm._t("default")],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2ae49df8", module.exports)
+  }
+}
 
 /***/ })
 
