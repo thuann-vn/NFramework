@@ -26,5 +26,6 @@ Route::group(['prefix' => '/{lang?}', 'where' => ['lang' => 'en|vi'], 'middlewar
 Route::apiResources([
     'products' => 'Api\ProductController',
     'productCategories' => 'Api\ProductCategoryController',
+    'productBrands' => 'Api\ProductBrandController',
     'images' => 'Api\ImageController',
 ]);

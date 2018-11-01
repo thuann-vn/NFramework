@@ -111,9 +111,7 @@
                                 <div class="card-body">
                                     <!-- Brand -->
                                     <b-field label="Brand" type="is-default">
-                                        <chosen-select v-model='product.status'>
-                                            <option :value="st.code" v-for="st in status">{{st.name}}</option>
-                                        </chosen-select>
+                                       <brand-chooser v-model="product.brandId"></brand-chooser>
                                     </b-field>
                                     <!-- /Brand -->
                                     <hr/>
@@ -136,6 +134,7 @@
 <script>
     import draggable from 'vuedraggable';
     import ProductApi from '@/services/api/products';
+    import BrandChooser from "../../components/general/ProductBrandChooser.vue";
 
     export default {
         data: function() {
@@ -145,7 +144,7 @@
                     status: 'FEATURED',
                     price: 0,
                     comparePrice: 0,
-                    brandId: 0,
+                    brandId: 10,
                     categories: [116]
                 },
                 isImageChooserShow: true,
@@ -172,11 +171,6 @@
             }
         },
         methods: {
-            handleFilePondInit: function() {
-                console.log('FilePond has initialized');
-
-                // FilePond instance methods are available on `this.$refs.pond`
-            },
             openImageChooser : function(){
                 this.$refs.imageChooser.open();
             },
@@ -210,6 +204,7 @@
             }
         },
         components:{
+            BrandChooser,
             draggable
         }
     };

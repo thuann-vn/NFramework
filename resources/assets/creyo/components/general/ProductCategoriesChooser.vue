@@ -1,6 +1,6 @@
 <template>
     <div class="categories-chooser">
-        <treeselect v-if="!isLoading" v-model="value" placeholder="Choose categories..." search-nested :multiple="true" :flat="true" :options="categories" :default-expand-level="1" @input="inputChanged"></treeselect>
+        <treeselect v-if="!isLoading" v-model="value" placeholder="Choose categories..." search-nested :multiple="true" :flat="true" :options="categories" :default-expand-level="1" @input="inputChanged" sortValueBy="INDEX"></treeselect>
         <b-loading :is-full-page="false" :active.sync="isLoading" :can-cancel="false"></b-loading>
     </div>
 </template>

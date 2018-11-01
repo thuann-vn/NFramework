@@ -184,6 +184,7 @@ Vue.component('image-chooser', __webpack_require__(595));
 Vue.component('money-input', __webpack_require__(607));
 Vue.component("chosen-select", __webpack_require__(610));
 Vue.component("categories-chooser", __webpack_require__(618));
+Vue.component("brand-chooser", __webpack_require__(660));
 Vue.component("v-jstree", __WEBPACK_IMPORTED_MODULE_7_vue_jstree___default.a);
 Vue.component('treeselect', __WEBPACK_IMPORTED_MODULE_8__riophae_vue_treeselect___default.a);
 
@@ -3634,6 +3635,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuedraggable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_api_products__ = __webpack_require__(342);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_ProductBrandChooser_vue__ = __webpack_require__(660);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_ProductBrandChooser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_general_ProductBrandChooser_vue__);
 //
 //
 //
@@ -3767,8 +3770,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
+
 
 
 
@@ -3781,7 +3783,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 status: 'FEATURED',
                 price: 0,
                 comparePrice: 0,
-                brandId: 0,
+                brandId: 10,
                 categories: [116]
             },
             isImageChooserShow: true,
@@ -3807,11 +3809,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     methods: {
-        handleFilePondInit: function handleFilePondInit() {
-            console.log('FilePond has initialized');
-
-            // FilePond instance methods are available on `this.$refs.pond`
-        },
         openImageChooser: function openImageChooser() {
             this.$refs.imageChooser.open();
         },
@@ -3847,6 +3844,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
     },
     components: {
+        BrandChooser: __WEBPACK_IMPORTED_MODULE_2__components_general_ProductBrandChooser_vue___default.a,
         draggable: __WEBPACK_IMPORTED_MODULE_0_vuedraggable___default.a
     }
 });
@@ -4223,25 +4221,15 @@ var render = function() {
                               "b-field",
                               { attrs: { label: "Brand", type: "is-default" } },
                               [
-                                _c(
-                                  "chosen-select",
-                                  {
-                                    model: {
-                                      value: _vm.product.status,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.product, "status", $$v)
-                                      },
-                                      expression: "product.status"
-                                    }
-                                  },
-                                  _vm._l(_vm.status, function(st) {
-                                    return _c(
-                                      "option",
-                                      { domProps: { value: st.code } },
-                                      [_vm._v(_vm._s(st.name))]
-                                    )
-                                  })
-                                )
+                                _c("brand-chooser", {
+                                  model: {
+                                    value: _vm.product.brandId,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.product, "brandId", $$v)
+                                    },
+                                    expression: "product.brandId"
+                                  }
+                                })
                               ],
                               1
                             ),
@@ -16495,13 +16483,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
-        value: [String, Array],
+        value: [String, Array, Number],
+        placeholder: [String],
         multiple: Boolean
     },
     mounted: function mounted() {
         var _this = this;
 
-        $(this.$el).val(this.value).chosen({ disable_search_threshold: 10 }).on("change", function (e) {
+        $(this.$el).val(this.value).chosen({
+            disable_search_threshold: 10,
+            placeholder: this.placeholder ? this.placeholder : ''
+        }).on("change", function (e) {
             return _this.$emit('input', $(_this.$el).val());
         });
     },
@@ -16696,7 +16688,8 @@ var render = function() {
               multiple: true,
               flat: true,
               options: _vm.categories,
-              "default-expand-level": 1
+              "default-expand-level": 1,
+              sortValueBy: "INDEX"
             },
             on: { input: _vm.inputChanged },
             model: {
@@ -21826,6 +21819,157 @@ exports.push([module.i, "/*!\n * vue-treeselect v0.0.37 | (c) 2017-2018 Riophae 
 
 // exports
 
+
+/***/ }),
+
+/***/ 660:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(661)
+/* template */
+var __vue_template__ = __webpack_require__(663)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\creyo\\components\\general\\ProductBrandChooser.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-f5858986", Component.options)
+  } else {
+    hotAPI.reload("data-v-f5858986", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 661:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_api_brands__ = __webpack_require__(662);
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'brand-chooser',
+    props: ['value'],
+    data: function data() {
+        return {
+            selectedBrand: null,
+            brands: [],
+            isLoading: true
+        };
+    },
+    computed: {},
+    methods: {
+        inputChanged: function inputChanged(event) {
+            this.$emit('input', this.selectedBrand);
+        }
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        var self = this;
+        self.selectedBrand = self.value;
+        __WEBPACK_IMPORTED_MODULE_0__services_api_brands__["a" /* default */].getBrands().then(function (response) {
+            _this.brands = response.data;
+        }).finally(function () {
+            _this.isLoading = false;
+        });
+    }
+});
+
+/***/ }),
+
+/***/ 662:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    getBrands: function getBrands() {
+        return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get('/productBrands').then(function (response) {
+            return response.data;
+        });
+    }
+});
+
+/***/ }),
+
+/***/ 663:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return !_vm.isLoading
+    ? _c(
+        "chosen-select",
+        {
+          attrs: { placeholder: "Please select a brand" },
+          model: {
+            value: _vm.selectedBrand,
+            callback: function($$v) {
+              _vm.selectedBrand = $$v
+            },
+            expression: "selectedBrand"
+          }
+        },
+        _vm._l(_vm.brands, function(br) {
+          return _c("option", { domProps: { value: br.id } }, [
+            _vm._v(_vm._s(br.name))
+          ])
+        })
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-f5858986", module.exports)
+  }
+}
 
 /***/ })
 

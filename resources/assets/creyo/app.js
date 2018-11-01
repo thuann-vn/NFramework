@@ -36,6 +36,7 @@ Vue.component('image-chooser', require('./components/general/ImageChooser.vue'))
 Vue.component('money-input', require('./components/general/MoneyInput.vue'));
 Vue.component("chosen-select",require('./components/general/ChosenSelect.vue'));
 Vue.component("categories-chooser",require('./components/general/ProductCategoriesChooser.vue'));
+Vue.component("brand-chooser",require('./components/general/ProductBrandChooser.vue'));
 Vue.component("v-jstree", VJstree);
 Vue.component('treeselect', Treeselect);
 
