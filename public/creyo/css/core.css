@@ -1301,6 +1301,14 @@ TABLE OF CONTENTS
           transform: translateX(0) !important;
 }
 
+.flat-card.is-no-border .card-title {
+  border-bottom: 0;
+}
+
+.flat-card.is-no-border .card-body {
+  padding: 0px 20px;
+}
+
 /* ==========================================================================
 1. List Flat Card
 ========================================================================== */
@@ -8066,6 +8074,27 @@ TABLE OF CONTENTS
 
 .overflow-visible {
   overflow: visible !important;
+}
+
+.product-organization-card {
+  background-color: #f9fafb;
+}
+
+.product-organization-card .card-title {
+  background-color: #f9fafb;
+}
+
+.product-organization-card hr {
+  margin: 15px -20px;
+  background-color: #dfe3e8;
+  height: 1px;
+}
+
+.product-organization-card .categories-chooser {
+  position: relative;
+  min-height: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .image-chooser .image {

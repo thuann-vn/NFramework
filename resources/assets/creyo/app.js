@@ -12,6 +12,7 @@ import store from './store/store';
 import VueMce from 'vue-mce';
 import VueFeatherIcon from 'vue-feather-icon';
 import axios from 'axios';
+import VJstree from 'vue-jstree';
 
 //Use
 Vue.use(Buefy);
@@ -30,11 +31,14 @@ Vue.component('page-title', require('./components/general/PageTitle.vue'));
 Vue.component('image-chooser', require('./components/general/ImageChooser.vue'));
 Vue.component('money-input', require('./components/general/MoneyInput.vue'));
 Vue.component("chosen-select",require('./components/general/ChosenSelect.vue'));
+Vue.component("categories-chooser",require('./components/general/ProductCategoriesChooser.vue'));
+Vue.component("v-jstree", VJstree);
 
 //Init app
 const app = new Vue({
     el: '#app',
     components: {
+        VJstree
     },
     store,
     router,

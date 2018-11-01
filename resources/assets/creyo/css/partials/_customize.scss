@@ -35,6 +35,26 @@
   overflow: visible !important;
 }
 
+.product-organization-card{
+  background-color: #f9fafb;
+
+  .card-title{
+    background-color: #f9fafb;
+  }
+
+  hr{
+    margin: 15px -20px;
+    background-color: #dfe3e8;
+    height: 1px;
+  }
+
+  .categories-chooser{
+    position: relative;
+    min-height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
 .image-chooser{
   .image{
     margin: 0;

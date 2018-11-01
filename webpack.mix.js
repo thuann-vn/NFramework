@@ -32,7 +32,8 @@ mix.js('resources/assets/creyo/app.js', 'public/creyo')
             'sortablejs',
             'vuedraggable',
             'vee-validate',
-            'cleave.js'
+            'cleave.js',
+            'vue-jstree'
         ])
 
     .sass('resources/assets/creyo/css/bulma.sass', 'public/creyo/css')

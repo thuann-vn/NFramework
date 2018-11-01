@@ -193,6 +193,17 @@ TABLE OF CONTENTS
             transform: translateX(0) !important;
         }
     }
+
+    //no border card
+    &.is-no-border{
+        .card-title{
+            border-bottom: 0;
+        }
+
+        .card-body{
+            padding: 0px 20px;
+        }
+    }
 }
 
 /* ==========================================================================

@@ -95,8 +95,7 @@
                                              type="is-default">
                                         <money-input v-model="product.price"></money-input>
                                     </b-field>
-                                    <b-field label="Compare Price"
-                                             type="is-default">
+                                    <b-field label="Compare Price" type="is-default">
                                         <money-input v-model="product.comparePrice"></money-input>
                                     </b-field>
                                 </div>
@@ -104,21 +103,26 @@
                             </div>
 
                             <!-- Organization -->
-                            <div class="flat-card profile-info-card is-auto">
+                            <div class="flat-card profile-info-card product-organization-card is-auto is-no-border">
                                 <!-- Title -->
                                 <div class="card-title">
                                     <h3>Organization</h3>
                                 </div>
-                                <!-- Brand -->
                                 <div class="card-body">
-                                    <div class="control">
-                                        <label>Brand</label>
+                                    <!-- Brand -->
+                                    <b-field label="Brand" type="is-default">
                                         <chosen-select v-model='product.status'>
                                             <option :value="st.code" v-for="st in status">{{st.name}}</option>
                                         </chosen-select>
-                                    </div>
+                                    </b-field>
+                                    <!-- /Brand -->
+                                    <hr/>
+                                    <!-- Category -->
+                                    <b-field label="Category" type="is-default">
+                                        <categories-chooser v-model="product.categories"></categories-chooser>
+                                    </b-field>
+                                    <!-- /Category -->
                                 </div>
-                                <!-- /Brand -->
                             </div>
                         </div>
                     </div>
@@ -136,14 +140,14 @@
     export default {
         data: function() {
             return {
-                moneyInputConfig: this.$store.state.moneyInputConfig,
                 product: {
                     images: [],
                     status: 'FEATURED',
                     price: 0,
-                    comparePrice: 0
+                    comparePrice: 0,
+                    brandId: 0,
+                    categories: [116]
                 },
-                myFiles: [],
                 isImageChooserShow: true,
                 config: {
                     themes: 'oxide',
@@ -154,11 +158,7 @@
                     extended_valid_elements: 'img[class=myclass|!src|border:0|alt|title|width|height|style]',
                     plugins: 'print preview fullpage autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr lists textcolor imagetools colorpicker textpattern autoresize autolink code',
                     toolbar: 'bold italic strikethrough | forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist | image media | code',
-                    image_advtab: true,
-                    content_css: [
-                        '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-                        '//www.tinymce.com/css/codepen.min.css'
-                    ]
+                    image_advtab: true
                 },
             };
 
