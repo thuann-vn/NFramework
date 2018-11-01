@@ -1303,10 +1303,16 @@ TABLE OF CONTENTS
 
 .flat-card.is-no-border .card-title {
   border-bottom: 0;
+  padding: 15px 20px 0px 20px;
+  background: #fff;
+}
+
+.flat-card.is-no-border .card-title h3 {
+  color: #212b36;
 }
 
 .flat-card.is-no-border .card-body {
-  padding: 0px 20px;
+  padding: 20px 20px 20px 20px;
 }
 
 /* ==========================================================================
@@ -8081,7 +8087,7 @@ TABLE OF CONTENTS
 }
 
 .product-organization-card .card-title {
-  background-color: #f9fafb;
+  background-color: #f9fafb !important;
 }
 
 .product-organization-card hr {
@@ -8094,7 +8100,16 @@ TABLE OF CONTENTS
   position: relative;
   min-height: 50px;
   margin-top: 10px;
-  margin-bottom: 10px;
+}
+
+.product-organization-card .categories-chooser .vue-treeselect--open .vue-treeselect__control, .product-organization-card .categories-chooser .vue-treeselect--open .vue-treeselect__menu {
+  border: 1px solid #7957d5;
+  -webkit-box-shadow: 0 0 0 0.125em rgba(121, 87, 213, 0.25);
+          box-shadow: 0 0 0 0.125em rgba(121, 87, 213, 0.25);
+}
+
+.product-organization-card .categories-chooser .vue-treeselect__multi-value-item {
+  font-size: 14px;
 }
 
 .image-chooser .image {

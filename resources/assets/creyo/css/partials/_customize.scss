@@ -39,7 +39,7 @@
   background-color: #f9fafb;
 
   .card-title{
-    background-color: #f9fafb;
+    background-color: #f9fafb !important;
   }
 
   hr{
@@ -52,7 +52,17 @@
     position: relative;
     min-height: 50px;
     margin-top: 10px;
-    margin-bottom: 10px;
+
+    .vue-treeselect--open{
+      .vue-treeselect__control, .vue-treeselect__menu{
+        border: 1px solid #7957d5;
+        box-shadow: 0 0 0 0.125em rgba(121, 87, 213, 0.25);
+      }
+    }
+
+    .vue-treeselect__multi-value-item{
+      font-size: 14px;
+    }
   }
 }
 .image-chooser{

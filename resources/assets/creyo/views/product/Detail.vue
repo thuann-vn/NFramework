@@ -65,7 +65,7 @@
                         </div>
                         <!-- Details -->
                         <div class="column is-4">
-                            <div class="flat-card profile-info-card is-auto overflow-visible">
+                            <div class="flat-card profile-info-card is-auto overflow-visible is-no-border">
                                 <!-- Title -->
                                 <div class="card-title">
                                     <h3>Product availability</h3>
@@ -84,7 +84,7 @@
                             </div>
 
                             <!-- Price Info -->
-                            <div class="flat-card profile-info-card is-auto">
+                            <div class="flat-card profile-info-card is-auto is-no-border">
                                 <!-- Title -->
                                 <div class="card-title">
                                     <h3>Prices</h3>
@@ -103,7 +103,7 @@
                             </div>
 
                             <!-- Organization -->
-                            <div class="flat-card profile-info-card product-organization-card is-auto is-no-border">
+                            <div class="flat-card profile-info-card product-organization-card is-auto is-no-border overflow-visible">
                                 <!-- Title -->
                                 <div class="card-title">
                                     <h3>Organization</h3>

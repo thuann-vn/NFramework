@@ -13,6 +13,10 @@ import VueMce from 'vue-mce';
 import VueFeatherIcon from 'vue-feather-icon';
 import axios from 'axios';
 import VJstree from 'vue-jstree';
+import Treeselect from '@riophae/vue-treeselect';
+
+// import the styles
+import '@riophae/vue-treeselect/dist/vue-treeselect.css';
 
 //Use
 Vue.use(Buefy);
@@ -33,12 +37,12 @@ Vue.component('money-input', require('./components/general/MoneyInput.vue'));
 Vue.component("chosen-select",require('./components/general/ChosenSelect.vue'));
 Vue.component("categories-chooser",require('./components/general/ProductCategoriesChooser.vue'));
 Vue.component("v-jstree", VJstree);
+Vue.component('treeselect', Treeselect);
 
 //Init app
 const app = new Vue({
     el: '#app',
     components: {
-        VJstree
     },
     store,
     router,

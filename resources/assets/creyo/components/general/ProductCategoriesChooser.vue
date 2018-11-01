@@ -1,6 +1,6 @@
 <template>
     <div class="categories-chooser">
-        <v-jstree :data="categories" text-field-name="name" value-field-name="id" show-checkbox multiple whole-row @item-click="itemClick"></v-jstree>
+        <treeselect v-if="!isLoading" v-model="value" placeholder="Choose categories..." search-nested :multiple="true" :flat="true" :options="categories" :default-expand-level="1" @input="inputChanged"></treeselect>
         <b-loading :is-full-page="false" :active.sync="isLoading" :can-cancel="false"></b-loading>
     </div>
 </template>
@@ -17,26 +17,10 @@
             }
         },
         computed: {
-            selectedCategories: function () {
-                let result = [];
-                this.categories.forEach(function (cat) {
-                    if (cat.selected) {
-                        result.push(cat.id);
-                    }
-
-                    //Get child selected
-                    cat.children.forEach(function (child) {
-                        if (child.selected) {
-                            result.push(child.id);
-                        }
-                    })
-                });
-                return result;
-            }
         },
         methods: {
-            itemClick(event) {
-                this.$emit('input', this.selectedCategories)
+            inputChanged(event) {
+                this.$emit('input', this.value)
             }
         },
         mounted: function () {
@@ -44,6 +28,7 @@
             CategoriesAPI.getCategories().then(response => {
                 response.data.forEach(function (cat) {
                     cat.opened = false;
+                    cat.label = cat.name;
 
                     if(self.value.indexOf(cat.id)>=0){
                         cat.selected = true;
@@ -53,6 +38,8 @@
                     //Get child selected
                     cat.children.forEach(function (child) {
                         child.opened = false;
+                        child.label = child.name;
+                        delete child.children;
 
                         if(self.value.indexOf(child.id)>=0){
                             child.selected = true;
@@ -66,6 +53,6 @@
             }).finally(()=>{
                 this.isLoading = false;
             });
-        }
+        },
     };
 </script>
