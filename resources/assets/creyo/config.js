@@ -7,5 +7,9 @@ export const APP_CONFIG = {
         numeral: true,
         numeralThousandsGroupStyle: 'thousand',
         prefix: ''
-    }
+    },
+    defaultLanguage: 'en',
+    languages: [
+        {code: 'en', 'name': 'English'},{code: 'vi', name:'Tiếng Việt'}
+    ]
 }

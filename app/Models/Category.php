@@ -1,11 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Translatable;
-
 
 class Category extends Model
 {
@@ -18,20 +17,20 @@ class Category extends Model
 
     public function products()
     {
-        return $this->belongsToMany('App\Product');
+        return $this->belongsToMany('App\Models\Product');
     }
 
     public function department(){
-        return $this->belongsTo('App\Department','department_id','id');
+        return $this->belongsTo('App\Models\Department','department_id','id');
     }
 
     public function children()
     {
-        return $this->hasMany('App\Category', 'parent_id','id');
+        return $this->hasMany('App\Models\Category', 'parent_id','id');
     }
 
     public function parent()
     {
-        return $this->belongsTo('App\Category', 'parent_id','id');
+        return $this->belongsTo('App\Models\Category', 'parent_id','id');
     }
 }

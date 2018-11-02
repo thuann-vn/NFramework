@@ -1,5 +1,5 @@
 <template>
-    <b-input v-cleave="masks.numeral" v-model="formatedValue" @input.native="getRawValue" type="is-default"></b-input>
+    <b-input v-cleave="masks.numeral" v-model="formatedValue" @input.native="getRawValue"></b-input>
 </template>
 <script>
     export default {

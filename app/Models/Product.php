@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Laravel\Scout\Searchable;
@@ -45,12 +45,12 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->belongsToMany('App\Category');
+        return $this->belongsToMany('App\Models\Category');
     }
 
     public function brand()
     {
-        return $this->belongsTo('App\Brand', 'brand_id', 'id');
+        return $this->belongsTo('App\Models\Brand', 'brand_id', 'id');
     }
 
     public function attributes(){

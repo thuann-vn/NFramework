@@ -9,7 +9,7 @@ use App\Department;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\BrandResource;
 use App\Http\Resources\CategoryResource;
-use App\Http\Resources\ProductsResource;
+use App\Http\Resources\ProductResource;
 use App\Product;
 use App\Category;
 use Cartalyst\Stripe\Api\Products;
@@ -21,7 +21,7 @@ class ShopApiController extends Controller
 {
     public function getFeaturedProducts(Request $request){
 
-        return new ProductsResource(Product::with('variants')->where('featured', true)->inRandomOrder()->take(16)->get());
+        return new ProductResource(Product::with('variants')->where('featured', true)->inRandomOrder()->take(16)->get());
     }
 
     public function getProductList(Request $request){
@@ -55,7 +55,7 @@ class ShopApiController extends Controller
 
             $products = $this->sortProducts($products, request()->sort);
 
-            return ProductsResource::collection($products->paginate($pageSize))->response();
+            return ProductResource::collection($products->paginate($pageSize))->response();
         });
 
         return $data;
@@ -106,7 +106,7 @@ class ShopApiController extends Controller
             $limit = $request->input('limit', 16);
             $products  = Product::with('variants')->where('id', '!=', $productId)->mightAlsoLike()->withTranslation($lang)->limit($limit);
 
-            return ProductsResource::collection($products->get())->response();
+            return ProductResource::collection($products->get())->response();
         });
         return $data;
     }
@@ -125,7 +125,7 @@ class ShopApiController extends Controller
                 return $query ->whereIn('category_id', $categories);
             })->withTranslation($lang)->limit($limit);
 
-            return ProductsResource::collection($products->get())->response();
+            return ProductResource::collection($products->get())->response();
         });
         return $data;
     }

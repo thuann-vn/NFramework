@@ -136,9 +136,9 @@ textarea.textarea {
     }
     &.is-default {
         box-shadow: none;
-        color: $muted-grey-bold;
+        //color: $muted-grey-bold;
         &:focus {
-            border: 1px solid $fade-grey;
+            //border: 1px solid $fade-grey;
         }
     }
 }

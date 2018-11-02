@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default {
-    getBrands(){
+    list(){
         return axios.get('/productBrands')
         .then(response => {
             return response.data

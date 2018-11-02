@@ -37,6 +37,8 @@ Vue.component('money-input', require('./components/general/MoneyInput.vue'));
 Vue.component("chosen-select",require('./components/general/ChosenSelect.vue'));
 Vue.component("categories-chooser",require('./components/general/ProductCategoriesChooser.vue'));
 Vue.component("brand-chooser",require('./components/general/ProductBrandChooser.vue'));
+Vue.component("multilanguage-input",require('./components/general/MultilanguageInput.vue'));
+Vue.component("multilanguage-mce",require('./components/general/MultilanguageMce.vue'));
 Vue.component("v-jstree", VJstree);
 Vue.component('treeselect', Treeselect);
 

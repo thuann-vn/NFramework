@@ -289,22 +289,34 @@ TABLE OF CONTENTS
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-top: 1px solid #d6d6d6;
     line-height: 16px;
     .layout-controls {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        span {
+        font-size: 12px;
+        span{
+            font-size: 12px;
             margin-right: 5px;
-            cursor: pointer;
-            display: block;
-            svg {
-                stroke: $muted-grey;
+
+            &:not(.icon) {
+                margin-right: 5px;
+                cursor: pointer;
+                display: block;
+                svg {
+                    stroke: $muted-grey;
+                }
+                &.is-active svg {
+                    stroke: $primary;
+                }
             }
-            &.is-active svg {
-                stroke: $primary;
-            }
+        }
+    }
+
+    .language-box{
+        .radio{
+            font-size: 12px;
+            padding: 17px 15px;
         }
     }
 }

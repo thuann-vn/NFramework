@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Brand;
+use App\Models\Brand;
 use App\Http\Resources\Api\ProductBrandResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

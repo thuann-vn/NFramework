@@ -1,6 +1,6 @@
 <template>
     <div class="categories-chooser">
-        <treeselect v-if="!isLoading" v-model="value" placeholder="Choose categories..." search-nested :multiple="true" :flat="true" :options="categories" :default-expand-level="1" @input="inputChanged" sortValueBy="INDEX"></treeselect>
+        <treeselect v-if="!isLoading" v-model="selectedCategories" placeholder="Choose categories..." search-nested :multiple="true" :flat="true" :options="categories" :default-expand-level="1" @input="inputChanged" sortValueBy="INDEX"></treeselect>
         <b-loading :is-full-page="false" :active.sync="isLoading" :can-cancel="false"></b-loading>
     </div>
 </template>
@@ -12,6 +12,7 @@
         props: ['value'],
         data: function () {
             return {
+                selectedCategories: [],
                 categories: [],
                 isLoading: true,
             }
@@ -25,7 +26,9 @@
         },
         mounted: function () {
             let self = this;
-            CategoriesAPI.getCategories().then(response => {
+            self.selectedCategories = self.value;
+
+            CategoriesAPI.list().then(response => {
                 response.data.forEach(function (cat) {
                     cat.opened = false;
                     cat.label = cat.name;

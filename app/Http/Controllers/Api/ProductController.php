@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Resources\ProductsResource;
-use App\Product;
+use App\Http\Resources\Api\ProductCollectionResource;
+use App\Http\Resources\Api\ProductResource;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -15,7 +17,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        return ProductsResource::collection(Product::with([])->paginate(10));
+        return ProductCollectionResource::collection(Product::with([])->paginate(10));
     }
 
     /**
@@ -37,7 +39,8 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        Log::info('PRODUCT', [Product::withTranslations()->find($id)]);
+        return new ProductResource(Product::with('translations')->find($id));
     }
 
     /**

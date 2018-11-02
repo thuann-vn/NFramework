@@ -95,7 +95,7 @@
             getData(page = 1) {
                 this.loading = true;
                 this.meta.current_page = page;
-                ImagesApi.getImages(page).then(response => {
+                ImagesApi.list(page).then(response => {
                         this.images = response.data;
                         this.meta = response.meta;
                     }).catch(error => {
@@ -110,7 +110,7 @@
                 let selectedImages = [];
                 this.images.forEach(function (image) {
                     if (image.selected) {
-                        selectedImages.push(_.merge({}, image));
+                        selectedImages.push(_.merge({}, image.file_path));
                     }
                 });
 

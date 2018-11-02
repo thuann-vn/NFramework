@@ -23,7 +23,7 @@ export default new VueRouter({
             component: Products
         },
         {
-            path: '/product/detail',
+            path: '/product/detail/:id',
             name: 'productDetail',
             component: ProductDetail
         },

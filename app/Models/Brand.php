@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +15,6 @@ class Brand extends Model
     protected $translatable = ['name', 'slug'];
 
     public  function products(){
-        return $this->hasMany('App\Product', 'brand_id', 'id');
+        return $this->hasMany('App\Models\Product', 'brand_id', 'id');
     }
 }

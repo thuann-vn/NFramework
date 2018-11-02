@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -30,10 +30,10 @@ class User extends \TCG\Voyager\Models\User
 
     public function orders()
     {
-        return $this->hasMany('App\Order');
+        return $this->hasMany('App\Models\Order');
     }
 
     public function addressBook(){
-        return$this->hasMany('App\UserAddress');
+        return$this->hasMany('App\Models\UserAddress');
     }
 }

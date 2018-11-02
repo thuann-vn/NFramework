@@ -1,33 +1,43 @@
 <template>
     <div class="section">
-        <div class="container">
+        <div class="container" v-if="!loading">
             <div class="columns account-header">
                 <div class="column is-10 is-offset-1 is-tablet-landscape-padded">
                     <!-- Title -->
                    <page-title :title="title"></page-title>
+                    <div class="listing-controls">
+                        <div class="layout-controls">
+                            <button class="button is-primary is-link">
+                                <b-icon icon="check-all" type="is-light"></b-icon>
+                                <span>Save changes</span>
+                            </button>
+                        </div>
+                        <!-- Sort -->
+                        <div class="language-box">
+                            <b-field>
+                                <b-radio-button v-model="language" :native-value="lang.code" v-for="(lang, index) in languages" v-bind:key="index">
+                                    <span>{{lang.name}}</span>
+                                </b-radio-button>
+                            </b-field>
+                        </div>
+                    </div>
 
                     <!-- Account layout -->
                     <div class="columns is-account-grid is-multiline is-element-details">
                         <div class="column is-8">
                             <!-- User card -->
                             <div class="flat-card is-component profile-info-card is-auto">
-                                <!-- Title -->
-                                <div class="card-title">
-                                    <h3>Product information</h3>
-                                </div>
                                 <div class="card-body">
-                                    <div class="control">
-                                        <label>Title</label>
-                                        <input class="input is-default" type="text" placeholder="" v-bind="product.name">
-                                    </div>
-                                    <div class="control">
-                                        <label>Description</label>
-                                        <vue-mce :config="config" />
-                                    </div>
+                                    <b-field label="Title" type="is-default">
+                                        <multilanguage-input v-model="product" param="name" :language.sync="language"></multilanguage-input>
+                                    </b-field>
+                                    <b-field label="Description" type="is-default">
+                                        <multilanguage-mce v-model="product" param="description" :language.sync="language"></multilanguage-mce>
+                                    </b-field>
                                 </div>
                             </div>
                             <!-- Gold Customer card -->
-                            <div class="flat-card profile-info-card is-auto overflow-visible"><!-- Title -->
+                            <div class="flat-card profile-info-card is-auto overflow-visible is-no-border"><!-- Title -->
                                 <div class="card-title">
                                     <h3>Product images</h3>
                                     <div class="edit-account has-simple-popover popover-hidden-mobile" data-content="Edit Account" data-placement="top">
@@ -45,9 +55,9 @@
 
                                     <div class="product-images">
                                         <draggable v-model="product.images">
-                                            <div class="product-image" :class="{'is-6':index==0, 'is-3':index!=0}" v-for="(image, index) in product.images">
+                                            <div class="product-image" :class="{'is-6':index==0, 'is-3':index != 0}" v-for="(image, index) in product.images">
                                                 <div class="image" :class="{'is-256x256':index==0, 'is-128x128':index!=0}">
-                                                    <img :src="image.file_path"/>
+                                                    <img :src="image"/>
 
                                                     <div class="overlay">
                                                         <b-tooltip label="Remove">
@@ -91,12 +101,11 @@
                                 </div>
                                 <!-- Billing Address -->
                                 <div class="card-body">
-                                    <b-field label="Price"
-                                             type="is-default">
+                                    <b-field label="Price" type="is-default">
                                         <money-input v-model="product.price"></money-input>
                                     </b-field>
                                     <b-field label="Compare Price" type="is-default">
-                                        <money-input v-model="product.comparePrice"></money-input>
+                                        <money-input v-model="product.regular_price"></money-input>
                                     </b-field>
                                 </div>
                                 <!-- /Address Form -->
@@ -111,7 +120,7 @@
                                 <div class="card-body">
                                     <!-- Brand -->
                                     <b-field label="Brand" type="is-default">
-                                       <brand-chooser v-model="product.brandId"></brand-chooser>
+                                       <brand-chooser v-model="product.brand_id"></brand-chooser>
                                     </b-field>
                                     <!-- /Brand -->
                                     <hr/>
@@ -135,42 +144,43 @@
     import draggable from 'vuedraggable';
     import ProductApi from '@/services/api/products';
     import BrandChooser from "../../components/general/ProductBrandChooser.vue";
+    import MultilanguageMce from "../../components/general/MultilanguageMce.vue";
 
     export default {
         data: function() {
             return {
+                languages: this.$store.state.languages,
+                language: 'en',
+                loading: true,
                 product: {
                     images: [],
                     status: 'FEATURED',
                     price: 0,
-                    comparePrice: 0,
-                    brandId: 10,
-                    categories: [116]
+                    regular_price: 0,
+                    brand_id: 0,
+                    categories: []
                 },
                 isImageChooserShow: true,
-                config: {
-                    themes: 'oxide',
-                    branding: false,
-                    menubar: false,
-                    min_height: 200,
-                    statusbar: false,
-                    extended_valid_elements: 'img[class=myclass|!src|border:0|alt|title|width|height|style]',
-                    plugins: 'print preview fullpage autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr lists textcolor imagetools colorpicker textpattern autoresize autolink code',
-                    toolbar: 'bold italic strikethrough | forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist | image media | code',
-                    image_advtab: true
-                },
             };
 
         },
         computed: {
             title:function () {
-                return this.product.id?'EDIT PRODUCT ' + this.product.name:'ADD PRODUCT';
+                return this.product.id?'EDIT PRODUCT':'ADD PRODUCT';
             },
             status: function(){
                 return ProductApi.status;
             }
         },
         methods: {
+            getProductDetail: function(){
+                let self = this;
+                self.loading = true;
+                ProductApi.show(this.$route.params.id).then(function(response){
+                    self.loading = false;
+                    self.product = response.data;
+                });
+            },
             openImageChooser : function(){
                 this.$refs.imageChooser.open();
             },
@@ -199,11 +209,15 @@
             }
         },
         mounted: function(){
-            if(localStorage.getItem('images')){
-                this.product.images = JSON.parse(localStorage.getItem('images'));
+            //Get product data
+            if(this.$route.params.id != 'new' && this.$route.params.id > 0){
+                this.getProductDetail();
+                return;
             }
+            this.loading = false;
         },
         components:{
+            MultilanguageMce,
             BrandChooser,
             draggable
         }

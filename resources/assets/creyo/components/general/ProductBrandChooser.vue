@@ -23,13 +23,18 @@
                 this.$emit('input', this.selectedBrand)
             }
         },
+        watch: {
+            value: function (val) {
+                this.selectedBrand = val;
+            },
+        },
         mounted: function () {
             let self = this;
             self.selectedBrand = self.value;
-            BrandsApi.getBrands().then(response => {
-                this.brands = response.data;
+            BrandsApi.list().then(response => {
+                self.brands = response.data;
             }).finally(()=>{
-                this.isLoading = false;
+                self.isLoading = false;
             });
         },
     };
