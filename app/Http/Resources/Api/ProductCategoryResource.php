@@ -19,7 +19,6 @@ class ProductCategoryResource extends Resource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'translated_name' => $this->getTranslatedAttribute('name'),
             'children' => ProductCategoryResource::collection($this->children),
         ];
     }
