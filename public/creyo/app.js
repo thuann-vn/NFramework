@@ -27,9 +27,9 @@ var APP_CONFIG = {
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(349)
+var __vue_script__ = __webpack_require__(350)
 /* template */
-var __vue_template__ = __webpack_require__(351)
+var __vue_template__ = __webpack_require__(352)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -69,7 +69,55 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 268:
+/***/ 24:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(353)
+/* template */
+var __vue_template__ = __webpack_require__(354)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\creyo\\components\\general\\MultilanguageMce.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1c670b34", Component.options)
+  } else {
+    hotAPI.reload("data-v-1c670b34", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 269:
 /***/ (function(module, exports) {
 
 function _defineProperty(obj, key, value) {
@@ -91,7 +139,7 @@ module.exports = _defineProperty;
 
 /***/ }),
 
-/***/ 269:
+/***/ 270:
 /***/ (function(module, exports) {
 
 /**
@@ -129,10 +177,10 @@ module.exports = isObject;
 
 /***/ }),
 
-/***/ 270:
+/***/ 271:
 /***/ (function(module, exports, __webpack_require__) {
 
-var freeGlobal = __webpack_require__(612);
+var freeGlobal = __webpack_require__(615);
 
 /** Detect free variable `self`. */
 var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
@@ -145,11 +193,11 @@ module.exports = root;
 
 /***/ }),
 
-/***/ 271:
+/***/ 272:
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(269),
-    isSymbol = __webpack_require__(613);
+var isObject = __webpack_require__(270),
+    isSymbol = __webpack_require__(616);
 
 /** Used as references for various `Number` constants. */
 var NAN = 0 / 0;
@@ -218,10 +266,10 @@ module.exports = toNumber;
 
 /***/ }),
 
-/***/ 272:
+/***/ 273:
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(270);
+var root = __webpack_require__(271);
 
 /** Built-in value references. */
 var Symbol = root.Symbol;
@@ -231,7 +279,7 @@ module.exports = Symbol;
 
 /***/ }),
 
-/***/ 323:
+/***/ 324:
 /***/ (function(module, exports) {
 
 
@@ -327,40 +375,40 @@ module.exports = function (css) {
 
 /***/ }),
 
-/***/ 326:
+/***/ 327:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(327);
+module.exports = __webpack_require__(328);
 
 
 /***/ }),
 
-/***/ 327:
+/***/ 328:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_buefy__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_buefy___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_buefy__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_buefy_dist_buefy_css__ = __webpack_require__(333);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_buefy_dist_buefy_css__ = __webpack_require__(334);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_buefy_dist_buefy_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_buefy_dist_buefy_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router__ = __webpack_require__(335);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_store__ = __webpack_require__(353);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_mce__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__store_store__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_mce__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vue_mce___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_vue_mce__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_feather_icon__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_feather_icon__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_vue_feather_icon___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_vue_feather_icon__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_jstree__ = __webpack_require__(267);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_jstree__ = __webpack_require__(268);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vue_jstree___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vue_jstree__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__riophae_vue_treeselect__ = __webpack_require__(598);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__riophae_vue_treeselect__ = __webpack_require__(601);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__riophae_vue_treeselect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__riophae_vue_treeselect__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__riophae_vue_treeselect_dist_vue_treeselect_css__ = __webpack_require__(629);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__riophae_vue_treeselect_dist_vue_treeselect_css__ = __webpack_require__(632);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__riophae_vue_treeselect_dist_vue_treeselect_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__riophae_vue_treeselect_dist_vue_treeselect_css__);
 window.Vue = __webpack_require__(2);
-__webpack_require__(328);
-__webpack_require__(332);
+__webpack_require__(329);
+__webpack_require__(333);
 
 //Import module
 
@@ -390,15 +438,15 @@ Vue.config.productionTip = false;
 __WEBPACK_IMPORTED_MODULE_6_axios___default.a.defaults.baseURL = __WEBPACK_IMPORTED_MODULE_3__store_store__["a" /* default */].state.API_URL;
 
 //Components
-Vue.component('pagination', __webpack_require__(631));
-Vue.component('page-title', __webpack_require__(634));
-Vue.component('image-chooser', __webpack_require__(637));
-Vue.component('money-input', __webpack_require__(649));
-Vue.component("chosen-select", __webpack_require__(652));
-Vue.component("categories-chooser", __webpack_require__(655));
+Vue.component('pagination', __webpack_require__(634));
+Vue.component('page-title', __webpack_require__(637));
+Vue.component('image-chooser', __webpack_require__(640));
+Vue.component('money-input', __webpack_require__(652));
+Vue.component("chosen-select", __webpack_require__(655));
+Vue.component("categories-chooser", __webpack_require__(658));
 Vue.component("brand-chooser", __webpack_require__(23));
-Vue.component("multilanguage-input", __webpack_require__(664));
-Vue.component("multilanguage-mce", __webpack_require__(667));
+Vue.component("multilanguage-input", __webpack_require__(662));
+Vue.component("multilanguage-mce", __webpack_require__(24));
 Vue.component("v-jstree", __WEBPACK_IMPORTED_MODULE_7_vue_jstree___default.a);
 Vue.component('treeselect', __WEBPACK_IMPORTED_MODULE_8__riophae_vue_treeselect___default.a);
 
@@ -412,14 +460,14 @@ var app = new Vue({
 
 /***/ }),
 
-/***/ 328:
+/***/ 329:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios_progress_bar__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios_progress_bar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios_progress_bar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios_progress_bar_dist_nprogress_css__ = __webpack_require__(329);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios_progress_bar_dist_nprogress_css__ = __webpack_require__(330);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios_progress_bar_dist_nprogress_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios_progress_bar_dist_nprogress_css__);
 
 window._ = __webpack_require__(7);
@@ -448,7 +496,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0_axios_progress_bar__["loadProgressBar"])();
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
-window.chosen = __webpack_require__(331);
+window.chosen = __webpack_require__(332);
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
@@ -480,13 +528,13 @@ if (token) {
 
 /***/ }),
 
-/***/ 329:
+/***/ 330:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(330);
+var content = __webpack_require__(331);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -512,7 +560,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 330:
+/***/ 331:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -527,7 +575,7 @@ exports.push([module.i, "/* Make clicks pass-through */\n#nprogress {\n  pointer
 
 /***/ }),
 
-/***/ 331:
+/***/ 332:
 /***/ (function(module, exports) {
 
 (function() {
@@ -1881,7 +1929,7 @@ exports.push([module.i, "/* Make clicks pass-through */\n#nprogress {\n  pointer
 
 /***/ }),
 
-/***/ 332:
+/***/ 333:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1955,13 +2003,13 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.directive('cleave', {
 
 /***/ }),
 
-/***/ 333:
+/***/ 334:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(334);
+var content = __webpack_require__(335);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -1987,7 +2035,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 334:
+/***/ 335:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -2002,18 +2050,18 @@ exports.push([module.i, "/*! Buefy v0.7.0 | MIT License | github.com/buefy/buefy
 
 /***/ }),
 
-/***/ 335:
+/***/ 336:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Welcome_vue__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Welcome_vue__ = __webpack_require__(337);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__views_Welcome_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__views_Welcome_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_product_List_vue__ = __webpack_require__(339);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_product_List_vue__ = __webpack_require__(340);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__views_product_List_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__views_product_List_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_product_Detail_vue__ = __webpack_require__(342);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_product_Detail_vue__ = __webpack_require__(343);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__views_product_Detail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__views_product_Detail_vue__);
 
 
@@ -2037,7 +2085,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
         name: 'products',
         component: __WEBPACK_IMPORTED_MODULE_3__views_product_List_vue___default.a
     }, {
-        path: '/product/detail/:id',
+        path: '/product/:id',
         name: 'productDetail',
         component: __WEBPACK_IMPORTED_MODULE_4__views_product_Detail_vue___default.a
     }]
@@ -2045,15 +2093,15 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 
 /***/ }),
 
-/***/ 336:
+/***/ 337:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(337)
+var __vue_script__ = __webpack_require__(338)
 /* template */
-var __vue_template__ = __webpack_require__(338)
+var __vue_template__ = __webpack_require__(339)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -2093,7 +2141,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 337:
+/***/ 338:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2252,204 +2300,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 338:
+/***/ 339:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "section" }, [
-        _c("div", { staticClass: "container" }, [
-          _c("div", { staticClass: "columns category-header" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "column is-10 is-offset-1 is-tablet-landscape-padded"
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "category-title no-border is-padded" },
-                  [
-                    _c("h2", [_vm._v("SHOP")]),
-                    _vm._v(" "),
-                    _c("img", {
-                      staticClass: "brand-filigrane",
-                      attrs: {
-                        src: "/images/logo/nephos-greyscale.svg",
-                        alt: ""
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "is-categories-grid" }, [
-                  _c("div", { staticClass: "tile is-ancestor" }, [
-                    _c("div", { staticClass: "tile is-vertical is-8" }, [
-                      _c("div", { staticClass: "tile" }, [
+  return _c("div", [
+    _c("div", { staticClass: "section" }, [
+      _c("div", { staticClass: "container" }, [
+        _c("div", { staticClass: "columns category-header" }, [
+          _c(
+            "div",
+            {
+              staticClass: "column is-10 is-offset-1 is-tablet-landscape-padded"
+            },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "is-categories-grid" }, [
+                _c("div", { staticClass: "tile is-ancestor" }, [
+                  _c("div", { staticClass: "tile is-vertical is-8" }, [
+                    _c("div", { staticClass: "tile" }, [
+                      _c("div", { staticClass: "tile is-parent is-vertical" }, [
                         _c(
-                          "div",
-                          { staticClass: "tile is-parent is-vertical" },
+                          "article",
+                          {
+                            staticClass: "tile is-child has-background-image",
+                            attrs: {
+                              "data-background": "/images/bg/accessories.jpeg",
+                              onClick: "return true"
+                            }
+                          },
                           [
                             _c(
-                              "article",
-                              {
-                                staticClass:
-                                  "tile is-child has-background-image",
-                                attrs: {
-                                  "data-background":
-                                    "/images/bg/accessories.jpeg",
-                                  onClick: "return true"
-                                }
-                              },
+                              "div",
+                              { staticClass: "tile-content is-small" },
                               [
                                 _c(
-                                  "div",
-                                  { staticClass: "tile-content is-small" },
-                                  [
-                                    _c(
-                                      "h2",
-                                      { staticClass: "shop-category is-small" },
-                                      [_vm._v("Accessories")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "divider" }),
-                                    _vm._v(" "),
-                                    _c("p", [_vm._v("Inner Comfort")]),
-                                    _vm._v(" "),
-                                    _c("p", { staticClass: "is-italic" }, [
-                                      _vm._v(
-                                        "Finest products collected amongst the countrie's best artisans."
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "products is-absolute" },
-                                      [
-                                        _vm._v(
-                                          "\n                                                    119 "
-                                        ),
-                                        _c("span", [_vm._v("Products")])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass: "action",
-                                        attrs: { href: "products.html" }
-                                      },
-                                      [
-                                        _c("span", [_vm._v("Discover")]),
-                                        _vm._v(" "),
-                                        _c("i", {
-                                          attrs: {
-                                            "data-feather": "chevron-right"
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  ]
+                                  "h2",
+                                  { staticClass: "shop-category is-small" },
+                                  [_vm._v("Accessories")]
                                 ),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "tile-overlay" })
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "article",
-                              {
-                                staticClass:
-                                  "tile is-child has-background-image",
-                                attrs: {
-                                  "data-background": "/images/bg/kitchen.jpeg",
-                                  onClick: "return true"
-                                }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  { staticClass: "tile-content is-small" },
-                                  [
-                                    _c(
-                                      "h2",
-                                      { staticClass: "shop-category is-small" },
-                                      [_vm._v("Kitchen")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "divider" }),
-                                    _vm._v(" "),
-                                    _c("p", [_vm._v("Inner Comfort")]),
-                                    _vm._v(" "),
-                                    _c("p", { staticClass: "is-italic" }, [
-                                      _vm._v(
-                                        "Finest products collected amongst the countrie's best artisans."
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "products is-absolute" },
-                                      [
-                                        _vm._v(
-                                          "\n                                                    187 "
-                                        ),
-                                        _c("span", [_vm._v("Products")])
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass: "action",
-                                        attrs: { href: "products.html" }
-                                      },
-                                      [
-                                        _c("span", [_vm._v("Discover")]),
-                                        _vm._v(" "),
-                                        _c("i", {
-                                          attrs: {
-                                            "data-feather": "chevron-right"
-                                          }
-                                        })
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "tile-overlay" })
-                              ]
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "tile is-parent" }, [
-                          _c(
-                            "article",
-                            {
-                              staticClass:
-                                "tile is-child has-min-height has-background-image",
-                              attrs: {
-                                "data-background": "/images/bg/house.jpeg",
-                                onClick: "return true"
-                              }
-                            },
-                            [
-                              _c("div", { staticClass: "tile-content" }, [
-                                _c("h2", { staticClass: "shop-category" }, [
-                                  _vm._v("House")
-                                ]),
                                 _vm._v(" "),
                                 _c("div", { staticClass: "divider" }),
                                 _vm._v(" "),
@@ -2461,18 +2354,13 @@ var staticRenderFns = [
                                   )
                                 ]),
                                 _vm._v(" "),
-                                _c("div", { staticClass: "products" }, [
-                                  _vm._v(
-                                    "\n                                                    268 "
-                                  ),
-                                  _c("span", [_vm._v("Products")])
-                                ]),
+                                _vm._m(1),
                                 _vm._v(" "),
                                 _c(
-                                  "a",
+                                  "router-link",
                                   {
                                     staticClass: "action",
-                                    attrs: { href: "products.html" }
+                                    attrs: { to: "/products" }
                                   },
                                   [
                                     _c("span", [_vm._v("Discover")]),
@@ -2482,130 +2370,251 @@ var staticRenderFns = [
                                     })
                                   ]
                                 )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "tile-overlay" })
-                            ]
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "tile is-parent" }, [
-                        _c(
-                          "article",
-                          {
-                            staticClass:
-                              "tile is-child is-danger has-min-height has-background-image",
-                            attrs: {
-                              "data-background": "/images/bg/kids.jpg",
-                              onClick: "return true"
-                            }
-                          },
-                          [
-                            _c("div", { staticClass: "tile-content" }, [
-                              _c("h2", { staticClass: "shop-category" }, [
-                                _vm._v("For kids")
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "divider" }),
-                              _vm._v(" "),
-                              _c("p", [_vm._v("Their Playground")]),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "is-italic" }, [
-                                _vm._v(
-                                  "Finest products collected amongst the countrie's best artisans."
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "products" }, [
-                                _vm._v(
-                                  "\n                                                376 "
-                                ),
-                                _c("span", [_vm._v("Products")])
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "a",
-                                {
-                                  staticClass: "action",
-                                  attrs: { href: "products.html" }
-                                },
-                                [
-                                  _c("span", [_vm._v("Discover")]),
-                                  _vm._v(" "),
-                                  _c("i", {
-                                    attrs: { "data-feather": "chevron-right" }
-                                  })
-                                ]
-                              )
-                            ]),
+                              ],
+                              1
+                            ),
                             _vm._v(" "),
                             _c("div", { staticClass: "tile-overlay" })
                           ]
-                        )
-                      ])
+                        ),
+                        _vm._v(" "),
+                        _vm._m(2)
+                      ]),
+                      _vm._v(" "),
+                      _vm._m(3)
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "tile is-parent" }, [
-                      _c(
-                        "article",
-                        {
-                          staticClass: "tile is-child has-background-image",
-                          attrs: {
-                            "data-background": "/images/bg/office.jpeg",
-                            onClick: "return true"
-                          }
-                        },
-                        [
-                          _c("div", { staticClass: "tile-content" }, [
-                            _c("h2", { staticClass: "shop-category" }, [
-                              _vm._v("Office")
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "divider" }),
-                            _vm._v(" "),
-                            _c("p", [_vm._v("Premium Office furniture")]),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "is-italic" }, [
-                              _vm._v(
-                                "Finest products collected amongst the countrie's best artisans."
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "products" }, [
-                              _vm._v(
-                                "\n                                            391 "
-                              ),
-                              _c("span", [_vm._v("Products")])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "a",
-                              {
-                                staticClass: "action",
-                                attrs: { href: "products.html" }
-                              },
-                              [
-                                _c("span", [_vm._v("Discover")]),
-                                _vm._v(" "),
-                                _c("i", {
-                                  attrs: { "data-feather": "chevron-right" }
-                                })
-                              ]
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "tile-overlay" })
-                        ]
-                      )
-                    ])
-                  ])
+                    _vm._m(4)
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(5)
                 ])
-              ]
-            )
-          ])
+              ])
+            ]
+          )
         ])
       ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "category-title no-border is-padded" }, [
+      _c("h2", [_vm._v("SHOP")]),
+      _vm._v(" "),
+      _c("img", {
+        staticClass: "brand-filigrane",
+        attrs: { src: "/images/logo/nephos-greyscale.svg", alt: "" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "products is-absolute" }, [
+      _vm._v("\n                                                    119 "),
+      _c("span", [_vm._v("Products")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "article",
+      {
+        staticClass: "tile is-child has-background-image",
+        attrs: {
+          "data-background": "/images/bg/kitchen.jpeg",
+          onClick: "return true"
+        }
+      },
+      [
+        _c("div", { staticClass: "tile-content is-small" }, [
+          _c("h2", { staticClass: "shop-category is-small" }, [
+            _vm._v("Kitchen")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "divider" }),
+          _vm._v(" "),
+          _c("p", [_vm._v("Inner Comfort")]),
+          _vm._v(" "),
+          _c("p", { staticClass: "is-italic" }, [
+            _vm._v(
+              "Finest products collected amongst the countrie's best artisans."
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "products is-absolute" }, [
+            _vm._v(
+              "\n                                                    187 "
+            ),
+            _c("span", [_vm._v("Products")])
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "action", attrs: { href: "products.html" } }, [
+            _c("span", [_vm._v("Discover")]),
+            _vm._v(" "),
+            _c("i", { attrs: { "data-feather": "chevron-right" } })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "tile-overlay" })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tile is-parent" }, [
+      _c(
+        "article",
+        {
+          staticClass: "tile is-child has-min-height has-background-image",
+          attrs: {
+            "data-background": "/images/bg/house.jpeg",
+            onClick: "return true"
+          }
+        },
+        [
+          _c("div", { staticClass: "tile-content" }, [
+            _c("h2", { staticClass: "shop-category" }, [_vm._v("House")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "divider" }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Inner Comfort")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "is-italic" }, [
+              _vm._v(
+                "Finest products collected amongst the countrie's best artisans."
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "products" }, [
+              _vm._v(
+                "\n                                                    268 "
+              ),
+              _c("span", [_vm._v("Products")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              { staticClass: "action", attrs: { href: "products.html" } },
+              [
+                _c("span", [_vm._v("Discover")]),
+                _vm._v(" "),
+                _c("i", { attrs: { "data-feather": "chevron-right" } })
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "tile-overlay" })
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tile is-parent" }, [
+      _c(
+        "article",
+        {
+          staticClass:
+            "tile is-child is-danger has-min-height has-background-image",
+          attrs: {
+            "data-background": "/images/bg/kids.jpg",
+            onClick: "return true"
+          }
+        },
+        [
+          _c("div", { staticClass: "tile-content" }, [
+            _c("h2", { staticClass: "shop-category" }, [_vm._v("For kids")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "divider" }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Their Playground")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "is-italic" }, [
+              _vm._v(
+                "Finest products collected amongst the countrie's best artisans."
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "products" }, [
+              _vm._v("\n                                                376 "),
+              _c("span", [_vm._v("Products")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              { staticClass: "action", attrs: { href: "products.html" } },
+              [
+                _c("span", [_vm._v("Discover")]),
+                _vm._v(" "),
+                _c("i", { attrs: { "data-feather": "chevron-right" } })
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "tile-overlay" })
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tile is-parent" }, [
+      _c(
+        "article",
+        {
+          staticClass: "tile is-child has-background-image",
+          attrs: {
+            "data-background": "/images/bg/office.jpeg",
+            onClick: "return true"
+          }
+        },
+        [
+          _c("div", { staticClass: "tile-content" }, [
+            _c("h2", { staticClass: "shop-category" }, [_vm._v("Office")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "divider" }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Premium Office furniture")]),
+            _vm._v(" "),
+            _c("p", { staticClass: "is-italic" }, [
+              _vm._v(
+                "Finest products collected amongst the countrie's best artisans."
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "products" }, [
+              _vm._v("\n                                            391 "),
+              _c("span", [_vm._v("Products")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              { staticClass: "action", attrs: { href: "products.html" } },
+              [
+                _c("span", [_vm._v("Discover")]),
+                _vm._v(" "),
+                _c("i", { attrs: { "data-feather": "chevron-right" } })
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "tile-overlay" })
+        ]
+      )
     ])
   }
 ]
@@ -2620,15 +2629,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 339:
+/***/ 340:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(340)
+var __vue_script__ = __webpack_require__(341)
 /* template */
-var __vue_template__ = __webpack_require__(341)
+var __vue_template__ = __webpack_require__(342)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -2668,11 +2677,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 340:
+/***/ 341:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
 //
 //
 //
@@ -2966,7 +2977,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 341:
+/***/ 342:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -3081,24 +3092,26 @@ var render = function() {
                                   staticClass:
                                     "action-link is-like has-simple-popover",
                                   attrs: {
-                                    "data-content": "Add to Wishlist",
+                                    "data-content": "Edit product",
                                     "data-placement": "top"
                                   }
                                 },
                                 [
-                                  _c("a", { attrs: { href: "#" } }, [
-                                    _c("i", {
-                                      directives: [
-                                        {
-                                          name: "feather",
-                                          rawName: "v-feather"
+                                  _c(
+                                    "router-link",
+                                    {
+                                      attrs: {
+                                        to: {
+                                          name: "productDetail",
+                                          params: { id: product.id }
                                         }
-                                      ],
-                                      staticClass: "feather-icons",
-                                      attrs: { "data-feather": "heart" }
-                                    })
-                                  ])
-                                ]
+                                      }
+                                    },
+                                    [_c("feather-heart")],
+                                    1
+                                  )
+                                ],
+                                1
                               ),
                               _vm._v(" "),
                               _c(
@@ -3113,23 +3126,17 @@ var render = function() {
                                   staticClass:
                                     "action-link is-remove has-simple-popover",
                                   attrs: {
-                                    "data-content": "Remove from Cart",
+                                    "data-content": "Delete",
                                     "data-placement": "top"
                                   }
                                 },
                                 [
-                                  _c("a", { attrs: { href: "#" } }, [
-                                    _c("i", {
-                                      directives: [
-                                        {
-                                          name: "feather",
-                                          rawName: "v-feather"
-                                        }
-                                      ],
-                                      staticClass: "feather-icons",
-                                      attrs: { "data-feather": "x" }
-                                    })
-                                  ])
+                                  _c(
+                                    "a",
+                                    { attrs: { href: "#" } },
+                                    [_c("feather-x")],
+                                    1
+                                  )
                                 ]
                               )
                             ])
@@ -3484,19 +3491,19 @@ if (false) {
 
 /***/ }),
 
-/***/ 342:
+/***/ 343:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(343)
+  __webpack_require__(344)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(347)
+var __vue_script__ = __webpack_require__(348)
 /* template */
-var __vue_template__ = __webpack_require__(352)
+var __vue_template__ = __webpack_require__(355)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -3536,17 +3543,17 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 343:
+/***/ 344:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(344);
+var content = __webpack_require__(345);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(345)("3a1be2ca", content, false, {});
+var update = __webpack_require__(346)("3a1be2ca", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -3563,7 +3570,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 344:
+/***/ 345:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -3578,7 +3585,7 @@ exports.push([module.i, "\n.product-images{\n    margin: -5px;\n}\n.product-imag
 
 /***/ }),
 
-/***/ 345:
+/***/ 346:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -3597,7 +3604,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(346)
+var listToStyles = __webpack_require__(347)
 
 /*
 type StyleObject = {
@@ -3807,7 +3814,7 @@ function applyToTag (styleElement, obj) {
 
 /***/ }),
 
-/***/ 346:
+/***/ 347:
 /***/ (function(module, exports) {
 
 /**
@@ -3841,18 +3848,22 @@ module.exports = function listToStyles (parentId, list) {
 
 /***/ }),
 
-/***/ 347:
+/***/ 348:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuedraggable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuedraggable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_api_products__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_api_products__ = __webpack_require__(349);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_ProductBrandChooser_vue__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_general_ProductBrandChooser_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_general_ProductBrandChooser_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_general_MultilanguageMce_vue__ = __webpack_require__(667);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_general_MultilanguageMce_vue__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_general_MultilanguageMce_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_general_MultilanguageMce_vue__);
+//
+//
+//
+//
 //
 //
 //
@@ -4081,7 +4092,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 348:
+/***/ 349:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4105,12 +4116,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 349:
+/***/ 350:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_api_brands__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_api_brands__ = __webpack_require__(351);
 //
 //
 //
@@ -4153,7 +4164,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 350:
+/***/ 351:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4171,7 +4182,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 351:
+/***/ 352:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4211,7 +4222,102 @@ if (false) {
 
 /***/ }),
 
-/***/ 352:
+/***/ 353:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: 'multilanguage-mce',
+    props: ['value', 'param', 'language'],
+    data: function data() {
+        return {
+            defaultLanguage: this.$store.state.defaultLanguage,
+            languages: this.$store.state.languages,
+            config: {
+                themes: 'oxide',
+                branding: false,
+                menubar: false,
+                min_height: 200,
+                statusbar: false,
+                extended_valid_elements: 'img[class=myclass|!src|border:0|alt|title|width|height|style]',
+                plugins: 'print preview fullpage autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr lists textcolor imagetools colorpicker textpattern autoresize autolink code',
+                toolbar: 'bold italic strikethrough | forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist | image media | code',
+                image_advtab: true
+            }
+        };
+    }
+});
+
+/***/ }),
+
+/***/ 354:
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    _vm._l(_vm.languages, function(lang) {
+      return _c(
+        "div",
+        [
+          lang.code == _vm.defaultLanguage &&
+          _vm.language == _vm.defaultLanguage
+            ? _c("vue-mce", {
+                attrs: { config: _vm.config },
+                model: {
+                  value: _vm.value[_vm.param],
+                  callback: function($$v) {
+                    _vm.$set(_vm.value, _vm.param, $$v)
+                  },
+                  expression: "value[param]"
+                }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          lang.code != _vm.defaultLanguage && lang.code == _vm.language
+            ? _c("vue-mce", {
+                attrs: { config: _vm.config },
+                model: {
+                  value: _vm.value[_vm.param + "_" + lang.code],
+                  callback: function($$v) {
+                    _vm.$set(_vm.value, _vm.param + "_" + lang.code, $$v)
+                  },
+                  expression: "value[param+ '_' + lang.code]"
+                }
+              })
+            : _vm._e()
+        ],
+        1
+      )
+    })
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1c670b34", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 355:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -4235,20 +4341,41 @@ var render = function() {
                   _c("page-title", { attrs: { title: _vm.title } }),
                   _vm._v(" "),
                   _c("div", { staticClass: "listing-controls" }, [
-                    _c("div", { staticClass: "layout-controls" }, [
-                      _c(
-                        "button",
-                        { staticClass: "button is-primary is-link" },
-                        [
-                          _c("b-icon", {
-                            attrs: { icon: "check-all", type: "is-light" }
-                          }),
-                          _vm._v(" "),
-                          _c("span", [_vm._v("Save changes")])
-                        ],
-                        1
-                      )
-                    ]),
+                    _c(
+                      "div",
+                      { staticClass: "layout-controls" },
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "button is-blue is-link mr-5",
+                            attrs: { to: { name: "products" } }
+                          },
+                          [
+                            _c("b-icon", {
+                              attrs: { icon: "arrow-left", type: "is-light" }
+                            }),
+                            _vm._v(" "),
+                            _c("span", [_vm._v("Back")])
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          { staticClass: "button is-sucess is-link" },
+                          [
+                            _c("b-icon", {
+                              attrs: { icon: "check-all", type: "is-light" }
+                            }),
+                            _vm._v(" "),
+                            _c("span", [_vm._v("Save changes")])
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    ),
                     _vm._v(" "),
                     _c(
                       "div",
@@ -4773,13 +4900,13 @@ if (false) {
 
 /***/ }),
 
-/***/ 353:
+/***/ 356:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config__ = __webpack_require__(20);
 
 
@@ -4876,7 +5003,367 @@ function toComment(sourceMap) {
 
 /***/ }),
 
-/***/ 598:
+/***/ 6:
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+
+var stylesInDom = {};
+
+var	memoize = function (fn) {
+	var memo;
+
+	return function () {
+		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+		return memo;
+	};
+};
+
+var isOldIE = memoize(function () {
+	// Test for IE <= 9 as proposed by Browserhacks
+	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+	// Tests for existence of standard globals is to allow style-loader
+	// to operate correctly into non-standard environments
+	// @see https://github.com/webpack-contrib/style-loader/issues/177
+	return window && document && document.all && !window.atob;
+});
+
+var getElement = (function (fn) {
+	var memo = {};
+
+	return function(selector) {
+		if (typeof memo[selector] === "undefined") {
+			memo[selector] = fn.call(this, selector);
+		}
+
+		return memo[selector]
+	};
+})(function (target) {
+	return document.querySelector(target)
+});
+
+var singleton = null;
+var	singletonCounter = 0;
+var	stylesInsertedAtTop = [];
+
+var	fixUrls = __webpack_require__(324);
+
+module.exports = function(list, options) {
+	if (typeof DEBUG !== "undefined" && DEBUG) {
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+	}
+
+	options = options || {};
+
+	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
+
+	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+	// tags it will allow on a page
+	if (!options.singleton) options.singleton = isOldIE();
+
+	// By default, add <style> tags to the <head> element
+	if (!options.insertInto) options.insertInto = "head";
+
+	// By default, add <style> tags to the bottom of the target
+	if (!options.insertAt) options.insertAt = "bottom";
+
+	var styles = listToStyles(list, options);
+
+	addStylesToDom(styles, options);
+
+	return function update (newList) {
+		var mayRemove = [];
+
+		for (var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+
+			domStyle.refs--;
+			mayRemove.push(domStyle);
+		}
+
+		if(newList) {
+			var newStyles = listToStyles(newList, options);
+			addStylesToDom(newStyles, options);
+		}
+
+		for (var i = 0; i < mayRemove.length; i++) {
+			var domStyle = mayRemove[i];
+
+			if(domStyle.refs === 0) {
+				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
+
+				delete stylesInDom[domStyle.id];
+			}
+		}
+	};
+};
+
+function addStylesToDom (styles, options) {
+	for (var i = 0; i < styles.length; i++) {
+		var item = styles[i];
+		var domStyle = stylesInDom[item.id];
+
+		if(domStyle) {
+			domStyle.refs++;
+
+			for(var j = 0; j < domStyle.parts.length; j++) {
+				domStyle.parts[j](item.parts[j]);
+			}
+
+			for(; j < item.parts.length; j++) {
+				domStyle.parts.push(addStyle(item.parts[j], options));
+			}
+		} else {
+			var parts = [];
+
+			for(var j = 0; j < item.parts.length; j++) {
+				parts.push(addStyle(item.parts[j], options));
+			}
+
+			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+		}
+	}
+}
+
+function listToStyles (list, options) {
+	var styles = [];
+	var newStyles = {};
+
+	for (var i = 0; i < list.length; i++) {
+		var item = list[i];
+		var id = options.base ? item[0] + options.base : item[0];
+		var css = item[1];
+		var media = item[2];
+		var sourceMap = item[3];
+		var part = {css: css, media: media, sourceMap: sourceMap};
+
+		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
+		else newStyles[id].parts.push(part);
+	}
+
+	return styles;
+}
+
+function insertStyleElement (options, style) {
+	var target = getElement(options.insertInto)
+
+	if (!target) {
+		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+	}
+
+	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
+
+	if (options.insertAt === "top") {
+		if (!lastStyleElementInsertedAtTop) {
+			target.insertBefore(style, target.firstChild);
+		} else if (lastStyleElementInsertedAtTop.nextSibling) {
+			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
+		} else {
+			target.appendChild(style);
+		}
+		stylesInsertedAtTop.push(style);
+	} else if (options.insertAt === "bottom") {
+		target.appendChild(style);
+	} else {
+		throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+	}
+}
+
+function removeStyleElement (style) {
+	if (style.parentNode === null) return false;
+	style.parentNode.removeChild(style);
+
+	var idx = stylesInsertedAtTop.indexOf(style);
+	if(idx >= 0) {
+		stylesInsertedAtTop.splice(idx, 1);
+	}
+}
+
+function createStyleElement (options) {
+	var style = document.createElement("style");
+
+	options.attrs.type = "text/css";
+
+	addAttrs(style, options.attrs);
+	insertStyleElement(options, style);
+
+	return style;
+}
+
+function createLinkElement (options) {
+	var link = document.createElement("link");
+
+	options.attrs.type = "text/css";
+	options.attrs.rel = "stylesheet";
+
+	addAttrs(link, options.attrs);
+	insertStyleElement(options, link);
+
+	return link;
+}
+
+function addAttrs (el, attrs) {
+	Object.keys(attrs).forEach(function (key) {
+		el.setAttribute(key, attrs[key]);
+	});
+}
+
+function addStyle (obj, options) {
+	var style, update, remove, result;
+
+	// If a transform function was defined, run it on the css
+	if (options.transform && obj.css) {
+	    result = options.transform(obj.css);
+
+	    if (result) {
+	    	// If transform returns a value, use that instead of the original css.
+	    	// This allows running runtime transformations on the css.
+	    	obj.css = result;
+	    } else {
+	    	// If the transform function returns a falsy value, don't add this css.
+	    	// This allows conditional loading of css
+	    	return function() {
+	    		// noop
+	    	};
+	    }
+	}
+
+	if (options.singleton) {
+		var styleIndex = singletonCounter++;
+
+		style = singleton || (singleton = createStyleElement(options));
+
+		update = applyToSingletonTag.bind(null, style, styleIndex, false);
+		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+
+	} else if (
+		obj.sourceMap &&
+		typeof URL === "function" &&
+		typeof URL.createObjectURL === "function" &&
+		typeof URL.revokeObjectURL === "function" &&
+		typeof Blob === "function" &&
+		typeof btoa === "function"
+	) {
+		style = createLinkElement(options);
+		update = updateLink.bind(null, style, options);
+		remove = function () {
+			removeStyleElement(style);
+
+			if(style.href) URL.revokeObjectURL(style.href);
+		};
+	} else {
+		style = createStyleElement(options);
+		update = applyToTag.bind(null, style);
+		remove = function () {
+			removeStyleElement(style);
+		};
+	}
+
+	update(obj);
+
+	return function updateStyle (newObj) {
+		if (newObj) {
+			if (
+				newObj.css === obj.css &&
+				newObj.media === obj.media &&
+				newObj.sourceMap === obj.sourceMap
+			) {
+				return;
+			}
+
+			update(obj = newObj);
+		} else {
+			remove();
+		}
+	};
+}
+
+var replaceText = (function () {
+	var textStore = [];
+
+	return function (index, replacement) {
+		textStore[index] = replacement;
+
+		return textStore.filter(Boolean).join('\n');
+	};
+})();
+
+function applyToSingletonTag (style, index, remove, obj) {
+	var css = remove ? "" : obj.css;
+
+	if (style.styleSheet) {
+		style.styleSheet.cssText = replaceText(index, css);
+	} else {
+		var cssNode = document.createTextNode(css);
+		var childNodes = style.childNodes;
+
+		if (childNodes[index]) style.removeChild(childNodes[index]);
+
+		if (childNodes.length) {
+			style.insertBefore(cssNode, childNodes[index]);
+		} else {
+			style.appendChild(cssNode);
+		}
+	}
+}
+
+function applyToTag (style, obj) {
+	var css = obj.css;
+	var media = obj.media;
+
+	if(media) {
+		style.setAttribute("media", media)
+	}
+
+	if(style.styleSheet) {
+		style.styleSheet.cssText = css;
+	} else {
+		while(style.firstChild) {
+			style.removeChild(style.firstChild);
+		}
+
+		style.appendChild(document.createTextNode(css));
+	}
+}
+
+function updateLink (link, options, obj) {
+	var css = obj.css;
+	var sourceMap = obj.sourceMap;
+
+	/*
+		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		and there is no publicPath defined then lets turn convertToAbsoluteUrls
+		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		directly
+	*/
+	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
+
+	if (options.convertToAbsoluteUrls || autoFixUrls) {
+		css = fixUrls(css);
+	}
+
+	if (sourceMap) {
+		// http://stackoverflow.com/a/26603875
+		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+	}
+
+	var blob = new Blob([css], { type: "text/css" });
+
+	var oldSrc = link.href;
+
+	link.href = URL.createObjectURL(blob);
+
+	if(oldSrc) URL.revokeObjectURL(oldSrc);
+}
+
+
+/***/ }),
+
+/***/ 601:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -4975,91 +5462,91 @@ module.exports =
 /* 0 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(599);
+module.exports = __webpack_require__(602);
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(268);
+module.exports = __webpack_require__(269);
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(603);
+module.exports = __webpack_require__(606);
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(607);
+module.exports = __webpack_require__(610);
 
 /***/ }),
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(608);
+module.exports = __webpack_require__(611);
 
 /***/ }),
 /* 5 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(609);
+module.exports = __webpack_require__(612);
 
 /***/ }),
 /* 6 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(610);
+module.exports = __webpack_require__(613);
 
 /***/ }),
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(618);
+module.exports = __webpack_require__(621);
 
 /***/ }),
 /* 8 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(619);
+module.exports = __webpack_require__(622);
 
 /***/ }),
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(620);
+module.exports = __webpack_require__(623);
 
 /***/ }),
 /* 10 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(624);
+module.exports = __webpack_require__(627);
 
 /***/ }),
 /* 11 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(625);
+module.exports = __webpack_require__(628);
 
 /***/ }),
 /* 12 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(626);
+module.exports = __webpack_require__(629);
 
 /***/ }),
 /* 13 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(627);
+module.exports = __webpack_require__(630);
 
 /***/ }),
 /* 14 */
 /***/ (function(module, exports) {
 
-module.exports = __webpack_require__(628);
+module.exports = __webpack_require__(631);
 
 /***/ }),
 /* 15 */
@@ -8702,14 +9189,14 @@ var VERSION = "0.0.37";
 
 /***/ }),
 
-/***/ 599:
+/***/ 602:
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayWithHoles = __webpack_require__(600);
+var arrayWithHoles = __webpack_require__(603);
 
-var iterableToArrayLimit = __webpack_require__(601);
+var iterableToArrayLimit = __webpack_require__(604);
 
-var nonIterableRest = __webpack_require__(602);
+var nonIterableRest = __webpack_require__(605);
 
 function _slicedToArray(arr, i) {
   return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || nonIterableRest();
@@ -8719,367 +9206,7 @@ module.exports = _slicedToArray;
 
 /***/ }),
 
-/***/ 6:
-/***/ (function(module, exports, __webpack_require__) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-
-var stylesInDom = {};
-
-var	memoize = function (fn) {
-	var memo;
-
-	return function () {
-		if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-		return memo;
-	};
-};
-
-var isOldIE = memoize(function () {
-	// Test for IE <= 9 as proposed by Browserhacks
-	// @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
-	// Tests for existence of standard globals is to allow style-loader
-	// to operate correctly into non-standard environments
-	// @see https://github.com/webpack-contrib/style-loader/issues/177
-	return window && document && document.all && !window.atob;
-});
-
-var getElement = (function (fn) {
-	var memo = {};
-
-	return function(selector) {
-		if (typeof memo[selector] === "undefined") {
-			memo[selector] = fn.call(this, selector);
-		}
-
-		return memo[selector]
-	};
-})(function (target) {
-	return document.querySelector(target)
-});
-
-var singleton = null;
-var	singletonCounter = 0;
-var	stylesInsertedAtTop = [];
-
-var	fixUrls = __webpack_require__(323);
-
-module.exports = function(list, options) {
-	if (typeof DEBUG !== "undefined" && DEBUG) {
-		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-	}
-
-	options = options || {};
-
-	options.attrs = typeof options.attrs === "object" ? options.attrs : {};
-
-	// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-	// tags it will allow on a page
-	if (!options.singleton) options.singleton = isOldIE();
-
-	// By default, add <style> tags to the <head> element
-	if (!options.insertInto) options.insertInto = "head";
-
-	// By default, add <style> tags to the bottom of the target
-	if (!options.insertAt) options.insertAt = "bottom";
-
-	var styles = listToStyles(list, options);
-
-	addStylesToDom(styles, options);
-
-	return function update (newList) {
-		var mayRemove = [];
-
-		for (var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-
-			domStyle.refs--;
-			mayRemove.push(domStyle);
-		}
-
-		if(newList) {
-			var newStyles = listToStyles(newList, options);
-			addStylesToDom(newStyles, options);
-		}
-
-		for (var i = 0; i < mayRemove.length; i++) {
-			var domStyle = mayRemove[i];
-
-			if(domStyle.refs === 0) {
-				for (var j = 0; j < domStyle.parts.length; j++) domStyle.parts[j]();
-
-				delete stylesInDom[domStyle.id];
-			}
-		}
-	};
-};
-
-function addStylesToDom (styles, options) {
-	for (var i = 0; i < styles.length; i++) {
-		var item = styles[i];
-		var domStyle = stylesInDom[item.id];
-
-		if(domStyle) {
-			domStyle.refs++;
-
-			for(var j = 0; j < domStyle.parts.length; j++) {
-				domStyle.parts[j](item.parts[j]);
-			}
-
-			for(; j < item.parts.length; j++) {
-				domStyle.parts.push(addStyle(item.parts[j], options));
-			}
-		} else {
-			var parts = [];
-
-			for(var j = 0; j < item.parts.length; j++) {
-				parts.push(addStyle(item.parts[j], options));
-			}
-
-			stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-		}
-	}
-}
-
-function listToStyles (list, options) {
-	var styles = [];
-	var newStyles = {};
-
-	for (var i = 0; i < list.length; i++) {
-		var item = list[i];
-		var id = options.base ? item[0] + options.base : item[0];
-		var css = item[1];
-		var media = item[2];
-		var sourceMap = item[3];
-		var part = {css: css, media: media, sourceMap: sourceMap};
-
-		if(!newStyles[id]) styles.push(newStyles[id] = {id: id, parts: [part]});
-		else newStyles[id].parts.push(part);
-	}
-
-	return styles;
-}
-
-function insertStyleElement (options, style) {
-	var target = getElement(options.insertInto)
-
-	if (!target) {
-		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
-	}
-
-	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
-
-	if (options.insertAt === "top") {
-		if (!lastStyleElementInsertedAtTop) {
-			target.insertBefore(style, target.firstChild);
-		} else if (lastStyleElementInsertedAtTop.nextSibling) {
-			target.insertBefore(style, lastStyleElementInsertedAtTop.nextSibling);
-		} else {
-			target.appendChild(style);
-		}
-		stylesInsertedAtTop.push(style);
-	} else if (options.insertAt === "bottom") {
-		target.appendChild(style);
-	} else {
-		throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-	}
-}
-
-function removeStyleElement (style) {
-	if (style.parentNode === null) return false;
-	style.parentNode.removeChild(style);
-
-	var idx = stylesInsertedAtTop.indexOf(style);
-	if(idx >= 0) {
-		stylesInsertedAtTop.splice(idx, 1);
-	}
-}
-
-function createStyleElement (options) {
-	var style = document.createElement("style");
-
-	options.attrs.type = "text/css";
-
-	addAttrs(style, options.attrs);
-	insertStyleElement(options, style);
-
-	return style;
-}
-
-function createLinkElement (options) {
-	var link = document.createElement("link");
-
-	options.attrs.type = "text/css";
-	options.attrs.rel = "stylesheet";
-
-	addAttrs(link, options.attrs);
-	insertStyleElement(options, link);
-
-	return link;
-}
-
-function addAttrs (el, attrs) {
-	Object.keys(attrs).forEach(function (key) {
-		el.setAttribute(key, attrs[key]);
-	});
-}
-
-function addStyle (obj, options) {
-	var style, update, remove, result;
-
-	// If a transform function was defined, run it on the css
-	if (options.transform && obj.css) {
-	    result = options.transform(obj.css);
-
-	    if (result) {
-	    	// If transform returns a value, use that instead of the original css.
-	    	// This allows running runtime transformations on the css.
-	    	obj.css = result;
-	    } else {
-	    	// If the transform function returns a falsy value, don't add this css.
-	    	// This allows conditional loading of css
-	    	return function() {
-	    		// noop
-	    	};
-	    }
-	}
-
-	if (options.singleton) {
-		var styleIndex = singletonCounter++;
-
-		style = singleton || (singleton = createStyleElement(options));
-
-		update = applyToSingletonTag.bind(null, style, styleIndex, false);
-		remove = applyToSingletonTag.bind(null, style, styleIndex, true);
-
-	} else if (
-		obj.sourceMap &&
-		typeof URL === "function" &&
-		typeof URL.createObjectURL === "function" &&
-		typeof URL.revokeObjectURL === "function" &&
-		typeof Blob === "function" &&
-		typeof btoa === "function"
-	) {
-		style = createLinkElement(options);
-		update = updateLink.bind(null, style, options);
-		remove = function () {
-			removeStyleElement(style);
-
-			if(style.href) URL.revokeObjectURL(style.href);
-		};
-	} else {
-		style = createStyleElement(options);
-		update = applyToTag.bind(null, style);
-		remove = function () {
-			removeStyleElement(style);
-		};
-	}
-
-	update(obj);
-
-	return function updateStyle (newObj) {
-		if (newObj) {
-			if (
-				newObj.css === obj.css &&
-				newObj.media === obj.media &&
-				newObj.sourceMap === obj.sourceMap
-			) {
-				return;
-			}
-
-			update(obj = newObj);
-		} else {
-			remove();
-		}
-	};
-}
-
-var replaceText = (function () {
-	var textStore = [];
-
-	return function (index, replacement) {
-		textStore[index] = replacement;
-
-		return textStore.filter(Boolean).join('\n');
-	};
-})();
-
-function applyToSingletonTag (style, index, remove, obj) {
-	var css = remove ? "" : obj.css;
-
-	if (style.styleSheet) {
-		style.styleSheet.cssText = replaceText(index, css);
-	} else {
-		var cssNode = document.createTextNode(css);
-		var childNodes = style.childNodes;
-
-		if (childNodes[index]) style.removeChild(childNodes[index]);
-
-		if (childNodes.length) {
-			style.insertBefore(cssNode, childNodes[index]);
-		} else {
-			style.appendChild(cssNode);
-		}
-	}
-}
-
-function applyToTag (style, obj) {
-	var css = obj.css;
-	var media = obj.media;
-
-	if(media) {
-		style.setAttribute("media", media)
-	}
-
-	if(style.styleSheet) {
-		style.styleSheet.cssText = css;
-	} else {
-		while(style.firstChild) {
-			style.removeChild(style.firstChild);
-		}
-
-		style.appendChild(document.createTextNode(css));
-	}
-}
-
-function updateLink (link, options, obj) {
-	var css = obj.css;
-	var sourceMap = obj.sourceMap;
-
-	/*
-		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
-		and there is no publicPath defined then lets turn convertToAbsoluteUrls
-		on by default.  Otherwise default to the convertToAbsoluteUrls option
-		directly
-	*/
-	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;
-
-	if (options.convertToAbsoluteUrls || autoFixUrls) {
-		css = fixUrls(css);
-	}
-
-	if (sourceMap) {
-		// http://stackoverflow.com/a/26603875
-		css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-	}
-
-	var blob = new Blob([css], { type: "text/css" });
-
-	var oldSrc = link.href;
-
-	link.href = URL.createObjectURL(blob);
-
-	if(oldSrc) URL.revokeObjectURL(oldSrc);
-}
-
-
-/***/ }),
-
-/***/ 600:
+/***/ 603:
 /***/ (function(module, exports) {
 
 function _arrayWithHoles(arr) {
@@ -9090,7 +9217,7 @@ module.exports = _arrayWithHoles;
 
 /***/ }),
 
-/***/ 601:
+/***/ 604:
 /***/ (function(module, exports) {
 
 function _iterableToArrayLimit(arr, i) {
@@ -9123,7 +9250,7 @@ module.exports = _iterableToArrayLimit;
 
 /***/ }),
 
-/***/ 602:
+/***/ 605:
 /***/ (function(module, exports) {
 
 function _nonIterableRest() {
@@ -9134,14 +9261,14 @@ module.exports = _nonIterableRest;
 
 /***/ }),
 
-/***/ 603:
+/***/ 606:
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayWithoutHoles = __webpack_require__(604);
+var arrayWithoutHoles = __webpack_require__(607);
 
-var iterableToArray = __webpack_require__(605);
+var iterableToArray = __webpack_require__(608);
 
-var nonIterableSpread = __webpack_require__(606);
+var nonIterableSpread = __webpack_require__(609);
 
 function _toConsumableArray(arr) {
   return arrayWithoutHoles(arr) || iterableToArray(arr) || nonIterableSpread();
@@ -9151,7 +9278,7 @@ module.exports = _toConsumableArray;
 
 /***/ }),
 
-/***/ 604:
+/***/ 607:
 /***/ (function(module, exports) {
 
 function _arrayWithoutHoles(arr) {
@@ -9168,7 +9295,7 @@ module.exports = _arrayWithoutHoles;
 
 /***/ }),
 
-/***/ 605:
+/***/ 608:
 /***/ (function(module, exports) {
 
 function _iterableToArray(iter) {
@@ -9179,7 +9306,7 @@ module.exports = _iterableToArray;
 
 /***/ }),
 
-/***/ 606:
+/***/ 609:
 /***/ (function(module, exports) {
 
 function _nonIterableSpread() {
@@ -9190,10 +9317,10 @@ module.exports = _nonIterableSpread;
 
 /***/ }),
 
-/***/ 607:
+/***/ 610:
 /***/ (function(module, exports, __webpack_require__) {
 
-var defineProperty = __webpack_require__(268);
+var defineProperty = __webpack_require__(269);
 
 function _objectSpread(target) {
   for (var i = 1; i < arguments.length; i++) {
@@ -9218,7 +9345,7 @@ module.exports = _objectSpread;
 
 /***/ }),
 
-/***/ 608:
+/***/ 611:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9250,7 +9377,7 @@ module.exports = fuzzysearch;
 
 /***/ }),
 
-/***/ 609:
+/***/ 612:
 /***/ (function(module, exports) {
 
 /**
@@ -9274,12 +9401,12 @@ module.exports = noop;
 
 /***/ }),
 
-/***/ 610:
+/***/ 613:
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(269),
-    now = __webpack_require__(611),
-    toNumber = __webpack_require__(271);
+var isObject = __webpack_require__(270),
+    now = __webpack_require__(614),
+    toNumber = __webpack_require__(272);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -9471,10 +9598,10 @@ module.exports = debounce;
 
 /***/ }),
 
-/***/ 611:
+/***/ 614:
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(270);
+var root = __webpack_require__(271);
 
 /**
  * Gets the timestamp of the number of milliseconds that have elapsed since
@@ -9501,7 +9628,7 @@ module.exports = now;
 
 /***/ }),
 
-/***/ 612:
+/***/ 615:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
@@ -9513,11 +9640,11 @@ module.exports = freeGlobal;
 
 /***/ }),
 
-/***/ 613:
+/***/ 616:
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(614),
-    isObjectLike = __webpack_require__(617);
+var baseGetTag = __webpack_require__(617),
+    isObjectLike = __webpack_require__(620);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -9549,12 +9676,12 @@ module.exports = isSymbol;
 
 /***/ }),
 
-/***/ 614:
+/***/ 617:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Symbol = __webpack_require__(272),
-    getRawTag = __webpack_require__(615),
-    objectToString = __webpack_require__(616);
+var Symbol = __webpack_require__(273),
+    getRawTag = __webpack_require__(618),
+    objectToString = __webpack_require__(619);
 
 /** `Object#toString` result references. */
 var nullTag = '[object Null]',
@@ -9584,10 +9711,10 @@ module.exports = baseGetTag;
 
 /***/ }),
 
-/***/ 615:
+/***/ 618:
 /***/ (function(module, exports, __webpack_require__) {
 
-var Symbol = __webpack_require__(272);
+var Symbol = __webpack_require__(273);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -9637,7 +9764,7 @@ module.exports = getRawTag;
 
 /***/ }),
 
-/***/ 616:
+/***/ 619:
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -9666,7 +9793,7 @@ module.exports = objectToString;
 
 /***/ }),
 
-/***/ 617:
+/***/ 620:
 /***/ (function(module, exports) {
 
 /**
@@ -9702,7 +9829,7 @@ module.exports = isObjectLike;
 
 /***/ }),
 
-/***/ 618:
+/***/ 621:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9768,7 +9895,7 @@ var index = (function (element, listener) {
 
 /***/ }),
 
-/***/ 619:
+/***/ 622:
 /***/ (function(module, exports) {
 
 module.exports = isPromise;
@@ -9780,10 +9907,10 @@ function isPromise(obj) {
 
 /***/ }),
 
-/***/ 620:
+/***/ 623:
 /***/ (function(module, exports, __webpack_require__) {
 
-var before = __webpack_require__(621);
+var before = __webpack_require__(624);
 
 /**
  * Creates a function that is restricted to invoking `func` once. Repeat calls
@@ -9812,10 +9939,10 @@ module.exports = once;
 
 /***/ }),
 
-/***/ 621:
+/***/ 624:
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(622);
+var toInteger = __webpack_require__(625);
 
 /** Error message constants. */
 var FUNC_ERROR_TEXT = 'Expected a function';
@@ -9859,10 +9986,10 @@ module.exports = before;
 
 /***/ }),
 
-/***/ 622:
+/***/ 625:
 /***/ (function(module, exports, __webpack_require__) {
 
-var toFinite = __webpack_require__(623);
+var toFinite = __webpack_require__(626);
 
 /**
  * Converts `value` to an integer.
@@ -9902,10 +10029,10 @@ module.exports = toInteger;
 
 /***/ }),
 
-/***/ 623:
+/***/ 626:
 /***/ (function(module, exports, __webpack_require__) {
 
-var toNumber = __webpack_require__(271);
+var toNumber = __webpack_require__(272);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0,
@@ -9951,7 +10078,7 @@ module.exports = toFinite;
 
 /***/ }),
 
-/***/ 624:
+/***/ 627:
 /***/ (function(module, exports) {
 
 /**
@@ -9979,7 +10106,7 @@ module.exports = identity;
 
 /***/ }),
 
-/***/ 625:
+/***/ 628:
 /***/ (function(module, exports) {
 
 /**
@@ -10012,7 +10139,7 @@ module.exports = constant;
 
 /***/ }),
 
-/***/ 626:
+/***/ 629:
 /***/ (function(module, exports) {
 
 function _typeof2(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof2 = function _typeof2(obj) { return typeof obj; }; } else { _typeof2 = function _typeof2(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof2(obj); }
@@ -10035,7 +10162,7 @@ module.exports = _typeof;
 
 /***/ }),
 
-/***/ 627:
+/***/ 630:
 /***/ (function(module, exports) {
 
 /**
@@ -10062,7 +10189,7 @@ module.exports = last;
 
 /***/ }),
 
-/***/ 628:
+/***/ 631:
 /***/ (function(module, exports) {
 
 var nestRE = /^(attrs|props|on|nativeOn|class|style|hook)$/
@@ -10119,13 +10246,13 @@ function mergeFn (a, b) {
 
 /***/ }),
 
-/***/ 629:
+/***/ 632:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(630);
+var content = __webpack_require__(633);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -10151,7 +10278,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 630:
+/***/ 633:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -10166,15 +10293,15 @@ exports.push([module.i, "/*!\n * vue-treeselect v0.0.37 | (c) 2017-2018 Riophae 
 
 /***/ }),
 
-/***/ 631:
+/***/ 634:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(632)
+var __vue_script__ = __webpack_require__(635)
 /* template */
-var __vue_template__ = __webpack_require__(633)
+var __vue_template__ = __webpack_require__(636)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -10214,7 +10341,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 632:
+/***/ 635:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10262,7 +10389,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 633:
+/***/ 636:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -10295,15 +10422,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 634:
+/***/ 637:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(635)
+var __vue_script__ = __webpack_require__(638)
 /* template */
-var __vue_template__ = __webpack_require__(636)
+var __vue_template__ = __webpack_require__(639)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -10343,7 +10470,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 635:
+/***/ 638:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10366,7 +10493,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 636:
+/***/ 639:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -10394,15 +10521,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 637:
+/***/ 640:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(638)
+var __vue_script__ = __webpack_require__(641)
 /* template */
-var __vue_template__ = __webpack_require__(648)
+var __vue_template__ = __webpack_require__(651)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -10442,21 +10569,21 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 638:
+/***/ 641:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_api_images__ = __webpack_require__(639);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_filepond__ = __webpack_require__(640);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_api_images__ = __webpack_require__(642);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_filepond__ = __webpack_require__(643);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_filepond___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_filepond__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_filepond_dist_filepond_min_css__ = __webpack_require__(642);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_filepond_dist_filepond_min_css__ = __webpack_require__(645);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_filepond_dist_filepond_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_filepond_dist_filepond_min_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_filepond_plugin_image_preview_dist_filepond_plugin_image_preview_min_css__ = __webpack_require__(644);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_filepond_plugin_image_preview_dist_filepond_plugin_image_preview_min_css__ = __webpack_require__(647);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_filepond_plugin_image_preview_dist_filepond_plugin_image_preview_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_filepond_plugin_image_preview_dist_filepond_plugin_image_preview_min_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_filepond_plugin_file_validate_type__ = __webpack_require__(646);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_filepond_plugin_file_validate_type__ = __webpack_require__(649);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_filepond_plugin_file_validate_type___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_filepond_plugin_file_validate_type__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_filepond_plugin_image_preview__ = __webpack_require__(647);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_filepond_plugin_image_preview__ = __webpack_require__(650);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_filepond_plugin_image_preview___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_filepond_plugin_image_preview__);
 //
 //
@@ -10595,7 +10722,7 @@ var FilePond = __WEBPACK_IMPORTED_MODULE_1_vue_filepond___default()(__WEBPACK_IM
 
 /***/ }),
 
-/***/ 639:
+/***/ 642:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10613,7 +10740,7 @@ var FilePond = __WEBPACK_IMPORTED_MODULE_1_vue_filepond___default()(__WEBPACK_IM
 
 /***/ }),
 
-/***/ 640:
+/***/ 643:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10628,7 +10755,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 (function (global, factory) {
     if (true) {
-        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(641)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+        !(__WEBPACK_AMD_DEFINE_ARRAY__ = [exports, __webpack_require__(2), __webpack_require__(644)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -10817,7 +10944,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ 641:
+/***/ 644:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -19930,13 +20057,13 @@ function signature:
 
 /***/ }),
 
-/***/ 642:
+/***/ 645:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(643);
+var content = __webpack_require__(646);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -19962,7 +20089,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 643:
+/***/ 646:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -19977,13 +20104,13 @@ exports.push([module.i, "/*\n * FilePond 3.2.3\n * Licensed under MIT, https://o
 
 /***/ }),
 
-/***/ 644:
+/***/ 647:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(645);
+var content = __webpack_require__(648);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -20009,7 +20136,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 645:
+/***/ 648:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)(false);
@@ -20024,7 +20151,7 @@ exports.push([module.i, "/*\n * FilePondPluginImagePreview 3.1.1\n * Licensed un
 
 /***/ }),
 
-/***/ 646:
+/***/ 649:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -20269,7 +20396,7 @@ exports.push([module.i, "/*\n * FilePondPluginImagePreview 3.1.1\n * Licensed un
 
 /***/ }),
 
-/***/ 647:
+/***/ 650:
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -21495,7 +21622,7 @@ exports.push([module.i, "/*\n * FilePondPluginImagePreview 3.1.1\n * Licensed un
 
 /***/ }),
 
-/***/ 648:
+/***/ 651:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -21682,15 +21809,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 649:
+/***/ 652:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(650)
+var __vue_script__ = __webpack_require__(653)
 /* template */
-var __vue_template__ = __webpack_require__(651)
+var __vue_template__ = __webpack_require__(654)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21730,7 +21857,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 650:
+/***/ 653:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21763,7 +21890,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 651:
+/***/ 654:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -21805,15 +21932,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 652:
+/***/ 655:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(653)
+var __vue_script__ = __webpack_require__(656)
 /* template */
-var __vue_template__ = __webpack_require__(654)
+var __vue_template__ = __webpack_require__(657)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21853,7 +21980,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 653:
+/***/ 656:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21891,7 +22018,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 654:
+/***/ 657:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -21917,15 +22044,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 655:
+/***/ 658:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(656)
+var __vue_script__ = __webpack_require__(659)
 /* template */
-var __vue_template__ = __webpack_require__(658)
+var __vue_template__ = __webpack_require__(661)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -21965,12 +22092,12 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 656:
+/***/ 659:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_api_categories__ = __webpack_require__(657);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__services_api_categories__ = __webpack_require__(660);
 //
 //
 //
@@ -22035,7 +22162,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 657:
+/***/ 660:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22053,7 +22180,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 658:
+/***/ 661:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -22114,15 +22241,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 664:
+/***/ 662:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(665)
+var __vue_script__ = __webpack_require__(663)
 /* template */
-var __vue_template__ = __webpack_require__(666)
+var __vue_template__ = __webpack_require__(664)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -22162,7 +22289,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 665:
+/***/ 663:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22189,7 +22316,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 666:
+/***/ 664:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -22242,149 +22369,6 @@ if (false) {
   }
 }
 
-/***/ }),
-
-/***/ 667:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(668)
-/* template */
-var __vue_template__ = __webpack_require__(669)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\creyo\\components\\general\\MultilanguageMce.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1c670b34", Component.options)
-  } else {
-    hotAPI.reload("data-v-1c670b34", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 668:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'multilanguage-mce',
-    props: ['value', 'param', 'language'],
-    data: function data() {
-        return {
-            defaultLanguage: this.$store.state.defaultLanguage,
-            languages: this.$store.state.languages,
-            config: {
-                themes: 'oxide',
-                branding: false,
-                menubar: false,
-                min_height: 200,
-                statusbar: false,
-                extended_valid_elements: 'img[class=myclass|!src|border:0|alt|title|width|height|style]',
-                plugins: 'print preview fullpage autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr lists textcolor imagetools colorpicker textpattern autoresize autolink code',
-                toolbar: 'bold italic strikethrough | forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist | image media | code',
-                image_advtab: true
-            }
-        };
-    }
-});
-
-/***/ }),
-
-/***/ 669:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    _vm._l(_vm.languages, function(lang) {
-      return _c(
-        "div",
-        [
-          lang.code == _vm.defaultLanguage &&
-          _vm.language == _vm.defaultLanguage
-            ? _c("vue-mce", {
-                attrs: { config: _vm.config },
-                model: {
-                  value: _vm.value[_vm.param],
-                  callback: function($$v) {
-                    _vm.$set(_vm.value, _vm.param, $$v)
-                  },
-                  expression: "value[param]"
-                }
-              })
-            : _vm._e(),
-          _vm._v(" "),
-          lang.code != _vm.defaultLanguage && lang.code == _vm.language
-            ? _c("vue-mce", {
-                attrs: { config: _vm.config },
-                model: {
-                  value: _vm.value[_vm.param + "_" + lang.code],
-                  callback: function($$v) {
-                    _vm.$set(_vm.value, _vm.param + "_" + lang.code, $$v)
-                  },
-                  expression: "value[param+ '_' + lang.code]"
-                }
-              })
-            : _vm._e()
-        ],
-        1
-      )
-    })
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1c670b34", module.exports)
-  }
-}
-
 /***/ })
 
-},[326]);
+},[327]);

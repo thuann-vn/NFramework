@@ -88,18 +88,17 @@
                 <!-- Shop sidebar trigger -->
                 <li>
                     <router-link to="/">
-                        <i data-feather="home"></i>
+                        <feather-home></feather-home>
                     </router-link>
                 </li>
                 <!-- Cart sidebar trigger -->
                 <li>
-                    <a href="javascript:void(0);" id="open-shop"><i data-feather="shopping-cart"></i></a>
+                    <a href="javascript:void(0);" id="open-shop"> <feather-shopping-cart></feather-shopping-cart></a>
                 </li>
                 <!-- Search trigger -->
                 <li>
-                    <a href="javascript:void(0);" id="open-search"><i data-feather="search"></i></a>
-                    <a href="javascript:void(0);" id="close-search" class="is-hidden is-inactive"><i
-                                data-feather="x"></i></a>
+                    <a href="javascript:void(0);" id="open-search"><feather-search></feather-search></a>
+                    <a href="javascript:void(0);" id="close-search" class="is-hidden is-inactive"><feather-x></feather-x></a>
                 </li>
                 <!-- Mobile mode trigger -->
                 <li class="is-hidden-desktop is-hidden-tablet">

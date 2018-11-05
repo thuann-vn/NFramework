@@ -35,10 +35,10 @@
                                                         119 <span>Products</span>
                                                     </div>
                                                     <!-- View category link -->
-                                                    <a href="products.html" class="action">
+                                                    <router-link to="/products" class="action">
                                                         <span>Discover</span>
                                                         <i data-feather="chevron-right"></i>
-                                                    </a>
+                                                    </router-link>
                                                 </div>
                                                 <!-- Overlay -->
                                                 <div class="tile-overlay"></div>

@@ -54,11 +54,13 @@
                                         </span>
 
                                         <span class="action">
-                                            <span class="action-link is-like has-simple-popover" data-content="Add to Wishlist" data-placement="top" v-simple-popover>
-                                                <a href="#"><i class="feather-icons" data-feather="heart" v-feather></i></a>
+                                            <span class="action-link is-like has-simple-popover" data-content="Edit product" data-placement="top" v-simple-popover>
+                                                <router-link :to="{ name: 'productDetail', params: { id: product.id }}">
+                                                    <feather-heart></feather-heart>
+                                                </router-link>
                                             </span>
-                                            <span class="action-link is-remove has-simple-popover" data-content="Remove from Cart" data-placement="top" v-simple-popover>
-                                                <a href="#"><i class="feather-icons" data-feather="x" v-feather></i></a>
+                                            <span class="action-link is-remove has-simple-popover" data-content="Delete" data-placement="top" v-simple-popover>
+                                                <a href="#"><feather-x></feather-x></a>
                                             </span>
                                         </span>
                                     </li>

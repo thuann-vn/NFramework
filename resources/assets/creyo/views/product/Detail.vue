@@ -7,7 +7,11 @@
                    <page-title :title="title"></page-title>
                     <div class="listing-controls">
                         <div class="layout-controls">
-                            <button class="button is-primary is-link">
+                            <router-link :to="{name:'products'}" class="button is-blue is-link mr-5">
+                                <b-icon icon="arrow-left" type="is-light"></b-icon>
+                                <span>Back</span>
+                            </router-link>
+                            <button class="button is-sucess is-link">
                                 <b-icon icon="check-all" type="is-light"></b-icon>
                                 <span>Save changes</span>
                             </button>
