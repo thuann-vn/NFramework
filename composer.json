@@ -30,7 +30,7 @@
         "tcg/voyager": "1.1.*",
         "test-hook": "^1.0",
         "voyager-themes": "^0.14.0",        
-        "fzaninotto/faker": "~1.4",
+        "fzaninotto/faker": "~1.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
