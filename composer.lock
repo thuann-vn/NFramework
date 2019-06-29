@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d4db8ce4afb74a50e3326b73aa410497",
+    "content-hash": "ef0e13921ef7ba4ef7e40177890bff51",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -5671,26 +5671,26 @@
         },
         {
             "name": "spatie/image-optimizer",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image-optimizer.git",
-                "reference": "11f0b270669a55f90093d63ddb5214e0f7c279da"
+                "reference": "e62f8b459bee0a880c8976c316e82638a74510b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/11f0b270669a55f90093d63ddb5214e0f7c279da",
-                "reference": "11f0b270669a55f90093d63ddb5214e0f7c279da",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/e62f8b459bee0a880c8976c316e82638a74510b5",
+                "reference": "e62f8b459bee0a880c8976c316e82638a74510b5",
                 "shasum": ""
             },
             "require": {
                 "ext-fileinfo": "*",
-                "php": "^7.0",
+                "php": "^7.2",
                 "psr/log": "^1.0",
                 "symfony/process": "^4.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.5",
+                "phpunit/phpunit": "^8.0",
                 "symfony/var-dumper": "^4.2"
             },
             "type": "library",
@@ -5717,7 +5717,7 @@
                 "image-optimizer",
                 "spatie"
             ],
-            "time": "2019-01-14T09:15:47+00:00"
+            "time": "2019-02-15T12:11:38+00:00"
         },
         {
             "name": "spatie/laravel-sitemap",
@@ -7356,16 +7356,16 @@
         },
         {
             "name": "tcg/voyager",
-            "version": "v1.1.12",
+            "version": "v1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/the-control-group/voyager.git",
-                "reference": "dcffeb6f10b93bfc383851ea4ca2b48381b3f04b"
+                "reference": "48a93b2bed66decd8ae39fcb866589cfa0221dfa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/dcffeb6f10b93bfc383851ea4ca2b48381b3f04b",
-                "reference": "dcffeb6f10b93bfc383851ea4ca2b48381b3f04b",
+                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/48a93b2bed66decd8ae39fcb866589cfa0221dfa",
+                "reference": "48a93b2bed66decd8ae39fcb866589cfa0221dfa",
                 "shasum": ""
             },
             "require": {
