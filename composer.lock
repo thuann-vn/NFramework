@@ -7778,34 +7778,6 @@
             "time": "2019-01-29T11:11:52+00:00"
         },
         {
-            "name": "voyager-themes",
-            "version": "0.14",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thedevdojo/voyager-themes.git",
-                "reference": "0.14"
-            },
-            "require": {
-                "larapack/hooks": "~1.0"
-            },
-            "type": "library",
-            "extra": {
-                "hook": {
-                    "providers": [
-                        "VoyagerThemes\\VoyagerThemesServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "VoyagerThemes\\": "src/"
-                }
-            },
-            "notification-url": "https://larapack.io/downloads",
-            "description": "This hook will add support for Voyager front-end themes",
-            "time": "2019-06-27T12:06:24+00:00"
-        },
-        {
             "name": "webmozart/assert",
             "version": "1.4.0",
             "source": {
