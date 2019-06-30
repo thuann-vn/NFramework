@@ -59,7 +59,9 @@
             </div>
         </div>
         <div class="product-section-information">
-            <h2 class="product-brand"><a href="{{route('shop.brand', $product->brand->slug)}}">{{$product->brand->name}}</a></h2>
+            @if(!empty($product->brand))
+                <h2 class="product-brand"><a href="{{route('shop.brand', $product->brand->slug)}}">{{$product->brand->name}}</a></h2>
+            @endif
             <h1 class="product-name">{{ $product->name }}</h1>
             <div class="price">
                 @if(!empty($product->regular_price))
@@ -115,7 +117,7 @@
     </div>
 
     @include('partials.shop.might-like')
-    @include('partials.shop.similar')
+    {{-- @include('partials.shop.similar') --}}
 
     <div class="container">
         <hr/>

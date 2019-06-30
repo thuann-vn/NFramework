@@ -9,6 +9,7 @@ use App\Services\FbBot;
 use App\Slider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 
 class LandingPageController extends Controller
 {
@@ -19,6 +20,7 @@ class LandingPageController extends Controller
      */
     public function index()
     {
+        Session::put('applocale', 'vi');
         return view('landing-page', []);
     }
 }
